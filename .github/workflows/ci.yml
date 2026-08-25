@@ -89,10 +89,12 @@ jobs:
 
       - name: Run browser flow
         run: pnpm exec playwright test tests/e2e --project=${{ matrix.browser }}
+        env:
+          HOME: /root
 
       - name: Upload E2E failure evidence
         if: ${{ failure() && !cancelled() }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: e2e-${{ matrix.browser }}-failure
           path: |
@@ -140,7 +142,7 @@ jobs:
 
       - name: Upload visual failure evidence
         if: ${{ failure() && !cancelled() }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: visual-failure
           path: |

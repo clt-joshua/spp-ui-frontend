@@ -74,6 +74,8 @@ Playwright는 host OS, browser, font, 설정 차이가 screenshot에 영향을 �
 3. CI failure artifact는 14일 보관한다.
 4. workflow는 `quality` 성공 후 browser별 `e2e`와 `visual`을 병렬 blocking gate로 실행한다.
 5. workflow와 Playwright container는 version tag뿐 아니라 image digest까지 고정한다.
+6. GitHub container에서 root로 실행되는 Firefox는 browser flow의 `HOME=/root` 소유권 계약을 유지한다.
+7. 실패 증거 업로드는 Node 24 action runtime을 사용하는 `actions/upload-artifact@v7`을 사용한다.
 
 ## 현재 구현과 증거
 
@@ -84,6 +86,7 @@ Playwright는 host OS, browser, font, 설정 차이가 screenshot에 영향을 �
 - Visual: 375×812, 768×1024, 1440×900의 Light/Dark 총 6 baseline 생성 및 즉시 재비교 PASS
 - Baseline 총량: 413,324 bytes
 - Workflow validation: actionlint 1.7.12 PASS
+- Remote CI: container HOME 교정 후 Quality, Chromium/Firefox/WebKit E2E, Chromium/Linux Visual PASS
 
 Theme Runtime이 아직 없으므로 현재 golden은 OS Light/Dark foundation 화면만 다룬다. Theme Runtime과 preset이 실제 구현되면 기존 baseline을 조용히 대체하지 않고, 문서에 확정된 6개 대표 Theme pair를 별도 승인 변경으로 추가한다.
 

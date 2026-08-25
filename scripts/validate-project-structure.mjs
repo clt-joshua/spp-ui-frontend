@@ -188,6 +188,8 @@ if (existsSync(workflowPath)) {
     'mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e',
     'browser: [chromium, firefox, webkit]',
     'retention-days: 14',
+    'HOME: /root',
+    'actions/upload-artifact@v7',
     'rhysd/actionlint:1.7.12@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667',
   ]) {
     if (!workflow.includes(requiredPolicy)) {

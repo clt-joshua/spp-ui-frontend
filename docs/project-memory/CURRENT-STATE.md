@@ -67,6 +67,7 @@
 - digest-pinned Chromium/Linux visual baseline 6건 생성 후 재비교: PASS
 - baseline 총량 413,324 bytes, 25MB 운영 기준 이내
 - GitHub Actions workflow actionlint 1.7.12: PASS
+- GitHub Actions remote CI는 Firefox container의 `HOME` 소유권을 `/root`로 교정한 뒤 Quality, 3-browser E2E, Visual 모두 PASS
 - 이동한 기존 문서 9개의 SHA-256은 분류 직후 동일함을 확인했으며 이후 승인 결정을 문서에 반영
 - foundation browser flow는 검증했으나 Theme Runtime, Portal, MVP component interaction은 아직 수행하지 않음
 
