@@ -1,0 +1,88 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--md-dialog-scrim-color) var(--md-dialog-scrim-opacity), transparent);
+  transition: opacity var(--md-dialog-motion-duration) var(--md-dialog-motion-easing);
+}
+
+.backdrop[data-starting-style],
+.backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 31;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.popup {
+  display: grid;
+  inline-size: min(var(--md-dialog-container-max-width), 100%);
+  max-block-size: min(45rem, calc(100dvh - 3rem));
+  gap: var(--md-dialog-content-gap);
+  padding: var(--md-dialog-container-padding);
+  border-radius: var(--md-dialog-container-shape);
+  outline: 0;
+  background: var(--md-dialog-container-color);
+  box-shadow: var(--md-dialog-container-elevation);
+  color: var(--md-dialog-headline-color);
+  transition: opacity var(--md-dialog-motion-duration) var(--md-dialog-motion-easing), transform var(--md-dialog-motion-duration) var(--md-dialog-motion-easing);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.popup[data-variant='alert'] {
+  inline-size: min(var(--md-dialog-alert-container-max-width), 100%);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  margin: 0;
+  color: var(--md-dialog-headline-color);
+  font-family: var(--md-dialog-headline-font);
+  font-size: var(--md-dialog-headline-size);
+  font-weight: var(--md-dialog-headline-weight);
+  line-height: var(--md-dialog-headline-line-height);
+}
+
+.description {
+  margin: 0;
+  color: var(--md-dialog-supporting-text-color);
+  font-family: var(--md-dialog-supporting-text-font);
+  font-size: var(--md-dialog-supporting-text-size);
+  font-weight: var(--md-dialog-supporting-text-weight);
+  line-height: var(--md-dialog-supporting-text-line-height);
+}
+
+.content {
+  overflow: auto;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup[data-starting-style],
+  .popup[data-ending-style] {
+    transform: none;
+  }
+}

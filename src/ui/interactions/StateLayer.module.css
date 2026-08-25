@@ -1,0 +1,22 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--md3-state-layer-color, currentColor);
+  opacity: 0;
+  transition: opacity var(--md-interaction-motion-duration) var(--md-interaction-motion-easing);
+}
+
+:global([data-interactive-root]):hover:not(:disabled, [data-disabled]) > .root {
+  opacity: var(--md-interaction-hover-state-layer-opacity);
+}
+
+:global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root {
+  opacity: var(--md-interaction-focus-state-layer-opacity);
+}
+
+:global([data-interactive-root][data-pressed]:not(:disabled, [data-disabled])) > .root {
+  opacity: var(--md-interaction-pressed-state-layer-opacity);
+}

@@ -16,6 +16,7 @@
 | ADR-010 | Node.js 24 runtime baseline | Node 24.x, pnpm 10.33.x, lockfile과 CI major 일치 |
 | ADR-011 | Material Icons + 교체 가능한 Roboto | self-hosted 기본 자산을 adapter와 reference font 변수로 격리 |
 | ADR-012 | GitHub Actions + Playwright Git baseline | quality/e2e/visual blocking gate, digest-pinned Linux baseline, artifact 14일 |
+| ADR-013 | Theme Lab을 대표 제품 흐름으로 사용 | Theme 설정과 프로젝트 생성 흐름에서 8개 MVP 컴포넌트와 Portal을 검증 |
 
 ## 고정 기술 계약
 

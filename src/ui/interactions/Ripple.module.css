@@ -1,0 +1,40 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.wave {
+  position: absolute;
+  inline-size: var(--ripple-size);
+  block-size: var(--ripple-size);
+  inset-inline-start: calc(var(--ripple-x) - var(--ripple-size) / 2);
+  inset-block-start: calc(var(--ripple-y) - var(--ripple-size) / 2);
+  border-radius: var(--md-ripple-shape);
+  background: var(--md3-state-layer-color, currentColor);
+  opacity: var(--md-ripple-pressed-opacity);
+  transform: scale(0.2);
+  animation: expand var(--md-ripple-expand-duration) var(--md-ripple-motion-easing) forwards;
+  transition: opacity var(--md-ripple-fade-duration) linear;
+}
+
+.wave[data-ending] {
+  opacity: 0;
+}
+
+@keyframes expand {
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    animation: none;
+    transform: scale(1);
+    transition: none;
+  }
+}

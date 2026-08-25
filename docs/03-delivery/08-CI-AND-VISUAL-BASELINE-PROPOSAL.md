@@ -82,13 +82,13 @@ Playwright는 host OS, browser, font, 설정 차이가 screenshot에 영향을 �
 - Workflow: `.github/workflows/ci.yml`
 - Playwright config: `playwright.config.ts`
 - Local pinned-container runner: `scripts/run-playwright-container.mjs`
-- E2E: Chromium/Firefox/WebKit 각각 2건, 총 6건 PASS
+- E2E: Chromium/Firefox/WebKit 각각 5건, 총 15건 PASS
 - Visual: 375×812, 768×1024, 1440×900의 Light/Dark 총 6 baseline 생성 및 즉시 재비교 PASS
-- Baseline 총량: 413,324 bytes
+- Baseline 총량: 743,906 bytes
 - Workflow validation: actionlint 1.7.12 PASS
 - Remote CI: container HOME 교정 후 Quality, Chromium/Firefox/WebKit E2E, Chromium/Linux Visual PASS
 
-Theme Runtime이 아직 없으므로 현재 golden은 OS Light/Dark foundation 화면만 다룬다. Theme Runtime과 preset이 실제 구현되면 기존 baseline을 조용히 대체하지 않고, 문서에 확정된 6개 대표 Theme pair를 별도 승인 변경으로 추가한다.
+현재 golden은 실제 Theme Runtime의 system Light/Dark 해석과 Theme Lab 대표 흐름을 다룬다. 4개 preset 전체 조합을 golden으로 늘리지 않고, 기본 Material preset의 모바일·태블릿·데스크톱 Light/Dark 6장을 시각 회귀 authority로 유지한다. preset별 색상 생성은 unit/E2E로 보조한다.
 
 ## 공식 근거
 

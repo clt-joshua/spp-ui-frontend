@@ -4,4 +4,8 @@
   --md-ref-typeface-brand: var(--app-font-brand);
   --md-ref-typeface-plain: var(--app-font-plain);
   --md-ref-icon-size-default: 1.5rem;
+
+  --md-ref-typeface-weight-regular: 400;
+  --md-ref-typeface-weight-medium: 500;
+  --md-ref-typeface-weight-bold: 700;
 }

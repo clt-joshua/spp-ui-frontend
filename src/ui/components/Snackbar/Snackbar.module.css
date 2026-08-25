@@ -1,0 +1,96 @@
+.viewport {
+  position: fixed;
+  z-index: 50;
+  inset-inline: auto 1rem;
+  inset-block: auto 1rem;
+  display: flex;
+  inline-size: min(calc(100vw - 2rem), 32rem);
+  flex-direction: column;
+  gap: 0.5rem;
+  outline: 0;
+}
+
+.root {
+  display: grid;
+  min-block-size: var(--md-snackbar-one-line-container-height);
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  border-radius: var(--md-snackbar-container-shape);
+  background: var(--md-snackbar-container-color);
+  box-shadow: var(--md-snackbar-container-elevation);
+  color: var(--md-snackbar-supporting-text-color);
+  font: var(--md-snackbar-supporting-text-weight) var(--md-snackbar-supporting-text-size) / var(--md-snackbar-supporting-text-line-height) var(--md-snackbar-supporting-text-font);
+  transform-origin: bottom right;
+  transition: opacity var(--md-snackbar-motion-duration) var(--md-snackbar-motion-easing), transform var(--md-snackbar-motion-duration) var(--md-snackbar-motion-easing);
+}
+
+.root[data-starting-style],
+.root[data-ending-style] {
+  opacity: 0;
+  transform: translateY(0.75rem) scale(0.98);
+}
+
+.content,
+.description {
+  min-inline-size: 0;
+}
+
+.description {
+  margin: 0;
+}
+
+.action,
+.close {
+  min-block-size: 2.5rem;
+  border: 0;
+  border-radius: var(--md-icon-button-container-shape);
+  background: transparent;
+  color: var(--md-snackbar-action-label-text-color);
+  font-family: var(--md-snackbar-action-label-text-font);
+  font-size: var(--md-snackbar-action-label-text-size);
+  font-weight: var(--md-snackbar-action-label-text-weight);
+  line-height: var(--md-snackbar-action-label-text-line-height);
+  cursor: pointer;
+}
+
+.action {
+  padding-inline: 0.75rem;
+}
+
+.close {
+  display: inline-grid;
+  inline-size: 2.5rem;
+  place-items: center;
+  color: var(--md-snackbar-icon-color);
+}
+
+.close > :global(.material-icons) {
+  font-size: var(--md-snackbar-icon-size);
+}
+
+.action:hover,
+.close:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.action:focus-visible,
+.close:focus-visible {
+  outline: var(--md-focus-ring-width) solid currentColor;
+  outline-offset: calc(-1 * var(--md-focus-ring-width));
+}
+
+@media (max-width: 37.5rem) {
+  .viewport {
+    inset-inline: 0.5rem;
+    inset-block-end: 0.5rem;
+    inline-size: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    border: 0.0625rem solid CanvasText;
+  }
+}

@@ -1,0 +1,201 @@
+.root {
+  --md3-state-layer-color: var(--button-label-color);
+  position: relative;
+  display: inline-flex;
+  min-inline-size: 4rem;
+  min-block-size: var(--button-container-height);
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--button-leading-space) var(--button-trailing-space);
+  border: 0 solid transparent;
+  border-radius: var(--button-container-shape);
+  background: var(--button-container-color);
+  box-shadow: var(--button-elevation);
+  color: var(--button-label-color);
+  font-family: var(--button-label-text-font);
+  font-size: var(--button-label-text-size);
+  font-weight: var(--button-label-text-weight);
+  line-height: var(--button-label-text-line-height);
+  text-wrap: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root:disabled {
+  border-color: transparent;
+  background: color-mix(in srgb, var(--md-button-disabled-container-color) var(--button-disabled-container-opacity, var(--md-button-disabled-container-opacity)), transparent);
+  box-shadow: none;
+  color: var(--md-button-disabled-label-text-color);
+  cursor: default;
+}
+
+.root:disabled .content {
+  opacity: var(--md-button-disabled-label-text-opacity);
+}
+
+.root:not(:disabled):hover {
+  box-shadow: var(--button-hover-elevation, var(--button-elevation));
+}
+
+.root:not(:disabled):focus-visible {
+  box-shadow: var(--button-focus-elevation, var(--button-elevation));
+}
+
+.root:not(:disabled)[data-pressed] {
+  box-shadow: var(--button-pressed-elevation, var(--button-elevation));
+}
+
+.root:focus {
+  outline: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--button-icon-label-space, 0.5rem);
+}
+
+.icon {
+  display: inline-flex;
+  inline-size: var(--button-icon-size);
+  block-size: var(--button-icon-size);
+  flex: none;
+}
+
+.icon > :global(.material-icons) {
+  inline-size: var(--button-icon-size);
+  block-size: var(--button-icon-size);
+  font-size: var(--button-icon-size);
+}
+
+.root[data-has-leading-icon] {
+  padding-inline: var(--button-with-leading-icon-leading-space) var(--button-with-leading-icon-trailing-space);
+}
+
+.root[data-has-trailing-icon] {
+  padding-inline: var(--button-with-trailing-icon-leading-space) var(--button-with-trailing-icon-trailing-space);
+}
+
+.root[data-has-leading-icon][data-has-trailing-icon] {
+  padding-inline: var(--button-with-leading-icon-leading-space) var(--button-with-trailing-icon-trailing-space);
+}
+
+.filled {
+  --button-container-color: var(--md-filled-button-container-color);
+  --button-container-height: var(--md-filled-button-container-height);
+  --button-container-shape: var(--md-filled-button-container-shape);
+  --button-elevation: var(--md-filled-button-container-elevation);
+  --button-hover-elevation: var(--md-filled-button-hover-container-elevation);
+  --button-focus-elevation: var(--md-filled-button-focus-container-elevation);
+  --button-pressed-elevation: var(--md-filled-button-pressed-container-elevation);
+  --button-icon-size: var(--md-filled-button-icon-size);
+  --button-label-color: var(--md-filled-button-label-text-color);
+  --button-label-text-font: var(--md-filled-button-label-text-font);
+  --button-label-text-line-height: var(--md-filled-button-label-text-line-height);
+  --button-label-text-size: var(--md-filled-button-label-text-size);
+  --button-label-text-weight: var(--md-filled-button-label-text-weight);
+  --button-leading-space: var(--md-filled-button-leading-space);
+  --button-trailing-space: var(--md-filled-button-trailing-space);
+  --button-with-leading-icon-leading-space: var(--md-filled-button-with-leading-icon-leading-space);
+  --button-with-leading-icon-trailing-space: var(--md-filled-button-with-leading-icon-trailing-space);
+  --button-with-trailing-icon-leading-space: var(--md-filled-button-with-trailing-icon-leading-space);
+  --button-with-trailing-icon-trailing-space: var(--md-filled-button-with-trailing-icon-trailing-space);
+}
+
+.tonal {
+  --button-container-color: var(--md-filled-tonal-button-container-color);
+  --button-container-height: var(--md-filled-tonal-button-container-height);
+  --button-container-shape: var(--md-filled-tonal-button-container-shape);
+  --button-elevation: var(--md-filled-tonal-button-container-elevation);
+  --button-hover-elevation: var(--md-filled-tonal-button-hover-container-elevation);
+  --button-focus-elevation: var(--md-filled-tonal-button-focus-container-elevation);
+  --button-pressed-elevation: var(--md-filled-tonal-button-pressed-container-elevation);
+  --button-icon-size: var(--md-filled-tonal-button-icon-size);
+  --button-label-color: var(--md-filled-tonal-button-label-text-color);
+  --button-label-text-font: var(--md-filled-tonal-button-label-text-font);
+  --button-label-text-line-height: var(--md-filled-tonal-button-label-text-line-height);
+  --button-label-text-size: var(--md-filled-tonal-button-label-text-size);
+  --button-label-text-weight: var(--md-filled-tonal-button-label-text-weight);
+  --button-leading-space: var(--md-filled-tonal-button-leading-space);
+  --button-trailing-space: var(--md-filled-tonal-button-trailing-space);
+  --button-with-leading-icon-leading-space: var(--md-filled-tonal-button-with-leading-icon-leading-space);
+  --button-with-leading-icon-trailing-space: var(--md-filled-tonal-button-with-leading-icon-trailing-space);
+  --button-with-trailing-icon-leading-space: var(--md-filled-tonal-button-with-trailing-icon-leading-space);
+  --button-with-trailing-icon-trailing-space: var(--md-filled-tonal-button-with-trailing-icon-trailing-space);
+}
+
+.elevated {
+  --button-container-color: var(--md-elevated-button-container-color);
+  --button-container-height: var(--md-elevated-button-container-height);
+  --button-container-shape: var(--md-elevated-button-container-shape);
+  --button-elevation: var(--md-elevated-button-container-elevation);
+  --button-hover-elevation: var(--md-elevated-button-hover-container-elevation);
+  --button-focus-elevation: var(--md-elevated-button-focus-container-elevation);
+  --button-pressed-elevation: var(--md-elevated-button-pressed-container-elevation);
+  --button-icon-size: var(--md-elevated-button-icon-size);
+  --button-label-color: var(--md-elevated-button-label-text-color);
+  --button-label-text-font: var(--md-elevated-button-label-text-font);
+  --button-label-text-line-height: var(--md-elevated-button-label-text-line-height);
+  --button-label-text-size: var(--md-elevated-button-label-text-size);
+  --button-label-text-weight: var(--md-elevated-button-label-text-weight);
+  --button-leading-space: var(--md-elevated-button-leading-space);
+  --button-trailing-space: var(--md-elevated-button-trailing-space);
+  --button-with-leading-icon-leading-space: var(--md-elevated-button-with-leading-icon-leading-space);
+  --button-with-leading-icon-trailing-space: var(--md-elevated-button-with-leading-icon-trailing-space);
+  --button-with-trailing-icon-leading-space: var(--md-elevated-button-with-trailing-icon-leading-space);
+  --button-with-trailing-icon-trailing-space: var(--md-elevated-button-with-trailing-icon-trailing-space);
+}
+
+.outlined {
+  --button-disabled-container-opacity: 0%;
+  --button-container-color: transparent;
+  --button-container-height: var(--md-outlined-button-container-height);
+  --button-container-shape: var(--md-outlined-button-container-shape);
+  --button-icon-size: var(--md-outlined-button-icon-size);
+  --button-label-color: var(--md-outlined-button-label-text-color);
+  --button-label-text-font: var(--md-outlined-button-label-text-font);
+  --button-label-text-line-height: var(--md-outlined-button-label-text-line-height);
+  --button-label-text-size: var(--md-outlined-button-label-text-size);
+  --button-label-text-weight: var(--md-outlined-button-label-text-weight);
+  --button-leading-space: var(--md-outlined-button-leading-space);
+  --button-trailing-space: var(--md-outlined-button-trailing-space);
+  --button-with-leading-icon-leading-space: var(--md-outlined-button-with-leading-icon-leading-space);
+  --button-with-leading-icon-trailing-space: var(--md-outlined-button-with-leading-icon-trailing-space);
+  --button-with-trailing-icon-leading-space: var(--md-outlined-button-with-trailing-icon-leading-space);
+  --button-with-trailing-icon-trailing-space: var(--md-outlined-button-with-trailing-icon-trailing-space);
+  border-width: var(--md-outlined-button-outline-width);
+  border-color: var(--md-outlined-button-outline-color);
+}
+
+.outlined:disabled {
+  border-color: color-mix(in srgb, var(--md-button-disabled-outline-color) var(--md-button-disabled-outline-opacity), transparent);
+}
+
+.text {
+  --button-disabled-container-opacity: 0%;
+  --button-container-color: transparent;
+  --button-container-height: var(--md-text-button-container-height);
+  --button-container-shape: var(--md-text-button-container-shape);
+  --button-icon-size: var(--md-text-button-icon-size);
+  --button-label-color: var(--md-text-button-label-text-color);
+  --button-label-text-font: var(--md-text-button-label-text-font);
+  --button-label-text-line-height: var(--md-text-button-label-text-line-height);
+  --button-label-text-size: var(--md-text-button-label-text-size);
+  --button-label-text-weight: var(--md-text-button-label-text-weight);
+  --button-leading-space: var(--md-text-button-leading-space);
+  --button-trailing-space: var(--md-text-button-trailing-space);
+  --button-with-leading-icon-leading-space: var(--md-text-button-with-leading-icon-leading-space);
+  --button-with-leading-icon-trailing-space: var(--md-text-button-with-leading-icon-trailing-space);
+  --button-with-trailing-icon-leading-space: var(--md-text-button-with-trailing-icon-leading-space);
+  --button-with-trailing-icon-trailing-space: var(--md-text-button-with-trailing-icon-trailing-space);
+}
+
+@media (forced-colors: active) {
+  .root {
+    border: 0.0625rem solid ButtonText;
+  }
+}

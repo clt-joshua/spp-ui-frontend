@@ -3,5 +3,7 @@
 @import '@fontsource-variable/roboto/wght.css' layer(tokens);
 @import '@material-design-icons/font/filled.css' layer(tokens);
 @import '../tokens/reference.css' layer(tokens);
+@import '../tokens/system.css' layer(tokens);
+@import '../tokens/component.css' layer(tokens);
 @import './reset.css' layer(reset);
 @import './globals.css' layer(base);

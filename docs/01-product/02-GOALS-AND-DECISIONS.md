@@ -160,6 +160,14 @@ compliance_required: true
 
 **운영 규칙:** baseline은 명시적 update 명령으로만 변경하고 실패 evidence는 14일 보관한다. baseline 총량이 25MB를 넘으면 Git LFS 또는 SaaS visual review 도입을 재검토한다.
 
+### ADR-013 — Theme Lab을 대표 제품 흐름으로 사용
+
+**결정:** Theme 프리셋·custom seed·mode·contrast 설정과 프로젝트 생성 폼을 결합한 Theme Lab을 실제 Vite 진입점의 대표 제품 흐름으로 사용한다.
+
+**이유:** 별도 제품 요구를 발명하지 않으면서 8개 MVP 컴포넌트, document-root Theme 적용, body Portal, 저장·복원, keyboard/focus와 Snackbar feedback을 하나의 자연스러운 흐름에서 검증할 수 있다.
+
+**제약:** Theme Lab 통과는 자동 동작 증거이며 개별 컴포넌트의 M3 준수 `PASS`를 자동으로 의미하지 않는다. 수동 시각·assistive technology와 미결 공식 근거는 manifest blocker로 유지한다.
+
 ## 주요 위험
 
 | 위험 | 트리거 | 영향 | 조치 |

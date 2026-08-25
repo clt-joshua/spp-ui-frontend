@@ -1,8 +1,8 @@
 # `src/ui` ownership boundary
 
-This directory will contain the application-internal M3 UI system. Application screens consume only `src/ui/index.ts`; Base UI primitives, Material Color Utilities, token helpers, and compliance internals stay private.
+This directory contains the application-internal M3 UI system. Application screens consume only `src/ui/index.ts`; Base UI primitives, Material Color Utilities, token helpers, and compliance internals stay private.
 
-Planned responsibilities:
+Responsibilities:
 
 - `compliance/`: pinned source baseline and component traceability
 - `theme/`: color engine, presets, storage, bootstrap, provider
@@ -13,4 +13,4 @@ Planned responsibilities:
 - `providers/`: application-level UI composition
 - `styles/`: reset, global styles, CSS layer ordering
 
-The Vite host, CSS entry, font reference inputs, and `MaterialIcon` adapter are connected. Theme Runtime and the eight MVP component folders remain unimplemented; their directories reserve the accepted architecture without implying completion.
+The Vite host, CSS entry, font reference inputs, `MaterialIcon` adapter, Theme Runtime, interaction primitives, and eight MVP components are connected. Implementation evidence lives in `docs/03-delivery/09-UI-IMPLEMENTATION-STATUS.md`; the components remain `IN_REVIEW` until their manifest blockers are closed.

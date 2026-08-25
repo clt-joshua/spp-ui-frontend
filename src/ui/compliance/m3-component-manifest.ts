@@ -23,8 +23,8 @@ export interface M3ComponentManifestEntry {
   m3ComponentUrls: readonly string[];
   materialWebDocPath: string | null;
   materialWebReferenceStatus: 'available' | 'unavailable';
-  implementationStatus: 'not-started';
-  complianceStatus: 'BLOCKED';
+  implementationStatus: 'not-started' | 'implemented';
+  complianceStatus: 'BLOCKED' | 'IN_REVIEW' | 'PASS';
   blockers: readonly string[];
 }
 
@@ -34,9 +34,9 @@ export const M3_COMPONENT_MANIFEST = [
     m3ComponentUrls: ['https://m3.material.io/components/buttons/overview'],
     materialWebDocPath: 'components/button.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'IconButton',
@@ -45,9 +45,9 @@ export const M3_COMPONENT_MANIFEST = [
     ],
     materialWebDocPath: 'components/icon-button.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'TextField',
@@ -56,29 +56,29 @@ export const M3_COMPONENT_MANIFEST = [
     ],
     materialWebDocPath: 'components/text-field.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'Checkbox',
     m3ComponentUrls: ['https://m3.material.io/components/checkbox/overview'],
     materialWebDocPath: 'components/checkbox.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'Select',
     m3ComponentUrls: [],
     materialWebDocPath: 'components/select.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
     blockers: [
       'A direct official M3 component source has not been pinned.',
-      'Implementation and representative app flow do not exist.',
+      'Actual assistive technology and forced-colors review is pending.',
     ],
   },
   {
@@ -86,29 +86,28 @@ export const M3_COMPONENT_MANIFEST = [
     m3ComponentUrls: ['https://m3.material.io/components/dialogs/overview'],
     materialWebDocPath: 'components/dialog.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'Menu',
     m3ComponentUrls: ['https://m3.material.io/components/menus/overview'],
     materialWebDocPath: 'components/menu.md',
     materialWebReferenceStatus: 'available',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
-    blockers: ['Implementation and representative app flow do not exist.'],
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
+    blockers: ['Actual assistive technology and forced-colors review is pending.'],
   },
   {
     component: 'Snackbar',
     m3ComponentUrls: ['https://m3.material.io/components/snackbar/overview'],
     materialWebDocPath: null,
     materialWebReferenceStatus: 'unavailable',
-    implementationStatus: 'not-started',
-    complianceStatus: 'BLOCKED',
+    implementationStatus: 'implemented',
+    complianceStatus: 'IN_REVIEW',
     blockers: [
-      'Replacement M3, Base UI Toast, and accessibility evidence is not recorded.',
-      'Implementation and representative app flow do not exist.',
+      'Actual screen reader announcement and forced-colors verification is pending.',
     ],
   },
 ] as const satisfies readonly M3ComponentManifestEntry[];

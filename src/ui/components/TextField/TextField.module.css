@@ -1,0 +1,261 @@
+.root {
+  display: grid;
+  align-content: start;
+  gap: 0;
+  min-inline-size: 12rem;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  block-size: var(--md-text-field-container-height);
+  align-items: center;
+  gap: 0.75rem;
+  padding-inline: var(--md-text-field-leading-space) var(--md-text-field-trailing-space);
+  border-radius: var(--text-field-shape);
+  background: var(--text-field-container-color);
+  color: var(--md-text-field-label-text-color);
+  box-shadow: inset 0 var(--text-field-indicator-size) 0 0 var(--text-field-indicator-color);
+}
+
+.outline {
+  position: absolute;
+  inset: 0;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0 0.75rem;
+  border: var(--text-field-outline-width) solid var(--text-field-indicator-color);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.outline legend {
+  max-inline-size: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  color: transparent;
+  font-family: var(--md-text-field-active-label-text-font);
+  font-size: var(--md-text-field-active-label-text-size);
+  line-height: 0;
+  white-space: nowrap;
+  transition: max-inline-size var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
+}
+
+.outline legend span {
+  padding-inline: 0.25rem;
+}
+
+.label {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 50%;
+  inset-inline-start: var(--text-field-label-start, 1rem);
+  max-inline-size: calc(100% - var(--text-field-label-start, 1rem) - 1rem);
+  overflow: hidden;
+  color: var(--md-text-field-label-text-color);
+  font-family: var(--md-text-field-label-text-font);
+  font-size: var(--md-text-field-label-text-size);
+  line-height: var(--md-text-field-label-text-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: color var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), inset-block-start var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), font-size var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), line-height var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), transform var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
+}
+
+.control[data-has-leading] {
+  --text-field-label-start: 3.25rem;
+  gap: 1rem;
+  padding-inline-start: 0.75rem;
+}
+
+.inputRow {
+  display: flex;
+  min-inline-size: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.125rem;
+  transition: padding-block-start var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
+}
+
+.input {
+  min-inline-size: 0;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--md-text-field-input-text-color);
+  font-family: var(--md-text-field-input-text-font);
+  font-size: var(--md-text-field-input-text-size);
+  font-weight: var(--md-text-field-input-text-weight);
+  line-height: var(--md-text-field-input-text-line-height);
+}
+
+.input::placeholder {
+  color: var(--md-text-field-placeholder-text-color);
+}
+
+.input:placeholder-shown::placeholder {
+  color: transparent;
+}
+
+.control:focus-within .input::placeholder {
+  color: var(--md-text-field-placeholder-text-color);
+}
+
+.icon,
+.affix {
+  display: inline-flex;
+  flex: none;
+}
+
+.icon {
+  inline-size: var(--md-text-field-icon-size);
+  block-size: var(--md-text-field-icon-size);
+}
+
+.icon > :global(.material-icons) {
+  font-size: var(--md-text-field-icon-size);
+}
+
+.affix {
+  color: var(--md-text-field-prefix-suffix-text-color);
+  font-family: var(--md-text-field-input-text-font);
+  font-size: var(--md-text-field-input-text-size);
+}
+
+.root:focus-within .label,
+.root:has(.input:not(:placeholder-shown)) .label,
+.root:has(.control[data-has-affix]) .label {
+  font-family: var(--md-text-field-active-label-text-font);
+  font-size: var(--md-text-field-active-label-text-size);
+  line-height: var(--md-text-field-active-label-text-line-height);
+}
+
+.filled:focus-within .inputRow,
+.filled:has(.input:not(:placeholder-shown)) .inputRow,
+.filled:has(.control[data-has-affix]) .inputRow {
+  padding-block-start: 0.875rem;
+}
+
+.root:focus-within {
+  --text-field-indicator-color: var(--text-field-focus-indicator-color);
+  --text-field-indicator-size: var(--text-field-focus-indicator-size);
+  --text-field-outline-width: var(--text-field-focus-outline-width);
+}
+
+.root:focus-within .label {
+  color: var(--md-text-field-focus-label-text-color);
+}
+
+.root[data-invalid] {
+  --text-field-indicator-color: var(--md-text-field-error-label-text-color);
+}
+
+.root[data-invalid] .label {
+  color: var(--md-text-field-error-label-text-color);
+}
+
+.root[data-disabled] .control {
+  color: color-mix(in srgb, var(--md-text-field-disabled-content-color) var(--md-text-field-disabled-content-opacity), transparent);
+}
+
+.root[data-disabled] .label,
+.root[data-disabled] .input,
+.root[data-disabled] .icon,
+.root[data-disabled] .affix,
+.root[data-disabled] .supporting,
+.root[data-disabled] .error {
+  color: color-mix(in srgb, var(--md-text-field-disabled-content-color) var(--md-text-field-disabled-content-opacity), transparent);
+}
+
+.root[data-disabled] .input {
+  cursor: default;
+}
+
+.supporting,
+.error {
+  display: flex;
+  margin: 0;
+  padding-block-start: var(--text-field-supporting-text-top-space);
+  padding-inline: var(--text-field-supporting-text-leading-space) var(--text-field-supporting-text-trailing-space);
+  font-family: var(--text-field-supporting-text-font);
+  font-size: var(--text-field-supporting-text-size);
+  font-weight: var(--text-field-supporting-text-weight);
+  line-height: var(--text-field-supporting-text-line-height);
+}
+
+.supporting { color: var(--text-field-supporting-text-color); }
+.error { color: var(--text-field-error-supporting-text-color); }
+
+.filled {
+  --text-field-container-color: var(--md-filled-text-field-container-color);
+  --text-field-indicator-color: var(--md-filled-text-field-active-indicator-color);
+  --text-field-indicator-size: calc(-1 * var(--md-filled-text-field-active-indicator-height));
+  --text-field-focus-indicator-color: var(--md-filled-text-field-focus-active-indicator-color);
+  --text-field-focus-indicator-size: calc(-1 * var(--md-filled-text-field-focus-active-indicator-height));
+  --text-field-focus-outline-width: 0;
+  --text-field-outline-width: 0;
+  --text-field-shape: var(--md-filled-text-field-container-shape);
+  --text-field-error-supporting-text-color: var(--md-filled-text-field-error-supporting-text-color);
+  --text-field-supporting-text-color: var(--md-filled-text-field-supporting-text-color);
+  --text-field-supporting-text-font: var(--md-filled-text-field-supporting-text-font);
+  --text-field-supporting-text-leading-space: var(--md-filled-text-field-supporting-text-leading-space);
+  --text-field-supporting-text-line-height: var(--md-filled-text-field-supporting-text-line-height);
+  --text-field-supporting-text-size: var(--md-filled-text-field-supporting-text-size);
+  --text-field-supporting-text-top-space: var(--md-filled-text-field-supporting-text-top-space);
+  --text-field-supporting-text-trailing-space: var(--md-filled-text-field-supporting-text-trailing-space);
+  --text-field-supporting-text-weight: var(--md-filled-text-field-supporting-text-weight);
+}
+
+.filled[data-disabled] {
+  --text-field-container-color: color-mix(in srgb, var(--md-text-field-disabled-container-color) var(--md-text-field-disabled-container-opacity), transparent);
+}
+
+.outlined {
+  --text-field-container-color: transparent;
+  --text-field-indicator-color: var(--md-outlined-text-field-outline-color);
+  --text-field-indicator-size: 0;
+  --text-field-focus-indicator-color: var(--md-outlined-text-field-focus-outline-color);
+  --text-field-focus-indicator-size: 0;
+  --text-field-outline-width: var(--md-outlined-text-field-outline-width);
+  --text-field-focus-outline-width: var(--md-outlined-text-field-focus-outline-width);
+  --text-field-shape: var(--md-outlined-text-field-container-shape);
+  --text-field-error-supporting-text-color: var(--md-outlined-text-field-error-supporting-text-color);
+  --text-field-supporting-text-color: var(--md-outlined-text-field-supporting-text-color);
+  --text-field-supporting-text-font: var(--md-outlined-text-field-supporting-text-font);
+  --text-field-supporting-text-leading-space: var(--md-outlined-text-field-supporting-text-leading-space);
+  --text-field-supporting-text-line-height: var(--md-outlined-text-field-supporting-text-line-height);
+  --text-field-supporting-text-size: var(--md-outlined-text-field-supporting-text-size);
+  --text-field-supporting-text-top-space: var(--md-outlined-text-field-supporting-text-top-space);
+  --text-field-supporting-text-trailing-space: var(--md-outlined-text-field-supporting-text-trailing-space);
+  --text-field-supporting-text-weight: var(--md-outlined-text-field-supporting-text-weight);
+}
+
+.outlined[data-disabled] {
+  --text-field-indicator-color: color-mix(in srgb, var(--md-text-field-disabled-content-color) 12%, transparent);
+}
+
+.outlined:focus-within .label,
+.outlined:has(.input:not(:placeholder-shown)) .label,
+.outlined:has(.control[data-has-affix]) .label {
+  inset-block-start: 0;
+  inset-inline-start: 1rem;
+  max-inline-size: calc(100% - 2rem);
+  transform: translateY(-50%);
+}
+
+.outlined:focus-within .outline legend,
+.outlined:has(.input:not(:placeholder-shown)) .outline legend,
+.outlined:has(.control[data-has-affix]) .outline legend {
+  max-inline-size: 100%;
+}
+
+.filled:focus-within .label,
+.filled:has(.input:not(:placeholder-shown)) .label,
+.filled:has(.control[data-has-affix]) .label {
+  inset-block-start: 0.5rem;
+  transform: none;
+}

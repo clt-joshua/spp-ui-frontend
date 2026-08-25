@@ -26,6 +26,7 @@ const requiredFiles = [
   'docs/03-delivery/06-IMPLEMENTATION-AND-VALIDATION.md',
   'docs/03-delivery/07-VIBE-CODING-PLAYBOOK.md',
   'docs/03-delivery/08-CI-AND-VISUAL-BASELINE-PROPOSAL.md',
+  'docs/03-delivery/09-UI-IMPLEMENTATION-STATUS.md',
   'docs/04-reference/01-MATERIAL-WEB-DOC-MAP.md',
   'docs/04-reference/SOURCES.md',
   'docs/project-memory/CURRENT-STATE.md',
@@ -38,6 +39,13 @@ const requiredFiles = [
   'src/ui/icons/MaterialIcon.tsx',
   'src/ui/styles/layers.css',
   'src/ui/tokens/reference.css',
+  'src/ui/tokens/system.css',
+  'src/ui/tokens/component.css',
+  '.storybook/main.ts',
+  '.storybook/preview.tsx',
+  'vitest.config.ts',
+  'tests/unit/theme-runtime.test.ts',
+  'tests/unit/components.test.tsx',
   'scripts/run-playwright-container.mjs',
   'tests/e2e/foundation.spec.ts',
   'tests/visual/foundation.visual.spec.ts',
@@ -206,6 +214,8 @@ if (existsSync(workspaceConfigPath)) {
     'useNodeVersion: 24.19.0',
     'nodeVersion: 24.19.0',
     'engineStrict: true',
+    'onlyBuiltDependencies:',
+    '  - esbuild',
   ]) {
     if (!workspaceConfig.includes(requiredRuntimePolicy)) {
       errors.push(

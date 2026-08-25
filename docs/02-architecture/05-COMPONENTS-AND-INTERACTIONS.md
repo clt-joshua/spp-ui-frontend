@@ -83,7 +83,7 @@ interface RippleController {
 - `pointerup`, `pointercancel`, blur와 disabled 전환에서 종료한다.
 - 동시에 여러 pointer가 들어오면 ripple id별로 관리한다.
 - 애니메이션 종료 후 DOM node를 제거한다.
-- reduced motion에서는 확장 wave를 생략하고 pressed state layer만 즉시 표시한다.
+- reduced motion에서도 Material Web의 입력 피드백과 동일하게 ripple을 제거하지 않는다.
 - ripple element는 accessibility tree와 hit testing에서 제외한다.
 
 ## FocusRing
@@ -123,6 +123,8 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
 - icon-only action은 Button이 아니라 IconButton을 사용한다.
 - disabled focus 정책은 Material Web Accessibility 문서와 Base UI 동작을 대조한다.
 - loading은 M3 Button anatomy에 없는 확장이므로 MVP 공개 API에서 제외한다.
+- label은 `label-large` 14px/20px/500, icon은 18px, icon-label 간격은 8px component token을 사용한다.
+- 기본 좌우 공간은 24px이며 leading icon은 16px/24px, trailing icon은 24px/16px로 방향별 token을 적용한다.
 
 ## IconButton
 
@@ -148,12 +150,12 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 
 ## TextField
 
-공식 근거: [M3 Text fields](https://m3.material.io/components/text-fields/overview), [Material Web Text field](https://github.com/material-components/material-web/blob/main/docs/components/text-field.md)
+공식 근거: [M3 Text fields](https://m3.material.io/components/text-fields/overview), [Material Web Text field](https://github.com/material-components/material-web/blob/main/docs/components/text-field.md), [Outlined text field 구현](https://github.com/material-components/material-web/blob/main/textfield/outlined-text-field.ts)
 
 ```ts
 type TextFieldVariant = 'filled' | 'outlined';
 
-interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'size'> {
   variant?: TextFieldVariant;
   label: string;
   supportingText?: string;
@@ -169,13 +171,15 @@ interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
 - label과 input association을 유지한다.
 - placeholder를 label 대체로 사용하지 않는다.
 - error는 `aria-invalid`, error/supporting text는 `aria-describedby`에 연결한다.
+- supporting/error text는 `body-small` 12px/16px/400, 상단 4px, 좌우 16px component token을 사용하며 상위 Grid stretch의 영향을 받지 않는다.
 - native input type, required, min/max/pattern과 form reset을 보존한다.
 - textarea는 별도 `TextArea` wrapper로 확장할 수 있지만 MVP TextField와 혼합하지 않는다.
 - character counter는 maxLength와 연결된 후속 slot이며 MVP 필수는 아니다.
+- outlined 값 영역은 56px container의 수직 중앙을 유지하고, leading icon은 바깥 12px·input과 16px 간격을 사용한다.
 
 ## Checkbox
 
-공식 근거: [M3 Checkbox](https://m3.material.io/components/checkbox/overview), [Material Web Checkbox](https://github.com/material-components/material-web/blob/main/docs/components/checkbox.md)
+공식 근거: [M3 Checkbox](https://m3.material.io/components/checkbox/overview), [Material Web Checkbox](https://github.com/material-components/material-web/blob/main/docs/components/checkbox.md), [Checkbox token](https://github.com/material-components/material-web/blob/main/tokens/_md-comp-checkbox.scss)
 
 ```ts
 interface CheckboxProps {
@@ -196,10 +200,11 @@ interface CheckboxProps {
 - space로 토글하고 focus-visible을 유지한다.
 - checkmark와 container의 selected/unselected token을 분리한다.
 - disabled는 state layer와 ripple을 생성하지 않는다.
+- visual container와 내부 mark는 동일한 18px 좌표를 사용하고, state layer는 40px, wrapper touch target은 48px 기준으로 정렬한다.
 
 ## Select
 
-공식 근거: [Material Web Select](https://github.com/material-components/material-web/blob/main/docs/components/select.md)
+공식 근거: [Material Web Select](https://github.com/material-components/material-web/blob/main/docs/components/select.md), [Outlined Select token](https://github.com/material-components/material-web/blob/main/tokens/_md-comp-outlined-select.scss)
 
 ```ts
 interface SelectOption<T extends string> {
@@ -229,6 +234,7 @@ interface SelectProps<T extends string> {
 - arrow key, Home/End, typeahead, Enter/Space, Escape 동작을 실제 흐름에서 검증한다.
 - required와 form value를 Base UI form contract와 함께 검증한다.
 - popup은 viewport collision을 처리하고 Theme token을 상속한다.
+- outlined 값 영역은 floating label과 독립적으로 56px container의 수직 중앙을 유지하고 focus outline은 3px를 사용한다.
 
 ## Dialog
 

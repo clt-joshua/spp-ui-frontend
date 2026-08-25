@@ -1,0 +1,90 @@
+.root {
+  --md3-state-layer-color: var(--icon-button-content-color);
+  position: relative;
+  display: inline-grid;
+  inline-size: var(--md-icon-button-container-width);
+  block-size: var(--md-icon-button-container-height);
+  place-items: center;
+  padding: 0;
+  border: 0 solid transparent;
+  border-radius: var(--md-icon-button-container-shape);
+  background: var(--icon-button-container-color);
+  color: var(--icon-button-content-color);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.root:focus {
+  outline: none;
+}
+
+.root:disabled {
+  background: color-mix(in srgb, var(--md-icon-button-disabled-container-color) var(--icon-button-disabled-container-opacity, var(--md-icon-button-disabled-container-opacity)), transparent);
+  color: color-mix(in srgb, var(--md-icon-button-disabled-icon-color) var(--md-icon-button-disabled-icon-opacity), transparent);
+  cursor: default;
+}
+
+.icon {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  inline-size: var(--md-icon-button-icon-size);
+  block-size: var(--md-icon-button-icon-size);
+}
+
+.icon > :global(.material-icons) {
+  font-size: var(--md-icon-button-icon-size);
+}
+
+.standard {
+  --icon-button-container-color: transparent;
+  --icon-button-content-color: var(--md-standard-icon-button-icon-color);
+}
+
+.standard[data-selected] {
+  --icon-button-content-color: var(--md-standard-icon-button-selected-icon-color);
+}
+
+.filled {
+  --icon-button-container-color: var(--md-filled-icon-button-container-color);
+  --icon-button-content-color: var(--md-filled-icon-button-icon-color);
+}
+
+.filled[data-toggle]:not([data-selected]) {
+  --icon-button-container-color: var(--md-filled-icon-button-unselected-container-color);
+  --icon-button-content-color: var(--md-filled-icon-button-unselected-icon-color);
+}
+
+.tonal {
+  --icon-button-container-color: var(--md-filled-tonal-icon-button-container-color);
+  --icon-button-content-color: var(--md-filled-tonal-icon-button-icon-color);
+}
+
+.tonal[data-toggle]:not([data-selected]) {
+  --icon-button-container-color: var(--md-filled-tonal-icon-button-unselected-container-color);
+  --icon-button-content-color: var(--md-filled-tonal-icon-button-unselected-icon-color);
+}
+
+.outlined {
+  --icon-button-container-color: transparent;
+  --icon-button-content-color: var(--md-outlined-icon-button-icon-color);
+  --icon-button-disabled-container-opacity: 0%;
+  border-width: var(--md-outlined-icon-button-outline-width);
+  border-color: var(--md-outlined-icon-button-outline-color);
+}
+
+.outlined[data-toggle][data-selected] {
+  --icon-button-container-color: var(--md-outlined-icon-button-selected-container-color);
+  --icon-button-content-color: var(--md-outlined-icon-button-selected-icon-color);
+  border-color: transparent;
+}
+
+.outlined:disabled {
+  border-color: color-mix(in srgb, var(--md-icon-button-disabled-outline-color) var(--md-icon-button-disabled-outline-opacity), transparent);
+}
+
+@media (forced-colors: active) {
+  .root {
+    border: 0.0625rem solid ButtonText;
+  }
+}

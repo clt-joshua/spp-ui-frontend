@@ -54,6 +54,7 @@ Node.js 24.19.0과 pnpm 10.33.0을 기준으로 한다. 시스템 기본 Node가
 pnpm install --frozen-lockfile
 pnpm dev
 pnpm verify
+pnpm storybook
 pnpm test:e2e:container
 pnpm test:visual
 ```
@@ -92,8 +93,8 @@ Playwright 검증은 Docker에서 digest가 고정된 Linux image를 사용한�
 - [x] Vite를 대표 앱 호스트로, Node 24/pnpm 10.33을 지원 기준으로 확정했다.
 - [x] `src/ui` 외부의 Base UI 직접 import를 금지했다.
 - [x] CSS layer 순서와 전역 적용 위치를 연결했다.
-- [ ] `UIProvider`를 애플리케이션 진입점에 한 번만 배치했다.
-- [ ] 첫 컴포넌트의 `M3ComplianceRecord`를 만들었다.
+- [x] Theme와 Snackbar Provider를 애플리케이션 진입점에 한 번만 배치했다.
+- [x] 8개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
 - [ ] 미확인 또는 충돌 항목을 `M3_WEB_SPEC_CONFLICT`로 보고할 경로를 만들었다.
 
 ## 완료의 의미
