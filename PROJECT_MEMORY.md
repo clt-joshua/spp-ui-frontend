@@ -16,6 +16,7 @@ This is the compact entry point for future project work. Detailed operational st
 - `@base-ui/react@1.7.0` is the internal behavior layer; application code must not import it directly.
 - `@material/material-color-utilities@0.4.0` is isolated behind the future color engine adapter.
 - The reference host is Vite 8 + React 19 + TypeScript on Node.js 24 and pnpm 10.33.
+- `pnpm-workspace.yaml` makes `pnpm run` provision and use Node.js 24.19.0 even when the host shell uses another Node version.
 - `src/ui` must not import Vite runtime APIs, so the same public boundary can move to another React host.
 - Google Material Icons Filled and Roboto Variable are self-hosted defaults behind adapters/tokens.
 - `@material/web`, `lit`, Labs, and M3 Expressive runtime code are outside MVP scope.

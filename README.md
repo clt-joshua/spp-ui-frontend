@@ -48,7 +48,7 @@ Material Web의 공식 Web 페이지와 로드맵은 현재 라이브러리가 �
 
 ## 로컬 실행
 
-Node.js 24.19.0과 pnpm 10.33.0을 기준으로 한다.
+Node.js 24.19.0과 pnpm 10.33.0을 기준으로 한다. 시스템 기본 Node가 다른 버전이어도 pnpm 10은 `pnpm-workspace.yaml`의 `useNodeVersion`을 읽어 프로젝트 스크립트를 Node 24.19.0으로 실행한다. 최초 실행에는 해당 runtime 다운로드가 발생할 수 있다.
 
 ```bash
 pnpm install --frozen-lockfile

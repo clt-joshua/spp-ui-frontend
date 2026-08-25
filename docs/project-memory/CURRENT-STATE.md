@@ -17,7 +17,7 @@
 
 ## 환경 관찰
 
-현재 기본 shell의 Node는 25지만 프로젝트 install과 전체 검증은 별도 Node 24.19.0 runtime으로 수행했다.
+현재 기본 shell의 Node는 25지만 `pnpm-workspace.yaml`이 프로젝트 스크립트용 Node 24.19.0을 자동 provision하고 사용한다.
 
 | 도구 | 관찰값 |
 |---|---|
@@ -58,7 +58,8 @@
 
 - Node.js 24.19.0에서 `pnpm install`: PASS
 - Node.js 24.19.0에서 `pnpm verify`: PASS
-- 구조 검사 필수 파일 40개, 디렉터리 17개, Markdown 19개, MVP manifest 8개 확인
+- 구조 검사 필수 파일 41개, 디렉터리 17개, Markdown 19개, MVP manifest 8개 확인
+- 시스템 Node.js 25.2.1에서 직접 실행한 `pnpm dev`: pnpm-managed Node.js 24.19.0으로 Vite 기동 PASS
 - ESLint import boundary, TypeScript project reference typecheck, Vite production build: PASS
 - Vite production preview `http://127.0.0.1:4173/`: HTTP 200, JS/CSS asset HTTP 200
 - Base UI 외부 import 차단/내부 허용 및 Material Web runtime 전역 차단: PASS

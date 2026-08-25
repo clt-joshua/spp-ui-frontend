@@ -11,6 +11,7 @@ const requiredFiles = [
   'PROJECT_MEMORY.md',
   'package.json',
   'pnpm-lock.yaml',
+  'pnpm-workspace.yaml',
   'vite.config.ts',
   'tsconfig.app.json',
   'tsconfig.test.json',
@@ -194,6 +195,22 @@ if (existsSync(workflowPath)) {
   ]) {
     if (!workflow.includes(requiredPolicy)) {
       errors.push(`CI workflow is missing policy: ${requiredPolicy}`);
+    }
+  }
+}
+
+const workspaceConfigPath = join(projectRoot, 'pnpm-workspace.yaml');
+if (existsSync(workspaceConfigPath)) {
+  const workspaceConfig = readFileSync(workspaceConfigPath, 'utf8');
+  for (const requiredRuntimePolicy of [
+    'useNodeVersion: 24.19.0',
+    'nodeVersion: 24.19.0',
+    'engineStrict: true',
+  ]) {
+    if (!workspaceConfig.includes(requiredRuntimePolicy)) {
+      errors.push(
+        `pnpm workspace is missing runtime policy: ${requiredRuntimePolicy}`,
+      );
     }
   }
 }
