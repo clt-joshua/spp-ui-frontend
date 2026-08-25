@@ -1,0 +1,7 @@
+:root {
+  --app-font-brand: 'Roboto Variable', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --app-font-plain: 'Roboto Variable', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --md-ref-typeface-brand: var(--app-font-brand);
+  --md-ref-typeface-plain: var(--app-font-plain);
+  --md-ref-icon-size-default: 1.5rem;
+}

@@ -1,0 +1,10 @@
+.root {
+  display: inline-block;
+  inline-size: 1em;
+  block-size: 1em;
+  overflow: hidden;
+  flex: none;
+  font-size: var(--md-ref-icon-size-default);
+  line-height: 1;
+  user-select: none;
+}

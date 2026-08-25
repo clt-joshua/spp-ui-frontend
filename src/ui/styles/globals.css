@@ -1,0 +1,17 @@
+:root {
+  color-scheme: light dark;
+  font-family: var(--md-ref-typeface-plain);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-block-size: 100dvh;
+  background: Canvas;
+  color: CanvasText;
+}
+
+[data-app-root] {
+  isolation: isolate;
+  min-block-size: 100dvh;
+}
