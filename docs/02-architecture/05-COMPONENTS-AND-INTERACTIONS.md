@@ -100,7 +100,7 @@ interface RippleController {
 - opening과 closing 도중 방향이 바뀌어도 현재 computed state에서 부드럽게 취소·역전되어야 한다.
 - opacity와 transform만으로 의미가 충분한 overlay에 layout animation을 추가하지 않는다.
 - motion token 밖의 duration/easing을 사용하지 않는다.
-- reduced motion에서는 transform과 ripple 확장을 제거하고 최종 상태를 즉시 적용한다.
+- reduced motion은 component authority별로 적용한다. Stable Material Web이 별도 reduced-motion 분기를 두지 않는 ripple grow/fade, field·selection 상태 전환, `quick=false` Menu/Select 전환은 동일하게 유지하며, 임의의 전역 `0ms` override를 추가하지 않는다.
 - Expressive spring/shape morph는 `deferred`; 이를 흉내 낸 임의 easing을 만들지 않는다.
 
 ## Button
@@ -170,12 +170,15 @@ interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
 
 - label과 input association을 유지한다.
 - placeholder를 label 대체로 사용하지 않는다.
+- resting/floating label을 각각 최종 위치에 렌더링하고 상태 전환 시 floating label 하나만 두 위치의 실제 rect로 측정해 150ms WAAPI로 이동한다. 단일 label의 `top`/`font-size` CSS 보간으로 대체하지 않는다.
+- floating label은 시각 복제본으로 `aria-hidden` 처리하고 resting `label`만 input의 접근 가능한 이름을 제공한다.
 - error는 `aria-invalid`, error/supporting text는 `aria-describedby`에 연결한다.
 - supporting/error text는 `body-small` 12px/16px/400, 상단 4px, 좌우 16px component token을 사용하며 상위 Grid stretch의 영향을 받지 않는다.
 - native input type, required, min/max/pattern과 form reset을 보존한다.
 - textarea는 별도 `TextArea` wrapper로 확장할 수 있지만 MVP TextField와 혼합하지 않는다.
 - character counter는 maxLength와 연결된 후속 slot이며 MVP 필수는 아니다.
-- outlined 값 영역은 56px container의 수직 중앙을 유지하고, leading icon은 바깥 12px·input과 16px 간격을 사용한다.
+- outlined 값 영역은 56px container의 수직 중앙을 유지한다. floating label은 outline 시작점에서 16px, notch 글자 양쪽은 4px이며, leading icon이 있으면 icon은 outline에서 12px·24px 크기·label/input과 16px 간격을 각각 component token으로 사용한다.
+- outline은 브라우저 기본 `fieldset/legend` layout에 의존하지 않는다. Material Web처럼 start/notch/end panel을 분리하고 notch의 투명 측정 label 양쪽에 같은 4px padding을 적용해 focus outline 두께와 무관하게 실제 간격을 동일하게 유지한다.
 
 ## Checkbox
 
@@ -230,11 +233,21 @@ interface SelectProps<T extends string> {
 ```
 
 - trigger는 TextField와 같은 visual family를 사용하되 select semantics를 유지한다.
-- popup의 highlighted와 selected 상태를 분리한다.
+- popup의 highlighted/focus 상태와 form selection을 분리한다. Material Web Select option은 현재 form value를 별도 selected container나 check icon으로 장식하지 않고, 열릴 때 현재 option으로 focus를 이동해 state layer와 inward focus ring을 표시한다.
 - arrow key, Home/End, typeahead, Enter/Space, Escape 동작을 실제 흐름에서 검증한다.
 - required와 form value를 Base UI form contract와 함께 검증한다.
 - popup은 viewport collision을 처리하고 Theme token을 상속한다.
+- Material Web Select처럼 field의 `end-start` corner와 menu의 `start-start` corner를 offset 없이 연결한다. Base UI에서는 `alignItemWithTrigger={false}`, `align="start"`, `sideOffset={0}`의 bottom placement로 번역하며 선택 option을 field 위에 겹치는 기본 경로를 사용하지 않는다.
+- Select option은 일반 Menu item의 48px가 아니라 Stable Material Web의 one-line Select option처럼 56px container를 사용한다. label typography와 horizontal 16px spacing은 Select 전용 component token을 통해 소비한다.
 - outlined 값 영역은 floating label과 독립적으로 56px container의 수직 중앙을 유지하고 focus outline은 3px를 사용한다.
+- outlined label은 TextField와 같은 16px 시작 공간과 글자 양쪽 4px notch 공간을 사용하고, trailing dropdown icon은 24px component token을 사용한다.
+- Stable Material Web의 기본 `quick=false` 계약을 따른다. popup 열림은 500ms emphasized 높이 전개, surface 50ms fade, 각 option 250ms fade를 전체 500ms 안에서 순차 적용하고, 닫힘은 150ms emphasized-accelerate 전환을 사용한다.
+- Material Web의 position-before-animation 순서를 보존한다. Base UI Portal mount가 아니라 Positioner의 실제 side·opacity와 두 frame 연속 stable rect를 readiness로 사용하고, 전체 content의 `scrollHeight`가 아닌 viewport에 clamp된 surface의 `offsetHeight`를 측정한다.
+- position shell과 visual surface를 분리한다. Base UI Popup shell은 최종 full height를 animation 동안 유지해 collision 계산값을 불변으로 만들고, nested `menu-surface`만 `0 → full` height와 opacity를 전환한다. 그렇지 않으면 작은 중간 높이에서 `bottom`, 큰 높이에서 `top`으로 재배치되는 점프가 발생한다.
+- 위쪽으로 flip될 때 visual surface를 full-size shell의 block-end에 고정한다. Material Web의 slot correction처럼 내부 content에만 역방향 translate를 적용하며, popup shell 자체에는 height/transform animation을 적용하지 않는다.
+- Base UI가 선택 option focus/`scrollIntoView`를 positioning보다 먼저 요청하더라도 adapter가 이를 열림 완료까지 보류한다. 최종 배치가 확정된 뒤 focus와 내부 scroll을 적용해 문서 스크롤이 collision 판단을 바꾸지 않게 한다.
+- 운영체제 reduced-motion 설정만으로 `quick=true` 의미를 만들지 않는다. 명시적인 quick API를 제공하기 전까지 Stable Material Web 기본 메뉴 모션을 유지한다.
+- 열림 완료 뒤 모든 option의 computed opacity가 `1`, 높이가 56px이고 popup 시작 좌표가 field bottom 또는 popup bottom 좌표가 field top과 일치하는지를 실제 흐름에서 검증한다. 하단 공간 부족에서는 문서 scrollY 불변, opening frame별 bottom gap 1px 이하, 단조 증가하는 surface height를 함께 확인한다. open → close → open을 반복해 닫힘 animation의 fill state가 다음 열림에 남지 않는지도 확인하며, animation 객체 존재만으로 완료를 판정하지 않는다.
 
 ## Dialog
 
@@ -276,6 +289,9 @@ type MenuItem =
 - popup/document/fixed positioning 중 Base UI positioner를 기본으로 사용하고 custom 좌표는 명시적 adapter로 제한한다.
 - item 선택 후 focus가 trigger로 돌아오는지 검증한다.
 - submenu의 pointer grace behavior를 시각 효과가 깨뜨리지 않아야 한다.
+- list item의 leading/trailing icon은 Stable Material Web list token과 같은 24px를 사용한다. 선택 check와 submenu chevron 모두 같은 component token을 소비한다.
+- Select와 같은 Stable Material Web 메뉴 모션을 공유한다. 열림 500ms·surface 50ms·item 250ms stagger, 닫힘 150ms이며, reduced-motion 설정만으로 이를 제거하지 않는다.
+- 공용 motion adapter는 Popup shell과 Positioner를 함께 관찰한다. 최종 side/rect가 안정되기 전에 애니메이션을 시작하지 않고, full-size shell 안의 visual surface만 전환해 전체 animation 동안 side를 고정한다.
 
 ## Snackbar
 

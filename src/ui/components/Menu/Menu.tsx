@@ -1,6 +1,7 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
+import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
 import { Button } from '../Button/Button';
 import styles from './Menu.module.css';
 
@@ -25,8 +26,10 @@ export function Menu({
   radioValue,
   trigger,
 }: MenuProps) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <BaseMenu.Root>
+    <BaseMenu.Root onOpenChange={setOpen}>
       <BaseMenu.Trigger
         aria-label={label}
         render={(
@@ -39,17 +42,52 @@ export function Menu({
         {trigger ?? label}
       </BaseMenu.Trigger>
       <BaseMenu.Portal>
-        <BaseMenu.Positioner align="start" className={styles.positioner} sideOffset={4}>
-          <BaseMenu.Popup className={styles.popup}>
-            <MenuItems
-              items={items}
-              onRadioValueChange={onRadioValueChange}
-              radioValue={radioValue}
-            />
-          </BaseMenu.Popup>
-        </BaseMenu.Positioner>
+        <AnimatedMenuPopup align="start" open={open} sideOffset={4}>
+          <MenuItems
+            items={items}
+            onRadioValueChange={onRadioValueChange}
+            radioValue={radioValue}
+          />
+        </AnimatedMenuPopup>
       </BaseMenu.Portal>
     </BaseMenu.Root>
+  );
+}
+
+interface AnimatedMenuPopupProps {
+  align: 'start';
+  children: ReactNode;
+  open: boolean;
+  side?: 'right';
+  sideOffset: number;
+}
+
+function AnimatedMenuPopup({
+  align,
+  children,
+  open,
+  side,
+  sideOffset,
+}: AnimatedMenuPopupProps) {
+  const {
+    setPopupElement,
+    setPositionerElement,
+  } = useMaterialMenuMotion<HTMLDivElement>(open);
+
+  return (
+    <BaseMenu.Positioner
+      align={align}
+      className={styles.positioner}
+      ref={setPositionerElement}
+      side={side}
+      sideOffset={sideOffset}
+    >
+      <BaseMenu.Popup className={styles.popup} ref={setPopupElement}>
+        <div className={styles.surface} data-slot="menu-surface">
+          <div className={styles.list} data-slot="menu-content">{children}</div>
+        </div>
+      </BaseMenu.Popup>
+    </BaseMenu.Positioner>
   );
 }
 
@@ -102,31 +140,12 @@ function MenuItems({ items, onRadioValueChange, radioValue }: MenuItemsProps) {
 
         if (item.type === 'submenu') {
           return (
-            <BaseMenu.SubmenuRoot key={item.id}>
-              <BaseMenu.SubmenuTrigger
-                className={styles.item}
-                disabled={item.disabled}
-              >
-                <span>{item.label}</span>
-                <MaterialIcon name="chevron_right" />
-              </BaseMenu.SubmenuTrigger>
-              <BaseMenu.Portal>
-                <BaseMenu.Positioner
-                  align="start"
-                  className={styles.positioner}
-                  side="right"
-                  sideOffset={-4}
-                >
-                  <BaseMenu.Popup className={styles.popup}>
-                    <MenuItems
-                      items={item.items}
-                      onRadioValueChange={onRadioValueChange}
-                      radioValue={radioValue}
-                    />
-                  </BaseMenu.Popup>
-                </BaseMenu.Positioner>
-              </BaseMenu.Portal>
-            </BaseMenu.SubmenuRoot>
+            <MenuSubmenu
+              item={item}
+              key={item.id}
+              onRadioValueChange={onRadioValueChange}
+              radioValue={radioValue}
+            />
           );
         }
 
@@ -142,5 +161,41 @@ function MenuItems({ items, onRadioValueChange, radioValue }: MenuItemsProps) {
         );
       })}
     </>
+  );
+}
+
+interface MenuSubmenuProps {
+  item: Extract<MenuItem, { type: 'submenu' }>;
+  onRadioValueChange?: (value: string) => void;
+  radioValue?: string;
+}
+
+function MenuSubmenu({ item, onRadioValueChange, radioValue }: MenuSubmenuProps) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <BaseMenu.SubmenuRoot onOpenChange={setOpen}>
+      <BaseMenu.SubmenuTrigger
+        className={styles.item}
+        disabled={item.disabled}
+      >
+        <span>{item.label}</span>
+        <MaterialIcon name="chevron_right" />
+      </BaseMenu.SubmenuTrigger>
+      <BaseMenu.Portal>
+        <AnimatedMenuPopup
+          align="start"
+          open={open}
+          side="right"
+          sideOffset={-4}
+        >
+          <MenuItems
+            items={item.items}
+            onRadioValueChange={onRadioValueChange}
+            radioValue={radioValue}
+          />
+        </AnimatedMenuPopup>
+      </BaseMenu.Portal>
+    </BaseMenu.SubmenuRoot>
   );
 }

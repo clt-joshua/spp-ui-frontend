@@ -85,6 +85,19 @@
   border: 0.125rem solid var(--md-checkbox-unselected-outline-color);
   border-radius: var(--md-checkbox-container-shape);
   background: transparent;
+  overflow: hidden;
+  transition: border-color var(--md-checkbox-opacity-duration) linear;
+}
+
+.box::before {
+  position: absolute;
+  inset: -0.125rem;
+  border-radius: inherit;
+  background: var(--md-checkbox-selected-container-color);
+  content: '';
+  opacity: 0;
+  transform: scale(0.6);
+  transition: transform var(--md-checkbox-exit-duration) var(--md-checkbox-exit-easing), opacity var(--md-checkbox-opacity-duration) linear;
 }
 
 .control[data-checked],
@@ -97,7 +110,14 @@
 .control[data-checked] .box,
 .control[data-indeterminate] .box {
   border-color: var(--md-checkbox-selected-container-color);
-  background: var(--md-checkbox-selected-container-color);
+}
+
+.control[data-checked] .box::before,
+.control[data-indeterminate] .box::before {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--md-checkbox-enter-duration), var(--md-checkbox-opacity-duration);
+  transition-timing-function: var(--md-checkbox-enter-easing), linear;
 }
 
 .indicator {
@@ -107,19 +127,85 @@
   display: inline-grid;
   place-items: center;
   overflow: hidden;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: transform var(--md-checkbox-exit-duration) var(--md-checkbox-exit-easing), opacity var(--md-checkbox-opacity-duration) linear;
 }
 
-.indicator:not([data-checked], [data-indeterminate]) { opacity: 0; }
+.control[data-checked] .indicator,
+.control[data-indeterminate] .indicator {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--md-checkbox-enter-duration), var(--md-checkbox-opacity-duration);
+  transition-timing-function: var(--md-checkbox-enter-easing), linear;
+}
 
-.mark {
+.icon {
   display: block;
   inline-size: var(--md-checkbox-icon-size);
   block-size: var(--md-checkbox-icon-size);
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  stroke-width: 2;
+  fill: currentColor;
+}
+
+.mark {
+  animation-duration: var(--md-checkbox-exit-duration);
+  animation-timing-function: var(--md-checkbox-exit-easing);
+  transition-duration: var(--md-checkbox-exit-duration);
+  transition-timing-function: var(--md-checkbox-exit-easing);
+}
+
+.short {
+  width: 0.125rem;
+  height: 0.125rem;
+  transition-property: transform, height;
+}
+
+.long {
+  width: 0.625rem;
+  height: 0.125rem;
+  transition-property: transform, width;
+}
+
+.control[data-checked] .mark,
+.control[data-indeterminate] .mark {
+  transition-duration: var(--md-checkbox-enter-duration);
+  transition-timing-function: var(--md-checkbox-enter-easing);
+}
+
+.control[data-checked] .mark,
+.control[data-previous-state='checked']:not([data-checked], [data-indeterminate]) .mark {
+  transform: scaleY(-1) translate(0.4375rem, -0.875rem) rotate(45deg);
+}
+
+.control[data-checked] .short,
+.control[data-previous-state='checked']:not([data-checked], [data-indeterminate]) .short {
+  height: 0.3536rem;
+}
+
+.control[data-checked] .long,
+.control[data-previous-state='checked']:not([data-checked], [data-indeterminate]) .long {
+  width: 0.7071rem;
+}
+
+.control[data-indeterminate] .mark,
+.control[data-previous-state='indeterminate']:not([data-checked], [data-indeterminate]) .mark {
+  transform: scaleY(-1) translate(0.25rem, -0.625rem);
+}
+
+.control[data-previous-state='unselected'] .mark {
+  transition-property: none;
+}
+
+.control[data-previous-state='unselected'][data-checked] .long {
+  animation-name: checkbox-mark-enter;
+  animation-duration: var(--md-checkbox-enter-duration);
+  animation-timing-function: var(--md-checkbox-enter-easing);
+}
+
+@keyframes checkbox-mark-enter {
+  from {
+    width: 0;
+  }
 }
 
 .text {
@@ -155,12 +241,24 @@
 .root[data-disabled] .control[data-checked] .box,
 .root[data-disabled] .control[data-indeterminate] .box {
   border-color: transparent;
+}
+
+.root[data-disabled] .control[data-checked] .box::before,
+.root[data-disabled] .control[data-indeterminate] .box::before {
   background: color-mix(in srgb, var(--md-checkbox-disabled-container-color) var(--md-checkbox-disabled-container-opacity), transparent);
 }
 
 .root[data-disabled] .control[data-checked],
 .root[data-disabled] .control[data-indeterminate] {
   color: var(--md-checkbox-disabled-icon-color);
+}
+
+.root[data-disabled] :is(.box, .indicator, .mark) {
+  transition-duration: 0s;
+}
+
+.root[data-disabled] .box::before {
+  transition-duration: 0s;
 }
 
 @media (forced-colors: active) {

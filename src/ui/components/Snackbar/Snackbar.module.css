@@ -43,6 +43,8 @@
 
 .action,
 .close {
+  --md3-state-layer-color: currentColor;
+  position: relative;
   min-block-size: 2.5rem;
   border: 0;
   border-radius: var(--md-icon-button-container-shape);
@@ -53,6 +55,7 @@
   font-weight: var(--md-snackbar-action-label-text-weight);
   line-height: var(--md-snackbar-action-label-text-line-height);
   cursor: pointer;
+  isolation: isolate;
 }
 
 .action {
@@ -66,19 +69,16 @@
   color: var(--md-snackbar-icon-color);
 }
 
-.close > :global(.material-icons) {
+.controlContent {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controlContent > :global(.material-icons) {
   font-size: var(--md-snackbar-icon-size);
-}
-
-.action:hover,
-.close:hover {
-  background: color-mix(in srgb, currentColor 8%, transparent);
-}
-
-.action:focus-visible,
-.close:focus-visible {
-  outline: var(--md-focus-ring-width) solid currentColor;
-  outline-offset: calc(-1 * var(--md-focus-ring-width));
 }
 
 @media (max-width: 37.5rem) {
@@ -86,6 +86,13 @@
     inset-inline: 0.5rem;
     inset-block-end: 0.5rem;
     inline-size: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root[data-starting-style],
+  .root[data-ending-style] {
+    transform: none;
   }
 }
 

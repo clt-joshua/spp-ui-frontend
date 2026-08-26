@@ -3,21 +3,52 @@
 }
 
 .popup {
+  position: relative;
   min-inline-size: 12rem;
+  overflow: visible;
+  outline: 0;
+}
+
+.surface {
+  inline-size: 100%;
   padding-block: 0.5rem;
   border-radius: var(--md-menu-container-shape);
-  outline: 0;
+  overflow: auto;
   background: var(--md-menu-container-color);
   box-shadow: var(--md-menu-container-elevation);
   color: var(--md-menu-list-item-label-text-color);
   transform-origin: var(--transform-origin);
-  transition: opacity var(--md-menu-motion-duration) var(--md-menu-motion-easing), transform var(--md-menu-motion-duration) var(--md-menu-motion-easing);
 }
 
-.popup[data-starting-style],
-.popup[data-ending-style] {
+.popup:is(
+  [data-menu-motion-phase='opening'],
+  [data-menu-motion-phase='closing']
+) .surface {
+  position: absolute;
+  inset-inline: 0;
+}
+
+.popup:is(
+  [data-menu-motion-phase='opening'],
+  [data-menu-motion-phase='closing']
+)[data-menu-motion-side='top'] .surface {
+  inset-block-end: 0;
+}
+
+.popup:is(
+  [data-menu-motion-phase='opening'],
+  [data-menu-motion-phase='closing']
+):not([data-menu-motion-side='top']) .surface {
+  inset-block-start: 0;
+}
+
+.popup[data-menu-motion-pending] {
+  overflow: hidden;
   opacity: 0;
-  transform: scale(0.96);
+}
+
+[data-menu-motion-hidden] {
+  opacity: 0;
 }
 
 .item {
@@ -53,4 +84,11 @@
 .indicator {
   display: inline-flex;
   color: var(--md-menu-list-item-selected-icon-color);
+}
+
+.indicator > :global(.material-icons),
+.item > :global(.material-icons) {
+  inline-size: var(--md-menu-list-item-trailing-icon-size);
+  block-size: var(--md-menu-list-item-trailing-icon-size);
+  font-size: var(--md-menu-list-item-trailing-icon-size);
 }

@@ -28,6 +28,17 @@ Material Web의 관련 component token SCSS는 pinned snapshot과 `main`이 동�
 
 재감사 시 각 CSS Module의 system token 직접 참조는 0건이다. component token 참조는 Button 93, IconButton 27, TextField 79, Checkbox 47, Select 84, Dialog 26, Menu 22, Snackbar 23건으로 확인했다. `pnpm verify`, Chromium/Firefox/WebKit E2E 18건, pinned Chromium/Linux visual 6건이 모두 통과했다.
 
+### 2026-08-26 motion 회귀 수정
+
+수정 후 실제 사용자 환경이 `prefers-reduced-motion: reduce`인 경우 system duration 전체가 `0ms`가 되어 ripple이 pointer-up 즉시 제거되고 TextField/Checkbox 상태 motion도 사라지는 회귀를 확인했다. 이는 Material Web의 ripple 최소 225ms, 450ms grow, 375ms fade와 Checkbox 선택 350ms·해제 150ms 구현을 하위 테스트가 덮어쓴 `M3_WEB_SPEC_CONFLICT`였다.
+
+- 전역 duration zeroing을 제거하고 overlay 공간 이동만 컴포넌트별로 축소했다.
+- reduced-motion에서도 Stable Material Web과 동일하게 ripple 450ms grow·105ms fade-in·225ms 최소 표시·375ms fade-out을 유지한다.
+- TextField는 단일 label의 위치·크기 CSS 보간을 제거하고 resting/floating 이중 label의 실제 rect를 측정하는 150ms WAAPI 전환으로 교체했다. Select outline·indicator 전환은 150ms로 유지한다.
+- Checkbox background/icon/check path에 선택 350ms, 해제 150ms, opacity 50ms 전환을 적용했다.
+- 실제 사용자 Vite 탭의 reduced-motion 환경에서 ripple grow 중간 scale과 fade를 확인하고, production preview에서 TextField 150ms label animation 및 Checkbox 중간 draw/scale frame을 확인했다.
+- Chromium/Firefox/WebKit E2E 18건과 기존 Linux visual baseline 6건이 다시 통과했다.
+
 ## 공식 기준
 
 - [Material Web Button](https://github.com/material-components/material-web/blob/main/docs/components/button.md)
@@ -103,13 +114,12 @@ Material Web의 관련 component token SCSS는 pinned snapshot과 `main`이 동�
 - Required action: variant/state별 disabled component token 추가 후 part별 적용
 - Status: BLOCKED
 
-### M3_WEB_SPEC_CONFLICT — ripple / reduced motion
+### 해결됨 — ripple / reduced motion
 
 - Target: Button, IconButton, Checkbox
-- Current behavior: Ripple expand `450ms`, fade `375ms`, TypeScript `225/375ms`가 하드코딩됨. Checkbox는 pressed/ripple state가 없음.
-- Expected behavior: motion/state component token을 통해 관리하고 reduced-motion에서 expansion을 제거하거나 즉시 최종 상태로 전환
-- Required action: ripple duration/easing/token화, reduced-motion 분기, Checkbox pressed feedback 추가
-- Status: BLOCKED
+- Corrected authority: Stable Material Web Ripple은 `prefers-reduced-motion`으로 grow를 제거하지 않으며 450ms grow, 105ms fade-in, 225ms minimum press, 375ms fade-out을 사용한다.
+- Resolution: exact duration을 component token과 interaction lifecycle에 반영하고 reduced-motion suppression을 제거했다. Checkbox도 pressed state와 350ms/150ms 선택 전환을 갖는다.
+- Status: RESOLVED; actual screen reader/forced-colors gate만 공통 `IN_REVIEW`
 
 ### M3_WEB_SPEC_CONFLICT — component token authority
 

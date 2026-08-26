@@ -96,6 +96,11 @@
   --md-checkbox-pressed-state-layer-opacity: var(--md-sys-state-pressed-state-layer-opacity);
   --md-checkbox-state-layer-motion-duration: var(--md-sys-motion-duration-short2);
   --md-checkbox-state-layer-motion-easing: var(--md-sys-motion-easing-standard);
+  --md-checkbox-enter-duration: var(--md-sys-motion-duration-medium3);
+  --md-checkbox-exit-duration: var(--md-sys-motion-duration-short3);
+  --md-checkbox-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-checkbox-enter-easing: var(--md-sys-motion-easing-emphasized-decelerate);
+  --md-checkbox-exit-easing: var(--md-sys-motion-easing-emphasized-accelerate);
 
   --md-filled-text-field-supporting-text-color: var(--md-sys-color-on-surface-variant);
   --md-filled-text-field-supporting-text-font: var(--md-sys-typescale-body-small-font);
@@ -130,7 +135,8 @@
   --md-ripple-shape: var(--md-sys-shape-corner-full);
   --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity);
   --md-ripple-expand-duration: var(--md-sys-motion-duration-long1);
-  --md-ripple-fade-duration: var(--md-sys-motion-duration-medium3);
+  --md-ripple-fade-in-duration: 105ms;
+  --md-ripple-fade-duration: 375ms;
   --md-ripple-motion-easing: var(--md-sys-motion-easing-standard);
 
   /* Button state roles shared by the five M3 button variants. */
@@ -208,6 +214,8 @@
   --md-text-field-leading-space: 1rem;
   --md-text-field-trailing-space: 1rem;
   --md-text-field-icon-size: 1.5rem;
+  --md-text-field-with-leading-icon-leading-space: 0.75rem;
+  --md-text-field-leading-icon-label-space: 1rem;
   --md-text-field-input-text-color: var(--md-sys-color-on-surface);
   --md-text-field-input-text-font: var(--md-sys-typescale-body-large-font);
   --md-text-field-input-text-size: var(--md-sys-typescale-body-large-size);
@@ -220,7 +228,9 @@
   --md-text-field-active-label-text-font: var(--md-sys-typescale-body-small-font);
   --md-text-field-active-label-text-size: var(--md-sys-typescale-body-small-size);
   --md-text-field-active-label-text-line-height: var(--md-sys-typescale-body-small-line-height);
+  --md-text-field-active-label-text-weight: var(--md-sys-typescale-body-small-weight);
   --md-text-field-focus-label-text-color: var(--md-sys-color-primary);
+  --md-text-field-hover-label-text-color: var(--md-sys-color-on-surface);
   --md-text-field-error-label-text-color: var(--md-sys-color-error);
   --md-text-field-prefix-suffix-text-color: var(--md-sys-color-on-surface-variant);
   --md-text-field-placeholder-text-color: var(--md-sys-color-on-surface-variant);
@@ -228,9 +238,13 @@
   --md-text-field-disabled-container-opacity: 4%;
   --md-text-field-disabled-content-color: var(--md-sys-color-on-surface);
   --md-text-field-disabled-content-opacity: 38%;
-  --md-text-field-motion-duration: var(--md-sys-motion-duration-short2);
+  --md-text-field-motion-duration: var(--md-sys-motion-duration-short3);
   --md-text-field-motion-easing: var(--md-sys-motion-easing-standard);
+  --md-text-field-content-fade-duration: 83ms;
+  --md-text-field-content-fade-delay: 67ms;
   --md-filled-text-field-container-color: var(--md-sys-color-surface-container-highest);
+  --md-filled-text-field-hover-state-layer-color: var(--md-sys-color-on-surface);
+  --md-filled-text-field-hover-state-layer-opacity: var(--md-sys-state-hover-state-layer-opacity);
   --md-filled-text-field-container-shape: var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-none) var(--md-sys-shape-corner-none);
   --md-filled-text-field-active-indicator-color: var(--md-sys-color-on-surface-variant);
   --md-filled-text-field-active-indicator-height: 0.0625rem;
@@ -239,13 +253,21 @@
   --md-outlined-text-field-container-shape: var(--md-sys-shape-corner-extra-small);
   --md-outlined-text-field-outline-color: var(--md-sys-color-outline);
   --md-outlined-text-field-outline-width: 0.0625rem;
+  --md-outlined-text-field-hover-outline-color: var(--md-sys-color-on-surface);
   --md-outlined-text-field-focus-outline-color: var(--md-sys-color-primary);
   --md-outlined-text-field-focus-outline-width: 0.1875rem;
+  --md-outlined-text-field-label-leading-space: 1rem;
+  --md-outlined-text-field-label-trailing-space: 1rem;
+  --md-outlined-text-field-outline-label-padding: 0.25rem;
 
   /* Select field and its menu. */
   --md-select-text-field-container-height: 3.5rem;
   --md-select-text-field-leading-space: 1rem;
   --md-select-text-field-trailing-space: 0.75rem;
+  --md-select-text-field-label-leading-space: 1rem;
+  --md-select-text-field-label-trailing-space: 3rem;
+  --md-select-text-field-outline-label-padding: 0.25rem;
+  --md-select-text-field-trailing-icon-size: 1.5rem;
   --md-select-text-field-input-text-color: var(--md-sys-color-on-surface);
   --md-select-text-field-input-text-font: var(--md-sys-typescale-body-large-font);
   --md-select-text-field-input-text-size: var(--md-sys-typescale-body-large-size);
@@ -257,16 +279,22 @@
   --md-select-text-field-active-label-text-font: var(--md-sys-typescale-body-small-font);
   --md-select-text-field-active-label-text-size: var(--md-sys-typescale-body-small-size);
   --md-select-text-field-active-label-text-line-height: var(--md-sys-typescale-body-small-line-height);
+  --md-select-text-field-active-label-text-weight: var(--md-sys-typescale-body-small-weight);
   --md-select-text-field-focus-label-text-color: var(--md-sys-color-primary);
+  --md-select-text-field-hover-label-text-color: var(--md-sys-color-on-surface);
   --md-select-text-field-error-color: var(--md-sys-color-error);
   --md-select-text-field-trailing-icon-color: var(--md-sys-color-on-surface-variant);
   --md-select-text-field-disabled-container-color: var(--md-sys-color-on-surface);
   --md-select-text-field-disabled-container-opacity: 4%;
   --md-select-text-field-disabled-content-color: var(--md-sys-color-on-surface);
   --md-select-text-field-disabled-content-opacity: 38%;
-  --md-select-motion-duration: var(--md-sys-motion-duration-short2);
+  --md-select-motion-duration: var(--md-sys-motion-duration-short3);
   --md-select-motion-easing: var(--md-sys-motion-easing-standard);
+  --md-select-icon-motion-duration: var(--md-sys-motion-duration-short4);
+  --md-select-icon-motion-easing: var(--md-sys-motion-easing-standard);
   --md-filled-select-text-field-container-color: var(--md-sys-color-surface-container-highest);
+  --md-filled-select-text-field-hover-state-layer-color: var(--md-sys-color-on-surface);
+  --md-filled-select-text-field-hover-state-layer-opacity: var(--md-sys-state-hover-state-layer-opacity);
   --md-filled-select-text-field-container-shape: var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-none) var(--md-sys-shape-corner-none);
   --md-filled-select-text-field-active-indicator-color: var(--md-sys-color-on-surface-variant);
   --md-filled-select-text-field-active-indicator-height: 0.0625rem;
@@ -275,6 +303,7 @@
   --md-outlined-select-text-field-container-shape: var(--md-sys-shape-corner-extra-small);
   --md-outlined-select-text-field-outline-color: var(--md-sys-color-outline);
   --md-outlined-select-text-field-outline-width: 0.0625rem;
+  --md-outlined-select-text-field-hover-outline-color: var(--md-sys-color-on-surface);
   --md-outlined-select-text-field-focus-outline-color: var(--md-sys-color-primary);
   --md-outlined-select-text-field-focus-outline-width: 0.1875rem;
   --md-select-supporting-text-color: var(--md-sys-color-on-surface-variant);
@@ -286,6 +315,22 @@
   --md-select-supporting-text-trailing-space: 1rem;
   --md-select-supporting-text-top-space: 0.25rem;
   --md-select-error-supporting-text-color: var(--md-sys-color-error);
+  --md-select-option-container-height: 3.5rem;
+  --md-select-option-label-text-color: var(--md-sys-color-on-surface);
+  --md-select-option-label-text-font: var(--md-sys-typescale-body-large-font);
+  --md-select-option-label-text-size: var(--md-sys-typescale-body-large-size);
+  --md-select-option-label-text-line-height: var(--md-sys-typescale-body-large-line-height);
+  --md-select-option-label-text-weight: var(--md-sys-typescale-body-large-weight);
+  --md-select-option-leading-space: 1rem;
+  --md-select-option-trailing-space: 1rem;
+  --md-select-option-hover-state-layer-color: var(--md-sys-color-on-surface);
+  --md-select-option-hover-state-layer-opacity: 8%;
+  --md-select-option-focus-state-layer-color: var(--md-sys-color-on-surface);
+  --md-select-option-focus-state-layer-opacity: 10%;
+  --md-select-option-focus-ring-color: var(--md-sys-color-secondary);
+  --md-select-option-focus-ring-width: 0.1875rem;
+  --md-select-option-disabled-label-text-color: var(--md-sys-color-on-surface);
+  --md-select-option-disabled-label-text-opacity: 38%;
 
   /* Menu and select option roles. */
   --md-menu-container-color: var(--md-sys-color-surface-container);
@@ -299,14 +344,25 @@
   --md-menu-list-item-label-text-weight: var(--md-sys-typescale-body-large-weight);
   --md-menu-list-item-leading-space: 1rem;
   --md-menu-list-item-trailing-space: 1rem;
+  --md-menu-list-item-leading-icon-size: 1.5rem;
+  --md-menu-list-item-trailing-icon-size: 1.5rem;
   --md-menu-list-item-hover-state-layer-color: var(--md-sys-color-on-surface);
   --md-menu-list-item-selected-container-color: var(--md-sys-color-secondary-container);
   --md-menu-list-item-selected-label-text-color: var(--md-sys-color-on-secondary-container);
   --md-menu-list-item-selected-icon-color: var(--md-sys-color-primary);
   --md-menu-list-item-disabled-label-text-color: var(--md-sys-color-on-surface);
   --md-menu-list-item-disabled-label-text-opacity: 38%;
-  --md-menu-motion-duration: var(--md-sys-motion-duration-short2);
-  --md-menu-motion-easing: var(--md-sys-motion-easing-standard);
+  --md-menu-open-duration: var(--md-sys-motion-duration-long2);
+  --md-menu-open-surface-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-menu-open-item-opacity-duration: var(--md-sys-motion-duration-medium1);
+  --md-menu-open-easing: var(--md-sys-motion-easing-emphasized);
+  --md-menu-close-duration: var(--md-sys-motion-duration-short3);
+  --md-menu-close-surface-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-menu-close-surface-opacity-delay: 100ms;
+  --md-menu-close-item-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-menu-close-item-opacity-delay: var(--md-sys-motion-duration-short1);
+  --md-menu-close-height-ratio: 0.35;
+  --md-menu-close-easing: var(--md-sys-motion-easing-emphasized-accelerate);
 
   /* Dialog. */
   --md-dialog-container-color: var(--md-sys-color-surface-container-high);
@@ -328,8 +384,21 @@
   --md-dialog-supporting-text-size: var(--md-sys-typescale-body-medium-size);
   --md-dialog-supporting-text-line-height: var(--md-sys-typescale-body-medium-line-height);
   --md-dialog-supporting-text-weight: var(--md-sys-typescale-body-medium-weight);
-  --md-dialog-motion-duration: var(--md-sys-motion-duration-medium1);
-  --md-dialog-motion-easing: var(--md-sys-motion-easing-standard);
+  --md-dialog-motion-duration: var(--md-sys-motion-duration-long2);
+  --md-dialog-motion-easing: var(--md-sys-motion-easing-emphasized);
+  --md-dialog-open-duration: var(--md-sys-motion-duration-long2);
+  --md-dialog-open-easing: var(--md-sys-motion-easing-emphasized);
+  --md-dialog-open-surface-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-dialog-open-content-delay: var(--md-sys-motion-duration-short1);
+  --md-dialog-open-content-duration: var(--md-sys-motion-duration-short4);
+  --md-dialog-open-actions-delay: var(--md-sys-motion-duration-short3);
+  --md-dialog-open-actions-duration: var(--md-sys-motion-duration-short3);
+  --md-dialog-close-duration: var(--md-sys-motion-duration-short3);
+  --md-dialog-close-easing: var(--md-sys-motion-easing-emphasized-accelerate);
+  --md-dialog-close-surface-opacity-delay: var(--md-sys-motion-duration-short2);
+  --md-dialog-close-surface-opacity-duration: var(--md-sys-motion-duration-short1);
+  --md-dialog-close-content-delay: 0ms;
+  --md-dialog-close-content-duration: var(--md-sys-motion-duration-short2);
 
   /* Snackbar. */
   --md-snackbar-container-color: var(--md-sys-color-inverse-surface);

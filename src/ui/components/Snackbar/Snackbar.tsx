@@ -1,6 +1,7 @@
 import { Toast as BaseToast } from '@base-ui/react/toast';
 import { useCallback, useMemo, type ReactNode } from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
+import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { SnackbarContext } from './snackbar-context';
 import styles from './Snackbar.module.css';
 
@@ -108,25 +109,63 @@ function SnackbarBridge({ children }: { children: ReactNode }) {
                 <BaseToast.Description className={styles.description} />
               </BaseToast.Content>
               {toast.data?.action ? (
-                <BaseToast.Action
-                  className={styles.action}
-                  onClick={toast.data.action.onAction}
-                >
-                  {toast.data.action.label}
-                </BaseToast.Action>
+                <SnackbarActionButton action={toast.data.action} />
               ) : null}
               {toast.data?.dismissLabel ? (
-                <BaseToast.Close
-                  aria-label={toast.data.dismissLabel}
-                  className={styles.close}
-                >
-                  <MaterialIcon name="close" />
-                </BaseToast.Close>
+                <SnackbarCloseButton label={toast.data.dismissLabel} />
               ) : null}
             </BaseToast.Root>
           ))}
         </BaseToast.Viewport>
       </BaseToast.Portal>
     </SnackbarContext.Provider>
+  );
+}
+
+function SnackbarActionButton({ action }: { action: SnackbarAction }) {
+  const { interactionProps, pressed, ripple } = usePressableInteraction();
+
+  return (
+    <BaseToast.Action
+      className={styles.action}
+      data-interactive-root=""
+      data-pressed={pressed || undefined}
+      onBlur={interactionProps.onBlur}
+      onClick={action.onAction}
+      onKeyDown={interactionProps.onKeyDown}
+      onKeyUp={interactionProps.onKeyUp}
+      onPointerCancel={interactionProps.onPointerCancel}
+      onPointerDown={interactionProps.onPointerDown}
+      onPointerUp={interactionProps.onPointerUp}
+    >
+      <StateLayer />
+      {ripple}
+      <FocusRing />
+      <span className={styles.controlContent}>{action.label}</span>
+    </BaseToast.Action>
+  );
+}
+
+function SnackbarCloseButton({ label }: { label: string }) {
+  const { interactionProps, pressed, ripple } = usePressableInteraction({ centered: true });
+
+  return (
+    <BaseToast.Close
+      aria-label={label}
+      className={styles.close}
+      data-interactive-root=""
+      data-pressed={pressed || undefined}
+      onBlur={interactionProps.onBlur}
+      onKeyDown={interactionProps.onKeyDown}
+      onKeyUp={interactionProps.onKeyUp}
+      onPointerCancel={interactionProps.onPointerCancel}
+      onPointerDown={interactionProps.onPointerDown}
+      onPointerUp={interactionProps.onPointerUp}
+    >
+      <StateLayer />
+      {ripple}
+      <FocusRing />
+      <span className={styles.controlContent}><MaterialIcon name="close" /></span>
+    </BaseToast.Close>
   );
 }

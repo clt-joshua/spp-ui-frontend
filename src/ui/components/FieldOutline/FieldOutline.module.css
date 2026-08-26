@@ -1,0 +1,142 @@
+.outline {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 0;
+  inset-inline: 0;
+  display: flex;
+  block-size: var(--field-outline-height, 100%);
+  pointer-events: none;
+}
+
+.start,
+.notch,
+.end {
+  position: relative;
+  box-sizing: border-box;
+  block-size: 100%;
+}
+
+.start {
+  inline-size: var(--field-outline-start-width);
+  flex: 0 0 var(--field-outline-start-width);
+  border-start-start-radius: var(--field-outline-shape);
+  border-end-start-radius: var(--field-outline-shape);
+}
+
+.end {
+  min-inline-size: var(--field-outline-trailing-space);
+  flex: 1 1 auto;
+  border-start-end-radius: var(--field-outline-shape);
+  border-end-end-radius: var(--field-outline-shape);
+}
+
+.start::before,
+.start::after,
+.end::before,
+.end::after {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border-style: solid;
+  content: '';
+}
+
+.start::before,
+.start::after {
+  border-inline-end-style: none;
+  border-start-start-radius: inherit;
+  border-end-start-radius: inherit;
+}
+
+.end::before,
+.end::after {
+  border-inline-start-style: none;
+  border-start-end-radius: inherit;
+  border-end-end-radius: inherit;
+}
+
+.start::before,
+.end::before,
+.inactivePanel,
+.inactivePanel::before,
+.inactivePanel::after {
+  border-color: var(--field-outline-color);
+  border-width: var(--field-outline-width);
+}
+
+.start::after,
+.end::after,
+.activePanel,
+.activePanel::before,
+.activePanel::after {
+  border-color: var(--field-outline-active-color, var(--field-outline-color));
+  border-width: var(--field-outline-active-width, var(--field-outline-width));
+}
+
+.start::after,
+.end::after,
+.activePanel {
+  opacity: var(--field-outline-active-opacity, 0);
+  transition: opacity var(--field-outline-motion-duration) var(--field-outline-motion-easing);
+}
+
+.notch {
+  display: flex;
+  max-inline-size: calc(100% - var(--field-outline-leading-space) - var(--field-outline-trailing-space));
+  flex: none;
+  align-items: flex-start;
+  padding-inline: var(--field-outline-label-padding);
+}
+
+.inactivePanel,
+.activePanel {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border-block-end-style: solid;
+}
+
+.inactivePanel::before,
+.inactivePanel::after,
+.activePanel::before,
+.activePanel::after {
+  position: absolute;
+  inset-block-start: 0;
+  inline-size: 50%;
+  box-sizing: border-box;
+  border-block-start-style: solid;
+  content: '';
+  transform: scaleX(1);
+  transition: transform var(--field-outline-motion-duration) var(--field-outline-motion-easing);
+}
+
+.inactivePanel::before,
+.activePanel::before {
+  inset-inline-start: 0;
+  transform-origin: top left;
+}
+
+.inactivePanel::after,
+.activePanel::after {
+  inset-inline-end: 0;
+  transform-origin: top right;
+}
+
+.notch[data-open] :is(.inactivePanel, .activePanel)::before,
+.notch[data-open] :is(.inactivePanel, .activePanel)::after {
+  transform: scaleX(0);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  block-size: 0;
+  overflow: hidden;
+  color: transparent;
+  font-family: var(--field-outline-label-font);
+  font-size: var(--field-outline-label-size);
+  font-weight: var(--field-outline-label-weight);
+  line-height: 0;
+  white-space: nowrap;
+}

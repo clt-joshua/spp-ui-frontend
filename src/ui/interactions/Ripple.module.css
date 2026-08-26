@@ -11,30 +11,40 @@
   position: absolute;
   inline-size: var(--ripple-size);
   block-size: var(--ripple-size);
-  inset-inline-start: calc(var(--ripple-x) - var(--ripple-size) / 2);
-  inset-block-start: calc(var(--ripple-y) - var(--ripple-size) / 2);
+  inset-block-start: 0;
+  inset-inline-start: 0;
   border-radius: var(--md-ripple-shape);
-  background: var(--md3-state-layer-color, currentColor);
-  opacity: var(--md-ripple-pressed-opacity);
-  transform: scale(0.2);
+  transform: translate(var(--ripple-start-x), var(--ripple-start-y)) scale(1);
+  transform-origin: center;
   animation: expand var(--md-ripple-expand-duration) var(--md-ripple-motion-easing) forwards;
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    closest-side,
+    var(--md3-state-layer-color, currentColor) max(calc(100% - 4.375rem), 65%),
+    transparent 100%
+  );
+  opacity: var(--md-ripple-pressed-opacity);
+  animation: fade-in var(--md-ripple-fade-in-duration) linear;
   transition: opacity var(--md-ripple-fade-duration) linear;
 }
 
-.wave[data-ending] {
+.wave[data-ending] .surface {
   opacity: 0;
 }
 
 @keyframes expand {
   to {
-    transform: scale(1);
+    transform: translate(var(--ripple-end-x), var(--ripple-end-y)) scale(var(--ripple-scale));
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .wave {
-    animation: none;
-    transform: scale(1);
-    transition: none;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }

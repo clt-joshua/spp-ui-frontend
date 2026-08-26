@@ -16,58 +16,80 @@
   background: var(--text-field-container-color);
   color: var(--md-text-field-label-text-color);
   box-shadow: inset 0 var(--text-field-indicator-size) 0 0 var(--text-field-indicator-color);
+  transition: background-color var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), box-shadow var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
 }
 
 .outline {
-  position: absolute;
-  inset: 0;
-  min-inline-size: 0;
-  margin: 0;
-  padding: 0 0.75rem;
-  border: var(--text-field-outline-width) solid var(--text-field-indicator-color);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.outline legend {
-  max-inline-size: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  color: transparent;
-  font-family: var(--md-text-field-active-label-text-font);
-  font-size: var(--md-text-field-active-label-text-size);
-  line-height: 0;
-  white-space: nowrap;
-  transition: max-inline-size var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
-}
-
-.outline legend span {
-  padding-inline: 0.25rem;
+  --field-outline-color: var(--text-field-indicator-color);
+  --field-outline-active-color: var(--text-field-focus-indicator-color);
+  --field-outline-active-opacity: var(--text-field-outline-active-opacity, 0);
+  --field-outline-active-width: var(--text-field-focus-outline-width);
+  --field-outline-label-font: var(--md-text-field-active-label-text-font);
+  --field-outline-label-padding: var(--md-outlined-text-field-outline-label-padding);
+  --field-outline-label-size: var(--md-text-field-active-label-text-size);
+  --field-outline-label-weight: var(--md-text-field-active-label-text-weight);
+  --field-outline-height: var(--md-text-field-container-height);
+  --field-outline-leading-space: var(--md-outlined-text-field-label-leading-space);
+  --field-outline-motion-duration: var(--md-text-field-motion-duration);
+  --field-outline-motion-easing: var(--md-text-field-motion-easing);
+  --field-outline-shape: var(--text-field-shape);
+  --field-outline-start-width: calc(var(--md-outlined-text-field-label-leading-space) - var(--md-outlined-text-field-outline-label-padding));
+  --field-outline-trailing-space: var(--md-outlined-text-field-label-trailing-space);
+  --field-outline-width: var(--text-field-outline-width);
 }
 
 .label {
-  position: absolute;
   z-index: 1;
-  inset-block-start: 50%;
-  inset-inline-start: var(--text-field-label-start, 1rem);
-  max-inline-size: calc(100% - var(--text-field-label-start, 1rem) - 1rem);
   overflow: hidden;
   color: var(--md-text-field-label-text-color);
-  font-family: var(--md-text-field-label-text-font);
-  font-size: var(--md-text-field-label-text-size);
-  line-height: var(--md-text-field-label-text-line-height);
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
+}
+
+.restingLabel {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--text-field-label-start, var(--md-outlined-text-field-label-leading-space));
+  max-inline-size: calc(100% - var(--text-field-label-start, var(--md-outlined-text-field-label-leading-space)) - var(--md-outlined-text-field-label-trailing-space));
+  font-family: var(--md-text-field-label-text-font);
+  font-size: var(--md-text-field-label-text-size);
+  line-height: var(--md-text-field-label-text-line-height);
   transform: translateY(-50%);
-  transition: color var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), inset-block-start var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), font-size var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), line-height var(--md-text-field-motion-duration) var(--md-text-field-motion-easing), transform var(--md-text-field-motion-duration) var(--md-text-field-motion-easing);
+}
+
+.floatingLabelPosition {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 0;
+  inset-inline-start: var(--md-outlined-text-field-label-leading-space);
+  max-inline-size: calc(100% - var(--md-outlined-text-field-label-leading-space) - var(--md-outlined-text-field-label-trailing-space));
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.floatingLabel {
+  display: block;
+  max-inline-size: 100%;
+  font-family: var(--md-text-field-active-label-text-font);
+  font-size: var(--md-text-field-active-label-text-size);
+  line-height: var(--md-text-field-active-label-text-line-height);
+  opacity: 0;
+  transform-origin: left top;
+}
+
+.root[data-floating] .restingLabel {
+  opacity: 0;
+}
+
+.root[data-floating] .floatingLabel {
+  opacity: 1;
 }
 
 .control[data-has-leading] {
-  --text-field-label-start: 3.25rem;
-  gap: 1rem;
-  padding-inline-start: 0.75rem;
+  --text-field-label-start: calc(var(--md-text-field-with-leading-icon-leading-space) + var(--md-text-field-icon-size) + var(--md-text-field-leading-icon-label-space));
+  gap: var(--md-text-field-leading-icon-label-space);
+  padding-inline-start: var(--md-text-field-with-leading-icon-leading-space);
 }
 
 .inputRow {
@@ -124,26 +146,38 @@
   color: var(--md-text-field-prefix-suffix-text-color);
   font-family: var(--md-text-field-input-text-font);
   font-size: var(--md-text-field-input-text-size);
+  opacity: 0;
+  transition: opacity var(--md-text-field-content-fade-duration) linear;
 }
 
-.root:focus-within .label,
-.root:has(.input:not(:placeholder-shown)) .label,
-.root:has(.control[data-has-affix]) .label {
-  font-family: var(--md-text-field-active-label-text-font);
-  font-size: var(--md-text-field-active-label-text-size);
-  line-height: var(--md-text-field-active-label-text-line-height);
+.root[data-floating] .affix {
+  opacity: 1;
+  transition-delay: var(--md-text-field-content-fade-delay);
 }
 
-.filled:focus-within .inputRow,
-.filled:has(.input:not(:placeholder-shown)) .inputRow,
-.filled:has(.control[data-has-affix]) .inputRow {
+.filled[data-floating] .inputRow {
   padding-block-start: 0.875rem;
 }
 
+.root:not([data-disabled]):hover .label {
+  color: var(--md-text-field-hover-label-text-color);
+}
+
+.outlined:not([data-disabled]):hover {
+  --text-field-indicator-color: var(--md-outlined-text-field-hover-outline-color);
+}
+
+.filled:not([data-disabled]):hover .control {
+  background: color-mix(
+    in srgb,
+    var(--md-filled-text-field-hover-state-layer-color) var(--md-filled-text-field-hover-state-layer-opacity),
+    var(--md-filled-text-field-container-color)
+  );
+}
+
 .root:focus-within {
-  --text-field-indicator-color: var(--text-field-focus-indicator-color);
   --text-field-indicator-size: var(--text-field-focus-indicator-size);
-  --text-field-outline-width: var(--text-field-focus-outline-width);
+  --text-field-outline-active-opacity: 1;
 }
 
 .root:focus-within .label {
@@ -152,6 +186,7 @@
 
 .root[data-invalid] {
   --text-field-indicator-color: var(--md-text-field-error-label-text-color);
+  --text-field-focus-indicator-color: var(--md-text-field-error-label-text-color);
 }
 
 .root[data-invalid] .label {
@@ -238,24 +273,11 @@
   --text-field-indicator-color: color-mix(in srgb, var(--md-text-field-disabled-content-color) 12%, transparent);
 }
 
-.outlined:focus-within .label,
-.outlined:has(.input:not(:placeholder-shown)) .label,
-.outlined:has(.control[data-has-affix]) .label {
-  inset-block-start: 0;
-  inset-inline-start: 1rem;
-  max-inline-size: calc(100% - 2rem);
-  transform: translateY(-50%);
-}
-
-.outlined:focus-within .outline legend,
-.outlined:has(.input:not(:placeholder-shown)) .outline legend,
-.outlined:has(.control[data-has-affix]) .outline legend {
-  max-inline-size: 100%;
-}
-
-.filled:focus-within .label,
-.filled:has(.input:not(:placeholder-shown)) .label,
-.filled:has(.control[data-has-affix]) .label {
+.filled .floatingLabelPosition {
   inset-block-start: 0.5rem;
   transform: none;
+}
+
+.filled .outline {
+  display: none;
 }

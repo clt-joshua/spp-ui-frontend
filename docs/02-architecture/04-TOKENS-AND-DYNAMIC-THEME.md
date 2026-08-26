@@ -182,21 +182,10 @@ State layer 색상은 컴포넌트의 현재 content/on-color에서 가져온다
 - stable duration: short 1~4, medium 1~4, long 1~4
 - stable easing: emphasized, emphasized-decelerate, emphasized-accelerate, standard, standard-decelerate, standard-accelerate, linear
 - opening은 주로 decelerate, closing은 accelerate 계열을 사용한다.
-- 컴포넌트가 millisecond나 cubic-bezier를 직접 작성하지 않는다.
+- CSS Module은 millisecond나 cubic-bezier를 직접 작성하지 않는다. Material Web 내부 구현의 exact constant가 system duration scale에 없으면 component token에 근거와 함께 고정한다.
 - Expressive spring token은 문서화만 하고 제품 runtime에 연결하지 않는다.
 
-```css
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --md-sys-motion-duration-short1: 0ms;
-    --md-sys-motion-duration-short2: 0ms;
-    --md-sys-motion-duration-medium1: 0ms;
-    --md-sys-motion-duration-medium2: 0ms;
-  }
-}
-```
-
-상태가 사라지면 안 되므로 reduced motion은 이동·확장·지속시간을 제거하고 최종 시각 상태는 즉시 적용한다.
+`prefers-reduced-motion`은 system duration 전체를 `0ms`로 바꾸지 않는다. 전역 zeroing은 ripple과 TextField/Checkbox 상태 전환을 제거해 입력 피드백을 잃게 한다. Stable Material Web이 media query로 억제하지 않는 Ripple의 450ms grow·105ms fade-in·225ms 최소 표시·375ms fade-out 및 field/selection 상태 전환은 그대로 유지한다. Dialog/Menu/Snackbar처럼 큰 영역이 이동하는 overlay만 컴포넌트 수준에서 비필수 transform을 제거한다.
 
 ## Theme 적용과 저장
 

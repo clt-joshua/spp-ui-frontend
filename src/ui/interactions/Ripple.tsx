@@ -9,13 +9,12 @@ import {
 import { RippleView, type RippleWave } from './RippleView';
 
 const MINIMUM_VISIBLE_MS = 225;
-const FADE_DURATION_MS = 350;
-
-function prefersReducedMotion() {
-  return typeof window !== 'undefined'
-    && typeof window.matchMedia === 'function'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
+const FADE_DURATION_MS = 375;
+const INITIAL_ORIGIN_SCALE = 0.2;
+const PADDING = 10;
+const SOFT_EDGE_MINIMUM_SIZE = 75;
+const SOFT_EDGE_CONTAINER_RATIO = 0.35;
+const TOUCH_DELAY_MS = 150;
 
 export interface PressableInteractionOptions {
   centered?: boolean;
@@ -31,12 +30,20 @@ export function usePressableInteraction({
   const nextId = useRef(0);
   const timers = useRef<number[]>([]);
   const activeWaves = useRef(new Map<number, number>());
+  const pendingTouch = useRef<{
+    clientX: number;
+    clientY: number;
+    pointerId: number;
+    target: HTMLElement;
+    timer: number;
+  } | null>(null);
 
   useEffect(
     () => () => {
       for (const timer of timers.current) {
         window.clearTimeout(timer);
       }
+      pendingTouch.current = null;
     },
     [],
   );
@@ -47,17 +54,28 @@ export function usePressableInteraction({
         return;
       }
       const rect = target.getBoundingClientRect();
-      const x = centered || clientX === undefined ? rect.width / 2 : clientX - rect.left;
-      const y = centered || clientY === undefined ? rect.height / 2 : clientY - rect.top;
-      const radius = Math.max(
-        Math.hypot(x, y),
-        Math.hypot(rect.width - x, y),
-        Math.hypot(x, rect.height - y),
-        Math.hypot(rect.width - x, rect.height - y),
+      const maxDimension = Math.max(rect.height, rect.width);
+      const softEdgeSize = Math.max(
+        SOFT_EDGE_CONTAINER_RATIO * maxDimension,
+        SOFT_EDGE_MINIMUM_SIZE,
       );
+      const size = Math.max(1, Math.floor(maxDimension * INITIAL_ORIGIN_SCALE));
+      const maxRadius = Math.hypot(rect.width, rect.height) + PADDING;
+      const scale = (maxRadius + softEdgeSize) / size;
+      const startX = centered || clientX === undefined
+        ? (rect.width - size) / 2
+        : clientX - rect.left - size / 2;
+      const startY = centered || clientY === undefined
+        ? (rect.height - size) / 2
+        : clientY - rect.top - size / 2;
+      const endX = (rect.width - size) / 2;
+      const endY = (rect.height - size) / 2;
       const id = ++nextId.current;
       activeWaves.current.set(id, Date.now());
-      setWaves((current) => [...current, { id, x, y, size: radius * 2, ending: false }]);
+      setWaves((current) => [
+        ...current,
+        { endX, endY, ending: false, id, scale, size, startX, startY },
+      ]);
       setPressed(true);
     },
     [centered, disabled],
@@ -67,21 +85,26 @@ export function usePressableInteraction({
     setPressed(false);
     for (const [id, startedAt] of activeWaves.current) {
       activeWaves.current.delete(id);
-      const reducedMotion = prefersReducedMotion();
-      const remainingVisibleTime = reducedMotion
-        ? 0
-        : Math.max(0, MINIMUM_VISIBLE_MS - (Date.now() - startedAt));
+      const remainingVisibleTime = Math.max(0, MINIMUM_VISIBLE_MS - (Date.now() - startedAt));
       const endTimer = window.setTimeout(() => {
         setWaves((current) => current.map((wave) => (
           wave.id === id ? { ...wave, ending: true } : wave
         )));
         const removeTimer = window.setTimeout(() => {
           setWaves((current) => current.filter((wave) => wave.id !== id));
-        }, reducedMotion ? 0 : FADE_DURATION_MS);
+        }, FADE_DURATION_MS);
         timers.current.push(removeTimer);
       }, remainingVisibleTime);
       timers.current.push(endTimer);
     }
+  }, []);
+
+  const cancelPendingTouch = useCallback(() => {
+    const pending = pendingTouch.current;
+    if (!pending) return null;
+    window.clearTimeout(pending.timer);
+    pendingTouch.current = null;
+    return pending;
   }, []);
 
   return {
@@ -89,11 +112,36 @@ export function usePressableInteraction({
     ripple: <RippleView waves={waves} />,
     interactionProps: {
       onPointerDown: (event: PointerEvent<HTMLElement>) => {
+        if (!event.isPrimary || (event.pointerType !== 'touch' && event.buttons !== 1)) {
+          return;
+        }
         event.currentTarget.setPointerCapture?.(event.pointerId);
+        if (event.pointerType === 'touch') {
+          cancelPendingTouch();
+          const target = event.currentTarget;
+          const clientX = event.clientX;
+          const clientY = event.clientY;
+          const pointerId = event.pointerId;
+          const timer = window.setTimeout(() => {
+            if (pendingTouch.current?.pointerId !== pointerId) return;
+            pendingTouch.current = null;
+            startWave(target, clientX, clientY);
+          }, TOUCH_DELAY_MS);
+          pendingTouch.current = { clientX, clientY, pointerId, target, timer };
+          timers.current.push(timer);
+          return;
+        }
         startWave(event.currentTarget, event.clientX, event.clientY);
       },
-      onPointerUp: endWaves,
-      onPointerCancel: endWaves,
+      onPointerUp: () => {
+        const pending = cancelPendingTouch();
+        if (pending) startWave(pending.target, pending.clientX, pending.clientY);
+        endWaves();
+      },
+      onPointerCancel: () => {
+        cancelPendingTouch();
+        endWaves();
+      },
       onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
         if (!event.repeat && (event.key === 'Enter' || event.key === ' ')) {
           startWave(event.currentTarget);
