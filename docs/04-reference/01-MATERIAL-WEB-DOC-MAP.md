@@ -55,7 +55,7 @@ Material Web 문서는 reference palette와 system motion token을 완전한 공
 | [`elevation.md`](https://github.com/material-components/material-web/blob/main/docs/components/elevation.md) | `required` | overlay와 elevated variant의 elevation token |
 | [`icon.md`](https://github.com/material-components/material-web/blob/main/docs/components/icon.md) | `supporting` | Icon wrapper와 accessible name 정책 |
 
-## MVP 컴포넌트 문서
+## 공개 컴포넌트 문서
 
 | 프로젝트 컴포넌트 | Material Web 문서 | 필수 검토 섹션 | 상태 |
 |---|---|---|---|
@@ -63,6 +63,11 @@ Material Web 문서는 reference palette와 system motion token을 완전한 공
 | IconButton | [`icon-button.md`](https://github.com/material-components/material-web/blob/main/docs/components/icon-button.md) | Types, Links, Toggle, Accessibility, Theming, API | `required` |
 | TextField | [`text-field.md`](https://github.com/material-components/material-web/blob/main/docs/components/text-field.md) | Input type, Label, Textarea, Icons, Supporting text, Validation, Accessibility | `required` |
 | Checkbox | [`checkbox.md`](https://github.com/material-components/material-web/blob/main/docs/components/checkbox.md) | Usage, Label, Accessibility, Theming, API | `required` |
+| Radio | [`radio.md`](https://github.com/material-components/material-web/blob/main/docs/components/radio.md) | Usage, Label, Accessibility, Theming, form and group API | `required` |
+| Tabs | [`tabs.md`](https://github.com/material-components/material-web/blob/main/docs/components/tabs.md) | Types, Selection, Accessibility, Tab panels, Theming, API | `required` |
+| Switch | [`switch.md`](https://github.com/material-components/material-web/blob/main/docs/components/switch.md) | Usage, Icons, Selected, Form fields, Accessibility, Theming, API | `required` |
+| SegmentedButton | 공개 문서 없음; [Labs segment source](https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/segmented-button.ts), [Labs set source](https://github.com/material-components/material-web/blob/main/labs/segmentedbuttonset/internal/segmented-button-set.ts) 보조 검토 | group/button semantics, single/multiple selection, disabled, checkmark, touch target | `unavailable` |
+| Chip | [`chip.md`](https://github.com/material-components/material-web/blob/main/docs/components/chip.md) | Types, Chip sets, Accessibility, Assist/Filter/Input, Theming, API | `required` |
 | Select | [`select.md`](https://github.com/material-components/material-web/blob/main/docs/components/select.md) | Usage, Required, Accessibility, Theming, option API | `required` |
 | Dialog | [`dialog.md`](https://github.com/material-components/material-web/blob/main/docs/components/dialog.md) | Opening/closing, Return value, Alerts, Accessibility, Theming | `required` |
 | Menu | [`menu.md`](https://github.com/material-components/material-web/blob/main/docs/components/menu.md) | Usage, Submenu, positioning, Accessibility, Theming | `required` |
@@ -72,15 +77,11 @@ Material Web 문서는 reference palette와 system motion token을 완전한 공
 
 | 문서 | 상태 | 활성화 조건 |
 |---|---|---|
-| [`chip.md`](https://github.com/material-components/material-web/blob/main/docs/components/chip.md) | `deferred` | Chip 추가 |
 | [`divider.md`](https://github.com/material-components/material-web/blob/main/docs/components/divider.md) | `deferred` | Divider 추가 |
 | [`fab.md`](https://github.com/material-components/material-web/blob/main/docs/components/fab.md) | `deferred` | FAB 추가 |
 | [`list.md`](https://github.com/material-components/material-web/blob/main/docs/components/list.md) | `deferred` | List 추가 |
 | [`progress.md`](https://github.com/material-components/material-web/blob/main/docs/components/progress.md) | `deferred` | Progress 추가 |
-| [`radio.md`](https://github.com/material-components/material-web/blob/main/docs/components/radio.md) | `deferred` | Radio 추가 |
 | [`slider.md`](https://github.com/material-components/material-web/blob/main/docs/components/slider.md) | `deferred` | Slider 추가 |
-| [`switch.md`](https://github.com/material-components/material-web/blob/main/docs/components/switch.md) | `deferred` | Switch 추가 |
-| [`tabs.md`](https://github.com/material-components/material-web/blob/main/docs/components/tabs.md) | `deferred` | Tabs 추가 |
 
 ## 이미지와 figure 자산
 

@@ -1,0 +1,273 @@
+.control {
+  --md-interaction-focus-state-layer-opacity: 1;
+  --md-interaction-hover-state-layer-opacity: 1;
+  --md-interaction-motion-duration: var(--md-switch-state-layer-motion-duration);
+  --md-interaction-motion-easing: var(--md-switch-state-layer-motion-easing);
+  --md-interaction-pressed-state-layer-opacity: 1;
+  --md-interaction-state-layer-shape: var(--md-switch-state-layer-shape);
+  --md-ripple-pressed-opacity: var(--md-switch-ripple-opacity);
+  --md-ripple-shape: var(--md-switch-state-layer-shape);
+  --md3-ripple-color: var(--md-switch-unselected-ripple-color);
+  --md3-state-layer-color: var(--md-switch-hover-state-layer-color);
+  --switch-handle-size: var(--md-switch-handle-size);
+  --switch-icon-size: var(--md-switch-icon-size);
+  --switch-current-handle-size: var(--switch-handle-size);
+  --switch-pressed-handle-size: var(--md-switch-pressed-handle-size);
+  --switch-state-layer-size: var(--md-switch-state-layer-size);
+  --switch-track-height: var(--md-switch-track-height);
+  --switch-track-inline-padding: var(--md-switch-track-inline-padding);
+  --switch-track-outline-width: var(--md-switch-track-outline-width);
+  --switch-track-width: var(--md-switch-track-width);
+  position: relative;
+  display: inline-grid;
+  min-inline-size: var(--md-switch-touch-target-size);
+  block-size: var(--md-switch-touch-target-size);
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--md-switch-state-layer-shape);
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  min-inline-size: max(var(--md-switch-touch-target-size), var(--switch-track-width));
+}
+
+.control[data-checked] {
+  --md3-ripple-color: var(--md-switch-selected-ripple-color);
+}
+
+.control:focus-visible {
+  --md3-state-layer-color: var(--md-switch-focus-state-layer-color);
+}
+
+.control[data-pressed] {
+  --md3-state-layer-color: var(--md-switch-pressed-state-layer-color);
+  --switch-current-handle-size: var(--switch-pressed-handle-size);
+}
+
+.control[data-disabled],
+.control[data-readonly] {
+  cursor: default;
+}
+
+.visual {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.track {
+  position: absolute;
+  z-index: 0;
+  inline-size: var(--switch-track-width);
+  block-size: var(--switch-track-height);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  box-sizing: border-box;
+  border: var(--switch-track-outline-width) solid var(--md-switch-unselected-track-outline-color);
+  border-radius: var(--md-switch-track-shape);
+  background: var(--md-switch-unselected-track-color);
+  transform: translate(-50%, -50%);
+  transition:
+    background-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    border-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+}
+
+.control[data-checked] .track {
+  border-color: transparent;
+  background: var(--md-switch-selected-track-color);
+}
+
+.thumb {
+  position: absolute;
+  z-index: 2;
+  inline-size: var(--switch-current-handle-size);
+  block-size: var(--switch-current-handle-size);
+  inset-block-start: 50%;
+  inset-inline-start: var(--switch-track-inline-padding);
+  border-radius: var(--md-switch-handle-shape);
+  transform: translateY(-50%);
+  transition:
+    inline-size var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    block-size var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    inset-inline-end var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+}
+
+.control[data-checked] .thumb {
+  inset-inline-start: auto;
+  inset-inline-end: var(--switch-track-inline-padding);
+}
+
+.handle {
+  position: absolute;
+  inset: 0;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--md-switch-unselected-handle-color);
+  color: var(--md-switch-unselected-icon-color);
+  transition:
+    background-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+}
+
+.control[data-checked] .handle {
+  background: var(--md-switch-selected-handle-color);
+  color: var(--md-switch-selected-icon-color);
+}
+
+.control:hover:not([data-disabled], [data-readonly]) .handle,
+.control:focus-visible:not([data-disabled], [data-readonly]) .handle,
+.control[data-pressed]:not([data-disabled], [data-readonly]) .handle {
+  background: var(--md-switch-unselected-interaction-handle-color);
+}
+
+.control[data-checked]:hover:not([data-disabled], [data-readonly]) .handle,
+.control[data-checked]:focus-visible:not([data-disabled], [data-readonly]) .handle,
+.control[data-checked][data-pressed]:not([data-disabled], [data-readonly]) .handle {
+  background: var(--md-switch-selected-interaction-handle-color);
+}
+
+.selectedIcon,
+.unselectedIcon {
+  position: absolute;
+  inline-size: var(--switch-icon-size);
+  block-size: var(--switch-icon-size);
+  font-size: var(--switch-icon-size);
+  line-height: 1;
+}
+
+.selectedIcon {
+  display: none;
+}
+
+.control[data-checked] .selectedIcon {
+  display: inline-block;
+}
+
+.control[data-checked] .unselectedIcon {
+  display: none;
+}
+
+.control[data-disabled] .track {
+  border-color: var(--md-switch-disabled-track-outline-color);
+  background: var(--md-switch-disabled-track-color);
+  transition-duration: 0s;
+}
+
+.control[data-disabled][data-checked] .track {
+  border-color: transparent;
+}
+
+.control[data-disabled] .handle {
+  background: color-mix(
+    in srgb,
+    var(--md-switch-disabled-unselected-handle-color) var(--md-switch-disabled-unselected-handle-opacity),
+    transparent
+  );
+  color: color-mix(
+    in srgb,
+    var(--md-switch-disabled-unselected-icon-color) var(--md-switch-disabled-icon-opacity),
+    transparent
+  );
+  transition-duration: 0s;
+}
+
+.control[data-disabled][data-checked] .handle {
+  background: var(--md-switch-disabled-selected-handle-color);
+  color: color-mix(
+    in srgb,
+    var(--md-switch-disabled-selected-icon-color) var(--md-switch-disabled-icon-opacity),
+    transparent
+  );
+}
+
+.visual > :global([data-slot='state-layer']),
+.visual > :global([data-slot='ripple']) {
+  position: absolute;
+  z-index: 1;
+  inline-size: var(--switch-state-layer-size);
+  block-size: var(--switch-state-layer-size);
+  inset-block-start: 50%;
+  inset-inline-start: calc(
+    (100% - var(--switch-track-width)) / 2
+    + var(--switch-track-inline-padding)
+    + var(--switch-current-handle-size) / 2
+  );
+  border-radius: var(--md-switch-state-layer-shape);
+  transform: translate(-50%, -50%);
+  transition:
+    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
+    opacity var(--md-switch-state-layer-motion-duration) var(--md-switch-state-layer-motion-easing);
+}
+
+.control[data-checked] .visual > :global([data-slot='state-layer']),
+.control[data-checked] .visual > :global([data-slot='ripple']) {
+  inset-inline-start: calc(
+    (100% + var(--switch-track-width)) / 2
+    - var(--switch-track-inline-padding)
+    - var(--switch-current-handle-size) / 2
+  );
+}
+
+.control:hover:not([data-disabled], [data-readonly]) .visual > :global([data-slot='state-layer']),
+.control:focus-visible:not([data-disabled], [data-readonly]) .visual > :global([data-slot='state-layer']),
+.control[data-pressed]:not([data-disabled], [data-readonly]) .visual > :global([data-slot='state-layer']) {
+  opacity: 1;
+}
+
+.control > :global([data-slot='focus-ring']) {
+  position: absolute;
+  inline-size: var(--switch-track-width);
+  block-size: var(--switch-track-height);
+  inset: auto;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  border-radius: var(--md-switch-track-shape);
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .thumb,
+  .handle,
+  .visual > :global([data-slot='state-layer']),
+  .visual > :global([data-slot='ripple']) {
+    transition-duration: 0s;
+  }
+}
+
+@media (forced-colors: active) {
+  .track {
+    border-color: CanvasText;
+    background: Canvas;
+    forced-color-adjust: auto;
+  }
+
+  .handle {
+    background: CanvasText;
+    color: Canvas;
+  }
+
+  .control[data-checked] .track {
+    border-color: Highlight;
+    background: Highlight;
+  }
+
+  .control[data-checked] .handle {
+    background: HighlightText;
+    color: Highlight;
+  }
+
+  .control[data-disabled] .track,
+  .control[data-disabled] .handle {
+    border-color: GrayText;
+    background: Canvas;
+    color: GrayText;
+  }
+}

@@ -1,2 +1,2 @@
-export { Dialog, DialogPrimitive } from './Dialog';
-export type { DialogCloseReason, DialogProps } from './Dialog';
+export { Dialog, DialogClose } from './Dialog';
+export type { DialogCloseProps, DialogCloseReason, DialogProps } from './Dialog';

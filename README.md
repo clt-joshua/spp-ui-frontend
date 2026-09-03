@@ -36,11 +36,12 @@ compliance_required: true
 | 동적 컬러 | `@material/material-color-utilities@0.4.0` |
 | Material Web | 런타임 미설치, 공식 문서·v2.5.0 구현 비교 전용 |
 | 스타일 | CSS Variables + CSS Modules |
+| Figma foundation | 250 color, 34 text style, 18 number → 18 space/17 gap/8 radius, 5 elevation effect style |
 | 기본 아이콘 | self-hosted Google Material Icons Filled, `MaterialIcon` adapter로 격리 |
-| 기본 서체 | self-hosted Roboto Variable, CSS 변수로 브랜드/본문 서체 교체 가능 |
+| 기본 서체 | self-hosted Noto Sans Variable, CSS 변수로 브랜드/본문 서체 교체 가능 |
 | Theme variant | MVP는 `TonalSpot` 고정 |
 | Theme 기능 | Light/Dark/System, Standard/High, 프리셋 4종, 사용자 HEX |
-| MVP 컴포넌트 | Button, IconButton, TextField, Checkbox, Select, Dialog, Menu, Snackbar |
+| 공개 컴포넌트 | Button, IconButton, TextField, Checkbox, Radio, Tabs, Switch, SegmentedButton, Chip, Select, Dialog, Menu, Snackbar |
 | Expressive motion | Web 공식 구현 전까지 제품 코드에서 제외 |
 | 초기 배치 | 애플리케이션 내부 `src/ui` 모듈 |
 
@@ -56,10 +57,11 @@ pnpm dev
 pnpm verify
 pnpm storybook
 pnpm test:e2e:container
-pnpm test:visual
 ```
 
 Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 않는다. 기본 서체를 바꿀 때는 component CSS 대신 다음 reference input을 override한다.
+
+실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components`는 13개 공개 컴포넌트의 variant·size·상태·상호작용을 비교하는 검증 페이지를 제공한다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
 
 ```css
 :root {
@@ -68,7 +70,7 @@ Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 �
 }
 ```
 
-Playwright 검증은 Docker에서 digest가 고정된 Linux image를 사용한다. Visual 변경을 의도적으로 승인할 때만 `pnpm test:visual:update`를 실행하고 생성된 6개 baseline diff를 검토한다. GitHub Actions는 quality, Chromium/Firefox/WebKit E2E, Chromium/Linux visual gate를 실행한다.
+`pnpm test:e2e:container`는 CI와 같은 브라우저 실행 환경이 필요할 때 쓰는 선택적 도구다. Linux 전용 screenshot baseline은 제품 완료 기준과 GitHub Actions blocking gate에서 제외했으며, CI는 quality와 Chromium/Firefox/WebKit 실제 흐름을 검증한다. 시각 변경은 지원 대상 환경에서 수동 검토하고 필요할 때 별도 증거를 남긴다.
 
 ## 문서 사용 순서
 
@@ -80,7 +82,7 @@ Playwright 검증은 Docker에서 digest가 고정된 Linux image를 사용한�
 3. [목표와 아키텍처 결정](docs/01-product/02-GOALS-AND-DECISIONS.md)에서 범위와 ADR을 확정한다.
 4. [아키텍처와 프로젝트 설정](docs/02-architecture/03-ARCHITECTURE-AND-SETUP.md)에 따라 프로젝트 구조와 Provider를 배치한다.
 5. [토큰과 동적 Theme](docs/02-architecture/04-TOKENS-AND-DYNAMIC-THEME.md)에 따라 토큰과 Theme Runtime을 먼저 구현한다.
-6. [컴포넌트와 인터랙션 계약](docs/02-architecture/05-COMPONENTS-AND-INTERACTIONS.md)에 따라 공통 interaction과 8개 컴포넌트를 구현한다.
+6. [컴포넌트와 인터랙션 계약](docs/02-architecture/05-COMPONENTS-AND-INTERACTIONS.md)에 따라 공통 interaction과 13개 공개 컴포넌트를 구현한다.
 7. [구현 순서와 검증 계획](docs/03-delivery/06-IMPLEMENTATION-AND-VALIDATION.md)의 순서와 검증 게이트를 따른다.
 8. AI 작업은 [바이브코딩 플레이북](docs/03-delivery/07-VIBE-CODING-PLAYBOOK.md)의 프롬프트와 증거 형식을 사용한다.
 9. [공식 출처와 Baseline](docs/04-reference/SOURCES.md)의 라이브 문서와 스냅샷 기준을 릴리스 전에 재검토한다.
@@ -94,9 +96,9 @@ Playwright 검증은 Docker에서 digest가 고정된 Linux image를 사용한�
 - [x] `src/ui` 외부의 Base UI 직접 import를 금지했다.
 - [x] CSS layer 순서와 전역 적용 위치를 연결했다.
 - [x] Theme와 Snackbar Provider를 애플리케이션 진입점에 한 번만 배치했다.
-- [x] 8개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
+- [x] 13개 공개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
 - [ ] 미확인 또는 충돌 항목을 `M3_WEB_SPEC_CONFLICT`로 보고할 경로를 만들었다.
 
 ## 완료의 의미
 
-문서 작성이나 Storybook 렌더링만으로 완료되지 않는다. 대표 사용자가 애플리케이션의 실제 진입점에서 8개 컴포넌트를 사용하고, Theme 변경이 Portal을 포함한 전체 UI에 적용되며, 키보드·포커스·state layer·ripple·reduced motion이 의도한 흐름에서 동작해야 한다. 모든 컴포넌트의 준수 기록은 `PASS`여야 한다.
+문서 작성이나 Storybook 렌더링만으로 완료되지 않는다. 대표 사용자가 애플리케이션의 실제 진입점에서 13개 공개 컴포넌트를 사용하고, Theme 변경이 Portal을 포함한 전체 UI에 적용되며, 키보드·포커스·state layer·ripple·reduced motion이 의도한 흐름에서 동작해야 한다. 모든 컴포넌트의 준수 기록은 `PASS`여야 한다.

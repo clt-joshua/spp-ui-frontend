@@ -11,12 +11,12 @@
 
 .surface {
   inline-size: 100%;
-  padding-block: 0.5rem;
+  padding-block: var(--md-menu-top-space) var(--md-menu-bottom-space);
   border-radius: var(--md-menu-container-shape);
   overflow: auto;
   background: var(--md-menu-container-color);
   box-shadow: var(--md-menu-container-elevation);
-  color: var(--md-menu-list-item-label-text-color);
+  color: var(--md-menu-item-label-text-color);
   transform-origin: var(--transform-origin);
 }
 
@@ -52,43 +52,94 @@
 }
 
 .item {
+  --md-interaction-focus-state-layer-opacity: var(--md-list-item-focus-state-layer-opacity);
+  --md-interaction-hover-state-layer-opacity: var(--md-menu-item-hover-state-layer-opacity);
+  --md-interaction-pressed-state-layer-opacity: var(--md-menu-item-pressed-state-layer-opacity);
+  --md-interaction-state-layer-shape: var(--md-list-item-state-layer-shape);
+  --md-ripple-shape: var(--md-list-item-state-layer-shape);
+  --md3-state-layer-color: var(--md-menu-item-hover-state-layer-color);
+  position: relative;
   display: flex;
-  min-block-size: var(--md-menu-list-item-container-height);
+  min-block-size: var(--md-menu-item-one-line-container-height);
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-inline: var(--md-menu-list-item-leading-space) var(--md-menu-list-item-trailing-space);
+  gap: var(--md-menu-item-content-gap);
+  padding-inline: var(--md-menu-item-leading-space) var(--md-menu-item-trailing-space);
   outline: 0;
-  color: var(--md-menu-list-item-label-text-color);
-  font-family: var(--md-menu-list-item-label-text-font);
-  font-size: var(--md-menu-list-item-label-text-size);
-  font-weight: var(--md-menu-list-item-label-text-weight);
-  line-height: var(--md-menu-list-item-label-text-line-height);
+  color: var(--md-menu-item-label-text-color);
+  font-family: var(--md-menu-item-label-text-font);
+  font-size: var(--md-menu-item-label-text-size);
+  font-weight: var(--md-menu-item-label-text-weight);
+  letter-spacing: var(--md-menu-item-label-text-tracking);
+  line-height: var(--md-menu-item-label-text-line-height);
+  text-decoration: var(--md-menu-item-label-text-decoration);
   cursor: pointer;
+  isolation: isolate;
 }
 
-.item[data-highlighted] {
-  background: color-mix(in srgb, var(--md-menu-list-item-hover-state-layer-color) 8%, transparent);
+.item:focus-visible {
+  --md3-state-layer-color: var(--md-list-item-focus-state-layer-color);
+}
+
+.item[data-pressed] {
+  --md3-state-layer-color: var(--md-menu-item-pressed-state-layer-color);
 }
 
 .item[data-disabled] {
-  color: color-mix(in srgb, var(--md-menu-list-item-disabled-label-text-color) var(--md-menu-list-item-disabled-label-text-opacity), transparent);
+  color: color-mix(in srgb, var(--md-menu-item-label-text-color) var(--md-menu-item-disabled-opacity), transparent);
   cursor: default;
 }
 
 .item[data-checked] {
-  background: var(--md-menu-list-item-selected-container-color);
-  color: var(--md-menu-list-item-selected-label-text-color);
+  background: var(--md-menu-item-selected-container-color);
+  color: var(--md-menu-item-selected-label-text-color);
+}
+
+.itemContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-inline-size: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--md-menu-item-content-gap);
+}
+
+.itemLabel,
+.leadingIcon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.itemLabel {
+  min-inline-size: 0;
+  gap: var(--md-list-item-leading-icon-label-space);
+}
+
+.leadingIcon {
+  flex: none;
+  color: var(--md-menu-item-leading-icon-color);
+}
+
+.leadingIcon > :global(.material-icons) {
+  inline-size: var(--md-list-item-leading-icon-size);
+  block-size: var(--md-list-item-leading-icon-size);
+  font-size: var(--md-list-item-leading-icon-size);
+}
+
+.item[data-checked] .leadingIcon {
+  color: var(--md-list-item-selected-leading-icon-color);
 }
 
 .indicator {
   display: inline-flex;
-  color: var(--md-menu-list-item-selected-icon-color);
+  color: var(--md-list-item-selected-trailing-icon-color);
 }
 
 .indicator > :global(.material-icons),
-.item > :global(.material-icons) {
-  inline-size: var(--md-menu-list-item-trailing-icon-size);
-  block-size: var(--md-menu-list-item-trailing-icon-size);
-  font-size: var(--md-menu-list-item-trailing-icon-size);
+.itemContent > :global(.material-icons) {
+  inline-size: var(--md-list-item-trailing-icon-size);
+  block-size: var(--md-list-item-trailing-icon-size);
+  font-size: var(--md-list-item-trailing-icon-size);
 }

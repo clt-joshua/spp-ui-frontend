@@ -1,29 +1,41 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu';
-import { useState, type ReactNode } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
+import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
 import { Button } from '../Button/Button';
 import styles from './Menu.module.css';
 
+interface MenuItemBase {
+  disabled?: boolean;
+  id: string;
+  label: ReactNode;
+  leadingIcon?: ReactNode;
+}
+
 export type MenuItem =
-  | { type: 'item'; id: string; label: ReactNode; disabled?: boolean; onSelect(): void }
-  | { type: 'checkbox'; id: string; label: ReactNode; checked: boolean; onCheckedChange(value: boolean): void }
-  | { type: 'radio'; id: string; label: ReactNode; value: string; disabled?: boolean }
-  | { type: 'submenu'; id: string; label: ReactNode; items: MenuItem[]; disabled?: boolean };
+  | (MenuItemBase & { type: 'item'; onSelect(): void })
+  | (MenuItemBase & { type: 'checkbox'; checked: boolean; onCheckedChange(value: boolean): void })
+  | (MenuItemBase & { type: 'radio'; value: string })
+  | (MenuItemBase & { type: 'submenu'; items: MenuItem[] });
 
 export interface MenuProps {
+  className?: string;
   items: MenuItem[];
   label: string;
   onRadioValueChange?: (value: string) => void;
   radioValue?: string;
+  style?: CSSProperties;
   trigger?: ReactNode;
 }
 
 export function Menu({
+  className,
   items,
   label,
   onRadioValueChange,
   radioValue,
+  style,
   trigger,
 }: MenuProps) {
   const [open, setOpen] = useState(false);
@@ -42,7 +54,13 @@ export function Menu({
         {trigger ?? label}
       </BaseMenu.Trigger>
       <BaseMenu.Portal>
-        <AnimatedMenuPopup align="start" open={open} sideOffset={4}>
+        <AnimatedMenuPopup
+          align="start"
+          className={className}
+          open={open}
+          sideOffset={4}
+          style={style}
+        >
           <MenuItems
             items={items}
             onRadioValueChange={onRadioValueChange}
@@ -57,17 +75,21 @@ export function Menu({
 interface AnimatedMenuPopupProps {
   align: 'start';
   children: ReactNode;
+  className?: string;
   open: boolean;
   side?: 'right';
   sideOffset: number;
+  style?: CSSProperties;
 }
 
 function AnimatedMenuPopup({
   align,
   children,
+  className,
   open,
   side,
   sideOffset,
+  style,
 }: AnimatedMenuPopupProps) {
   const {
     setPopupElement,
@@ -82,7 +104,11 @@ function AnimatedMenuPopup({
       side={side}
       sideOffset={sideOffset}
     >
-      <BaseMenu.Popup className={styles.popup} ref={setPopupElement}>
+      <BaseMenu.Popup
+        className={[styles.popup, className].filter(Boolean).join(' ')}
+        ref={setPopupElement}
+        style={style}
+      >
         <div className={styles.surface} data-slot="menu-surface">
           <div className={styles.list} data-slot="menu-content">{children}</div>
         </div>
@@ -103,17 +129,7 @@ function MenuItems({ items, onRadioValueChange, radioValue }: MenuItemsProps) {
       {items.map((item) => {
         if (item.type === 'checkbox') {
           return (
-            <BaseMenu.CheckboxItem
-              checked={item.checked}
-              className={styles.item}
-              key={item.id}
-              onCheckedChange={item.onCheckedChange}
-            >
-              <span>{item.label}</span>
-              <BaseMenu.CheckboxItemIndicator className={styles.indicator}>
-                <MaterialIcon name="check" />
-              </BaseMenu.CheckboxItemIndicator>
-            </BaseMenu.CheckboxItem>
+            <MenuCheckboxItem item={item} key={item.id} />
           );
         }
 
@@ -124,16 +140,7 @@ function MenuItems({ items, onRadioValueChange, radioValue }: MenuItemsProps) {
               onValueChange={onRadioValueChange}
               value={radioValue}
             >
-              <BaseMenu.RadioItem
-                className={styles.item}
-                disabled={item.disabled}
-                value={item.value}
-              >
-                <span>{item.label}</span>
-                <BaseMenu.RadioItemIndicator className={styles.indicator}>
-                  <MaterialIcon name="check" />
-                </BaseMenu.RadioItemIndicator>
-              </BaseMenu.RadioItem>
+              <MenuRadioItem item={item} />
             </BaseMenu.RadioGroup>
           );
         }
@@ -150,17 +157,115 @@ function MenuItems({ items, onRadioValueChange, radioValue }: MenuItemsProps) {
         }
 
         return (
-          <BaseMenu.Item
-            className={styles.item}
-            disabled={item.disabled}
-            key={item.id}
-            onClick={item.onSelect}
-          >
-            {item.label}
-          </BaseMenu.Item>
+          <MenuActionItem item={item} key={item.id} />
         );
       })}
     </>
+  );
+}
+
+function InteractionLayers({ ripple }: { ripple: ReactNode }) {
+  return (
+    <>
+      <StateLayer />
+      {ripple}
+      <FocusRing inward />
+    </>
+  );
+}
+
+function MenuCheckboxItem({ item }: { item: Extract<MenuItem, { type: 'checkbox' }> }) {
+  const { interactionProps, pressed, ripple } = usePressableInteraction({
+    disabled: item.disabled,
+  });
+
+  return (
+    <BaseMenu.CheckboxItem
+      checked={item.checked}
+      className={styles.item}
+      data-interactive-root=""
+      data-pressed={pressed || undefined}
+      disabled={item.disabled}
+      onBlur={interactionProps.onBlur}
+      onCheckedChange={item.onCheckedChange}
+      onKeyDown={interactionProps.onKeyDown}
+      onKeyUp={interactionProps.onKeyUp}
+      onPointerCancel={interactionProps.onPointerCancel}
+      onPointerDown={interactionProps.onPointerDown}
+      onPointerUp={interactionProps.onPointerUp}
+    >
+      <InteractionLayers ripple={ripple} />
+      <span className={styles.itemContent}>
+        <MenuItemLabel item={item} />
+        <BaseMenu.CheckboxItemIndicator className={styles.indicator}>
+          <MaterialIcon name="check" />
+        </BaseMenu.CheckboxItemIndicator>
+      </span>
+    </BaseMenu.CheckboxItem>
+  );
+}
+
+function MenuRadioItem({ item }: { item: Extract<MenuItem, { type: 'radio' }> }) {
+  const { interactionProps, pressed, ripple } = usePressableInteraction({
+    disabled: item.disabled,
+  });
+
+  return (
+    <BaseMenu.RadioItem
+      className={styles.item}
+      data-interactive-root=""
+      data-pressed={pressed || undefined}
+      disabled={item.disabled}
+      onBlur={interactionProps.onBlur}
+      onKeyDown={interactionProps.onKeyDown}
+      onKeyUp={interactionProps.onKeyUp}
+      onPointerCancel={interactionProps.onPointerCancel}
+      onPointerDown={interactionProps.onPointerDown}
+      onPointerUp={interactionProps.onPointerUp}
+      value={item.value}
+    >
+      <InteractionLayers ripple={ripple} />
+      <span className={styles.itemContent}>
+        <MenuItemLabel item={item} />
+        <BaseMenu.RadioItemIndicator className={styles.indicator}>
+          <MaterialIcon name="check" />
+        </BaseMenu.RadioItemIndicator>
+      </span>
+    </BaseMenu.RadioItem>
+  );
+}
+
+function MenuActionItem({ item }: { item: Extract<MenuItem, { type: 'item' }> }) {
+  const { interactionProps, pressed, ripple } = usePressableInteraction({
+    disabled: item.disabled,
+  });
+
+  return (
+    <BaseMenu.Item
+      className={styles.item}
+      data-interactive-root=""
+      data-pressed={pressed || undefined}
+      disabled={item.disabled}
+      onBlur={interactionProps.onBlur}
+      onClick={item.onSelect}
+      onKeyDown={interactionProps.onKeyDown}
+      onKeyUp={interactionProps.onKeyUp}
+      onPointerCancel={interactionProps.onPointerCancel}
+      onPointerDown={interactionProps.onPointerDown}
+      onPointerUp={interactionProps.onPointerUp}
+    >
+      <InteractionLayers ripple={ripple} />
+      <span className={styles.itemContent}><MenuItemLabel item={item} /></span>
+    </BaseMenu.Item>
+  );
+}
+
+function MenuItemLabel({ item }: { item: MenuItem }) {
+  return (
+    <span className={styles.itemLabel}>
+      {item.leadingIcon ? <span className={styles.leadingIcon}>{item.leadingIcon}</span> : null}
+      <span>{item.label}</span>
+    </span>
   );
 }
 
@@ -172,15 +277,29 @@ interface MenuSubmenuProps {
 
 function MenuSubmenu({ item, onRadioValueChange, radioValue }: MenuSubmenuProps) {
   const [open, setOpen] = useState(false);
+  const { interactionProps, pressed, ripple } = usePressableInteraction({
+    disabled: item.disabled,
+  });
 
   return (
     <BaseMenu.SubmenuRoot onOpenChange={setOpen}>
       <BaseMenu.SubmenuTrigger
         className={styles.item}
+        data-interactive-root=""
+        data-pressed={pressed || undefined}
         disabled={item.disabled}
+        onBlur={interactionProps.onBlur}
+        onKeyDown={interactionProps.onKeyDown}
+        onKeyUp={interactionProps.onKeyUp}
+        onPointerCancel={interactionProps.onPointerCancel}
+        onPointerDown={interactionProps.onPointerDown}
+        onPointerUp={interactionProps.onPointerUp}
       >
-        <span>{item.label}</span>
-        <MaterialIcon name="chevron_right" />
+        <InteractionLayers ripple={ripple} />
+        <span className={styles.itemContent}>
+          <MenuItemLabel item={item} />
+          <MaterialIcon name="chevron_right" />
+        </span>
       </BaseMenu.SubmenuTrigger>
       <BaseMenu.Portal>
         <AnimatedMenuPopup

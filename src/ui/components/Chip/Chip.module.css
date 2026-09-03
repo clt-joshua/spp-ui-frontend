@@ -1,0 +1,350 @@
+.set {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--md-chip-set-row-gap) var(--md-chip-set-column-gap);
+}
+
+.root {
+  --md3-state-layer-color: var(--chip-label-color);
+  position: relative;
+  display: inline-flex;
+  block-size: var(--chip-container-height);
+  box-sizing: border-box;
+  align-items: stretch;
+  overflow: visible;
+  border-radius: var(--chip-container-shape);
+  background: var(--chip-container-color);
+  box-shadow: inset 0 0 0 var(--chip-outline-width, 0) var(--chip-outline-color, transparent);
+  color: var(--chip-label-color);
+  font-family: var(--chip-label-text-font);
+  font-size: var(--chip-label-text-size);
+  font-weight: var(--chip-label-text-weight);
+  letter-spacing: var(--chip-label-text-tracking);
+  line-height: var(--chip-label-text-line-height);
+  text-decoration: var(--chip-label-text-decoration);
+  vertical-align: top;
+  isolation: isolate;
+}
+
+.action {
+  --md-interaction-state-layer-shape: inherit;
+  --md-ripple-shape: inherit;
+  position: relative;
+  display: inline-flex;
+  min-inline-size: 0;
+  block-size: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.actionContent {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--chip-content-gap);
+  pointer-events: none;
+}
+
+.action::after {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: 50%;
+  inline-size: 100%;
+  min-block-size: var(--md-chip-touch-target-height);
+  content: '';
+  transform: translateY(-50%);
+}
+
+.action:disabled {
+  cursor: default;
+}
+
+.passiveAction {
+  cursor: default;
+}
+
+.passiveAction::after {
+  content: none;
+}
+
+.primaryAction {
+  padding-inline-start: var(--chip-leading-space);
+  padding-inline-end: var(--chip-trailing-space, 0);
+}
+
+.label {
+  font-family: var(--chip-label-text-font);
+  font-size: var(--chip-label-text-size);
+  font-weight: var(--chip-label-text-weight);
+  letter-spacing: var(--chip-label-text-tracking);
+  line-height: var(--chip-label-text-line-height);
+  text-decoration: var(--chip-label-text-decoration);
+  text-wrap: nowrap;
+}
+
+.icon {
+  display: inline-flex;
+  inline-size: var(--chip-icon-size);
+  block-size: var(--chip-icon-size);
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon > :global(.material-icons) {
+  inline-size: var(--chip-icon-size);
+  block-size: var(--chip-icon-size);
+  font-size: var(--chip-icon-size);
+}
+
+.root[data-size='large'] {
+  --chip-container-height: var(--md-chip-large-container-height);
+  --chip-content-gap: var(--md-chip-large-content-gap);
+  --chip-icon-size: var(--md-chip-large-icon-size);
+  --chip-label-text-decoration: var(--md-chip-large-label-text-decoration);
+  --chip-label-text-font: var(--md-chip-large-label-text-font);
+  --chip-label-text-line-height: var(--md-chip-large-label-text-line-height);
+  --chip-label-text-size: var(--md-chip-large-label-text-size);
+  --chip-label-text-tracking: var(--md-chip-large-label-text-tracking);
+  --chip-label-text-weight: var(--md-chip-large-label-text-weight);
+}
+
+.root[data-size='small'] {
+  --chip-container-height: var(--md-chip-small-container-height);
+  --chip-content-gap: var(--md-chip-small-content-gap);
+  --chip-icon-size: var(--md-chip-small-icon-size);
+  --chip-label-text-decoration: var(--md-chip-small-label-text-decoration);
+  --chip-label-text-font: var(--md-chip-small-label-text-font);
+  --chip-label-text-line-height: var(--md-chip-small-label-text-line-height);
+  --chip-label-text-size: var(--md-chip-small-label-text-size);
+  --chip-label-text-tracking: var(--md-chip-small-label-text-tracking);
+  --chip-label-text-weight: var(--md-chip-small-label-text-weight);
+}
+
+.root[data-size='x-small'] {
+  --chip-container-height: var(--md-chip-extra-small-container-height);
+  --chip-content-gap: var(--md-chip-extra-small-content-gap);
+  --chip-icon-size: var(--md-chip-extra-small-icon-size);
+  --chip-label-text-decoration: var(--md-chip-extra-small-label-text-decoration);
+  --chip-label-text-font: var(--md-chip-extra-small-label-text-font);
+  --chip-label-text-line-height: var(--md-chip-extra-small-label-text-line-height);
+  --chip-label-text-size: var(--md-chip-extra-small-label-text-size);
+  --chip-label-text-tracking: var(--md-chip-extra-small-label-text-tracking);
+  --chip-label-text-weight: var(--md-chip-extra-small-label-text-weight);
+}
+
+.assistive {
+  --chip-container-color: var(--md-assistive-chip-primary-container-color);
+  --chip-container-shape: var(--md-assistive-chip-container-shape);
+  --chip-label-color: var(--md-assistive-chip-primary-label-text-color);
+}
+
+.assistive[data-size='large'] {
+  --chip-leading-space: var(--md-assistive-chip-large-leading-space);
+  --chip-trailing-space: var(--md-assistive-chip-large-trailing-space);
+}
+
+.assistive:is([data-size='small'], [data-size='x-small']) {
+  --chip-leading-space: var(--md-assistive-chip-compact-leading-space);
+  --chip-trailing-space: var(--md-assistive-chip-compact-trailing-space);
+}
+
+.assistive[data-level='secondary'] {
+  --chip-container-color: var(--md-assistive-chip-secondary-container-color);
+  --chip-label-color: var(--md-assistive-chip-secondary-label-text-color);
+}
+
+.assistive[data-level='neutral'] {
+  --chip-container-color: var(--md-assistive-chip-neutral-container-color);
+  --chip-label-color: var(--md-assistive-chip-neutral-label-text-color);
+}
+
+.assistive[data-level='outline'] {
+  --chip-container-color: var(--md-assistive-chip-outline-container-color);
+  --chip-label-color: var(--md-assistive-chip-outline-label-text-color);
+  --chip-outline-color: var(--md-assistive-chip-outline-color);
+  --chip-outline-width: var(--md-assistive-chip-outline-width);
+}
+
+.assistive[data-level='systemError'] {
+  --chip-container-color: var(--md-assistive-chip-system-error-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-error-label-text-color);
+}
+
+.assistive[data-level='systemWarning'] {
+  --chip-container-color: var(--md-assistive-chip-system-warning-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-warning-label-text-color);
+}
+
+.assistive[data-level='systemGood'] {
+  --chip-container-color: var(--md-assistive-chip-system-good-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-good-label-text-color);
+}
+
+.assistive[data-level='systemInfo'] {
+  --chip-container-color: var(--md-assistive-chip-system-info-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-info-label-text-color);
+}
+
+.assistive[data-level='systemErrorVariant'] {
+  --chip-container-color: var(--md-assistive-chip-system-error-variant-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-error-variant-label-text-color);
+}
+
+.assistive[data-level='systemWarningVariant'] {
+  --chip-container-color: var(--md-assistive-chip-system-warning-variant-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-warning-variant-label-text-color);
+}
+
+.assistive[data-level='systemGoodVariant'] {
+  --chip-container-color: var(--md-assistive-chip-system-good-variant-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-good-variant-label-text-color);
+}
+
+.assistive[data-level='systemInfoVariant'] {
+  --chip-container-color: var(--md-assistive-chip-system-info-variant-container-color);
+  --chip-label-color: var(--md-assistive-chip-system-info-variant-label-text-color);
+}
+
+.filter,
+.input {
+  --chip-container-color: var(--md-chip-unselected-container-color);
+  --chip-container-shape: var(--md-chip-selectable-container-shape);
+  --chip-label-color: var(--md-chip-unselected-label-text-color);
+  --chip-outline-color: var(--md-chip-unselected-outline-color);
+  --chip-outline-width: var(--md-chip-unselected-outline-width);
+}
+
+.filter[data-selected],
+.input[data-selected] {
+  --chip-container-color: var(--md-chip-selected-container-color);
+  --chip-label-color: var(--md-chip-selected-label-text-color);
+  --chip-outline-width: 0rem;
+}
+
+.filter[data-size='large'] {
+  --chip-leading-space: var(--md-filter-chip-large-leading-space);
+  --chip-trailing-space: var(--md-filter-chip-large-trailing-space);
+  --chip-unselected-label-leading-inset: var(--md-filter-chip-large-unselected-label-leading-inset);
+}
+
+.filter[data-size='small'] {
+  --chip-leading-space: var(--md-filter-chip-small-leading-space);
+  --chip-trailing-space: var(--md-filter-chip-small-trailing-space);
+  --chip-unselected-label-leading-inset: var(--md-filter-chip-small-unselected-label-leading-inset);
+}
+
+.filter[data-size='x-small'] {
+  --chip-leading-space: var(--md-filter-chip-extra-small-leading-space);
+  --chip-trailing-space: var(--md-filter-chip-extra-small-trailing-space);
+  --chip-unselected-label-leading-inset: var(--md-filter-chip-extra-small-unselected-label-leading-inset);
+}
+
+.filter:not([data-selected]) .label {
+  margin-inline-start: var(--chip-unselected-label-leading-inset);
+}
+
+.filter[data-size='x-small'][data-selected] {
+  --chip-label-color: var(--md-filter-chip-extra-small-selected-label-text-color);
+  --chip-leading-space: var(--md-filter-chip-extra-small-selected-leading-space);
+}
+
+.input .primaryAction {
+  padding-inline-end: 0;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.input .removeAction {
+  padding-inline: var(--chip-remove-leading-space) var(--chip-remove-trailing-space);
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.input[data-size='large'] {
+  --chip-leading-space: var(--md-input-chip-large-leading-space);
+  --chip-remove-leading-space: var(--md-input-chip-large-remove-leading-space);
+  --chip-remove-trailing-space: var(--md-input-chip-large-remove-trailing-space);
+}
+
+.input:is([data-size='small'], [data-size='x-small']) {
+  --chip-leading-space: var(--md-input-chip-compact-leading-space);
+  --chip-remove-leading-space: var(--md-input-chip-compact-remove-leading-space);
+  --chip-remove-trailing-space: var(--md-input-chip-compact-remove-trailing-space);
+}
+
+.location {
+  --chip-container-color: var(--md-location-chip-container-color);
+  --chip-container-shape: var(--md-location-chip-container-shape);
+  --chip-content-gap: var(--md-location-chip-content-gap);
+  --chip-label-color: var(--md-location-chip-label-text-color);
+  --chip-leading-space: var(--md-location-chip-leading-space);
+  --chip-outline-color: var(--md-location-chip-outline-color);
+  --chip-outline-width: var(--md-location-chip-outline-width);
+  --chip-trailing-space: var(--md-location-chip-trailing-space);
+  inline-size: max-content;
+}
+
+.locationContent {
+  block-size: 100%;
+  box-sizing: border-box;
+  padding-inline: var(--chip-leading-space) var(--chip-trailing-space);
+}
+
+.locationPrefix {
+  color: var(--md-location-chip-prefix-text-color);
+  font-family: var(--md-location-chip-prefix-text-font);
+  font-size: var(--md-location-chip-prefix-text-size);
+  font-weight: var(--md-location-chip-prefix-text-weight);
+  letter-spacing: var(--md-location-chip-prefix-text-tracking);
+  line-height: var(--md-location-chip-prefix-text-line-height);
+  text-decoration: var(--md-location-chip-prefix-text-decoration);
+}
+
+.root[data-disabled] {
+  --chip-container-color: color-mix(in srgb, var(--md-chip-disabled-container-color) var(--md-chip-disabled-container-opacity), transparent);
+  --chip-label-color: color-mix(in srgb, var(--md-chip-disabled-label-text-color) var(--md-chip-disabled-label-text-opacity), transparent);
+  --chip-outline-color: color-mix(in srgb, var(--md-chip-disabled-outline-color) var(--md-chip-disabled-outline-opacity), transparent);
+}
+
+.root[data-disabled] .locationPrefix {
+  color: inherit;
+}
+
+@media (forced-colors: active) {
+  .root {
+    border: 0.0625rem solid ButtonText;
+    background: Canvas;
+    box-shadow: none;
+    color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .root[data-selected] {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .root[data-disabled] {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  .locationPrefix {
+    color: inherit;
+  }
+}

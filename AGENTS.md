@@ -16,9 +16,11 @@
 - Do not install or import `@material/web`, `lit`, Material Web Labs, or M3 Expressive runtime code for the MVP.
 - Do not import `@base-ui/react` outside `src/ui/**`.
 - Keep reference, system, and component tokens separate.
-- Material Icons Filled and Roboto Variable are self-hosted defaults; access them through the project adapter and font tokens so consumers can replace them.
-- Complete one vertical component slice at a time, including its real app flow and compliance evidence.
-- Preserve the digest-pinned Playwright Linux baselines. Update them only with `pnpm test:visual:update`, review all image changes, and keep the six foundation baselines until Theme Runtime supersedes them intentionally.
+- Preserve the Figma spatial graph as `number reference → space/gap/radius system → component`; component CSS Modules must not consume `--md-ref-number-*` or `--md-sys-space/gap/radius-*` directly.
+- Use space tokens for padding, margin, and inset; gap tokens for sibling separation; radius tokens for corners; and elevation tokens as complete two-layer shadows. Do not round independent M3 geometry to a nearby spatial step.
+- Material Icons Filled and Noto Sans Variable are self-hosted defaults; access them through the project adapter and font tokens so consumers can replace them.
+- Complete one vertical component slice at a time, including its `/components` state matrix, real app interaction flow, regression evidence, and compliance record.
+- Linux screenshot baselines are historical evidence only, not a completion, merge, CI, or structure gate. Do not reintroduce a platform-specific pixel authority without an explicit product decision; preserve the existing PNG files unless the user explicitly asks to remove them.
 - A Storybook story, mock, fixture, or unit test does not replace verification through the actual app entry point.
 - Record unresolved authority conflicts as `M3_WEB_SPEC_CONFLICT`; do not normalize them into tests.
 

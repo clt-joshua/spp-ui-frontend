@@ -1,0 +1,158 @@
+.root {
+  inline-size: 100%;
+  min-inline-size: 0;
+  background: var(--md-tabs-container-color);
+}
+
+.list {
+  position: relative;
+  display: flex;
+  inline-size: 100%;
+  min-inline-size: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-block-end: var(--md-tabs-divider-height) solid var(--md-tabs-divider-color);
+  background: var(--md-tabs-container-color);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.tab {
+  --md-interaction-focus-state-layer-opacity: 1;
+  --md-interaction-hover-state-layer-opacity: 1;
+  --md-interaction-motion-duration: var(--md-primary-tab-state-layer-motion-duration);
+  --md-interaction-motion-easing: var(--md-primary-tab-state-layer-motion-easing);
+  --md-interaction-pressed-state-layer-opacity: 1;
+  --md-interaction-state-layer-shape: var(--md-primary-tab-container-shape);
+  --md-ripple-pressed-opacity: var(--md-primary-tab-ripple-opacity);
+  --md-ripple-shape: var(--md-primary-tab-container-shape);
+  --md3-ripple-color: currentColor;
+  --md3-state-layer-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  block-size: var(--md-primary-tab-container-height);
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--md-primary-tab-vertical-space);
+  padding-inline: var(--md-primary-tab-horizontal-space);
+  border: 0;
+  border-radius: var(--md-primary-tab-container-shape);
+  outline: 0;
+  background: var(--md-primary-tab-container-color);
+  color: var(--md-primary-tab-label-text-color);
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab:hover:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-primary-tab-hover-state-layer-color);
+}
+
+.tab:focus-visible:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-primary-tab-focus-state-layer-color);
+}
+
+.tab[data-pressed]:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-primary-tab-pressed-state-layer-color);
+}
+
+.tab[data-disabled] {
+  color: var(--md-primary-tab-disabled-label-text-color);
+  cursor: default;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  min-inline-size: 0;
+  align-items: center;
+  gap: var(--md-primary-tab-content-gap);
+}
+
+.label {
+  overflow: hidden;
+  font-family: var(--md-primary-tab-label-text-font);
+  font-size: var(--md-primary-tab-label-text-size);
+  font-weight: var(--md-primary-tab-label-text-weight);
+  letter-spacing: var(--md-primary-tab-label-text-tracking);
+  line-height: var(--md-primary-tab-label-text-line-height);
+  text-decoration: var(--md-primary-tab-label-text-decoration);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trailingIcon {
+  display: inline-flex;
+  inline-size: var(--md-primary-tab-trailing-icon-size);
+  block-size: var(--md-primary-tab-trailing-icon-size);
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-primary-tab-trailing-icon-color);
+  line-height: 1;
+}
+
+.trailingIcon > * {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.trailingIcon > :global(.material-icons) {
+  font-size: var(--md-primary-tab-trailing-icon-size);
+}
+
+.tab[data-disabled] .trailingIcon {
+  display: none;
+}
+
+.tab > :global([data-slot='focus-ring']) {
+  border-radius: var(--md-primary-tab-container-shape);
+}
+
+.indicator {
+  position: absolute;
+  z-index: 3;
+  inline-size: var(--active-tab-width);
+  block-size: var(--md-primary-tab-active-indicator-height);
+  inset-block-end: calc(-1 * var(--md-tabs-divider-height));
+  inset-inline-start: 0;
+  border-radius: var(--md-primary-tab-active-indicator-shape);
+  background: var(--md-primary-tab-active-indicator-color);
+  pointer-events: none;
+  transform: translateX(var(--active-tab-left));
+  transform-origin: center;
+  transition:
+    inline-size var(--md-primary-tab-active-indicator-motion-duration)
+      var(--md-primary-tab-active-indicator-motion-easing),
+    transform var(--md-primary-tab-active-indicator-motion-duration)
+      var(--md-primary-tab-active-indicator-motion-easing);
+}
+
+.panel {
+  min-inline-size: 0;
+  outline: 0;
+}
+
+@media (forced-colors: active) {
+  .list {
+    border-block-end-color: CanvasText;
+  }
+
+  .tab {
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: auto;
+  }
+
+  .tab[data-disabled] {
+    color: GrayText;
+  }
+
+  .indicator {
+    background: Highlight;
+  }
+}

@@ -1,17 +1,37 @@
 .root {
-  --md3-state-layer-color: var(--icon-button-content-color);
+  --md3-ripple-color: var(--icon-button-content-color);
+  --md3-state-layer-color: transparent;
+  --md-interaction-focus-state-layer-opacity: 1;
+  --md-interaction-hover-state-layer-opacity: 1;
+  --md-interaction-pressed-state-layer-opacity: 1;
+  box-sizing: border-box;
   position: relative;
   display: inline-grid;
-  inline-size: var(--md-icon-button-container-width);
-  block-size: var(--md-icon-button-container-height);
+  inline-size: var(--icon-button-container-width);
+  block-size: var(--icon-button-container-height);
   place-items: center;
-  padding: 0;
-  border: 0 solid transparent;
+  padding: var(--icon-button-container-space);
+  border: 0;
   border-radius: var(--md-icon-button-container-shape);
   background: var(--icon-button-container-color);
+  box-shadow: inset 0 0 0 var(--icon-button-outline-width, 0) var(--icon-button-outline-color, transparent);
   color: var(--icon-button-content-color);
+  vertical-align: top;
   cursor: pointer;
   isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root:not(:disabled):hover {
+  --md3-state-layer-color: var(--md-icon-button-hover-state-layer-color);
+}
+
+.root:not(:disabled):focus-visible {
+  --md3-state-layer-color: var(--md-icon-button-focus-state-layer-color);
+}
+
+.root:not(:disabled)[data-pressed] {
+  --md3-state-layer-color: var(--md-icon-button-pressed-state-layer-color);
 }
 
 .root:focus {
@@ -19,21 +39,64 @@
 }
 
 .root:disabled {
-  background: color-mix(in srgb, var(--md-icon-button-disabled-container-color) var(--icon-button-disabled-container-opacity, var(--md-icon-button-disabled-container-opacity)), transparent);
-  color: color-mix(in srgb, var(--md-icon-button-disabled-icon-color) var(--md-icon-button-disabled-icon-opacity), transparent);
+  --icon-button-container-color: var(--md-icon-button-disabled-container-color);
+  --icon-button-content-color: var(--md-icon-button-disabled-icon-color);
   cursor: default;
+}
+
+.root:disabled .icon {
+  opacity: var(--md-icon-button-disabled-icon-opacity);
+}
+
+.touchTarget {
+  position: absolute;
+  z-index: 0;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: var(--md-icon-button-touch-target-size);
+  block-size: var(--md-icon-button-touch-target-size);
+  transform: translate(-50%, -50%);
 }
 
 .icon {
   position: relative;
   z-index: 2;
   display: inline-flex;
-  inline-size: var(--md-icon-button-icon-size);
-  block-size: var(--md-icon-button-icon-size);
+  inline-size: var(--icon-button-icon-size);
+  block-size: var(--icon-button-icon-size);
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.icon > * {
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .icon > :global(.material-icons) {
-  font-size: var(--md-icon-button-icon-size);
+  font-size: var(--icon-button-icon-size);
+}
+
+.large {
+  --icon-button-container-height: var(--md-icon-button-large-container-height);
+  --icon-button-container-width: var(--md-icon-button-large-container-width);
+  --icon-button-container-space: var(--md-icon-button-large-container-space);
+  --icon-button-icon-size: var(--md-icon-button-large-icon-size);
+}
+
+.medium {
+  --icon-button-container-height: var(--md-icon-button-medium-container-height);
+  --icon-button-container-width: var(--md-icon-button-medium-container-width);
+  --icon-button-container-space: var(--md-icon-button-medium-container-space);
+  --icon-button-icon-size: var(--md-icon-button-medium-icon-size);
+}
+
+.small {
+  --icon-button-container-height: var(--md-icon-button-small-container-height);
+  --icon-button-container-width: var(--md-icon-button-small-container-width);
+  --icon-button-container-space: var(--md-icon-button-small-container-space);
+  --icon-button-icon-size: var(--md-icon-button-small-icon-size);
 }
 
 .standard {
@@ -43,6 +106,11 @@
 
 .standard[data-selected] {
   --icon-button-content-color: var(--md-standard-icon-button-selected-icon-color);
+}
+
+.standard:disabled {
+  --icon-button-container-color: transparent;
+  --icon-button-content-color: var(--md-icon-button-disabled-icon-color);
 }
 
 .filled {
@@ -66,25 +134,56 @@
 }
 
 .outlined {
-  --icon-button-container-color: transparent;
+  --icon-button-container-color: var(--md-outlined-icon-button-container-color);
   --icon-button-content-color: var(--md-outlined-icon-button-icon-color);
-  --icon-button-disabled-container-opacity: 0%;
-  border-width: var(--md-outlined-icon-button-outline-width);
-  border-color: var(--md-outlined-icon-button-outline-color);
+  --icon-button-outline-color: var(--md-outlined-icon-button-outline-color);
+  --icon-button-outline-width: var(--md-outlined-icon-button-outline-width);
 }
 
 .outlined[data-toggle][data-selected] {
   --icon-button-container-color: var(--md-outlined-icon-button-selected-container-color);
   --icon-button-content-color: var(--md-outlined-icon-button-selected-icon-color);
-  border-color: transparent;
+  --icon-button-outline-color: transparent;
 }
 
-.outlined:disabled {
-  border-color: color-mix(in srgb, var(--md-icon-button-disabled-outline-color) var(--md-icon-button-disabled-outline-opacity), transparent);
+.outlined:disabled,
+.outlined[data-toggle][data-selected]:disabled {
+  --icon-button-container-color: var(--md-icon-button-disabled-outlined-container-color);
+  --icon-button-content-color: var(--md-icon-button-disabled-icon-color);
+  --icon-button-outline-color: var(--md-icon-button-disabled-outline-color);
+}
+
+.error {
+  --icon-button-container-color: var(--md-error-icon-button-container-color);
+  --icon-button-content-color: var(--md-error-icon-button-icon-color);
+}
+
+.filled:disabled,
+.filled[data-toggle]:not([data-selected]):disabled,
+.tonal:disabled,
+.tonal[data-toggle]:not([data-selected]):disabled,
+.error:disabled {
+  --icon-button-container-color: var(--md-icon-button-disabled-container-color);
+  --icon-button-content-color: var(--md-icon-button-disabled-icon-color);
 }
 
 @media (forced-colors: active) {
   .root {
+    padding: 0;
     border: 0.0625rem solid ButtonText;
+    background: ButtonFace;
+    box-shadow: none;
+    color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .root.error {
+    border-style: double;
+    border-width: 0.1875rem;
+  }
+
+  .root:disabled {
+    border-color: GrayText;
+    color: GrayText;
   }
 }

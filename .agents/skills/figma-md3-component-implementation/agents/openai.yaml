@@ -1,0 +1,13 @@
+interface:
+  display_name: "SPP UI Figma MD3 Component"
+  short_description: "Build SPP UI MD3 components from Figma links"
+  default_prompt: "Use $figma-md3-component-implementation to implement and verify the component from this Figma MCP link."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "Read component structure, variants, tokens, and screenshots from Figma"
+
+policy:
+  allow_implicit_invocation: true

@@ -127,11 +127,13 @@ React public API와 CSS Modules로 구현한다.
 
 ### IconButton
 
-- standard/filled/tonal/outlined
+- standard/filled/tonal/outlined/error
+- Figma 실행 property와 같은 large/medium/small visual size, 모든 size의 48px touch target
 - `aria-label` 필수
-- toggle과 `aria-pressed`
-- selected icon과 unbounded ripple
-- default stable Web size
+- toggle의 `selected`/`aria-pressed`, 선택 후 이름이 달라지면 `selectedAriaLabel`
+- selected icon, 실제 pointer·keyboard ripple, FocusRing
+- error는 시각 style이며 `aria-invalid`를 자동 부여하지 않음
+- disabled가 error/selected 표현보다 우선
 
 ### TextField
 
@@ -148,6 +150,16 @@ React public API와 CSS Modules로 구현한다.
 - Space keyboard interaction
 - native form value
 - disabled feedback 억제
+
+### Radio
+
+- executable Figma property의 large/medium/small과 guide caption 불일치 확인
+- `RadioGroup`의 가시 이름, 공통 `name`, 단일 선택과 native form value
+- Tab 1회 진입, ArrowLeft/Right/Up/Down 선택 이동, Space 선택, Enter 비선택
+- selected/unselected/disabled `aria-checked`·`aria-disabled`와 label 연결
+- 24/20/16px icon, 36/32/24px state layer, 모든 크기 48px touch target
+- hover 6%, focus/pressed 12%, disabled 38%와 pointer·keyboard ripple
+- current Material Web와 고정 snapshot의 token·group API 동시 기록
 
 ### Select
 

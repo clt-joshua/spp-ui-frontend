@@ -11,6 +11,7 @@ import { applyThemeToElement } from './dom-theme';
 import {
   DEFAULT_THEME_CONFIG,
   configFromPreset,
+  usesFigmaSystemColorPreset,
 } from './presets';
 import {
   normalizeThemeConfig,
@@ -53,11 +54,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useLayoutEffect(() => {
+    const roles = usesFigmaSystemColorPreset(config, resolvedMode)
+      ? null
+      : generatedTheme[resolvedMode];
     applyThemeToElement(
       document.documentElement,
       config,
       resolvedMode,
-      generatedTheme[resolvedMode],
+      roles,
     );
   }, [config, generatedTheme, resolvedMode]);
 

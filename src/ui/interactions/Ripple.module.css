@@ -25,7 +25,7 @@
   border-radius: inherit;
   background: radial-gradient(
     closest-side,
-    var(--md3-state-layer-color, currentColor) max(calc(100% - 4.375rem), 65%),
+    var(--md3-ripple-color, var(--md3-state-layer-color, currentColor)) max(calc(100% - 4.375rem), 65%),
     transparent 100%
   );
   opacity: var(--md-ripple-pressed-opacity);

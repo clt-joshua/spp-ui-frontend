@@ -1,10 +1,12 @@
-import { useState, type CSSProperties, type FormEvent } from 'react';
+import { useEffect, useState, type CSSProperties, type FormEvent } from 'react';
 import {
   Button,
   Checkbox,
+  Chip,
+  ChipSet,
   DEFAULT_THEME_CONFIG,
   Dialog,
-  DialogPrimitive,
+  DialogClose,
   IconButton,
   isValidSeedColor,
   MaterialIcon,
@@ -17,6 +19,7 @@ import {
   type ThemeConfig,
   type ThemeMode,
 } from '@/ui';
+import { ComponentGalleryPage } from './pages/ComponentGalleryPage';
 import styles from './App.module.css';
 
 const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
@@ -26,6 +29,14 @@ const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
 ];
 
 export default function App() {
+  if (window.location.pathname === '/components') {
+    return <ComponentGalleryPage />;
+  }
+
+  return <ThemeLabPage />;
+}
+
+function ThemeLabPage() {
   const theme = useTheme();
   const snackbar = useSnackbar();
   const [draft, setDraft] = useState<ThemeConfig>(theme.config);
@@ -35,6 +46,12 @@ export default function App() {
   const [notifications, setNotifications] = useState(true);
   const [compactPreview, setCompactPreview] = useState(false);
   const [density, setDensity] = useState('comfortable');
+  const [filterSelected, setFilterSelected] = useState(false);
+  const [inputChipVisible, setInputChipVisible] = useState(true);
+
+  useEffect(() => {
+    document.title = 'SPP UI Theme Lab';
+  }, []);
 
   const preview = (next: ThemeConfig) => {
     setDraft(next);
@@ -101,6 +118,7 @@ export default function App() {
           <span>SPP UI</span>
         </a>
         <div className={styles.topActions}>
+          <a className={styles.galleryLink} href="/components">컴포넌트 검증</a>
           <span className={styles.runtimeStatus}>
             <span className={styles.statusDot} />
             {theme.resolvedMode === 'dark' ? 'Dark' : 'Light'} · {draft.contrast === 'high' ? 'High contrast' : 'Standard'}
@@ -116,7 +134,7 @@ export default function App() {
               { type: 'radio', id: 'compact-density', label: '조밀한 밀도', value: 'compact' },
               {
                 type: 'submenu', id: 'help', label: '도움말', items: [
-                  { type: 'item', id: 'tokens', label: '토큰 가이드', onSelect: () => snackbar.show({ message: '토큰 가이드는 docs/02-architecture에 있습니다.' }) },
+                  { type: 'item', id: 'tokens', label: '토큰 가이드', onSelect: () => snackbar.show({ message: '토큰 가이드는 docs/02-architecture에서 확인할 수 있으며 reference, system, component 순서로 적용합니다.' }) },
                   { type: 'item', id: 'keyboard', label: '키보드 안내', onSelect: () => snackbar.show({ message: 'Tab, 방향키, Escape 흐름을 지원합니다.' }) },
                 ],
               },
@@ -148,7 +166,7 @@ export default function App() {
                   type="button"
                 >
                   <span className={styles.swatchColor} />
-                  <span>{preset.label.replace('Material ', '')}</span>
+                  <span>{preset.label}</span>
                   {draft.themeId === preset.id ? <MaterialIcon name="check_circle" /> : null}
                 </button>
               ))}
@@ -173,7 +191,7 @@ export default function App() {
                     preview({ ...draft, themeId: 'custom', seedColor: value as `#${string}` });
                   }}
                   type="color"
-                  value={isValidSeedColor(seedInput) ? seedInput : '#6750A4'}
+                  value={isValidSeedColor(seedInput) ? seedInput : DEFAULT_THEME_CONFIG.seedColor}
                 />
               </label>
               <TextField
@@ -254,8 +272,8 @@ export default function App() {
                 <Dialog
                   actions={
                     <>
-                      <DialogPrimitive.Close render={<Button variant="text" />}>계속 편집</DialogPrimitive.Close>
-                      <DialogPrimitive.Close render={<Button />}>확인</DialogPrimitive.Close>
+                      <DialogClose variant="text">계속 편집</DialogClose>
+                      <DialogClose>확인</DialogClose>
                     </>
                   }
                   description="현재 입력한 프로젝트 구성을 검토했습니다. 확인하면 로컬 작업 공간에 저장합니다."
@@ -281,6 +299,29 @@ export default function App() {
                 <IconButton aria-label="즐겨찾기" icon={<MaterialIcon name="favorite_border" />} selectedIcon={<MaterialIcon name="favorite" />} selected variant="filled" />
                 <IconButton aria-label="공유" icon={<MaterialIcon name="share" />} variant="tonal" />
                 <IconButton aria-label="더보기" icon={<MaterialIcon name="more_vert" />} variant="outlined" />
+              </div>
+              <div className={styles.chipSamples}>
+                <ChipSet label="Chip 유형 예시">
+                  <Chip level="primary">Assistive</Chip>
+                  <Chip
+                    chipType="filter"
+                    onSelectedChange={setFilterSelected}
+                    selected={filterSelected}
+                  >
+                    Filter
+                  </Chip>
+                  {inputChipVisible ? (
+                    <Chip
+                      chipType="input"
+                      onRemove={() => setInputChipVisible(false)}
+                      removeLabel="Input chip 삭제"
+                      removeOnly
+                    >
+                      Input
+                    </Chip>
+                  ) : null}
+                </ChipSet>
+                <Chip chipType="location" prefix="X">6.058m</Chip>
               </div>
             </section>
 

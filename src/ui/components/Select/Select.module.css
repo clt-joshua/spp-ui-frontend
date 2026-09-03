@@ -13,6 +13,7 @@
   --field-outline-label-font: var(--md-select-text-field-active-label-text-font);
   --field-outline-label-padding: var(--md-select-text-field-outline-label-padding);
   --field-outline-label-size: var(--md-select-text-field-active-label-text-size);
+  --field-outline-label-tracking: var(--md-select-text-field-active-label-text-tracking);
   --field-outline-label-weight: var(--md-select-text-field-active-label-text-weight);
   --field-outline-height: var(--md-select-text-field-container-height);
   --field-outline-leading-space: var(--md-select-text-field-label-leading-space);
@@ -40,7 +41,10 @@
   max-inline-size: calc(100% - var(--md-select-text-field-label-leading-space) - var(--md-select-text-field-label-trailing-space));
   font-family: var(--md-select-text-field-label-text-font);
   font-size: var(--md-select-text-field-label-text-size);
+  font-weight: var(--md-select-text-field-label-text-weight);
+  letter-spacing: var(--md-select-text-field-label-text-tracking);
   line-height: var(--md-select-text-field-label-text-line-height);
+  text-decoration: var(--md-select-text-field-label-text-decoration);
   transform: translateY(-50%);
 }
 
@@ -60,7 +64,9 @@
   font-family: var(--md-select-text-field-active-label-text-font);
   font-size: var(--md-select-text-field-active-label-text-size);
   font-weight: var(--md-select-text-field-active-label-text-weight);
+  letter-spacing: var(--md-select-text-field-active-label-text-tracking);
   line-height: var(--md-select-text-field-active-label-text-line-height);
+  text-decoration: var(--md-select-text-field-active-label-text-decoration);
   opacity: 0;
   transform-origin: left top;
 }
@@ -71,8 +77,8 @@
   align-self: start;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.5rem var(--md-select-text-field-trailing-space) 0.5rem var(--md-select-text-field-leading-space);
+  gap: var(--md-select-text-field-content-gap);
+  padding: var(--md-select-text-field-vertical-space) var(--md-select-text-field-trailing-space) var(--md-select-text-field-vertical-space) var(--md-select-text-field-leading-space);
   border: 0;
   border-radius: var(--select-shape);
   outline: 0;
@@ -80,7 +86,10 @@
   color: var(--md-select-text-field-input-text-color);
   font-family: var(--md-select-text-field-input-text-font);
   font-size: var(--md-select-text-field-input-text-size);
+  font-weight: var(--md-select-text-field-input-text-weight);
+  letter-spacing: var(--md-select-text-field-input-text-tracking);
   line-height: var(--md-select-text-field-input-text-line-height);
+  text-decoration: var(--md-select-text-field-input-text-decoration);
   text-align: start;
   box-shadow: inset 0 var(--select-indicator-size) 0 0 var(--select-indicator-color);
   cursor: pointer;
@@ -146,7 +155,10 @@
   overflow: hidden;
   font-family: var(--md-select-text-field-input-text-font);
   font-size: var(--md-select-text-field-input-text-size);
+  font-weight: var(--md-select-text-field-input-text-weight);
+  letter-spacing: var(--md-select-text-field-input-text-tracking);
   line-height: var(--md-select-text-field-input-text-line-height);
+  text-decoration: var(--md-select-text-field-input-text-decoration);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -190,7 +202,7 @@
   border-radius: var(--md-menu-container-shape);
   background: var(--md-menu-container-color);
   box-shadow: var(--md-menu-container-elevation);
-  color: var(--md-menu-list-item-label-text-color);
+  color: var(--md-menu-item-label-text-color);
   transform-origin: var(--transform-origin);
 }
 
@@ -225,9 +237,19 @@
   opacity: 0;
 }
 
-.list { padding-block: 0.5rem; }
+.list {
+  padding-block: var(--md-menu-top-space) var(--md-menu-bottom-space);
+}
 
 .item {
+  --md-focus-ring-color: var(--md-select-option-focus-ring-color);
+  --md-focus-ring-width: var(--md-select-option-focus-ring-width);
+  --md-interaction-focus-state-layer-opacity: var(--md-select-option-focus-state-layer-opacity);
+  --md-interaction-hover-state-layer-opacity: var(--md-select-option-hover-state-layer-opacity);
+  --md-interaction-pressed-state-layer-opacity: var(--md-select-option-pressed-state-layer-opacity);
+  --md-interaction-state-layer-shape: var(--md-select-option-state-layer-shape);
+  --md-ripple-shape: var(--md-select-option-state-layer-shape);
+  --md3-state-layer-color: var(--md-select-option-hover-state-layer-color);
   position: relative;
   display: flex;
   min-block-size: var(--md-select-option-container-height);
@@ -239,25 +261,27 @@
   font-family: var(--md-select-option-label-text-font);
   font-size: var(--md-select-option-label-text-size);
   font-weight: var(--md-select-option-label-text-weight);
+  letter-spacing: var(--md-select-option-label-text-tracking);
   line-height: var(--md-select-option-label-text-line-height);
+  text-decoration: var(--md-select-option-label-text-decoration);
   cursor: pointer;
-}
-
-.item[data-highlighted] {
-  background: color-mix(
-    in srgb,
-    var(--md-select-option-hover-state-layer-color) var(--md-select-option-hover-state-layer-opacity),
-    transparent
-  );
+  isolation: isolate;
 }
 
 .item:focus {
-  background: color-mix(
-    in srgb,
-    var(--md-select-option-focus-state-layer-color) var(--md-select-option-focus-state-layer-opacity),
-    transparent
-  );
-  box-shadow: inset 0 0 0 var(--md-select-option-focus-ring-width) var(--md-select-option-focus-ring-color);
+  --md3-state-layer-color: var(--md-select-option-focus-state-layer-color);
+}
+
+.item[data-pressed] {
+  --md3-state-layer-color: var(--md-select-option-pressed-state-layer-color);
+}
+
+.item:focus > :global([data-slot='state-layer']) {
+  opacity: var(--md-select-option-focus-state-layer-opacity);
+}
+
+.item:focus > :global([data-slot='focus-ring']) {
+  opacity: 1;
 }
 
 .item[data-disabled] {
@@ -269,6 +293,16 @@
   cursor: default;
 }
 
+.itemContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-inline-size: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .supporting,
 .error {
   margin: 0;
@@ -277,7 +311,9 @@
   font-family: var(--md-select-supporting-text-font);
   font-size: var(--md-select-supporting-text-size);
   font-weight: var(--md-select-supporting-text-weight);
+  letter-spacing: var(--md-select-supporting-text-tracking);
   line-height: var(--md-select-supporting-text-line-height);
+  text-decoration: var(--md-select-supporting-text-decoration);
 }
 
 .supporting { color: var(--md-select-supporting-text-color); }

@@ -16,7 +16,7 @@ const CONTRAST_LEVELS: Record<ContrastMode, number> = {
   high: 0.5,
 };
 
-const COLOR_ROLES = [
+export const COLOR_ROLES = [
   'primary',
   'onPrimary',
   'primaryContainer',

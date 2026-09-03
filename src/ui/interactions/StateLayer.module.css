@@ -2,7 +2,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  border-radius: inherit;
+  border-radius: var(--md-interaction-state-layer-shape, inherit);
   pointer-events: none;
   background: var(--md3-state-layer-color, currentColor);
   opacity: 0;

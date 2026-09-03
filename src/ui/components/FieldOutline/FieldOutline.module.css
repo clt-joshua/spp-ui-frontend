@@ -137,6 +137,7 @@
   font-family: var(--field-outline-label-font);
   font-size: var(--field-outline-label-size);
   font-weight: var(--field-outline-label-weight);
+  letter-spacing: var(--field-outline-label-tracking);
   line-height: 0;
   white-space: nowrap;
 }

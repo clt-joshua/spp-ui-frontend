@@ -1,99 +1,71 @@
-# CI와 Visual Baseline 운영 기준
+# CI와 시각 검토 운영 기준
 
-상태: `ACCEPTED / IMPLEMENTED` — 2026-08-25 기본안 승인
+상태: `ACCEPTED / AMENDED` — 2026-09-02 Linux visual gate 폐기
 
 ## 결론
 
-GitHub Actions와 Playwright의 repository-owned screenshot baseline을 채택한다. 초기에는 SaaS 비용과 vendor lock-in 없이 실제 Vite 앱 흐름을 검증하고, baseline 규모나 디자인 리뷰 참여자가 늘어날 때 Chromatic 또는 Argos를 선택적으로 추가한다.
+GitHub Actions의 blocking gate는 `quality`와 Chromium/Firefox/WebKit 실제 Vite E2E다. Chromium/Linux repository screenshot baseline은 제품 지원 환경에 필요하지 않아 완료·병합 기준에서 제거했다.
 
-## 권장 CI 구조
+과거 6개 PNG는 감사 당시의 역사적 증거로 남기지만 현재 시각 권위, 구조 필수 파일, CI gate 또는 갱신 의무가 아니다. 향후 pixel regression을 다시 도입하려면 실제 지원 OS·browser·font, 승인 책임자와 변경 절차를 새 ADR로 먼저 결정한다.
+
+## CI 구조
 
 ### 1. `quality` — 모든 PR의 필수 gate
 
 - Ubuntu runner
 - Node.js 24.x, pnpm 10.33.x
 - `pnpm install --frozen-lockfile`
-- `pnpm validate:structure`
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm build`
-- 향후 unit/component test가 생기면 같은 job 또는 별도 `test` job에서 실행
-
-GitHub의 `setup-node`는 Node version을 명시하고 lockfile을 commit하는 구성을 권장한다. pnpm 10은 `pnpm/action-setup`을 사용하고, store만 cache하며 `node_modules`는 cache하지 않는다.
+- `pnpm verify`: structure, lint, typecheck, unit, Vite build, Storybook build
+- actionlint로 workflow 구문 검증
 
 ### 2. `e2e` — 실제 앱 흐름 gate
 
 - `quality` 성공 후 실행
 - Playwright가 Vite preview server를 직접 시작
-- Chromium, Firefox, WebKit에서 keyboard/focus/form/Portal 동작 검증
-- CI worker는 안정성을 위해 1개로 시작하고 suite가 커질 때 shard 사용
-- 실패 시 HTML report, trace, screenshot을 14일 artifact로 보관
+- Chromium, Firefox, WebKit에서 keyboard/focus/form/Portal/Theme/Chip 동작 검증
+- browser별 job을 blocking으로 유지
+- 실패 시 HTML report, trace, screenshot, video를 14일 artifact로 보관
 
-브라우저별 동작 검증은 blocking으로 두되, browser rendering 차이 때문에 모든 browser의 pixel baseline을 처음부터 blocking으로 만들지는 않는다.
+CI의 Linux container는 브라우저 실행 인프라일 뿐 제품의 별도 Linux 시각 버전이나 pixel authority를 뜻하지 않는다.
 
-### 3. `visual` — Chromium/Linux의 재현 가능한 pixel gate
+## 지원 환경 시각 검토
 
-- `mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e`로 Playwright와 OS image를 digest까지 고정
-- Chromium 한 종류만 blocking screenshot baseline으로 사용
-- self-hosted Roboto/Material Icons를 사용하고 외부 font 요청 금지
-- animation 종료, font load, Theme 적용 readback 뒤 `toHaveScreenshot()` 실행
-- 실패 시 expected/actual/diff와 HTML report 업로드
+- UI 변경은 실제 지원 대상 환경에서 직접 확인한다.
+- 375×812, 768×1024, 1440×900 viewport와 Light/Dark/High의 대표 상태를 확인한다.
+- geometry, typography, token mapping과 상태 전환은 가능한 범위에서 실제 Vite E2E computed readback으로 고정한다.
+- screenshot이 필요하면 변경 증거로 첨부할 수 있지만 repository golden과 pixel blocking gate로 취급하지 않는다.
+- reduced motion, screen reader, forced-colors는 pixel diff가 아니라 의미·상태·announcement 결과로 검증한다.
 
-Playwright는 host OS, browser, font, 설정 차이가 screenshot에 영향을 준다고 명시하므로 baseline 생성과 CI 비교는 반드시 같은 container에서 수행한다.
+## 접근성 실환경 검증과의 관계
 
-## Baseline 보관 정책
+Linux screenshot baseline을 제거해도 접근성 검증은 대체되거나 약화되지 않는다.
 
-권장안:
-
-- baseline은 test 옆의 snapshot directory에 저장하고 Git에서 리뷰한다.
-- 우선 일반 Git으로 시작하고 repository baseline 총량이 25MB를 넘을 때 Git LFS 또는 외부 visual service를 재평가한다.
-- baseline 갱신은 `pnpm test:visual:update` 같은 명시적 명령에서만 허용한다.
-- baseline 변경 PR은 실제 UI 변경과 원인을 설명하고 expected/actual/diff를 검토한다.
-- 전체 suite의 전역 허용 오차를 높이지 않는다. 불가피한 차이는 해당 case에서만 근거와 함께 제한한다.
-- 시간, caret, scrollbar, 비결정 데이터는 fixture로 바꾸기보다 screenshot 영역에서 안정화하거나 mask하되 실제 interaction 검증은 별도로 유지한다.
-
-초기 baseline 범위:
-
-- 문서에 확정된 375×812, 768×1024, 1440×900 viewport
-- Material Purple/Light/Standard 등 확정된 6개 대표 Theme pair
-- 모든 조합을 무작정 곱하지 않고 component별 핵심 state와 앱 대표 흐름의 중요한 frame만 선정
-- reduced motion과 forced colors는 별도 의미 검증을 수행하며 일반 pixel baseline과 혼합하지 않음
-
-## 대안 비교
-
-| 선택지 | 장점 | 단점 | 판단 |
-|---|---|---|---|
-| Playwright + Git baseline | 무료, 실제 앱 흐름, vendor-neutral, 재현 환경 직접 통제 | 디자이너 리뷰 UI가 단순하고 baseline이 커질 수 있음 | 초기 권장 |
-| Chromatic/Argos 병행 | 승인 UI, 댓글, 히스토리, Storybook 친화적 | 외부 서비스·비용·권한·vendor 의존 | 팀 확대 후 선택 |
-| 실패 artifact만 보관 | 저장소가 작고 설정이 단순 | 이전 baseline 권위가 없고 승인 추적이 약함 | 비권장 |
+- screen reader: Snackbar status, 오류·설명 갱신, mixed/selected/expanded 상태, composite widget과 modal focus 문맥처럼 accessibility tree만으로 실제 announcement를 확정할 수 없는 흐름을 대표 조합에서 확인한다.
+- forced-colors: Windows Contrast Themes를 지원하는 동안 user agent가 author color와 shadow를 대체한 뒤에도 control 경계, focus, selected, disabled, error와 icon이 구분되는지 확인한다.
+- 단순 native Button처럼 role/name/state를 browser accessibility tree와 keyboard flow로 충분히 판정할 수 있는 항목에는 실제 screen reader 수동 검사를 일괄 요구하지 않는다.
 
 ## 확정된 운영 결정
 
-1. `GitHub Actions + Playwright Chromium/Linux Git baseline`을 채택한다.
-2. baseline 총량이 25MB를 넘으면 Git LFS 또는 SaaS visual review를 재검토한다.
-3. CI failure artifact는 14일 보관한다.
-4. workflow는 `quality` 성공 후 browser별 `e2e`와 `visual`을 병렬 blocking gate로 실행한다.
-5. workflow와 Playwright container는 version tag뿐 아니라 image digest까지 고정한다.
-6. GitHub container에서 root로 실행되는 Firefox는 browser flow의 `HOME=/root` 소유권 계약을 유지한다.
-7. 실패 증거 업로드는 Node 24 action runtime을 사용하는 `actions/upload-artifact@v7`을 사용한다.
+1. `quality`와 Chromium/Firefox/WebKit E2E를 blocking gate로 사용한다.
+2. Chromium/Linux screenshot baseline과 visual CI job을 사용하지 않는다.
+3. E2E failure artifact는 14일 보관한다.
+4. 과거 visual spec과 PNG는 역사적 증거로만 보존하며 validator와 public scripts에서 제외한다.
+5. 새 pixel baseline은 새 ADR 없이 다시 필수 기준으로 추가하지 않는다.
 
 ## 현재 구현과 증거
 
 - Workflow: `.github/workflows/ci.yml`
 - Playwright config: `playwright.config.ts`
-- Local pinned-container runner: `scripts/run-playwright-container.mjs`
-- E2E: Chromium/Firefox/WebKit 각각 5건, 총 15건 PASS
-- Visual: 375×812, 768×1024, 1440×900의 Light/Dark 총 6 baseline 생성 및 즉시 재비교 PASS
-- Baseline 총량: 743,906 bytes
-- Workflow validation: actionlint 1.7.12 PASS
-- Remote CI: container HOME 교정 후 Quality, Chromium/Firefox/WebKit E2E, Chromium/Linux Visual PASS
-
-현재 golden은 실제 Theme Runtime의 system Light/Dark 해석과 Theme Lab 대표 흐름을 다룬다. 4개 preset 전체 조합을 golden으로 늘리지 않고, 기본 Material preset의 모바일·태블릿·데스크톱 Light/Dark 6장을 시각 회귀 authority로 유지한다. preset별 색상 생성은 unit/E2E로 보조한다.
+- 선택적 3-browser container runner: `scripts/run-playwright-container.mjs`
+- E2E: Chromium/Firefox/WebKit 각각 10건, 총 30건 PASS
+- Visual job/public scripts/required snapshot validation: 제거됨
+- 과거 Light/Dark × 3 viewport PNG: 비권위 역사 자료로 보존
 
 ## 공식 근거
 
-- [Vite Getting Started](https://vite.dev/guide/)
 - [GitHub setup-node](https://github.com/actions/setup-node)
 - [pnpm/action-setup](https://github.com/pnpm/action-setup)
 - [Playwright CI](https://playwright.dev/docs/ci)
-- [Playwright Visual Comparisons](https://playwright.dev/docs/test-snapshots)
+- [WCAG 2.2 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages)
+- [CSS Color Adjustment: Forced Color Palettes](https://www.w3.org/TR/css-color-adjust-1/#forced)
+- [Windows High Contrast Mode](https://learn.microsoft.com/en-us/fluent-ui/web-components/design-system/high-contrast)

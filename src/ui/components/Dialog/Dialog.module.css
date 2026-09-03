@@ -22,7 +22,7 @@
   z-index: 31;
   display: grid;
   place-items: center;
-  padding: 1.5rem;
+  padding: var(--md-dialog-viewport-space);
 }
 
 .popup {
@@ -84,7 +84,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--md-dialog-heading-gap);
 }
 
 .heading,
@@ -100,7 +100,9 @@
   font-family: var(--md-dialog-headline-font);
   font-size: var(--md-dialog-headline-size);
   font-weight: var(--md-dialog-headline-weight);
+  letter-spacing: var(--md-dialog-headline-tracking);
   line-height: var(--md-dialog-headline-line-height);
+  text-decoration: var(--md-dialog-headline-decoration);
 }
 
 .description {
@@ -109,7 +111,9 @@
   font-family: var(--md-dialog-supporting-text-font);
   font-size: var(--md-dialog-supporting-text-size);
   font-weight: var(--md-dialog-supporting-text-weight);
+  letter-spacing: var(--md-dialog-supporting-text-tracking);
   line-height: var(--md-dialog-supporting-text-line-height);
+  text-decoration: var(--md-dialog-supporting-text-decoration);
 }
 
 .content {
@@ -120,7 +124,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: var(--md-dialog-actions-gap);
   opacity: 1;
   transition: opacity var(--md-dialog-open-actions-duration) linear var(--md-dialog-open-actions-delay);
 }

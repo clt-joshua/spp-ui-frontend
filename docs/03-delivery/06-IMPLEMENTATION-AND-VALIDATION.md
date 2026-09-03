@@ -21,7 +21,7 @@ compliance_required: true
 - Material Web `docs@main` 문서 목록
 - v2.5.0 commit 고정 URL
 - `spec-baseline.ts`
-- 8개 컴포넌트의 빈 `M3ComplianceRecord`
+- 10개 컴포넌트의 빈 `M3ComplianceRecord`
 
 완료 게이트:
 
@@ -108,10 +108,11 @@ compliance_required: true
 2. IconButton
 3. TextField
 4. Checkbox
-5. Select
-6. Menu
-7. Dialog
-8. Snackbar
+5. Chip
+6. Select
+7. Menu
+8. Dialog
+9. Snackbar
 
 각 컴포넌트는 다음 세로 슬라이스를 한 번에 끝낸다.
 
@@ -123,6 +124,7 @@ official source review
 → visual and interaction implementation
 → Storybook state matrix
 → unit/a11y tests
+→ `/components` verification matrix
 → representative app flow
 → M3ComplianceRecord PASS
 ```
@@ -183,17 +185,19 @@ official source review
 ### Representative E2E
 
 1. Theme picker에서 custom seed를 preview하고 적용한 뒤 reload한다.
-2. 키보드로 Select를 열고 option을 선택한다.
-3. Menu와 submenu를 탐색하고 trigger로 focus가 복원되는지 확인한다.
-4. Dialog를 열고 focus trap, Escape/backdrop 정책, final focus를 확인한다.
-5. TextField validation error와 described-by 연결을 확인한다.
-6. Snackbar action을 실행하고 동일 id update를 확인한다.
+2. `/components`로 실제 navigation하고 모든 공개 컴포넌트 그룹과 주요 상태가 보이는지 확인한다.
+3. 검증 페이지에서 selected/remove/Dialog focus return/Snackbar와 좁은 viewport overflow를 확인한다.
+4. 키보드로 Select를 열고 option을 선택한다.
+5. Menu와 submenu를 탐색하고 trigger로 focus가 복원되는지 확인한다.
+6. Dialog를 열고 focus trap, Escape/backdrop 정책, final focus를 확인한다.
+7. TextField validation error와 described-by 연결을 확인한다.
+8. Snackbar action을 실행하고 동일 id update를 확인한다.
 
-### Visual regression
+### 지원 환경 시각 검토
 
 Viewport: 375×812, 768×1024, 1440×900.
 
-Theme 조합은 모든 조합의 Cartesian product 대신 다음 대표 쌍을 고정한다.
+Linux 전용 screenshot golden은 사용하지 않는다. Theme 조합은 모든 조합의 Cartesian product 대신 다음 대표 쌍을 지원 대상 환경에서 검토하고, 중요한 geometry·typography·state는 E2E computed readback으로 고정한다.
 
 - Material Purple / Light / Standard
 - Ocean / Dark / Standard
@@ -216,14 +220,16 @@ Theme 조합은 모든 조합의 Cartesian product 대신 다음 대표 쌍을 �
 
 ## 완료 체크리스트
 
-- [ ] 8개 공개 컴포넌트가 `src/ui/index.ts`에서 export된다.
+- [x] 13개 공개 컴포넌트가 `src/ui/index.ts`에서 export된다.
 - [ ] 모든 컴포넌트에 main/snapshot source가 연결된다.
 - [ ] Material Web 문서가 없는 항목은 대체 공식 근거가 있다.
 - [ ] Theme 변경이 Portal까지 원자적으로 반영된다.
 - [ ] state layer, ripple, focus, motion이 공통 primitive를 사용한다.
-- [ ] reduced motion과 forced colors를 확인했다.
+- [ ] reduced motion과, Windows Contrast Themes 지원을 유지하는 경우 forced colors를 확인했다.
+- [ ] 동적 status와 복합 위젯에 적용 가능한 screen reader 흐름을 확인했다.
 - [ ] keyboard 대표 흐름을 실제 브라우저에서 통과했다.
 - [ ] Storybook만이 아니라 앱 진입점 흐름이 통과했다.
+- [ ] 모든 공개 컴포넌트가 `/components`의 상태 행렬과 실제 상호작용에 노출된다.
 - [ ] 모든 `M3ComplianceRecord`가 `PASS`다.
 
 ## 기존 프로젝트 도입

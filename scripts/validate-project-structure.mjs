@@ -33,6 +33,8 @@ const requiredFiles = [
   'docs/project-memory/DECISION-INDEX.md',
   'docs/project-memory/OPEN-QUESTIONS.md',
   'src/main.tsx',
+  'src/pages/ComponentGalleryPage.tsx',
+  'src/pages/ComponentGalleryPage.module.css',
   'src/ui/index.ts',
   'src/ui/compliance/spec-baseline.ts',
   'src/ui/compliance/m3-component-manifest.ts',
@@ -46,15 +48,9 @@ const requiredFiles = [
   'vitest.config.ts',
   'tests/unit/theme-runtime.test.ts',
   'tests/unit/components.test.tsx',
+  'tests/unit/compliance.test.ts',
   'scripts/run-playwright-container.mjs',
   'tests/e2e/foundation.spec.ts',
-  'tests/visual/foundation.visual.spec.ts',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-mobile-375x812-light.png',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-mobile-375x812-dark.png',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-tablet-768x1024-light.png',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-tablet-768x1024-dark.png',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-desktop-1440x900-light.png',
-  'tests/visual/foundation.visual.spec.ts-snapshots/foundation-desktop-1440x900-dark.png',
 ];
 
 const requiredDirectories = [
@@ -64,17 +60,21 @@ const requiredDirectories = [
   'src/ui/interactions',
   'src/ui/icons',
   'src/ui/styles',
+  'src/pages',
   'src/ui/components/Button',
   'src/ui/components/IconButton',
   'src/ui/components/TextField',
   'src/ui/components/Checkbox',
+  'src/ui/components/Radio',
+  'src/ui/components/Tabs',
+  'src/ui/components/SegmentedButton',
+  'src/ui/components/Switch',
+  'src/ui/components/Chip',
   'src/ui/components/Select',
   'src/ui/components/Dialog',
   'src/ui/components/Menu',
   'src/ui/components/Snackbar',
   'tests/e2e',
-  'tests/visual',
-  'tests/visual/foundation.visual.spec.ts-snapshots',
 ];
 
 for (const file of requiredFiles) {
@@ -172,11 +172,29 @@ const manifestPath = join(
 );
 if (existsSync(manifestPath)) {
   const manifest = readFileSync(manifestPath, 'utf8');
+  for (const field of [
+    'm3WebUrl',
+    'materialWebMainDocs',
+    'materialWebSnapshotDocs',
+    'verifiedAt',
+    'checkedAreas',
+    'deviations',
+    'status',
+  ]) {
+    if (!manifest.includes(`${field}:`)) {
+      errors.push(`MVP manifest is missing governance field: ${field}`);
+    }
+  }
   for (const component of [
     'Button',
     'IconButton',
     'TextField',
     'Checkbox',
+    'Radio',
+    'Tabs',
+    'SegmentedButton',
+    'Switch',
+    'Chip',
     'Select',
     'Dialog',
     'Menu',
@@ -186,6 +204,33 @@ if (existsSync(manifestPath)) {
       errors.push(`Missing MVP component in manifest: ${component}`);
     }
   }
+}
+
+function collectSourceFiles(directory) {
+  const files = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const absolutePath = join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...collectSourceFiles(absolutePath));
+    } else if (entry.isFile() && /\.[cm]?[jt]sx?$/u.test(entry.name)) {
+      files.push(absolutePath);
+    }
+  }
+  return files;
+}
+
+for (const sourceFile of collectSourceFiles(join(projectRoot, 'src'))) {
+  const sourcePath = relative(projectRoot, sourceFile).replaceAll('\\', '/');
+  if (sourcePath.startsWith('src/ui/')) continue;
+  const source = readFileSync(sourceFile, 'utf8');
+  if (/from\s+['"](?:@\/ui\/|(?:\.\.\/|\.\/)ui\/)/u.test(source)) {
+    errors.push(`Application code bypasses src/ui/index.ts: ${sourcePath}`);
+  }
+}
+
+const publicUiPath = join(projectRoot, 'src/ui/index.ts');
+if (existsSync(publicUiPath) && readFileSync(publicUiPath, 'utf8').includes('DialogPrimitive')) {
+  errors.push('Public UI entry point exposes the internal Base UI Dialog namespace.');
 }
 
 const workflowPath = join(projectRoot, '.github/workflows/ci.yml');
@@ -225,26 +270,6 @@ if (existsSync(workspaceConfigPath)) {
   }
 }
 
-const snapshotDirectory = join(
-  projectRoot,
-  'tests/visual/foundation.visual.spec.ts-snapshots',
-);
-if (existsSync(snapshotDirectory)) {
-  const snapshots = readdirSync(snapshotDirectory).filter((file) =>
-    file.endsWith('.png'),
-  );
-  if (snapshots.length !== 6) {
-    errors.push(`Expected 6 visual baselines, found ${snapshots.length}.`);
-  }
-  const totalBytes = snapshots.reduce(
-    (sum, file) => sum + statSync(join(snapshotDirectory, file)).size,
-    0,
-  );
-  if (totalBytes > 25 * 1024 * 1024) {
-    errors.push('Visual baselines exceed the approved 25MB review threshold.');
-  }
-}
-
 if (errors.length > 0) {
   console.error(`Project structure validation failed with ${errors.length} error(s):`);
   for (const error of errors) {
@@ -256,5 +281,5 @@ if (errors.length > 0) {
   console.log(`- Required files: ${requiredFiles.length}`);
   console.log(`- Required directories: ${requiredDirectories.length}`);
   console.log(`- Markdown files checked: ${markdownFiles.length}`);
-  console.log('- MVP manifest entries: 8');
+  console.log('- Component manifest entries: 13');
 }

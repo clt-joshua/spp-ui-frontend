@@ -1,4 +1,8 @@
-import { DEFAULT_THEME_CONFIG, getThemePreset } from './presets';
+import {
+  DEFAULT_THEME_CONFIG,
+  getMigratedThemePreset,
+  getThemePreset,
+} from './presets';
 import { isValidSeedColor } from './color-engine';
 import type { ThemeConfig } from './types';
 
@@ -23,9 +27,16 @@ export function normalizeThemeConfig(value: unknown): ThemeConfig {
   }
 
   const preset = getThemePreset(candidate.themeId);
+  const migratedPreset = getMigratedThemePreset(
+    candidate.themeId,
+    candidate.seedColor,
+  );
   return {
-    themeId: preset?.seedColor === candidate.seedColor ? preset.id : 'custom',
-    seedColor: candidate.seedColor,
+    themeId:
+      preset?.seedColor === candidate.seedColor
+        ? preset.id
+        : migratedPreset?.id ?? 'custom',
+    seedColor: migratedPreset?.seedColor ?? candidate.seedColor,
     mode: candidate.mode as ThemeConfig['mode'],
     contrast: candidate.contrast as ThemeConfig['contrast'],
     variant: 'tonalSpot',

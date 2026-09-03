@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { generateTheme, isValidSeedColor } from '../../src/ui/theme/color-engine';
 import { applyThemeToElement } from '../../src/ui/theme/dom-theme';
-import { DEFAULT_THEME_CONFIG } from '../../src/ui/theme/presets';
+import {
+  DEFAULT_THEME_CONFIG,
+  usesFigmaSystemColorPreset,
+} from '../../src/ui/theme/presets';
 import {
   normalizeThemeConfig,
   readStoredTheme,
@@ -23,6 +26,13 @@ describe('theme runtime', () => {
     expect(isValidSeedColor('00639B')).toBe(false);
     expect(normalizeThemeConfig({ seedColor: 'invalid' })).toBe(DEFAULT_THEME_CONFIG);
     expect(normalizeThemeConfig({ ...DEFAULT_THEME_CONFIG, seedColor: '#00639B' }).themeId).toBe('custom');
+    expect(
+      normalizeThemeConfig({
+        ...DEFAULT_THEME_CONFIG,
+        themeId: 'material',
+        seedColor: '#6750A4',
+      }),
+    ).toMatchObject({ themeId: 'purple', seedColor: '#794F9E' });
   });
 
   it('round-trips storage and applies portal-safe document tokens', () => {
@@ -34,9 +44,32 @@ describe('theme runtime', () => {
     applyThemeToElement(document.documentElement, DEFAULT_THEME_CONFIG, 'dark', roles);
     const firstApply = document.documentElement.style.cssText;
     applyThemeToElement(document.documentElement, DEFAULT_THEME_CONFIG, 'dark', roles);
-    expect(document.documentElement.dataset.themeId).toBe('material');
+    expect(document.documentElement.dataset.themeId).toBe('normal');
     expect(document.documentElement.style.getPropertyValue('--md-sys-color-primary')).toBe(roles.primary);
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-custom-container')).toBe(roles.secondaryContainer);
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-on-custom-container')).toBe(roles.onSecondaryContainer);
     expect(document.documentElement.style.colorScheme).toBe('dark');
     expect(document.documentElement.style.cssText).toBe(firstApply);
+  });
+
+  it('uses exact Figma preset aliases only for standard light mode', () => {
+    expect(usesFigmaSystemColorPreset(DEFAULT_THEME_CONFIG, 'light')).toBe(true);
+    expect(usesFigmaSystemColorPreset(DEFAULT_THEME_CONFIG, 'dark')).toBe(false);
+    expect(
+      usesFigmaSystemColorPreset(
+        { ...DEFAULT_THEME_CONFIG, contrast: 'high' },
+        'light',
+      ),
+    ).toBe(false);
+
+    const roles = generateTheme(DEFAULT_THEME_CONFIG.seedColor, 'standard').light;
+    applyThemeToElement(document.documentElement, DEFAULT_THEME_CONFIG, 'light', roles);
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-primary')).toBe(roles.primary);
+
+    applyThemeToElement(document.documentElement, DEFAULT_THEME_CONFIG, 'light', null);
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-primary')).toBe('');
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-custom-container')).toBe('');
+    expect(document.documentElement.style.getPropertyValue('--md-sys-color-on-custom-container')).toBe('');
+    expect(document.documentElement.dataset.themeId).toBe('normal');
   });
 });

@@ -21,14 +21,12 @@
     "pretest:e2e": "pnpm build",
     "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit",
     "test:e2e:container": "node ./scripts/run-playwright-container.mjs e2e",
-    "test:visual": "node ./scripts/run-playwright-container.mjs visual",
-    "test:visual:update": "node ./scripts/run-playwright-container.mjs visual-update",
     "validate:structure": "node ./scripts/validate-project-structure.mjs",
     "verify": "pnpm validate:structure && pnpm lint && pnpm typecheck && pnpm test:unit && pnpm build && pnpm build:storybook"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
-    "@fontsource-variable/roboto": "5.3.0",
+    "@fontsource-variable/noto-sans": "5.3.0",
     "@material-design-icons/font": "0.14.15",
     "@material/material-color-utilities": "0.4.0",
     "react": "19.2.8",

@@ -53,7 +53,8 @@ export function usePressableInteraction({
       if (disabled) {
         return;
       }
-      const rect = target.getBoundingClientRect();
+      const rippleRoot = target.querySelector<HTMLElement>('[data-slot="ripple"]');
+      const rect = rippleRoot?.getBoundingClientRect() ?? target.getBoundingClientRect();
       const maxDimension = Math.max(rect.height, rect.width);
       const softEdgeSize = Math.max(
         SOFT_EDGE_CONTAINER_RATIO * maxDimension,

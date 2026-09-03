@@ -1,0 +1,250 @@
+.group {
+  display: grid;
+  gap: var(--md-radio-group-label-supporting-gap);
+  color: var(--md-radio-group-label-text-color);
+}
+
+.groupLabel {
+  font-family: var(--md-radio-group-label-text-font);
+  font-size: var(--md-radio-group-label-text-size);
+  font-weight: var(--md-radio-group-label-text-weight);
+  letter-spacing: var(--md-radio-group-label-text-tracking);
+  line-height: var(--md-radio-group-label-text-line-height);
+  text-decoration: var(--md-radio-group-label-text-decoration);
+}
+
+.groupSupporting {
+  color: var(--md-radio-group-supporting-text-color);
+  font-family: var(--md-radio-group-supporting-text-font);
+  font-size: var(--md-radio-group-supporting-text-size);
+  font-weight: var(--md-radio-group-supporting-text-weight);
+  letter-spacing: var(--md-radio-group-supporting-text-tracking);
+  line-height: var(--md-radio-group-supporting-text-line-height);
+  text-decoration: var(--md-radio-group-supporting-text-decoration);
+}
+
+.options {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--md-radio-group-option-gap);
+}
+
+.group[data-orientation='vertical'] .options {
+  flex-direction: column;
+}
+
+.group[data-orientation='horizontal'] .options {
+  flex-flow: row wrap;
+}
+
+.root {
+  display: inline-grid;
+  min-block-size: var(--md-radio-touch-target-size);
+  grid-template-columns: var(--md-radio-touch-target-size) minmax(0, 1fr);
+  align-items: start;
+  color: var(--md-radio-label-text-color);
+}
+
+.root[data-size='large'] {
+  --radio-icon-size: var(--md-radio-large-icon-size);
+  --radio-state-layer-padding: var(--md-radio-large-state-layer-padding);
+  --radio-state-layer-size: var(--md-radio-large-state-layer-size);
+}
+
+.root[data-size='medium'] {
+  --radio-icon-size: var(--md-radio-medium-icon-size);
+  --radio-state-layer-padding: var(--md-radio-medium-state-layer-padding);
+  --radio-state-layer-size: var(--md-radio-medium-state-layer-size);
+}
+
+.root[data-size='small'] {
+  --radio-icon-size: var(--md-radio-small-icon-size);
+  --radio-state-layer-padding: var(--md-radio-small-state-layer-padding);
+  --radio-state-layer-size: var(--md-radio-small-state-layer-size);
+}
+
+.control {
+  --md-interaction-focus-state-layer-opacity: 1;
+  --md-interaction-hover-state-layer-opacity: 1;
+  --md-interaction-motion-duration: var(--md-radio-state-layer-motion-duration);
+  --md-interaction-motion-easing: var(--md-radio-state-layer-motion-easing);
+  --md-interaction-pressed-state-layer-opacity: 1;
+  --md-interaction-state-layer-shape: var(--md-radio-state-layer-shape);
+  --md-ripple-pressed-opacity: var(--md-radio-ripple-opacity);
+  --md-ripple-shape: var(--md-radio-state-layer-shape);
+  --md3-ripple-color: currentColor;
+  --md3-state-layer-color: transparent;
+  position: relative;
+  display: inline-grid;
+  inline-size: var(--radio-icon-size);
+  block-size: var(--radio-icon-size);
+  place-items: center;
+  margin: calc((var(--md-radio-label-text-line-height) - var(--radio-icon-size)) / 2)
+    calc((var(--md-radio-touch-target-size) - var(--radio-icon-size)) / 2) 0;
+  border: 0;
+  border-radius: var(--md-radio-state-layer-shape);
+  outline: 0;
+  color: var(--md-radio-unselected-icon-color);
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control[data-checked] {
+  color: var(--md-radio-selected-icon-color);
+}
+
+.control:hover:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-radio-hover-state-layer-color);
+}
+
+.control:focus-visible:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-radio-focus-state-layer-color);
+}
+
+.control[data-pressed]:not([data-disabled]) {
+  --md3-state-layer-color: var(--md-radio-pressed-state-layer-color);
+}
+
+.control[data-disabled] {
+  color: var(--md-radio-disabled-icon-color);
+  cursor: default;
+  opacity: var(--md-radio-disabled-icon-opacity);
+}
+
+.touchTarget {
+  position: absolute;
+  z-index: 0;
+  inline-size: var(--md-radio-touch-target-size);
+  block-size: var(--md-radio-touch-target-size);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.control > :global([data-slot='state-layer']),
+.control > :global([data-slot='ripple']) {
+  position: absolute;
+  box-sizing: content-box;
+  inline-size: calc(var(--radio-state-layer-size) - 2 * var(--radio-state-layer-padding));
+  block-size: calc(var(--radio-state-layer-size) - 2 * var(--radio-state-layer-padding));
+  padding: var(--radio-state-layer-padding);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.control > :global([data-slot='focus-ring']) {
+  position: absolute;
+  inline-size: var(--md-radio-focus-ring-size);
+  block-size: var(--md-radio-focus-ring-size);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+}
+
+.icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  inline-size: var(--radio-icon-size);
+  block-size: var(--radio-icon-size);
+  overflow: visible;
+  fill: currentColor;
+}
+
+.outer {
+  transition: fill var(--md-radio-selection-exit-duration) linear;
+}
+
+.inner {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center;
+  transition:
+    opacity var(--md-radio-selection-exit-duration) linear,
+    transform var(--md-radio-selection-exit-duration) linear;
+}
+
+.control[data-checked] .inner {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity var(--md-radio-selection-enter-duration) linear,
+    transform var(--md-radio-selection-enter-duration) var(--md-radio-selection-enter-easing);
+}
+
+.text {
+  display: grid;
+  min-block-size: var(--md-radio-touch-target-size);
+  align-content: start;
+}
+
+.label {
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--md-radio-label-text-font);
+  font-size: var(--md-radio-label-text-size);
+  font-weight: var(--md-radio-label-text-weight);
+  letter-spacing: var(--md-radio-label-text-tracking);
+  line-height: var(--md-radio-label-text-line-height);
+  text-decoration: var(--md-radio-label-text-decoration);
+}
+
+.supporting {
+  color: var(--md-radio-supporting-text-color);
+  font-family: var(--md-radio-supporting-text-font);
+  font-size: var(--md-radio-supporting-text-size);
+  font-weight: var(--md-radio-supporting-text-weight);
+  letter-spacing: var(--md-radio-supporting-text-tracking);
+  line-height: var(--md-radio-supporting-text-line-height);
+  text-decoration: var(--md-radio-supporting-text-decoration);
+}
+
+.root:has(.control[data-disabled]) {
+  color: color-mix(
+    in srgb,
+    var(--md-radio-label-text-color) var(--md-radio-disabled-icon-opacity),
+    transparent
+  );
+}
+
+.root:has(.control[data-disabled]) .label {
+  cursor: default;
+}
+
+.root:has(.control[data-disabled]) .supporting {
+  color: inherit;
+}
+
+.control[data-disabled] :is(.outer, .inner) {
+  transition-duration: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outer,
+  .inner {
+    transition-duration: 0s;
+  }
+}
+
+@media (forced-colors: active) {
+  .root:has(.control[data-disabled]) {
+    color: GrayText;
+  }
+
+  .control {
+    color: CanvasText;
+    forced-color-adjust: auto;
+  }
+
+  .control[data-checked] {
+    color: Highlight;
+  }
+
+  .control[data-disabled] {
+    color: GrayText;
+    opacity: 1;
+  }
+}

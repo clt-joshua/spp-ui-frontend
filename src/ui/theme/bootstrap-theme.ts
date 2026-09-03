@@ -1,5 +1,6 @@
 import { generateTheme } from './color-engine';
 import { applyThemeToElement } from './dom-theme';
+import { usesFigmaSystemColorPreset } from './presets';
 import { readStoredTheme } from './storage';
 import type { ResolvedThemeMode } from './types';
 
@@ -11,11 +12,13 @@ export function bootstrapTheme() {
         ? 'dark'
         : 'light'
       : config.mode;
-  const theme = generateTheme(config.seedColor, config.contrast);
+  const roles = usesFigmaSystemColorPreset(config, resolvedMode)
+    ? null
+    : generateTheme(config.seedColor, config.contrast)[resolvedMode];
   applyThemeToElement(
     document.documentElement,
     config,
     resolvedMode,
-    theme[resolvedMode],
+    roles,
   );
 }

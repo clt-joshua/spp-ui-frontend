@@ -5,6 +5,9 @@
 .brandMark { inline-size: 2.5rem; block-size: 2.5rem; border-radius: var(--md-sys-shape-corner-medium); }
 .topActions, .settingsHeading, .settingsActions, .formActions, .iconSamples { display: flex; align-items: center; }
 .topActions { gap: 1rem; }
+.galleryLink { padding: 0.5rem 0.875rem; border-radius: var(--md-sys-shape-corner-full); color: var(--md-sys-color-on-surface-variant); font-size: var(--md-sys-typescale-label-large-size); font-weight: var(--md-sys-typescale-label-large-weight); text-decoration: none; }
+.galleryLink:hover { background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface); }
+.galleryLink:focus-visible { outline: 0.1875rem solid var(--md-sys-color-secondary); outline-offset: 0.125rem; }
 .runtimeStatus { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--md-sys-color-on-surface-variant); font-size: var(--md-sys-typescale-body-medium-size); }
 .statusDot { inline-size: 0.5rem; block-size: 0.5rem; border-radius: 50%; background: var(--md-sys-color-primary); box-shadow: 0 0 0 0.25rem var(--md-sys-color-primary-container); }
 .layout { display: grid; grid-template-columns: minmax(19rem, 23rem) minmax(0, 1fr); }
@@ -47,6 +50,7 @@
 .formActions { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
 .buttonSamples { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-block-start: 1.5rem; }
 .iconSamples { gap: 0.5rem; margin-block-start: 1rem; }
+.chipSamples { display: flex; flex-wrap: wrap; align-items: center; gap: var(--md-chip-set-row-gap) var(--md-chip-set-column-gap); margin-block-start: 1rem; }
 .roleGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-block-start: 1.5rem; }
 .roleGrid > div { display: flex; min-block-size: 5rem; flex-direction: column; justify-content: space-between; padding: 0.75rem; border-radius: var(--md-sys-shape-corner-small); font-size: var(--md-sys-typescale-body-medium-size); }
 .roleGrid span { font-weight: var(--md-ref-typeface-weight-regular); }

@@ -119,6 +119,13 @@ interface M3ComplianceRecord {
 
 Material Web 문서가 없는 Snackbar는 `unavailable`을 기록하고 M3 Snackbar 문서와 WAI-ARIA/WCAG 근거를 제공해야 한다. 문서 부재만으로 `BLOCKED`가 되지는 않지만 대체 공식 근거가 없으면 `PASS`가 될 수 없다.
 
+## 접근성 실환경 증거 정책
+
+- 실제 screen reader 사용은 모든 컴포넌트에 일괄 적용하는 독립 성공 기준이 아니다. native semantics와 accessibility tree로 충분히 판정 가능한 단순 control은 자동 role/name/state 및 keyboard 검증을 사용할 수 있다.
+- 실제 screen reader 검증은 Snackbar status announcement, 동적으로 나타나는 오류·설명, mixed/selected/expanded 상태, composite widget의 포커스 문맥과 modal 진입·복귀처럼 DOM·axe·screenshot만으로 사용자가 듣는 결과를 확정할 수 없는 대표 흐름에 적용한다.
+- Windows forced-colors 검증은 Windows Contrast Themes를 지원 대상으로 유지하는 동안 적용한다. user agent가 author color, shadow와 일부 배경을 강제로 대체하므로 control 경계, focus indicator, selected/disabled/error 구분과 icon 가시성을 실제 모드에서 확인한다.
+- Linux 전용 pixel baseline은 M3/WCAG 준수 조건이 아니며 2026-09-02부터 병합·완료 gate에서 제외한다. 과거 screenshot은 역사적 증거일 뿐 현재 시각 권위가 아니다.
+
 ## 병합 게이트
 
 - [ ] 라이브·snapshot 공식 URL이 기록되어 있다.
@@ -126,5 +133,7 @@ Material Web 문서가 없는 Snackbar는 `unavailable`을 기록하고 M3 Snack
 - [ ] anatomy부터 accessibility까지 적용 가능한 영역을 확인했다.
 - [ ] 대표 사용자 흐름으로 실제 동작을 검증했다.
 - [ ] Light/Dark/High contrast와 reduced motion을 확인했다.
+- [ ] 적용 가능한 동적 상태·복합 위젯의 screen reader announcement를 확인했다.
+- [ ] Windows Contrast Themes 지원을 유지하는 경우 forced-colors 상태 구분을 확인했다.
 - [ ] `M3_WEB_SPEC_CONFLICT`가 남아 있지 않다.
 - [ ] `M3ComplianceRecord.status`가 `PASS`다.

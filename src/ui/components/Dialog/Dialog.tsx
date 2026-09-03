@@ -1,7 +1,7 @@
 import { Dialog as BaseDialog } from '@base-ui/react/dialog';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
-import { Button } from '../Button/Button';
+import { Button, type ButtonProps } from '../Button/Button';
 import { IconButton } from '../IconButton/IconButton';
 import styles from './Dialog.module.css';
 
@@ -10,6 +10,7 @@ export type DialogCloseReason = 'trigger' | 'escape' | 'backdrop' | 'action';
 export interface DialogProps {
   actions?: ReactNode;
   children?: ReactNode;
+  className?: string;
   defaultOpen?: boolean;
   description?: ReactNode;
   dismissible?: boolean;
@@ -17,12 +18,14 @@ export interface DialogProps {
   open?: boolean;
   title: ReactNode;
   trigger?: ReactNode;
+  style?: CSSProperties;
   variant?: 'basic' | 'alert';
 }
 
 export function Dialog({
   actions,
   children,
+  className,
   defaultOpen,
   description,
   dismissible = true,
@@ -30,6 +33,7 @@ export function Dialog({
   open,
   title,
   trigger,
+  style,
   variant = 'basic',
 }: DialogProps) {
   return (
@@ -61,9 +65,10 @@ export function Dialog({
         <BaseDialog.Backdrop className={styles.backdrop} />
         <BaseDialog.Viewport className={styles.viewport}>
           <BaseDialog.Popup
-            className={styles.popup}
+            className={[styles.popup, className].filter(Boolean).join(' ')}
             data-variant={variant}
             role={variant === 'alert' ? 'alertdialog' : 'dialog'}
+            style={style}
           >
             <div className={styles.heading}>
               <BaseDialog.Title className={styles.title}>{title}</BaseDialog.Title>
@@ -92,4 +97,12 @@ export function Dialog({
   );
 }
 
-export { BaseDialog as DialogPrimitive };
+export type DialogCloseProps = ButtonProps;
+
+export function DialogClose({ children, ...buttonProps }: DialogCloseProps) {
+  return (
+    <BaseDialog.Close render={<Button {...buttonProps} />}>
+      {children}
+    </BaseDialog.Close>
+  );
+}

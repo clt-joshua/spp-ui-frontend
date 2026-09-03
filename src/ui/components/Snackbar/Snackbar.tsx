@@ -1,5 +1,12 @@
-import { Toast as BaseToast } from '@base-ui/react/toast';
-import { useCallback, useMemo, type ReactNode } from 'react';
+import { Toast as BaseToast, type ToastObject } from '@base-ui/react/toast';
+import {
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { SnackbarContext } from './snackbar-context';
@@ -98,27 +105,48 @@ function SnackbarBridge({ children }: { children: ReactNode }) {
       {children}
       <BaseToast.Portal>
         <BaseToast.Viewport className={styles.viewport}>
-          {manager.toasts.map((toast) => (
-            <BaseToast.Root
-              className={styles.root}
-              key={toast.id}
-              swipeDirection={['right', 'down']}
-              toast={toast}
-            >
-              <BaseToast.Content className={styles.content}>
-                <BaseToast.Description className={styles.description} />
-              </BaseToast.Content>
-              {toast.data?.action ? (
-                <SnackbarActionButton action={toast.data.action} />
-              ) : null}
-              {toast.data?.dismissLabel ? (
-                <SnackbarCloseButton label={toast.data.dismissLabel} />
-              ) : null}
-            </BaseToast.Root>
-          ))}
+          {manager.toasts.map((toast) => <SnackbarToast key={toast.id} toast={toast} />)}
         </BaseToast.Viewport>
       </BaseToast.Portal>
     </SnackbarContext.Provider>
+  );
+}
+
+function SnackbarToast({ toast }: { toast: ToastObject<SnackbarData> }) {
+  const descriptionRef = useRef<HTMLDivElement>(null);
+  const [multiline, setMultiline] = useState(false);
+
+  useLayoutEffect(() => {
+    const description = descriptionRef.current;
+    if (!description) return undefined;
+
+    const measure = () => {
+      const lineHeight = Number.parseFloat(getComputedStyle(description).lineHeight);
+      setMultiline(Number.isFinite(lineHeight) && description.scrollHeight > lineHeight * 1.5);
+    };
+    measure();
+
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(measure);
+    observer.observe(description);
+    return () => observer.disconnect();
+  }, [toast.description, toast.updateKey]);
+
+  return (
+    <BaseToast.Root
+      className={styles.root}
+      data-multiline={multiline || undefined}
+      swipeDirection={['right', 'down']}
+      toast={toast}
+    >
+      <BaseToast.Content className={styles.content}>
+        <BaseToast.Description className={styles.description} ref={descriptionRef} />
+      </BaseToast.Content>
+      {toast.data?.action ? <SnackbarActionButton action={toast.data.action} /> : null}
+      {toast.data?.dismissLabel ? (
+        <SnackbarCloseButton label={toast.data.dismissLabel} />
+      ) : null}
+    </BaseToast.Root>
   );
 }
 

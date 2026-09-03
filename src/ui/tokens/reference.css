@@ -1,11 +1,331 @@
 :root {
-  --app-font-brand: 'Roboto Variable', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --app-font-plain: 'Roboto Variable', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /*
+   * Figma source: 2026_Design-System--Renuwal-, node 10516:12295.
+   * The source scale is dark-to-light: 25 is darkest and 950 is lightest.
+   * WCAG annotations remain usage evidence; semantic roles belong to system tokens.
+   */
+  /* azure */
+  --md-ref-palette-azure-25: #002D33;
+  --md-ref-palette-azure-50: #00444D;
+  --md-ref-palette-azure-100: #005A66;
+  --md-ref-palette-azure-200: #007C8C;
+  --md-ref-palette-azure-300: #008192;
+  --md-ref-palette-azure-400: #00ABC2;
+  --md-ref-palette-azure-500: #16C2D9;
+  --md-ref-palette-azure-600: #38D6EB;
+  --md-ref-palette-azure-700: #82E7F5;
+  --md-ref-palette-azure-800: #B1F3FC;
+  --md-ref-palette-azure-900: #D9FBFF;
+  --md-ref-palette-azure-950: #EDFDFF;
+
+  /* blue */
+  --md-ref-palette-blue-25: #002164;
+  --md-ref-palette-blue-50: #00316B;
+  --md-ref-palette-blue-100: #003E87;
+  --md-ref-palette-blue-200: #0051B0;
+  --md-ref-palette-blue-300: #006AE7;
+  --md-ref-palette-blue-400: #287FFF;
+  --md-ref-palette-blue-500: #5396FF;
+  --md-ref-palette-blue-600: #8CB5FF;
+  --md-ref-palette-blue-700: #B6CFFF;
+  --md-ref-palette-blue-800: #D7E4FF;
+  --md-ref-palette-blue-900: #ECF2FF;
+  --md-ref-palette-blue-950: #F6F9FF;
+
+  /* indigo */
+  --md-ref-palette-indigo-25: #222345;
+  --md-ref-palette-indigo-50: #343084;
+  --md-ref-palette-indigo-100: #443EAF;
+  --md-ref-palette-indigo-200: #554DDE;
+  --md-ref-palette-indigo-300: #675CFF;
+  --md-ref-palette-indigo-400: #7F74FF;
+  --md-ref-palette-indigo-500: #968BFF;
+  --md-ref-palette-indigo-600: #B5ACFF;
+  --md-ref-palette-indigo-700: #CFC9FF;
+  --md-ref-palette-indigo-800: #E4E0FF;
+  --md-ref-palette-indigo-900: #F2F0FF;
+  --md-ref-palette-indigo-950: #F9F8FF;
+
+  /* purple */
+  --md-ref-palette-purple-25: #39006B;
+  --md-ref-palette-purple-50: #4A3061;
+  --md-ref-palette-purple-100: #603E7D;
+  --md-ref-palette-purple-200: #794F9E;
+  --md-ref-palette-purple-300: #9762C4;
+  --md-ref-palette-purple-400: #B376E8;
+  --md-ref-palette-purple-500: #C98CFF;
+  --md-ref-palette-purple-600: #D9ADFF;
+  --md-ref-palette-purple-700: #E6C9FF;
+  --md-ref-palette-purple-800: #F1E0FF;
+  --md-ref-palette-purple-900: #F8F0FF;
+  --md-ref-palette-purple-950: #FBF7FF;
+
+  /* crimson */
+  --md-ref-palette-crimson-25: #3D0044;
+  --md-ref-palette-crimson-50: #4F0058;
+  --md-ref-palette-crimson-100: #5E0069;
+  --md-ref-palette-crimson-200: #770085;
+  --md-ref-palette-crimson-300: #9C00AE;
+  --md-ref-palette-crimson-400: #CA00E1;
+  --md-ref-palette-crimson-500: #EB40FF;
+  --md-ref-palette-crimson-600: #FF84FF;
+  --md-ref-palette-crimson-700: #FFAFFF;
+  --md-ref-palette-crimson-800: #FFD1FF;
+  --md-ref-palette-crimson-900: #FFE9FF;
+  --md-ref-palette-crimson-950: #FFF5FF;
+
+  /* pink */
+  --md-ref-palette-pink-25: #52002F;
+  --md-ref-palette-pink-50: #66003A;
+  --md-ref-palette-pink-100: #7D0047;
+  --md-ref-palette-pink-200: #9A0057;
+  --md-ref-palette-pink-300: #BC006B;
+  --md-ref-palette-pink-400: #E50082;
+  --md-ref-palette-pink-500: #FF4EB2;
+  --md-ref-palette-pink-600: #FF95D1;
+  --md-ref-palette-pink-700: #FFB7E0;
+  --md-ref-palette-pink-800: #FFD4EC;
+  --md-ref-palette-pink-900: #FFE8F5;
+  --md-ref-palette-pink-950: #FFF5FB;
+
+  /* gray */
+  --md-ref-palette-gray-25: #1F282D;
+  --md-ref-palette-gray-50: #30373D;
+  --md-ref-palette-gray-100: #3E474F;
+  --md-ref-palette-gray-200: #4E5963;
+  --md-ref-palette-gray-300: #62707C;
+  --md-ref-palette-gray-400: #768592;
+  --md-ref-palette-gray-500: #8C9CAA;
+  --md-ref-palette-gray-600: #ADBAC5;
+  --md-ref-palette-gray-700: #C9D3DB;
+  --md-ref-palette-gray-800: #E0E7EC;
+  --md-ref-palette-gray-900: #EFF3F6;
+  --md-ref-palette-gray-950: #F7FAFC;
+
+  /* red */
+  --md-ref-palette-red-25: #460005;
+  --md-ref-palette-red-50: #600007;
+  --md-ref-palette-red-100: #7D0009;
+  --md-ref-palette-red-200: #9C000B;
+  --md-ref-palette-red-300: #C4000E;
+  --md-ref-palette-red-400: #E72836;
+  --md-ref-palette-red-500: #FF5C68;
+  --md-ref-palette-red-600: #FF8C95;
+  --md-ref-palette-red-700: #FFB6BC;
+  --md-ref-palette-red-800: #FFD7DA;
+  --md-ref-palette-red-900: #FFECEE;
+  --md-ref-palette-red-950: #FFF7F8;
+
+  /* orange */
+  --md-ref-palette-orange-25: #3D1907;
+  --md-ref-palette-orange-50: #592004;
+  --md-ref-palette-orange-100: #782A04;
+  --md-ref-palette-orange-200: #913304;
+  --md-ref-palette-orange-300: #B53C00;
+  --md-ref-palette-orange-400: #D94F0B;
+  --md-ref-palette-orange-500: #ED7032;
+  --md-ref-palette-orange-600: #F7A074;
+  --md-ref-palette-orange-700: #F5C2A9;
+  --md-ref-palette-orange-800: #FFDAC7;
+  --md-ref-palette-orange-900: #FFECE3;
+  --md-ref-palette-orange-950: #FFF6F1;
+
+  /* peach */
+  --md-ref-palette-peach-25: #432004;
+  --md-ref-palette-peach-50: #662E00;
+  --md-ref-palette-peach-100: #853C00;
+  --md-ref-palette-peach-200: #974C0C;
+  --md-ref-palette-peach-300: #AD611F;
+  --md-ref-palette-peach-400: #BF7736;
+  --md-ref-palette-peach-500: #CC9057;
+  --md-ref-palette-peach-600: #E2B283;
+  --md-ref-palette-peach-700: #F2CDA6;
+  --md-ref-palette-peach-800: #F9E1C7;
+  --md-ref-palette-peach-900: #FAEDE0;
+  --md-ref-palette-peach-950: #FCF5EE;
+
+  /* khaki */
+  --md-ref-palette-khaki-25: #332B00;
+  --md-ref-palette-khaki-50: #4D4000;
+  --md-ref-palette-khaki-100: #736000;
+  --md-ref-palette-khaki-200: #8C7500;
+  --md-ref-palette-khaki-300: #B29500;
+  --md-ref-palette-khaki-400: #DBB700;
+  --md-ref-palette-khaki-500: #FAD205;
+  --md-ref-palette-khaki-600: #FFE97A;
+  --md-ref-palette-khaki-700: #FFF1AB;
+  --md-ref-palette-khaki-800: #FFF6C9;
+  --md-ref-palette-khaki-900: #FFFAE0;
+  --md-ref-palette-khaki-950: #FFFDF0;
+
+  /* coral */
+  --md-ref-palette-coral-25: #341614;
+  --md-ref-palette-coral-50: #4A1F1C;
+  --md-ref-palette-coral-100: #582E2C;
+  --md-ref-palette-coral-200: #65403F;
+  --md-ref-palette-coral-300: #785554;
+  --md-ref-palette-coral-400: #8E6E6D;
+  --md-ref-palette-coral-500: #9F8584;
+  --md-ref-palette-coral-600: #BDA8A8;
+  --md-ref-palette-coral-700: #D5C4C3;
+  --md-ref-palette-coral-800: #E6DBDB;
+  --md-ref-palette-coral-900: #F1E9E9;
+  --md-ref-palette-coral-950: #F7F3F3;
+
+  /* warm-gray */
+  --md-ref-palette-warm-gray-25: #2A1D1E;
+  --md-ref-palette-warm-gray-50: #3C2A2C;
+  --md-ref-palette-warm-gray-100: #493C3D;
+  --md-ref-palette-warm-gray-200: #574C4D;
+  --md-ref-palette-warm-gray-300: #6B6162;
+  --md-ref-palette-warm-gray-400: #7F7577;
+  --md-ref-palette-warm-gray-500: #968D8E;
+  --md-ref-palette-warm-gray-600: #B6AFB1;
+  --md-ref-palette-warm-gray-700: #CFC9CB;
+  --md-ref-palette-warm-gray-800: #E2DFDF;
+  --md-ref-palette-warm-gray-900: #EEECEC;
+  --md-ref-palette-warm-gray-950: #F6F4F4;
+
+  /* teal */
+  --md-ref-palette-teal-25: #00332D;
+  --md-ref-palette-teal-50: #004039;
+  --md-ref-palette-teal-100: #00574D;
+  --md-ref-palette-teal-200: #006B5F;
+  --md-ref-palette-teal-300: #008475;
+  --md-ref-palette-teal-400: #00B09B;
+  --md-ref-palette-teal-500: #00C9AB;
+  --md-ref-palette-teal-600: #55EDD6;
+  --md-ref-palette-teal-700: #96F2E8;
+  --md-ref-palette-teal-800: #BEF7F1;
+  --md-ref-palette-teal-900: #D9FFFB;
+  --md-ref-palette-teal-950: #EDFFFD;
+
+  /* emerald */
+  --md-ref-palette-emerald-25: #093422;
+  --md-ref-palette-emerald-50: #0D452C;
+  --md-ref-palette-emerald-100: #10663F;
+  --md-ref-palette-emerald-200: #13804D;
+  --md-ref-palette-emerald-300: #199C5C;
+  --md-ref-palette-emerald-400: #00BF79;
+  --md-ref-palette-emerald-500: #4ACF8A;
+  --md-ref-palette-emerald-600: #76D6A3;
+  --md-ref-palette-emerald-700: #B6E3C2;
+  --md-ref-palette-emerald-800: #D5F0E3;
+  --md-ref-palette-emerald-900: #EBF7F1;
+  --md-ref-palette-emerald-950: #F4FCF7;
+
+  /* lime */
+  --md-ref-palette-lime-25: #233305;
+  --md-ref-palette-lime-50: #2E4503;
+  --md-ref-palette-lime-100: #436308;
+  --md-ref-palette-lime-200: #527512;
+  --md-ref-palette-lime-300: #6B9420;
+  --md-ref-palette-lime-400: #8FC034;
+  --md-ref-palette-lime-500: #AACF63;
+  --md-ref-palette-lime-600: #C5E77E;
+  --md-ref-palette-lime-700: #DCF7A1;
+  --md-ref-palette-lime-800: #EBFCC5;
+  --md-ref-palette-lime-900: #F2FBE0;
+  --md-ref-palette-lime-950: #F7FCEE;
+
+  /* moss */
+  --md-ref-palette-moss-25: #213E09;
+  --md-ref-palette-moss-50: #2F580E;
+  --md-ref-palette-moss-100: #3F6223;
+  --md-ref-palette-moss-200: #4F6D36;
+  --md-ref-palette-moss-300: #617E4A;
+  --md-ref-palette-moss-400: #779361;
+  --md-ref-palette-moss-500: #8EA77C;
+  --md-ref-palette-moss-600: #B0C4A1;
+  --md-ref-palette-moss-700: #C9DABE;
+  --md-ref-palette-moss-800: #DEEAD7;
+  --md-ref-palette-moss-900: #EBF4E6;
+  --md-ref-palette-moss-950: #F4F9F1;
+
+  /* olive */
+  --md-ref-palette-olive-25: #2A2C1B;
+  --md-ref-palette-olive-50: #3C3F27;
+  --md-ref-palette-olive-100: #494C39;
+  --md-ref-palette-olive-200: #575A49;
+  --md-ref-palette-olive-300: #6A6E5E;
+  --md-ref-palette-olive-400: #7E8174;
+  --md-ref-palette-olive-500: #95978C;
+  --md-ref-palette-olive-600: #B5B7AE;
+  --md-ref-palette-olive-700: #CED0C8;
+  --md-ref-palette-olive-800: #E2E3DE;
+  --md-ref-palette-olive-900: #EEEFEB;
+  --md-ref-palette-olive-950: #F5F6F4;
+
+  /* absolute */
+  --md-ref-palette-white: #FFFFFF;
+  --md-ref-palette-black: #000000;
+
+  /* alpha/black */
+  --md-ref-palette-alpha-black-0: #00000000;
+  --md-ref-palette-alpha-black-50: #0000000F;
+  --md-ref-palette-alpha-black-100: #0000001F;
+  --md-ref-palette-alpha-black-150: #00000029;
+  --md-ref-palette-alpha-black-200: #0000003D;
+  --md-ref-palette-alpha-black-300: #00000052;
+  --md-ref-palette-alpha-black-400: #00000066;
+  --md-ref-palette-alpha-black-500: #0000007A;
+  --md-ref-palette-alpha-black-600: #0000008F;
+  --md-ref-palette-alpha-black-700: #000000A3;
+  --md-ref-palette-alpha-black-800: #000000B8;
+  --md-ref-palette-alpha-black-900: #000000CC;
+
+  /* alpha/white */
+  --md-ref-palette-alpha-white-0: #FFFFFF00;
+  --md-ref-palette-alpha-white-50: #FFFFFF0F;
+  --md-ref-palette-alpha-white-100: #FFFFFF1F;
+  --md-ref-palette-alpha-white-150: #FFFFFF29;
+  --md-ref-palette-alpha-white-200: #FFFFFF3D;
+  --md-ref-palette-alpha-white-300: #FFFFFF52;
+  --md-ref-palette-alpha-white-400: #FFFFFF66;
+  --md-ref-palette-alpha-white-500: #FFFFFF7A;
+  --md-ref-palette-alpha-white-600: #FFFFFF8F;
+  --md-ref-palette-alpha-white-700: #FFFFFFA3;
+  --md-ref-palette-alpha-white-800: #FFFFFFB8;
+  --md-ref-palette-alpha-white-900: #FFFFFFCC;
+
+  /* alpha/primary */
+  --md-ref-palette-alpha-primary-normal: #0081921F;
+  --md-ref-palette-alpha-primary-pink: #BC006B1F;
+  --md-ref-palette-alpha-primary-yellowgreen: #617E4A1F;
+  --md-ref-palette-alpha-primary-purple: #7C62C41F;
+  --md-ref-palette-alpha-primary-blue: #006AE71F;
+  --md-ref-palette-alpha-primary-green: #1788001F;
+  --md-ref-palette-alpha-primary-orange: #B83D001F;
+  --md-ref-palette-alpha-primary-red: #C4000E1F;
+
+  /* Figma number primitives shared by radius, space, and gap aliases. */
+  --md-ref-number-2: 0.125rem;
+  --md-ref-number-4: 0.25rem;
+  --md-ref-number-6: 0.375rem;
+  --md-ref-number-8: 0.5rem;
+  --md-ref-number-10: 0.625rem;
+  --md-ref-number-12: 0.75rem;
+  --md-ref-number-14: 0.875rem;
+  --md-ref-number-16: 1rem;
+  --md-ref-number-20: 1.25rem;
+  --md-ref-number-24: 1.5rem;
+  --md-ref-number-32: 2rem;
+  --md-ref-number-36: 2.25rem;
+  --md-ref-number-40: 2.5rem;
+  --md-ref-number-48: 3rem;
+  --md-ref-number-56: 3.5rem;
+  --md-ref-number-64: 4rem;
+  --md-ref-number-72: 4.5rem;
+  --md-ref-number-999: 62.4375rem;
+
+  --app-font-brand: 'Noto Sans Variable', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  --app-font-plain: 'Noto Sans Variable', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
   --md-ref-typeface-brand: var(--app-font-brand);
   --md-ref-typeface-plain: var(--app-font-plain);
   --md-ref-icon-size-default: 1.5rem;
 
   --md-ref-typeface-weight-regular: 400;
   --md-ref-typeface-weight-medium: 500;
+  --md-ref-typeface-weight-semibold: 600;
   --md-ref-typeface-weight-bold: 700;
 }

@@ -39,7 +39,7 @@ Base UI는 behavior runtime이고 M3 token layer가 visual authority다. Materia
 
 ```bash
 pnpm add @base-ui/react@1.7.0 @material/material-color-utilities@0.4.0 \
-  @fontsource-variable/roboto@5.3.0 @material-design-icons/font@0.14.15
+  @fontsource-variable/noto-sans@5.3.0 @material-design-icons/font@0.14.15
 pnpm add -D @storybook/react-vite @storybook/addon-a11y \
   @testing-library/react @testing-library/user-event vitest \
   vitest-axe @playwright/test
@@ -50,6 +50,9 @@ pnpm add -D @storybook/react-vite @storybook/addon-a11y \
 ## 디렉터리
 
 ```text
+src/pages/
+└─ ComponentGalleryPage.tsx
+
 src/ui/
 ├─ index.ts
 ├─ providers/UIProvider.tsx
@@ -90,6 +93,8 @@ src/ui/
 ```
 
 각 컴포넌트 폴더는 `Component.tsx`, `Component.module.css`, `Component.stories.tsx`, `Component.test.tsx`, `compliance.ts`를 기본 구성으로 사용한다.
+
+`src/pages/ComponentGalleryPage.tsx`는 `/components`에서 `src/ui/index.ts` 공개 export만 소비한다. 새 공개 컴포넌트는 제품 흐름 외에도 이 페이지의 state matrix와 실제 Vite E2E에 추가해야 하며, 검증 페이지가 component 내부 경계를 우회해서는 안 된다.
 
 ## Import 경계
 
@@ -233,7 +238,7 @@ createRoot(document.getElementById('root')!).render(
 - `@material-design-icons/font/filled.css`만 import해 사용하지 않는 아이콘 style font를 번들에 포함하지 않는다.
 - 화면과 공개 컴포넌트는 icon font class를 직접 작성하지 않고 `MaterialIcon` 또는 `ReactNode` icon slot을 사용한다.
 - 장식 아이콘은 `aria-hidden`, 독립적으로 의미가 있는 아이콘은 명시적 label을 사용한다.
-- Roboto Variable은 self-host하며 `--app-font-brand`와 `--app-font-plain`이 `--md-ref-typeface-*`의 입력이다.
+- Noto Sans Variable은 self-host하며 `--app-font-brand`와 `--app-font-plain`이 `--md-ref-typeface-*`의 입력이다.
 - 제품은 두 app font 변수를 override하여 서체를 바꿀 수 있으며 component token이나 selector를 수정하지 않는다.
 
 ## 구현 순서

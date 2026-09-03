@@ -8,6 +8,10 @@
   opacity: 0;
 }
 
+.root[data-inward] {
+  inset: 0;
+}
+
 :global([data-interactive-root]):focus-visible > .root {
   opacity: 1;
 }

@@ -9,7 +9,7 @@
 | `00-governance` | 권위, 충돌 처리, 준수·병합 게이트 | [M3 Web 준수 정책](00-governance/00-M3-WEB-COMPLIANCE.md) |
 | `01-product` | 제품 목표, 범위, ADR, 위험 | [목표와 아키텍처 결정](01-product/02-GOALS-AND-DECISIONS.md) |
 | `02-architecture` | 시스템 경계, Theme/token, 컴포넌트 계약 | [프로젝트 설정](02-architecture/03-ARCHITECTURE-AND-SETUP.md), [Theme](02-architecture/04-TOKENS-AND-DYNAMIC-THEME.md), [컴포넌트](02-architecture/05-COMPONENTS-AND-INTERACTIONS.md) |
-| `03-delivery` | 구현 순서, 검증, AI 작업 방식 | [구현·검증](03-delivery/06-IMPLEMENTATION-AND-VALIDATION.md), [플레이북](03-delivery/07-VIBE-CODING-PLAYBOOK.md), [CI/visual 운영 기준](03-delivery/08-CI-AND-VISUAL-BASELINE-PROPOSAL.md), [UI 구현 상태](03-delivery/09-UI-IMPLEMENTATION-STATUS.md) |
+| `03-delivery` | 구현 순서, 검증, AI 작업 방식 | [구현·검증](03-delivery/06-IMPLEMENTATION-AND-VALIDATION.md), [플레이북](03-delivery/07-VIBE-CODING-PLAYBOOK.md), [CI/시각 검토 운영 기준](03-delivery/08-CI-AND-VISUAL-BASELINE-PROPOSAL.md), [UI 구현 상태](03-delivery/09-UI-IMPLEMENTATION-STATUS.md) |
 | `04-reference` | 공식 문서 매핑, 버전·라이선스 기준선 | [문서 적용 지도](04-reference/01-MATERIAL-WEB-DOC-MAP.md), [공식 출처](04-reference/SOURCES.md) |
 | `project-memory` | 현재 상태, 결정 탐색, 미결 게이트 | [메모리 안내](project-memory/README.md) |
 

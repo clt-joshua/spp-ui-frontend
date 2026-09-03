@@ -1,0 +1,171 @@
+.set {
+  display: inline-grid;
+  grid-auto-columns: minmax(var(--md-segmented-button-min-segment-width), 1fr);
+  grid-auto-flow: column;
+  block-size: var(--md-segmented-button-container-height);
+  max-inline-size: 100%;
+  align-items: stretch;
+  isolation: isolate;
+}
+
+.segment {
+  --md-interaction-focus-state-layer-opacity: 1;
+  --md-interaction-hover-state-layer-opacity: 1;
+  --md-interaction-motion-duration: var(--md-segmented-button-state-layer-motion-duration);
+  --md-interaction-motion-easing: var(--md-segmented-button-state-layer-motion-easing);
+  --md-interaction-pressed-state-layer-opacity: 1;
+  --md-interaction-state-layer-shape: inherit;
+  --md-ripple-pressed-opacity: var(--md-segmented-button-ripple-opacity);
+  --md-ripple-shape: inherit;
+  --md3-ripple-color: currentColor;
+  --md3-state-layer-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  min-inline-size: var(--md-segmented-button-min-segment-width);
+  block-size: var(--md-segmented-button-container-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--md-segmented-button-horizontal-space);
+  border: var(--md-segmented-button-outline-width) solid var(--md-segmented-button-outline-color);
+  border-radius: 0;
+  outline: 0;
+  background: var(--md-segmented-button-unselected-container-color);
+  color: var(--md-segmented-button-unselected-label-text-color);
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.segment:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--md-segmented-button-outline-width));
+}
+
+.segment:first-child {
+  border-start-start-radius: var(--md-segmented-button-container-shape);
+  border-end-start-radius: var(--md-segmented-button-container-shape);
+}
+
+.segment:last-child {
+  border-start-end-radius: var(--md-segmented-button-container-shape);
+  border-end-end-radius: var(--md-segmented-button-container-shape);
+}
+
+.segment:hover:not(:disabled),
+.segment:focus-visible:not(:disabled),
+.segment[data-pressed]:not(:disabled),
+.segment[data-selected]:not(:disabled) {
+  z-index: 1;
+}
+
+.segment:hover:not(:disabled) {
+  --md3-state-layer-color: var(--md-segmented-button-hover-state-layer-color);
+}
+
+.segment:focus-visible:not(:disabled) {
+  --md3-state-layer-color: var(--md-segmented-button-focus-state-layer-color);
+  z-index: 2;
+}
+
+.segment[data-pressed]:not(:disabled) {
+  --md3-state-layer-color: var(--md-segmented-button-pressed-state-layer-color);
+}
+
+.segment[data-selected] {
+  background: var(--md-segmented-button-selected-container-color);
+  color: var(--md-segmented-button-selected-label-text-color);
+}
+
+.segment:disabled {
+  border-color: var(--md-segmented-button-disabled-outline-color);
+  color: color-mix(
+    in srgb,
+    var(--md-segmented-button-disabled-label-text-color)
+      var(--md-segmented-button-disabled-label-text-opacity),
+    transparent
+  );
+  cursor: default;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  min-inline-size: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-segmented-button-content-gap);
+  pointer-events: none;
+}
+
+.icon {
+  display: inline-flex;
+  inline-size: var(--md-segmented-button-icon-size);
+  block-size: var(--md-segmented-button-icon-size);
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  line-height: 1;
+}
+
+.icon > * {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.icon > :global(.material-icons) {
+  font-size: var(--md-segmented-button-icon-size);
+}
+
+.label {
+  overflow: hidden;
+  font-family: var(--md-segmented-button-label-text-font);
+  font-size: var(--md-segmented-button-label-text-size);
+  font-weight: var(--md-segmented-button-label-text-weight);
+  letter-spacing: var(--md-segmented-button-label-text-tracking);
+  line-height: var(--md-segmented-button-label-text-line-height);
+  text-align: center;
+  text-decoration: var(--md-segmented-button-label-text-decoration);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.touchTarget {
+  position: absolute;
+  z-index: -1;
+  inline-size: 100%;
+  block-size: var(--md-segmented-button-touch-target-height);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+@media (forced-colors: active) {
+  .segment {
+    --md3-state-layer-color: transparent;
+    border-color: ButtonText;
+    background: Canvas;
+    color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .segment[data-selected] {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .segment:disabled {
+    border-color: GrayText;
+    background: Canvas;
+    color: GrayText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    --md-interaction-motion-duration: 0ms;
+  }
+}
