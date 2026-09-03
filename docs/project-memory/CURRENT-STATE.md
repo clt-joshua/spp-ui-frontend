@@ -16,6 +16,9 @@
 - 프로젝트 실행 Node.js: pnpm이 provision하는 `v24.19.0`
 - pnpm: `10.33.0`
 - 대표 host: Vite 8 + React 19 + TypeScript
+- 외부 production: `https://spp-ui-frontend.pages.dev/`
+- 자동 배포: `main`의 `CI` 성공 revision → GitHub Actions → Cloudflare Pages project `spp-ui-frontend`
+- 배포 자격 증명: GitHub repository secret, 현재 임시 토큰 만료 2026-12-03
 
 ## 준비도
 
@@ -78,6 +81,8 @@
 
 ## 최신 검증
 
+- 2026-09-03 Cloudflare Pages production 최초 게시: `/`와 `/components`가 모두 HTTP 200으로 응답했고 Cloudflare edge 응답 및 SPA deep-link fallback을 확인했다.
+- `.github/workflows/cloudflare-pages.yml`은 `main` CI 성공 revision만 checkout·build하여 production에 배포하도록 연결했다. Cloudflare API token은 Pages Write 최소 권한으로 GitHub repository secret에 저장했다.
 - `pnpm validate:structure`: PASS
 - `pnpm lint`: PASS
 - `pnpm typecheck`: PASS

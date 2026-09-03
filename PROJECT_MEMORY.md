@@ -27,6 +27,7 @@ This is the compact entry point for future project work. Detailed state lives in
 
 ## Current evidence
 
+- 외부 검증용 production이 `https://spp-ui-frontend.pages.dev/`에 게시됐고 `/components` deep link도 직접 접근 가능하다. `main`의 `CI` 성공 revision만 `.github/workflows/cloudflare-pages.yml`을 통해 Cloudflare Pages project `spp-ui-frontend`에 자동 배포한다. 자격 증명은 GitHub repository secret으로 격리하며 현재 임시 토큰 만료일은 2026-12-03이다.
 - Theme Runtime, token graph, interactions, all ten MVP components, and the Tabs, Switch, and Segmented Button extensions are implemented.
 - Figma `md-ref-palette — WCAG` node의 250 color variables를 `--md-ref-palette-*` reference CSS tokens로 변환했다. 18 solid families, white/black, alpha colors와 원본의 `25 = darkest → 950 = lightest` 방향을 보존한다.
 - Figma `md-sys-color — Normal Mode` node의 78 color roles를 8개 mode(`normal`, `pink`, `yellowgreen`, `purple`, `blue`, `green`, `orange`, `red`) 전체에 대해 `src/ui/tokens/system.css`의 reference alias로 적용했다. built-in Standard/Light는 이 정적 system graph를 사용하고 component token은 기존 semantic role을 통해 즉시 소비한다.

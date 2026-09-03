@@ -59,6 +59,14 @@ pnpm storybook
 pnpm test:e2e:container
 ```
 
+## 임시 외부 공유
+
+- Cloudflare Pages: [spp-ui-frontend.pages.dev](https://spp-ui-frontend.pages.dev/)
+- 컴포넌트 검증 페이지: [spp-ui-frontend.pages.dev/components](https://spp-ui-frontend.pages.dev/components)
+- `main`의 `CI`가 성공하면 `.github/workflows/cloudflare-pages.yml`이 검증된 revision을 production에 자동 배포한다.
+
+Cloudflare 배포 자격 증명은 GitHub Actions repository secret으로만 관리한다. 현재 임시 배포 토큰은 2026-12-03에 만료되므로 외부 공유를 계속할 경우 만료 전에 교체한다.
+
 Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 않는다. 기본 서체를 바꿀 때는 component CSS 대신 다음 reference input을 override한다.
 
 실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components`는 13개 공개 컴포넌트의 variant·size·상태·상호작용을 비교하는 검증 페이지를 제공한다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
