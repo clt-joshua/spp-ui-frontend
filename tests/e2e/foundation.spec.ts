@@ -900,10 +900,15 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
     const input = control.querySelector('input');
     const label = control.querySelector<HTMLElement>('[data-slot="floating-label"]');
     input?.focus();
-    await new Promise(requestAnimationFrame);
-    const animation = label?.getAnimations()[0];
-    const timing = animation?.effect?.getTiming();
-    return { duration: timing?.duration, easing: timing?.easing };
+    for (let frame = 0; frame < 8; frame += 1) {
+      await new Promise(requestAnimationFrame);
+      const animation = label?.getAnimations()[0];
+      const timing = animation?.effect?.getTiming();
+      if (timing) {
+        return { duration: timing.duration, easing: timing.easing };
+      }
+    }
+    return { duration: undefined, easing: undefined };
   });
   expect(labelAnimation.duration).toBe(150);
   expect(labelAnimation.easing).toBe('cubic-bezier(0.2, 0, 0, 1)');
@@ -1074,7 +1079,9 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   const rippleSurface = wave.locator('> span');
   await expect(rippleSurface).not.toHaveCSS('animation-name', 'none');
   await expect(rippleSurface).toHaveCSS('animation-duration', '0.105s');
-  expect(Number(await rippleSurface.evaluate((element) => getComputedStyle(element).opacity))).toBeGreaterThan(0);
+  await expect.poll(() => rippleSurface.evaluate((element) => (
+    Number(getComputedStyle(element).opacity)
+  ))).toBeGreaterThan(0);
   await page.mouse.up();
   await page.waitForTimeout(100);
   await expect(wave).toHaveCount(1);
