@@ -87,8 +87,19 @@ jobs:
       - name: Build application
         run: pnpm build
 
+      - name: Compare WebKit render scheduling
+        if: matrix.browser == 'webkit'
+        run: xvfb-run pnpm exec node scripts/diagnose-webkit-motion.mjs
+        env:
+          HOME: /root
+
       - name: Run browser flow
-        run: pnpm exec playwright test tests/e2e --project=${{ matrix.browser }}
+        run: |
+          if [ "${{ matrix.browser }}" = "webkit" ]; then
+            xvfb-run pnpm exec playwright test tests/e2e --project=webkit --headed
+          else
+            pnpm exec playwright test tests/e2e --project=${{ matrix.browser }}
+          fi
         env:
           HOME: /root
 
