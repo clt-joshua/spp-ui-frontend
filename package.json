@@ -20,6 +20,7 @@
     "build:storybook": "storybook build",
     "pretest:e2e": "pnpm build",
     "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit",
+    "audit:components": "node scripts/audit-component-gallery.mjs",
     "test:e2e:container": "node ./scripts/run-playwright-container.mjs e2e",
     "validate:structure": "node ./scripts/validate-project-structure.mjs",
     "verify": "pnpm validate:structure && pnpm lint && pnpm typecheck && pnpm test:unit && pnpm build && pnpm build:storybook"

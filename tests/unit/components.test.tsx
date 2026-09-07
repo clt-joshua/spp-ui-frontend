@@ -80,7 +80,7 @@ describe('public UI components', () => {
     expect(disabled).toHaveAttribute('aria-checked', 'false');
   });
 
-  it('implements Figma Segmented Button anatomy with Stable Material single-selection behavior', async () => {
+  it('implements Figma Segmented Button anatomy with Labs single-selection behavior', async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();
     render(
@@ -107,12 +107,16 @@ describe('public UI components', () => {
     expect(group).toHaveStyle({ '--md-segmented-button-outline-color': '#123456' });
     expect(day).toHaveAttribute('aria-pressed', 'true');
     expect(day.querySelector('[data-slot="selected-icon"]')).toBeInTheDocument();
-    expect(day.querySelector('[data-slot="icon"]')).not.toBeInTheDocument();
+    expect(day.querySelector('[data-slot="icon"]')).not.toHaveAttribute('data-visible');
     expect(day.querySelector('[data-slot="touch-target"]')).toBeInTheDocument();
+    expect(day).not.toHaveAttribute('data-selection-motion');
+    expect(day.querySelector('[data-slot="checkmark-path"]')).toHaveAttribute('d', 'M1.73,12.91 8.1,19.28 22.79,4.59');
 
     await user.click(week);
     expect(day).toHaveAttribute('aria-pressed', 'false');
     expect(week).toHaveAttribute('aria-pressed', 'true');
+    expect(day).toHaveAttribute('data-selection-motion', 'deselecting');
+    expect(week).toHaveAttribute('data-selection-motion', 'selecting');
     expect(onValueChange).toHaveBeenLastCalledWith(
       'week',
       expect.objectContaining({ index: 1, selected: true, value: 'week' }),
@@ -128,6 +132,25 @@ describe('public UI components', () => {
 
     await user.click(disabled);
     expect(disabled).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  it('derives Labs motion from committed selection, not mounting or re-enabling', () => {
+    const content = (value: string, disabled = false) => (
+      <SegmentedButtonSet label="Controlled motion" value={value}>
+        <SegmentedButton value="first" disabled={disabled}>First</SegmentedButton>
+        <SegmentedButton value="second">Second</SegmentedButton>
+      </SegmentedButtonSet>
+    );
+    const { rerender } = render(content('second'));
+    const first = screen.getByRole('button', { name: 'First' });
+    expect(first).not.toHaveAttribute('data-selection-motion');
+    rerender(content('first'));
+    expect(first).toHaveAttribute('data-selection-motion', 'selecting');
+    rerender(content('first', true));
+    expect(first).not.toHaveAttribute('data-selection-motion');
+    rerender(content('first'));
+    expect(first).not.toHaveAttribute('data-selection-motion');
+    expect(first).toHaveAttribute('aria-pressed', 'true');
   });
 
   it('allows independent Segmented Button toggles only in multiple-selection mode', async () => {

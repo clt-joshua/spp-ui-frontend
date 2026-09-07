@@ -18,6 +18,15 @@ import { useSnackbar } from './Snackbar';
 import { Switch } from './Switch';
 import { Tab, TabList, TabPanel, Tabs } from './Tabs';
 import { TextField } from './TextField';
+import { AutoComplete } from './AutoComplete';
+
+export const AutoCompleteFields: Story = {
+  render: () => <div style={{ display: 'grid', gap: 24, width: 352 }}>
+    <AutoComplete label="도시" options={[{ label: 'Seoul 서울' }, { label: 'Busan 부산' }]} />
+    <AutoComplete label="Small 오류" options={[]} size="small" error errorText="값을 확인하세요." required />
+    <AutoComplete label="비활성" options={[]} defaultValue="서울" disabled />
+  </div>,
+};
 
 const meta = {
   title: 'Foundation/Component set',
@@ -98,7 +107,6 @@ export const FieldStates: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(12rem, 1fr))', gap: '1.5rem', inlineSize: 'min(56rem, 100%)' }}>
       <TextField label="Outlined" supportingText="Body small supporting text" />
-      <TextField label="Filled" supportingText="Body small supporting text" variant="filled" />
       <TextField error errorText="Body small error text" label="Error" />
       <TextField disabled label="Disabled" supportingText="Disabled supporting text" />
       <Select label="Outlined select" options={[{ value: 'one', label: 'One' }]} supportingText="Body small supporting text" />
@@ -109,6 +117,41 @@ export const FieldStates: Story = {
       <Checkbox defaultChecked label="Checked" />
       <Checkbox defaultChecked indeterminate label="Indeterminate" />
       <Checkbox defaultChecked disabled label="Disabled" />
+    </div>
+  ),
+};
+
+export const TextFieldFigmaMatrix: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: '2rem' }}>
+      {(['large', 'small'] as const).map((size) => (
+        <section key={size} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(12rem, 1fr))', gap: '1.5rem' }}>
+          {(['text', 'number'] as const).flatMap((type) => [false, true].flatMap((populated) => (
+            ['enabled', 'error', 'disabled', 'readonly'].map((state) => (
+              <TextField
+                clearable
+                defaultValue={populated ? type === 'number' ? '1234' : 'Input text' : ''}
+                disabled={state === 'disabled'}
+                error={state === 'error'}
+                errorText="입력값을 확인하세요."
+                key={`${type}-${populated}-${state}`}
+                label={`${size} ${type} ${populated ? 'populated' : 'empty'} ${state}`}
+                leadingIcon={<MaterialIcon name="place_outline" />}
+                placeholder="Placeholder"
+                prefix="Prefix"
+                readOnly={state === 'readonly'}
+                required
+                size={size}
+                suffix="Suffix"
+                supportingText="Supporting text"
+                trailingIcon={<MaterialIcon name="arrow_drop_down" />}
+                type={type}
+              />
+            ))
+          )))}
+          <TextField clearable defaultValue="여러 줄 입력" label={`${size} textarea`} rows={2} size={size} type="textarea" />
+        </section>
+      ))}
     </div>
   ),
 };
@@ -232,6 +275,10 @@ function SegmentedButtonsStory() {
         <SegmentedButton icon={<MaterialIcon name="label" />} value="labels">Labels</SegmentedButton>
         <SegmentedButton icon={<MaterialIcon name="route" />} value="routes">Routes</SegmentedButton>
         <SegmentedButton disabled value="locked">Locked</SegmentedButton>
+      </SegmentedButtonSet>
+      <SegmentedButtonSet label="Selection icon motion" selectionMode="multiple">
+        <SegmentedButton hideSelectedIcon icon={<MaterialIcon name="visibility" />} value="hidden">No check</SegmentedButton>
+        <SegmentedButton selectedIcon={<MaterialIcon name="star" />} value="custom">Custom check</SegmentedButton>
       </SegmentedButtonSet>
     </div>
   );

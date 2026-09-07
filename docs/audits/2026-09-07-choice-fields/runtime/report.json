@@ -1,0 +1,33 @@
+{
+  "baseURL": "http://127.0.0.1:5174",
+  "capturedAt": "2026-09-07T02:02:53.948Z",
+  "browser": "151.0.7922.34",
+  "themes": [
+    {
+      "mode": "light",
+      "url": "http://127.0.0.1:5174/components#form-fields",
+      "affixToggles": "TextField/AutoComplete visible before typing",
+      "options": [
+        "Seoul 서울",
+        "Sejong 세종"
+      ],
+      "submission": "{\"city\":\"Seoul 서울\"}",
+      "selectSubmission": "{\"destination\":\"busan\"}",
+      "errors": []
+    },
+    {
+      "mode": "dark",
+      "url": "http://127.0.0.1:5174/components#form-fields",
+      "affixToggles": "TextField/AutoComplete visible before typing",
+      "options": [
+        "Seoul 서울",
+        "Sejong 세종"
+      ],
+      "submission": "{\"city\":\"Seoul 서울\"}",
+      "selectSubmission": "{\"destination\":\"busan\"}",
+      "errors": []
+    }
+  ],
+  "functionalVerdict": "PASS",
+  "complianceVerdict": "BLOCKED: inherited token contrast and manual Windows/AT evidence remain unresolved"
+}

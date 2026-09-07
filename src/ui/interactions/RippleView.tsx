@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, RefObject } from 'react';
 import styles from './Ripple.module.css';
 
 export interface RippleWave {
@@ -12,9 +12,9 @@ export interface RippleWave {
   startY: number;
 }
 
-export function RippleView({ waves }: { waves: RippleWave[] }) {
+export function RippleView({ waves, rootRef }: { waves: RippleWave[]; rootRef: RefObject<HTMLSpanElement | null> }) {
   return (
-    <span aria-hidden="true" className={styles.root} data-slot="ripple">
+    <span aria-hidden="true" className={styles.root} data-slot="ripple" ref={rootRef}>
       {waves.map((wave) => (
         <span
           className={styles.wave}

@@ -28,6 +28,9 @@ export function usePressableInteraction({
   const [waves, setWaves] = useState<RippleWave[]>([]);
   const [pressed, setPressed] = useState(false);
   const nextId = useRef(0);
+  const rootRef = useRef<HTMLSpanElement>(null);
+  const pointerActivation = useRef(false);
+  const keyHeld = useRef(false);
   const timers = useRef<number[]>([]);
   const activeWaves = useRef(new Map<number, number>());
   const pendingTouch = useRef<{
@@ -50,31 +53,35 @@ export function usePressableInteraction({
 
   const startWave = useCallback(
     (target: HTMLElement, clientX?: number, clientY?: number) => {
-      if (disabled) {
+      if (disabled || matchMedia('(forced-colors: active)').matches) {
         return;
       }
       const rippleRoot = target.querySelector<HTMLElement>('[data-slot="ripple"]');
       const rect = rippleRoot?.getBoundingClientRect() ?? target.getBoundingClientRect();
+      const zoom = (rippleRoot ?? target).currentCSSZoom ?? 1;
       const maxDimension = Math.max(rect.height, rect.width);
       const softEdgeSize = Math.max(
         SOFT_EDGE_CONTAINER_RATIO * maxDimension,
         SOFT_EDGE_MINIMUM_SIZE,
       );
-      const size = Math.max(1, Math.floor(maxDimension * INITIAL_ORIGIN_SCALE));
+      const size = Math.max(1, Math.floor(maxDimension * INITIAL_ORIGIN_SCALE / zoom));
       const maxRadius = Math.hypot(rect.width, rect.height) + PADDING;
-      const scale = (maxRadius + softEdgeSize) / size;
+      const scale = (maxRadius + softEdgeSize) / size / zoom;
       const startX = centered || clientX === undefined
-        ? (rect.width - size) / 2
-        : clientX - rect.left - size / 2;
+        ? (rect.width / zoom - size) / 2
+        : (clientX - rect.left) / zoom - size / 2;
       const startY = centered || clientY === undefined
-        ? (rect.height - size) / 2
-        : clientY - rect.top - size / 2;
-      const endX = (rect.width - size) / 2;
-      const endY = (rect.height - size) / 2;
+        ? (rect.height / zoom - size) / 2
+        : (clientY - rect.top) / zoom - size / 2;
+      const endX = (rect.width / zoom - size) / 2;
+      const endY = (rect.height / zoom - size) / 2;
       const id = ++nextId.current;
+      // Material Web has one press surface: a new press replaces the previous grow.
+      for (const timer of timers.current) window.clearTimeout(timer);
+      timers.current = [];
+      activeWaves.current.clear();
       activeWaves.current.set(id, Date.now());
-      setWaves((current) => [
-        ...current,
+      setWaves([
         { endX, endY, ending: false, id, scale, size, startX, startY },
       ]);
       setPressed(true);
@@ -83,7 +90,8 @@ export function usePressableInteraction({
   );
 
   const endWaves = useCallback(() => {
-    setPressed(false);
+    // Composite controls may activate on keydown; activation is not key release.
+    setPressed(keyHeld.current);
     for (const [id, startedAt] of activeWaves.current) {
       activeWaves.current.delete(id);
       const remainingVisibleTime = Math.max(0, MINIMUM_VISIBLE_MS - (Date.now() - startedAt));
@@ -108,15 +116,37 @@ export function usePressableInteraction({
     return pending;
   }, []);
 
+  useEffect(() => {
+    const target = rootRef.current?.closest<HTMLElement>('[data-interactive-root]');
+    if (!target) return;
+    const click = () => {
+      if (!pointerActivation.current) startWave(target);
+      pointerActivation.current = false;
+      endWaves();
+    };
+    const leave = (event: globalThis.PointerEvent) => {
+      if (event.pointerType === 'touch') return;
+      cancelPendingTouch();
+      endWaves();
+    };
+    target.addEventListener('click', click);
+    target.addEventListener('pointerleave', leave);
+    return () => {
+      target.removeEventListener('click', click);
+      target.removeEventListener('pointerleave', leave);
+    };
+  }, [startWave, endWaves, cancelPendingTouch]);
+
   return {
-    pressed,
-    ripple: <RippleView waves={waves} />,
+    pressed: !disabled && pressed,
+    ripple: <RippleView rootRef={rootRef} waves={disabled ? [] : waves} />,
     interactionProps: {
       onPointerDown: (event: PointerEvent<HTMLElement>) => {
-        if (!event.isPrimary || (event.pointerType !== 'touch' && event.buttons !== 1)) {
+        if (disabled || !event.isPrimary || (event.pointerType !== 'touch' && event.buttons !== 1)) {
           return;
         }
-        event.currentTarget.setPointerCapture?.(event.pointerId);
+        pointerActivation.current = true;
+        keyHeld.current = false;
         if (event.pointerType === 'touch') {
           cancelPendingTouch();
           const target = event.currentTarget;
@@ -140,20 +170,29 @@ export function usePressableInteraction({
         endWaves();
       },
       onPointerCancel: () => {
+        pointerActivation.current = false;
         cancelPendingTouch();
         endWaves();
       },
       onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
         if (!event.repeat && (event.key === 'Enter' || event.key === ' ')) {
-          startWave(event.currentTarget);
+          pointerActivation.current = false;
+          keyHeld.current = true;
+          if (!disabled) setPressed(true);
         }
       },
       onKeyUp: (event: KeyboardEvent<HTMLElement>) => {
         if (event.key === 'Enter' || event.key === ' ') {
+          keyHeld.current = false;
           endWaves();
         }
       },
-      onBlur: endWaves,
+      onBlur: () => {
+        keyHeld.current = false;
+        pointerActivation.current = false;
+        cancelPendingTouch();
+        endWaves();
+      },
     },
   };
 }

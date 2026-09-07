@@ -1,0 +1,1306 @@
+{
+  "baseURL": "http://127.0.0.1:5173",
+  "capturedAt": "2026-09-07T00:10:01.279Z",
+  "browser": "151.0.7922.34",
+  "axeVersion": "4.13.0",
+  "themes": [
+    {
+      "mode": "light",
+      "contrast": "standard",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "light",
+        "contrast": "standard"
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "._hero_1uqyx_120 > div > ._eyebrow_1uqyx_109"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.01 (foreground color: #007c8c, background color: #b1f3fc, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#007c8c",
+                "bgColor": "#b1f3fc",
+                "contrastRatio": 4.01,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large filled error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large filled error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large outlined error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large outlined error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._sampleGroup_1uqyx_122:nth-child(1) > ._sampleSurface_1uqyx_352 > ._buttonMatrixViewport_1uqyx_377 > table > tbody > tr:nth-child(2) > td:nth-child(7) > ._outlined_yy7kh_196[data-content-type=\"right-icon\"][data-has-trailing-icon=\"\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large text error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large text error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large text error right icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large elevated error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"large elevated error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium filled error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium filled error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium outlined error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._sampleGroup_1uqyx_122:nth-child(2) > ._sampleSurface_1uqyx_352 > ._buttonMatrixViewport_1uqyx_377 > table > tbody > tr:nth-child(2) > td:nth-child(6) > ._outlined_yy7kh_196[data-button-variant=\"outlined\"][data-content-type=\"left-icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._sampleGroup_1uqyx_122:nth-child(2) > ._sampleSurface_1uqyx_352 > ._buttonMatrixViewport_1uqyx_377 > table > tbody > tr:nth-child(2) > td:nth-child(7) > ._outlined_yy7kh_196[data-content-type=\"right-icon\"][data-has-trailing-icon=\"\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium text error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium text error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium text error right icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"medium elevated error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._sampleGroup_1uqyx_122:nth-child(2) > ._sampleSurface_1uqyx_352 > ._buttonMatrixViewport_1uqyx_377 > table > tbody > tr:nth-child(4) > td:nth-child(6) > ._elevated_yy7kh_180[data-button-variant=\"elevated\"][data-content-type=\"left-icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small filled error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small filled error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small outlined error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small outlined error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._sampleGroup_1uqyx_122:nth-child(3) > ._sampleSurface_1uqyx_352 > ._buttonMatrixViewport_1uqyx_377 > table > tbody > tr:nth-child(2) > td:nth-child(7) > ._outlined_yy7kh_196[data-content-type=\"right-icon\"][data-has-trailing-icon=\"\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small text error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small text error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small text error right icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #e72836, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#ffffff",
+                "contrastRatio": 4.41,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small elevated error text\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "button[aria-label=\"small elevated error left icon\"] > ._content_yy7kh_57 > ._label_yy7kh_83[data-slot=\"label\"]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.21 (foreground color: #e72836, background color: #f7fafc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#e72836",
+                "bgColor": "#f7fafc",
+                "contrastRatio": 4.21,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemError\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemError\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemError\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #fff7f8, background color: #e72836, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fff7f8",
+                "bgColor": "#e72836",
+                "contrastRatio": 4.18,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemWarning\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemGood\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemInfo\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 19
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "count": 10
+        },
+        {
+          "id": "color-contrast",
+          "count": 90
+        }
+      ]
+    },
+    {
+      "mode": "light",
+      "contrast": "high",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "light",
+        "contrast": "high"
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "._hero_1uqyx_120 > div > ._eyebrow_1uqyx_109"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.35 (foreground color: #003c45, background color: #1a7886, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#003c45",
+                "bgColor": "#1a7886",
+                "contrastRatio": 2.35,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._hero_1uqyx_120 > div > p"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.04 (foreground color: #d6e7e9, background color: #1a7886, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#d6e7e9",
+                "bgColor": "#1a7886",
+                "contrastRatio": 4.04,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemWarning\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemGood\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemInfo\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._filter_1grbq_223[data-chip-type=\"filter\"][data-size=\"x-small\"]:nth-child(2) > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.64 (foreground color: #0c1213, background color: #597176, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#0c1213",
+                "bgColor": "#597176",
+                "contrastRatio": 3.64,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 19
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "count": 10
+        },
+        {
+          "id": "color-contrast",
+          "count": 90
+        }
+      ]
+    },
+    {
+      "mode": "dark",
+      "contrast": "standard",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "dark",
+        "contrast": "standard"
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemWarning\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemGood\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemInfo\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 19
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "count": 10
+        },
+        {
+          "id": "color-contrast",
+          "count": 89
+        }
+      ]
+    },
+    {
+      "mode": "dark",
+      "contrast": "high",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "dark",
+        "contrast": "high"
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "._hero_1uqyx_120 > div > ._eyebrow_1uqyx_109"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #98e9f9, background color: #499cab, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#98e9f9",
+                "bgColor": "#499cab",
+                "contrastRatio": 2.31,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"large Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemWarning\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemGood\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "div[aria-label=\"small Assistive level 전체\"] > ._assistive_1grbq_150[data-level=\"systemInfo\"][data-chip-type=\"assistive\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemWarning\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.9 (foreground color: #fffdf0, background color: #dbb700, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#fffdf0",
+                "bgColor": "#dbb700",
+                "contrastRatio": 1.9,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemGood\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.64 (foreground color: #edfffd, background color: #00b09b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#edfffd",
+                "bgColor": "#00b09b",
+                "contrastRatio": 2.64,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._assistive_1grbq_150[data-level=\"systemInfo\"][data-size=\"x-small\"] > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.57 (foreground color: #f6f9ff, background color: #287fff, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#f6f9ff",
+                "bgColor": "#287fff",
+                "contrastRatio": 3.57,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            },
+            {
+              "target": [
+                "._filter_1grbq_223[data-chip-type=\"filter\"][data-size=\"x-small\"]:nth-child(2) > ._primaryAction_1grbq_84._action_1grbq_30[data-chip-action=\"primary\"] > ._actionContent_1grbq_53 > ._label_1grbq_89"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.17 (foreground color: #ffffff, background color: #7c959a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+              "contrast": {
+                "fgColor": "#ffffff",
+                "bgColor": "#7c959a",
+                "contrastRatio": 3.17,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              }
+            }
+          ]
+        }
+      ],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 19
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "count": 10
+        },
+        {
+          "id": "color-contrast",
+          "count": 89
+        }
+      ]
+    }
+  ],
+  "snackbar": {
+    "simultaneous": [
+      {
+        "text": "변경 사항을 저장했습니다.close",
+        "type": "success",
+        "rect": {
+          "x": 752,
+          "y": 724,
+          "width": 512,
+          "height": 48,
+          "top": 724,
+          "right": 1264,
+          "bottom": 772,
+          "left": 752
+        }
+      },
+      {
+        "text": "기본 메시지를 표시했습니다.close",
+        "type": "message",
+        "rect": {
+          "x": 752,
+          "y": 780,
+          "width": 512,
+          "height": 48,
+          "top": 780,
+          "right": 1264,
+          "bottom": 828,
+          "left": 752
+        }
+      },
+      {
+        "text": "컴포넌트 상태를 확인하고 있습니다.close",
+        "type": "loading",
+        "rect": {
+          "x": 752,
+          "y": 836,
+          "width": 512,
+          "height": 48,
+          "top": 836,
+          "right": 1264,
+          "bottom": 884,
+          "left": 752
+        }
+      }
+    ],
+    "actionInitiallyVisible": true,
+    "actionVisibleAfterSixSeconds": false
+  },
+  "verdict": "FAIL"
+}

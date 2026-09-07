@@ -160,20 +160,16 @@
 
 .inner {
   opacity: 0;
-  transform: scale(0);
   transform-origin: center;
-  transition:
-    opacity var(--md-radio-selection-exit-duration) linear,
-    transform var(--md-radio-selection-exit-duration) linear;
+  transition: opacity var(--md-radio-selection-exit-duration) linear;
 }
 
 .control[data-checked] .inner {
   opacity: 1;
-  transform: scale(1);
-  transition:
-    opacity var(--md-radio-selection-enter-duration) linear,
-    transform var(--md-radio-selection-enter-duration) var(--md-radio-selection-enter-easing);
+  animation: inner-circle-grow var(--md-radio-selection-enter-duration) var(--md-radio-selection-enter-easing);
 }
+
+@keyframes inner-circle-grow { from { transform: scale(0); } to { transform: scale(1); } }
 
 .text {
   display: grid;
@@ -219,14 +215,8 @@
 }
 
 .control[data-disabled] :is(.outer, .inner) {
+  animation-duration: 0s;
   transition-duration: 0s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .outer,
-  .inner {
-    transition-duration: 0s;
-  }
 }
 
 @media (forced-colors: active) {

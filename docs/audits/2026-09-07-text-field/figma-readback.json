@@ -1,0 +1,4661 @@
+{
+  "source": {
+    "fileKey": "aQ2CfBMmc3q2qD2oDQcnjU",
+    "nodeId": "10724:14659",
+    "date": "2026-09-07"
+  },
+  "large": [
+    {
+      "id": "10443:76122",
+      "name": "Input-type=normal, State=enable, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=enable, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76140",
+      "name": "Input-type=normal, State=hover, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "Input-type=normal, State=hover, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76160",
+      "name": "Input-type=normal, State=focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=focused, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76184",
+      "name": "Input-type=normal, State=error, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=error, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76202",
+      "name": "Input-type=normal, State=error-focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=normal, State=error-focused, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76226",
+      "name": "Input-type=normal, State=disable, Inputted=false",
+      "rootOpacity": 0.3799999952316284,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=disable, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76244",
+      "name": "Input-type=normal, State=read-only, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=read-only, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76264",
+      "name": "Input-type=normal, State=enable, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=enable, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76285",
+      "name": "Input-type=normal, State=hover, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=hover, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76308",
+      "name": "Input-type=normal, State=focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=focused, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76332",
+      "name": "Input-type=normal, State=error, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=normal, State=error, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76353",
+      "name": "Input-type=normal, State=error-focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=normal, State=error-focused, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76377",
+      "name": "Input-type=normal, State=disable, Inputted=true",
+      "rootOpacity": 0.3799999952316284,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=disable, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76398",
+      "name": "Input-type=normal, State=read-only, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=normal, State=read-only, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76419",
+      "name": "Input-type=number, State=enable, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=enable, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76437",
+      "name": "Input-type=number, State=hover, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=hover, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76457",
+      "name": "Input-type=number, State=focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=focused, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76481",
+      "name": "Input-type=number, State=error, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=error, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76499",
+      "name": "Input-type=number, State=error-focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=number, State=error-focused, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76523",
+      "name": "Input-type=number, State=disable, Inputted=false",
+      "rootOpacity": 0.3799999952316284,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=disable, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76541",
+      "name": "Input-type=number, State=read-only, Inputted=false",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=read-only, Inputted=false",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76561",
+      "name": "Input-type=number, State=enable, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=enable, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76582",
+      "name": "Input-type=number, State=hover, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=hover, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76605",
+      "name": "Input-type=number, State=focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=focused, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76629",
+      "name": "Input-type=number, State=error, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=number, State=error, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76650",
+      "name": "Input-type=number, State=error-focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        3,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "Input-type=number, State=error-focused, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76674",
+      "name": "Input-type=number, State=disable, Inputted=true",
+      "rootOpacity": 0.3799999952316284,
+      "h": 68,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=disable, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:76695",
+      "name": "Input-type=number, State=read-only, Inputted=true",
+      "rootOpacity": 1,
+      "h": 48,
+      "field": [
+        48,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          16,
+          "body/large",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          14,
+          "label/large",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=read-only, Inputted=true",
+          14,
+          "label/large",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    }
+  ],
+  "small": [
+    {
+      "id": "10443:77310",
+      "name": "Input-type=number, State=enable, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=enable, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3403",
+      "name": "Input-type=text, State=enable, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=enable, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77328",
+      "name": "Input-type=number, State=hover, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=hover, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3423",
+      "name": "Input-type=text, State=hover, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=hover, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77346",
+      "name": "Input-type=number, State=focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=focused, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3442",
+      "name": "Input-type=text, State=focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=focused, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77370",
+      "name": "Input-type=number, State=error, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=error, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3464",
+      "name": "Input-type=text, State=error, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=error, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77388",
+      "name": "Input-type=number, State=error-focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=error-focused, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3483",
+      "name": "Input-type=text, State=error-focused, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=error-focused, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77412",
+      "name": "Input-type=number, State=disable, Inputted=false",
+      "rootOpacity": 0.3799999952316284,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=disable, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3505",
+      "name": "Input-type=text, State=disable, Inputted=false",
+      "rootOpacity": 0.3799999952316284,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=disable, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77430",
+      "name": "Input-type=number, State=read-only, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=read-only, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3524",
+      "name": "Input-type=text, State=read-only, Inputted=false",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input-area",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant-bright"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=read-only, Inputted=false",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77448",
+      "name": "Input-type=number, State=enable, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=enable, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3543",
+      "name": "Input-type=text, State=enable, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=enable, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77469",
+      "name": "Input-type=number, State=hover, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=hover, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3563",
+      "name": "Input-type=text, State=hover, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=hover, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77492",
+      "name": "Input-type=number, State=focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=focused, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3584",
+      "name": "Input-type=text, State=focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/primary"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=focused, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77516",
+      "name": "Input-type=number, State=error, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=error, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3606",
+      "name": "Input-type=text, State=error, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=error, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77537",
+      "name": "Input-type=number, State=error-focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=error-focused, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3626",
+      "name": "Input-type=text, State=error-focused, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        2,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "system/error"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=error-focused, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77561",
+      "name": "Input-type=number, State=disable, Inputted=true",
+      "rootOpacity": 0.3799999952316284,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=disable, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3648",
+      "name": "Input-type=text, State=disable, Inputted=true",
+      "rootOpacity": 0.3799999952316284,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container-lowest"
+        ],
+        [
+          "schemes/outline-high"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=disable, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10443:77582",
+      "name": "Input-type=number, State=read-only, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=number, State=read-only, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "10459:3668",
+      "name": "Input-type=text, State=read-only, Inputted=true",
+      "rootOpacity": 1,
+      "h": 32,
+      "field": [
+        32,
+        1,
+        1,
+        [
+          "schemes/surface-container"
+        ],
+        [
+          "schemes/outline-middle"
+        ]
+      ],
+      "texts": [
+        [
+          "prefix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "input text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface"
+          ]
+        ],
+        [
+          "suffix-div",
+          12,
+          "label/medium",
+          [
+            "schemes/outline-high"
+          ]
+        ],
+        [
+          "label-div",
+          11,
+          "label/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "supporting-text",
+          12,
+          "body/small",
+          [
+            "schemes/on-surface-variant"
+          ]
+        ],
+        [
+          "Input-type=text, State=read-only, Inputted=true",
+          11,
+          "label/small",
+          [
+            "system/error"
+          ]
+        ]
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "10443:76122",
+      "slots": [
+        {
+          "id": "10443:76123",
+          "n": "text field",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 4
+        },
+        {
+          "id": "10443:76125",
+          "n": "leading-button-div",
+          "show": true,
+          "x": 8,
+          "y": 0,
+          "w": 32,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            8
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83105",
+          "n": "Icon",
+          "show": true,
+          "x": 8,
+          "y": 12,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76127",
+          "n": "prefix-div",
+          "show": true,
+          "x": 40,
+          "y": 0,
+          "w": 48,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76129",
+          "n": "span",
+          "show": true,
+          "x": 88,
+          "y": 0,
+          "w": 169,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76130",
+          "n": "input-area",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 169,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76132",
+          "n": "suffix-div",
+          "show": true,
+          "x": 257,
+          "y": 0,
+          "w": 47,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76134",
+          "n": "trailing button div",
+          "show": true,
+          "x": 304,
+          "y": 0,
+          "w": 40,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:82754",
+          "n": "IconButton",
+          "show": true,
+          "x": 0,
+          "y": 4,
+          "w": 40,
+          "h": 40,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10450:82656",
+          "n": "label-div",
+          "show": true,
+          "x": 12,
+          "y": 0,
+          "w": 40,
+          "h": 3,
+          "p": [
+            0,
+            4,
+            0,
+            4
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76138",
+          "n": "supporting-text",
+          "show": true,
+          "x": 0,
+          "y": 48,
+          "w": 352,
+          "h": 20,
+          "p": [
+            4,
+            12,
+            0,
+            12
+          ],
+          "gap": 0,
+          "radius": 0
+        }
+      ]
+    },
+    {
+      "id": "10459:3403",
+      "slots": [
+        {
+          "id": "10459:3404",
+          "n": "text field",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 32,
+          "p": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "gap": 0,
+          "radius": 4
+        },
+        {
+          "id": "10459:3405",
+          "n": "State layer",
+          "show": false,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 32,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3406",
+          "n": "leading-button-div",
+          "show": true,
+          "x": 4,
+          "y": 4,
+          "w": 20,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            4
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10459:3407",
+          "n": "Icon",
+          "show": true,
+          "x": 4,
+          "y": 4,
+          "w": 16,
+          "h": 16,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3408",
+          "n": "prefix-div",
+          "show": true,
+          "x": 24,
+          "y": 4,
+          "w": 40,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            4
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10459:3410",
+          "n": "span",
+          "show": true,
+          "x": 64,
+          "y": 4,
+          "w": 222,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3411",
+          "n": "input-area",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3413",
+          "n": "suffix-div",
+          "show": true,
+          "x": 286,
+          "y": 4,
+          "w": 38,
+          "h": 24,
+          "p": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10459:3415",
+          "n": "trailing button div",
+          "show": true,
+          "x": 324,
+          "y": 4,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10459:3416",
+          "n": "IconButton",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3417",
+          "n": "area",
+          "show": false,
+          "x": 342,
+          "y": 22,
+          "w": 8,
+          "h": 8,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3418",
+          "n": "label-div",
+          "show": true,
+          "x": 6,
+          "y": 0,
+          "w": 35,
+          "h": 2,
+          "p": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10459:3420",
+          "n": "supporting-text",
+          "show": true,
+          "x": 0,
+          "y": 33,
+          "w": 352,
+          "h": 16,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        }
+      ]
+    },
+    {
+      "id": "10443:76582",
+      "slots": [
+        {
+          "id": "10443:76583",
+          "n": "text field",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 4
+        },
+        {
+          "id": "10443:76585",
+          "n": "leading-button-div",
+          "show": true,
+          "x": 8,
+          "y": 0,
+          "w": 32,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            8
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83115",
+          "n": "Icon",
+          "show": true,
+          "x": 8,
+          "y": 12,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76587",
+          "n": "prefix-div",
+          "show": true,
+          "x": 40,
+          "y": 0,
+          "w": 48,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76589",
+          "n": "span",
+          "show": true,
+          "x": 88,
+          "y": 0,
+          "w": 169,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76590",
+          "n": "input-area",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 129,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76591",
+          "n": "input text",
+          "show": true,
+          "x": 8,
+          "y": 12,
+          "w": 43,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10443:76593",
+          "n": "hover-button-div",
+          "show": true,
+          "x": 129,
+          "y": 0,
+          "w": 40,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83296",
+          "n": "IconButton",
+          "show": true,
+          "x": 0,
+          "y": 4,
+          "w": 40,
+          "h": 40,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76595",
+          "n": "suffix-div",
+          "show": true,
+          "x": 257,
+          "y": 0,
+          "w": 47,
+          "h": 48,
+          "p": [
+            0,
+            8,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76597",
+          "n": "trailing button div",
+          "show": true,
+          "x": 304,
+          "y": 0,
+          "w": 40,
+          "h": 48,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:82901",
+          "n": "IconButton",
+          "show": true,
+          "x": 0,
+          "y": 4,
+          "w": 40,
+          "h": 40,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76600",
+          "n": "label-div",
+          "show": true,
+          "x": 12,
+          "y": 0,
+          "w": 40,
+          "h": 3,
+          "p": [
+            0,
+            4,
+            0,
+            4
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:76603",
+          "n": "supporting-text",
+          "show": true,
+          "x": 0,
+          "y": 48,
+          "w": 352,
+          "h": 20,
+          "p": [
+            4,
+            12,
+            0,
+            12
+          ],
+          "gap": 0,
+          "radius": 0
+        }
+      ]
+    },
+    {
+      "id": "10443:77469",
+      "slots": [
+        {
+          "id": "10443:77470",
+          "n": "text field",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 32,
+          "p": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "gap": 0,
+          "radius": 4
+        },
+        {
+          "id": "10443:77471",
+          "n": "State layer",
+          "show": false,
+          "x": 0,
+          "y": 0,
+          "w": 352,
+          "h": 32,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77472",
+          "n": "leading-button-div",
+          "show": true,
+          "x": 4,
+          "y": 4,
+          "w": 20,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            4
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83474",
+          "n": "Icon",
+          "show": true,
+          "x": 4,
+          "y": 4,
+          "w": 16,
+          "h": 16,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77474",
+          "n": "prefix-div",
+          "show": true,
+          "x": 24,
+          "y": 4,
+          "w": 40,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            4
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10443:77476",
+          "n": "span",
+          "show": true,
+          "x": 64,
+          "y": 4,
+          "w": 222,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77477",
+          "n": "input-area",
+          "show": true,
+          "x": 0,
+          "y": 0,
+          "w": 198,
+          "h": 24,
+          "p": [
+            0,
+            8,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77478",
+          "n": "input text",
+          "show": true,
+          "x": 157,
+          "y": 4,
+          "w": 33,
+          "h": 16,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83346",
+          "n": "IconButton",
+          "show": true,
+          "x": 198,
+          "y": 0,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77482",
+          "n": "suffix-div",
+          "show": true,
+          "x": 286,
+          "y": 4,
+          "w": 38,
+          "h": 24,
+          "p": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "gap": 8,
+          "radius": 0
+        },
+        {
+          "id": "10450:83422",
+          "n": "IconButton",
+          "show": true,
+          "x": 324,
+          "y": 4,
+          "w": 24,
+          "h": 24,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77486",
+          "n": "area",
+          "show": false,
+          "x": 342,
+          "y": 22,
+          "w": 8,
+          "h": 8,
+          "p": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77487",
+          "n": "label-div",
+          "show": true,
+          "x": 6,
+          "y": 0,
+          "w": 35,
+          "h": 2,
+          "p": [
+            0,
+            2,
+            2,
+            2
+          ],
+          "gap": 0,
+          "radius": 0
+        },
+        {
+          "id": "10443:77489",
+          "n": "supporting-text",
+          "show": true,
+          "x": 0,
+          "y": 33,
+          "w": 352,
+          "h": 16,
+          "p": [
+            0,
+            8,
+            0,
+            8
+          ],
+          "gap": 0,
+          "radius": 0
+        }
+      ]
+    }
+  ]
+}

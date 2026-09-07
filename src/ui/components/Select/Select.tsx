@@ -6,6 +6,7 @@ import { useFloatingLabelMotion } from '../../interactions/FloatingLabelMotion';
 import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
 import { FieldOutline } from '../FieldOutline/FieldOutline';
 import styles from './Select.module.css';
+import menu from '../FieldOutline/FieldDropdown.module.css';
 
 export interface SelectOption<T extends string> {
   value: T;
@@ -125,25 +126,27 @@ export function Select<T extends string>({
           onFocus={() => setFocused(true)}
         >
           <BaseSelect.Value className={styles.value} placeholder={placeholder} />
-          <BaseSelect.Icon className={styles.icon}>
-            <MaterialIcon name="arrow_drop_down" />
+          <BaseSelect.Icon className={styles.icon} data-slot="trailing-icon">
+            <MaterialIcon className={styles.iconDown} name="arrow_drop_down" />
+            <MaterialIcon className={styles.iconUp} name="arrow_drop_down" />
           </BaseSelect.Icon>
         </BaseSelect.Trigger>
         <BaseSelect.Portal>
           <BaseSelect.Positioner
             align="start"
             alignItemWithTrigger={false}
-            className={styles.positioner}
+            className={menu.positioner}
             ref={setPositionerElement}
             sideOffset={0}
           >
-            <BaseSelect.Popup className={styles.popup} ref={setPopupElement}>
-              <div className={styles.surface} data-slot="menu-surface">
-                <BaseSelect.List className={styles.list} data-slot="menu-content">
+            <BaseSelect.Popup className={menu.popup} ref={setPopupElement}>
+              <div className={menu.surface} data-slot="menu-surface">
+                <BaseSelect.List className={menu.list} data-slot="menu-content">
                   {options.map((option) => (
                     <SelectOptionItem
                       key={option.value}
                       option={option}
+                      selected={(value ?? uncontrolledValue) === option.value}
                       setItemElement={setItemElement}
                     />
                   ))}
@@ -162,20 +165,31 @@ export function Select<T extends string>({
 
 interface SelectOptionItemProps<T extends string> {
   option: SelectOption<T>;
+  selected: boolean;
   setItemElement: (element: HTMLDivElement | null) => void;
 }
 
 function SelectOptionItem<T extends string>({
   option,
+  selected,
   setItemElement,
 }: SelectOptionItemProps<T>) {
   const { interactionProps, pressed, ripple } = usePressableInteraction({
     disabled: option.disabled,
   });
 
+  // Stable Material Web excludes disabled options from list navigation.
+  // Base UI 1.7 deliberately includes disabled Items in its roving registry.
+  // Keep them visible/announced, but outside that interactive registry.
+  if (option.disabled) {
+    return <div role="option" aria-disabled="true" aria-selected={selected} className={menu.item} data-disabled="">
+      <span className={menu.itemContent}>{option.label}</span>
+    </div>;
+  }
+
   return (
     <BaseSelect.Item
-      className={styles.item}
+      className={menu.item}
       data-interactive-root=""
       data-pressed={pressed || undefined}
       disabled={option.disabled}
@@ -191,7 +205,7 @@ function SelectOptionItem<T extends string>({
       <StateLayer />
       {ripple}
       <FocusRing inward />
-      <span className={styles.itemContent}>
+      <span className={menu.itemContent}>
         <BaseSelect.ItemText>{option.label}</BaseSelect.ItemText>
       </span>
     </BaseSelect.Item>

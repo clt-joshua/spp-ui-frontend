@@ -50,7 +50,7 @@ test('별도 컴포넌트 검증 페이지에서 전체 inventory와 실제 상�
   await expect(page.getByRole('heading', { level: 2, name: 'Dialogs' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Menus' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Feedback' })).toBeVisible();
-  await expect(page.getByText('Components', { exact: true }).locator('..').locator('strong')).toHaveText('13');
+  await expect(page.getByText('Components', { exact: true }).locator('..').locator('strong')).toHaveText('14');
   await expect(page.getByText('Groups', { exact: true }).locator('..').locator('strong')).toHaveText('8');
   await expect(page.getByRole('navigation', { name: '컴포넌트 그룹' }).getByRole('link')).toHaveCount(8);
   await expect(page.locator('#inputs')).toHaveCount(1);
@@ -166,8 +166,8 @@ test('Tabs는 Figma anatomy와 MD3 manual activation 및 panel 연결을 유지�
   await page.keyboard.down('Space');
   await expect(tokens).toHaveAttribute('data-pressed', 'true');
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
-  await expect(tokens.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(tokens.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 });
 
 test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유지한다', async ({ page }) => {
@@ -188,7 +188,15 @@ test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유�
   await expect(day).toHaveCSS('padding-right', '12px');
   await expect(day).toHaveCSS('border-left-width', '1px');
   await expect(day).toHaveCSS('border-top-left-radius', '48px');
-  await expect(content).toHaveCSS('gap', '8px');
+  // Labs keeps the 8px visual gap inside its 18px + 8px graphic, not flex gap.
+  await expect(content).toHaveCSS('gap', '0px');
+  await expect(day.locator('[data-slot="graphic"]')).toHaveCSS('width', '26px');
+  const iconLabelGap = await day.evaluate((element) => {
+    const icon = element.querySelector('[data-slot="selected-icon"]')!.getBoundingClientRect();
+    const label = element.querySelector('[data-slot="label"]')!.getBoundingClientRect();
+    return label.left - icon.right;
+  });
+  expect(iconLabelGap).toBe(8);
   await expect(day.locator('[data-slot="selected-icon"]')).toHaveCSS('width', '18px');
   await expect(day.locator('[data-slot="selected-icon"]')).toHaveCSS('height', '18px');
   await expect(label).toHaveCSS('font-size', '14px');
@@ -219,8 +227,8 @@ test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유�
   await expect(month.locator('[data-slot="focus-ring"]')).toHaveCSS('opacity', '1');
   await page.keyboard.down('Space');
   await expect(month).toHaveAttribute('data-pressed', 'true');
-  await expect(month.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(month.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await expect(month).toHaveAttribute('aria-pressed', 'true');
 
   const multiple = page.getByRole('group', { name: '지도 레이어' });
@@ -337,8 +345,8 @@ test('Switch는 Figma small anatomy와 MD3 binary form 동작을 함께 유지�
   await page.keyboard.down('Space');
   await expect(control).toHaveAttribute('data-pressed', 'true');
   await expect(control.locator('[data-slot="handle"]')).toHaveCSS('width', '12px');
-  await expect(control.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(control.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 
   const disabled = page.getByRole('switch', { name: 'disabled switch', exact: true });
   await expect(disabled).toHaveAttribute('aria-disabled', 'true');
@@ -453,8 +461,8 @@ test('Button은 Figma 360-variant 축과 MD3 실제 interaction을 함께 유지
   await page.keyboard.down('Space');
   await expect(interactive).toHaveAttribute('data-pressed', 'true');
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
-  await expect(interactive.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(interactive.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 });
 
 test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 유지한다', async ({ page }) => {
@@ -543,8 +551,8 @@ test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 �
   await page.keyboard.down('Space');
   await expect(filled).toHaveAttribute('data-pressed', 'true');
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
-  await expect(filled.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(filled.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 
   const toggle = page.getByRole('button', {
     name: 'large filled add favorite',
@@ -623,8 +631,8 @@ test('Checkbox는 Figma 90-variant geometry와 MD3 native interaction을 함께 
   await page.keyboard.down('Space');
   await expect(interactive).toHaveAttribute('data-pressed', 'true');
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.12)');
-  await expect(interactive.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(interactive.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 });
 
 test('Radio는 Figma 30-variant geometry와 MD3 단일 선택 그룹 동작을 함께 유지한다', async ({ page }) => {
@@ -716,8 +724,8 @@ test('Radio는 Figma 30-variant geometry와 MD3 단일 선택 그룹 동작을 �
   await page.keyboard.down('Space');
   await expect(selected).toHaveAttribute('data-pressed', 'true');
   await expect(keyboardStateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.12)');
-  await expect(selected.locator('[data-slot="ripple"] > span')).toHaveCount(1);
   await page.keyboard.up('Space');
+  await expect(selected.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 });
 
 test('Assistive, Filter, Input, Location Chip이 Figma token과 M3 동작을 함께 사용한다', async ({ page }) => {
@@ -854,7 +862,7 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   const textField = page.locator('input[aria-label="16진수 시드 색상"]');
   const textFieldControl = textField.locator('xpath=ancestor::*[@data-slot="text-field-control"]');
   const select = page.getByRole('combobox', { name: '대상 플랫폼' });
-  expect((await textFieldControl.boundingBox())?.height).toBe(56);
+  expect((await textFieldControl.boundingBox())?.height).toBe(48);
   const supportingText = page.getByText('나중에 언제든 변경할 수 있습니다.', { exact: true });
   const supportingBox = await supportingText.boundingBox();
   const projectInput = page.getByRole('textbox', { name: '프로젝트 이름' });
@@ -871,7 +879,7 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   expect(projectFloatingLabelBox).not.toBeNull();
   expect(projectLeadingIconBox).not.toBeNull();
   expect(projectFloatingLabelBox!.x - projectFieldControlBox!.x).toBe(16);
-  expect(projectLeadingIconBox!.x - projectFieldControlBox!.x).toBe(12);
+  expect(projectLeadingIconBox!.x - projectFieldControlBox!.x).toBe(16);
   const outlineNotchBox = await outlineNotch.boundingBox();
   const outlineLabelBox = await outlineLabel.boundingBox();
   expect(outlineNotchBox).not.toBeNull();
@@ -884,8 +892,8 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   expect(supportingBox!.y).toBe(projectFieldControlBox!.y + projectFieldControlBox!.height);
   expect(supportingBox!.height).toBe(20);
   await expect(supportingText).toHaveCSS('padding-top', '4px');
-  await expect(supportingText).toHaveCSS('padding-left', '16px');
-  await expect(supportingText).toHaveCSS('padding-right', '16px');
+  await expect(supportingText).toHaveCSS('padding-left', '12px');
+  await expect(supportingText).toHaveCSS('padding-right', '12px');
   await expect(supportingText).toHaveCSS('font-size', '12px');
   await expect(supportingText).toHaveCSS('font-weight', '400');
   await expect(supportingText).toHaveCSS('line-height', '16px');
@@ -894,24 +902,10 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await page.waitForTimeout(200);
   const restingLabel = projectFieldControl.locator('[data-slot="resting-label"]');
   const floatingLabel = projectFieldControl.locator('[data-slot="floating-label"]');
+  // Current product decision restores floating labels and removes Filled.
   await expect(restingLabel).toHaveCSS('opacity', '1');
   await expect(floatingLabel).toHaveCSS('opacity', '0');
-  const labelAnimation = await projectFieldControl.evaluate(async (control) => {
-    const input = control.querySelector('input');
-    const label = control.querySelector<HTMLElement>('[data-slot="floating-label"]');
-    input?.focus();
-    for (let frame = 0; frame < 8; frame += 1) {
-      await new Promise(requestAnimationFrame);
-      const animation = label?.getAnimations()[0];
-      const timing = animation?.effect?.getTiming();
-      if (timing) {
-        return { duration: timing.duration, easing: timing.easing };
-      }
-    }
-    return { duration: undefined, easing: undefined };
-  });
-  expect(labelAnimation.duration).toBe(150);
-  expect(labelAnimation.easing).toBe('cubic-bezier(0.2, 0, 0, 1)');
+  await projectInput.focus();
   await expect.poll(() => projectFieldControl.locator('[data-slot="outline-start"]').evaluate((element) => ({
     opacity: getComputedStyle(element, '::after').opacity,
     width: getComputedStyle(element, '::after').borderTopWidth,
@@ -921,9 +915,10 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await projectInput.fill('');
   await page.getByRole('button', { name: '구성 검토' }).focus();
   await page.waitForTimeout(200);
-  const restingLabelBox = await restingLabel.boundingBox();
-  expect(restingLabelBox).not.toBeNull();
-  expect(restingLabelBox!.x - (projectLeadingIconBox!.x + projectLeadingIconBox!.width)).toBe(16);
+  const projectInputBox = await projectInput.boundingBox();
+  expect(projectInputBox).not.toBeNull();
+  expect(projectInputBox!.x - (projectLeadingIconBox!.x + projectLeadingIconBox!.width)).toBe(0);
+  await expect(projectInput).toHaveCSS('padding-left', '8px');
   const selectBox = await select.boundingBox();
   const selectValueBox = await select.getByText('Web application', { exact: true }).boundingBox();
   expect(selectBox?.height).toBe(56);

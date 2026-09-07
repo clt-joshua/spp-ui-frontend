@@ -104,8 +104,9 @@ describe('Figma text style tokens', () => {
       'Dialog/Dialog.module.css',
       'Menu/Menu.module.css',
       'Select/Select.module.css',
+      'FieldOutline/FieldDropdown.module.css',
       'Snackbar/Snackbar.module.css',
-      'TextField/TextField.module.css',
+      'FieldOutline/OutlinedField.module.css',
     ];
 
     for (const file of componentStyleFiles) {

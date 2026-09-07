@@ -72,8 +72,7 @@
   background: var(--md-switch-unselected-track-color);
   transform: translate(-50%, -50%);
   transition:
-    background-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    border-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+    background-color var(--md-switch-color-duration) linear;
 }
 
 .control[data-checked] .track {
@@ -91,15 +90,19 @@
   border-radius: var(--md-switch-handle-shape);
   transform: translateY(-50%);
   transition:
-    inline-size var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    block-size var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    inset-inline-end var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+    inline-size var(--md-switch-handle-resize-duration) var(--md-switch-selection-motion-easing),
+    block-size var(--md-switch-handle-resize-duration) var(--md-switch-selection-motion-easing),
+    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-handle-travel-easing);
 }
 
 .control[data-checked] .thumb {
-  inset-inline-start: auto;
-  inset-inline-end: var(--switch-track-inline-padding);
+  /* Numeric endpoints are essential: switching left/right to auto cannot move. */
+  inset-inline-start: calc(100% - var(--switch-track-inline-padding) - var(--switch-current-handle-size));
+}
+
+.control[data-pressed]:not([data-disabled], [data-readonly]) .thumb {
+  transition-duration: var(--md-switch-handle-press-duration), var(--md-switch-handle-press-duration), var(--md-switch-selection-motion-duration);
+  transition-timing-function: linear, linear, var(--md-switch-handle-travel-easing);
 }
 
 .handle {
@@ -112,8 +115,8 @@
   background: var(--md-switch-unselected-handle-color);
   color: var(--md-switch-unselected-icon-color);
   transition:
-    background-color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    color var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing);
+    background-color var(--md-switch-color-duration) linear,
+    color var(--md-switch-color-duration) linear;
 }
 
 .control[data-checked] .handle {
@@ -140,18 +143,19 @@
   block-size: var(--switch-icon-size);
   font-size: var(--switch-icon-size);
   line-height: 1;
+  transition: opacity var(--md-switch-icon-fade-duration) linear;
 }
 
 .selectedIcon {
-  display: none;
+  opacity: 0;
 }
 
 .control[data-checked] .selectedIcon {
-  display: inline-block;
+  opacity: 1;
 }
 
 .control[data-checked] .unselectedIcon {
-  display: none;
+  opacity: 0;
 }
 
 .control[data-disabled] .track {
@@ -202,8 +206,9 @@
   border-radius: var(--md-switch-state-layer-shape);
   transform: translate(-50%, -50%);
   transition:
-    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-selection-motion-easing),
-    opacity var(--md-switch-state-layer-motion-duration) var(--md-switch-state-layer-motion-easing);
+    inset-inline-start var(--md-switch-selection-motion-duration) var(--md-switch-handle-travel-easing),
+    opacity var(--md-switch-state-layer-motion-duration) var(--md-switch-state-layer-motion-easing),
+    background-color var(--md-switch-state-layer-motion-duration) var(--md-switch-state-layer-motion-easing);
 }
 
 .control[data-checked] .visual > :global([data-slot='state-layer']),
@@ -232,15 +237,9 @@
   transform: translate(-50%, -50%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .track,
-  .thumb,
-  .handle,
-  .visual > :global([data-slot='state-layer']),
-  .visual > :global([data-slot='ripple']) {
-    transition-duration: 0s;
-  }
-}
+.control[data-disabled] :is(.thumb, .selectedIcon, .unselectedIcon),
+.control[data-disabled] .visual > :global([data-slot='state-layer']),
+.control[data-disabled] .visual > :global([data-slot='ripple']) { transition: none; }
 
 @media (forced-colors: active) {
   .track {

@@ -737,6 +737,7 @@
   --md-sys-motion-duration-medium4: 400ms;
   --md-sys-motion-duration-long1: 450ms;
   --md-sys-motion-duration-long2: 500ms;
+  --md-sys-motion-duration-long4: 600ms;
   --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
   --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);

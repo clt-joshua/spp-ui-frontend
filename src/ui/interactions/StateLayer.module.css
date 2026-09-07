@@ -6,7 +6,7 @@
   pointer-events: none;
   background: var(--md3-state-layer-color, currentColor);
   opacity: 0;
-  transition: opacity var(--md-interaction-motion-duration) var(--md-interaction-motion-easing);
+  transition: opacity var(--md-interaction-motion-duration) var(--md-interaction-motion-easing), background-color var(--md-interaction-motion-duration) var(--md-interaction-motion-easing);
 }
 
 :global([data-interactive-root]):hover:not(:disabled, [data-disabled]) > .root {

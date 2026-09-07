@@ -24,7 +24,9 @@ export type {
   IconButtonVariant,
 } from './components/IconButton';
 export { TextField } from './components/TextField';
-export type { TextFieldProps, TextFieldVariant } from './components/TextField';
+export type { TextFieldAction, TextFieldProps, TextFieldSize } from './components/TextField';
+export { AutoComplete } from './components/AutoComplete';
+export type { AutoCompleteProps, AutoCompleteOption } from './components/AutoComplete';
 export { Checkbox } from './components/Checkbox';
 export type { CheckboxProps, CheckboxSize } from './components/Checkbox';
 export { Radio, RadioGroup } from './components/Radio';

@@ -32,6 +32,8 @@ import {
   type RadioSize,
 } from '@/ui';
 import styles from './ComponentGalleryPage.module.css';
+import { TextFieldExamples } from './TextFieldExamples';
+import { AutoCompleteExamples, SelectExamples } from './ChoiceFieldExamples';
 
 const assistiveLevels: ChipAssistiveLevel[] = [
   'primary',
@@ -75,7 +77,7 @@ const buttonContentTypes: Record<
 const sections = [
   { id: 'actions', label: 'Actions', count: 2, components: 'Button · IconButton' },
   { id: 'navigation', label: 'Navigation', count: 2, components: 'Tabs · Segmented Button' },
-  { id: 'form-fields', label: 'Form fields', count: 2, components: 'TextField · Select' },
+  { id: 'form-fields', label: 'Form fields', count: 3, components: 'TextField · Select · AutoComplete' },
   { id: 'selection-controls', label: 'Selection controls', count: 3, components: 'Checkbox · Radio · Switch' },
   { id: 'chips', label: 'Chips', count: 1, components: 'Chip' },
   { id: 'dialogs', label: 'Dialogs', count: 1, components: 'Dialog' },
@@ -142,7 +144,7 @@ export function ComponentGalleryPage() {
           </div>
 
           <div className={styles.summary} aria-label="검증 페이지 요약">
-            <div><strong>13</strong><span>Components</span></div>
+            <div><strong>14</strong><span>Components</span></div>
             <div><strong>{sections.length}</strong><span>Groups</span></div>
             <div><strong>Live</strong><span>Interactions</span></div>
           </div>
@@ -423,6 +425,7 @@ export function ComponentGalleryPage() {
             <SampleGroup title="Segmented Button · single selection">
               <p className={styles.matrixHint}>
                 단일 선택은 활성 세그먼트를 다시 눌러 해제하지 않습니다. 각 native button은 Tab으로 이동하고 Space/Enter로 선택합니다.
+                {' '}선택 시 아이콘 영역이 150ms 동안 펼쳐지고 체크가 나타납니다. 빠르게 선택을 바꾸거나 모션 감소 설정으로 비교할 수 있습니다.
               </p>
               <div className={styles.segmentedButtonViewport}>
                 <SegmentedButtonSet<'day' | 'week' | 'month' | 'year' | 'agenda'>
@@ -458,27 +461,34 @@ export function ComponentGalleryPage() {
                 </SegmentedButtonSet>
               </div>
             </SampleGroup>
+            <SampleGroup title="Segmented Button · selection icon options">
+              <SegmentedButtonSet label="선택 아이콘 모션 옵션" selectionMode="multiple">
+                <SegmentedButton hideSelectedIcon icon={<MaterialIcon name="visibility" />} value="hidden">체크 숨김</SegmentedButton>
+                <SegmentedButton selectedIcon={<MaterialIcon name="star" />} value="custom">사용자 아이콘</SegmentedButton>
+              </SegmentedButtonSet>
+            </SampleGroup>
           </GallerySection>
 
           <GallerySection
-            description="텍스트 및 옵션 입력 anatomy, supporting/error와 filled·outlined 상태"
+            description="TextField 직접 입력 · Select 목록 선택 · AutoComplete 입력 제안과 각 상태"
             id="form-fields"
             index="03"
             legacyId="inputs"
             title="Form fields"
           >
             <SampleGroup title="TextField variants and states">
+              <TextFieldExamples />
               <div className={styles.fieldGrid}>
                 <TextField label="Outlined" supportingText="기본 supporting text" />
-                <TextField label="Filled" supportingText="Filled container" variant="filled" />
                 <TextField error errorText="입력값을 다시 확인하세요." label="Error" value="Invalid value" readOnly />
-                <TextField disabled label="Disabled" supportingText="비활성 상태" value="Unavailable" />
+                <TextField disabled error label="Disabled" supportingText="비활성 상태 — error보다 disabled 표현 우선" value="Unavailable" />
                 <TextField label="Leading icon" leadingIcon={<MaterialIcon name="search" />} value="Search query" readOnly />
                 <TextField label="Trailing icon" trailingIcon={<MaterialIcon name="visibility" />} type="password" value="password" readOnly />
               </div>
             </SampleGroup>
 
             <SampleGroup title="Select variants and states">
+              <SelectExamples />
               <div className={styles.fieldGrid}>
                 <Select
                   label="대상 플랫폼"
@@ -495,6 +505,9 @@ export function ComponentGalleryPage() {
                 <Select error errorText="필수 항목입니다." label="Error select" options={[{ value: 'one', label: 'Option one' }]} />
                 <Select disabled label="Disabled select" options={[{ value: 'one', label: 'Option one' }]} supportingText="비활성 상태" />
               </div>
+            </SampleGroup>
+            <SampleGroup title="AutoComplete variants and states">
+              <AutoCompleteExamples />
             </SampleGroup>
           </GallerySection>
 

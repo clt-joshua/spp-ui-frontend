@@ -18,7 +18,7 @@
   --field-outline-height: var(--md-select-text-field-container-height);
   --field-outline-leading-space: var(--md-select-text-field-label-leading-space);
   --field-outline-motion-duration: var(--md-select-motion-duration);
-  --field-outline-motion-easing: var(--md-select-motion-easing);
+  --field-outline-motion-easing: var(--md-select-outline-motion-easing);
   --field-outline-shape: var(--select-shape);
   --field-outline-start-width: calc(var(--md-select-text-field-label-leading-space) - var(--md-select-text-field-outline-label-padding));
   --field-outline-trailing-space: var(--md-select-text-field-label-trailing-space);
@@ -72,6 +72,7 @@
 }
 
 .trigger {
+  position: relative;
   display: flex;
   block-size: var(--md-select-text-field-container-height);
   align-self: start;
@@ -93,11 +94,21 @@
   text-align: start;
   box-shadow: inset 0 var(--select-indicator-size) 0 0 var(--select-indicator-color);
   cursor: pointer;
-  transition: background-color var(--md-select-motion-duration) var(--md-select-motion-easing), box-shadow var(--md-select-motion-duration) var(--md-select-motion-easing), padding-block-start var(--md-select-motion-duration) var(--md-select-motion-easing);
 }
 
-.filled[data-floating] .trigger {
+.filled .trigger {
   padding-block-start: 1.375rem;
+}
+
+.filled .trigger::after {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  border-block-end: var(--md-filled-select-text-field-focus-active-indicator-height) solid var(--select-focus-indicator-color);
+  content: '';
+  opacity: var(--select-outline-active-opacity, 0);
+  pointer-events: none;
+  transition: opacity var(--md-select-motion-duration) var(--md-select-outline-motion-easing);
 }
 
 .root[data-floating] .restingLabel {
@@ -107,6 +118,9 @@
 .root[data-floating] .floatingLabel {
   opacity: 1;
 }
+
+/* Empty, unfocused fields show only the label, never an overlapping placeholder. */
+.root:not([data-floating]) .value { opacity: 0; }
 
 .root:not([data-disabled]):hover .label {
   color: var(--md-select-text-field-hover-label-text-color);
@@ -126,7 +140,6 @@
 
 .root:focus-within,
 .root:has(.trigger[data-popup-open]) {
-  --select-indicator-size: var(--select-focus-indicator-size);
   --select-outline-active-opacity: 1;
 }
 
@@ -150,6 +163,8 @@
 }
 
 .value {
+  opacity: 0;
+  transition: opacity var(--md-select-content-fade-duration) var(--md-select-content-fade-easing);
   min-inline-size: 0;
   flex: 1;
   overflow: hidden;
@@ -170,13 +185,23 @@
 }
 
 .icon {
-  transform: rotate(0deg);
-  transition: transform var(--md-select-icon-motion-duration) var(--md-select-icon-motion-easing);
+  position: relative;
 }
 
-.trigger[data-popup-open] .icon {
-  transform: rotate(180deg);
+.iconUp,
+.iconDown {
+  transition: opacity var(--md-select-icon-motion-duration) var(--md-select-icon-motion-easing) var(--md-select-icon-motion-delay);
 }
+.iconUp { position: absolute; inset: 0; opacity: 0; transform: rotate(180deg); }
+.trigger[data-popup-open] .iconUp { opacity: 1; }
+.trigger[data-popup-open] .iconDown { opacity: 0; }
+.root[data-floating] .value {
+  opacity: 1;
+  transition-delay: var(--md-select-content-fade-delay);
+}
+.root[data-disabled] .value { transition: none; }
+.root[data-disabled] :is(.iconUp, .iconDown),
+.root[data-disabled] .trigger::after { transition: none; }
 
 .icon > :global(.material-icons) {
   inline-size: var(--md-select-text-field-trailing-icon-size);
@@ -184,124 +209,6 @@
   font-size: var(--md-select-text-field-trailing-icon-size);
 }
 
-.positioner {
-  z-index: 20;
-  min-inline-size: var(--anchor-width);
-}
-
-.popup {
-  position: relative;
-  max-block-size: min(20rem, var(--available-height));
-  overflow: visible;
-}
-
-.surface {
-  inline-size: 100%;
-  max-block-size: min(20rem, var(--available-height));
-  overflow: auto;
-  border-radius: var(--md-menu-container-shape);
-  background: var(--md-menu-container-color);
-  box-shadow: var(--md-menu-container-elevation);
-  color: var(--md-menu-item-label-text-color);
-  transform-origin: var(--transform-origin);
-}
-
-.popup:is(
-  [data-menu-motion-phase='opening'],
-  [data-menu-motion-phase='closing']
-) .surface {
-  position: absolute;
-  inset-inline: 0;
-}
-
-.popup:is(
-  [data-menu-motion-phase='opening'],
-  [data-menu-motion-phase='closing']
-)[data-menu-motion-side='top'] .surface {
-  inset-block-end: 0;
-}
-
-.popup:is(
-  [data-menu-motion-phase='opening'],
-  [data-menu-motion-phase='closing']
-):not([data-menu-motion-side='top']) .surface {
-  inset-block-start: 0;
-}
-
-.popup[data-menu-motion-pending] {
-  overflow: hidden;
-  opacity: 0;
-}
-
-[data-menu-motion-hidden] {
-  opacity: 0;
-}
-
-.list {
-  padding-block: var(--md-menu-top-space) var(--md-menu-bottom-space);
-}
-
-.item {
-  --md-focus-ring-color: var(--md-select-option-focus-ring-color);
-  --md-focus-ring-width: var(--md-select-option-focus-ring-width);
-  --md-interaction-focus-state-layer-opacity: var(--md-select-option-focus-state-layer-opacity);
-  --md-interaction-hover-state-layer-opacity: var(--md-select-option-hover-state-layer-opacity);
-  --md-interaction-pressed-state-layer-opacity: var(--md-select-option-pressed-state-layer-opacity);
-  --md-interaction-state-layer-shape: var(--md-select-option-state-layer-shape);
-  --md-ripple-shape: var(--md-select-option-state-layer-shape);
-  --md3-state-layer-color: var(--md-select-option-hover-state-layer-color);
-  position: relative;
-  display: flex;
-  min-block-size: var(--md-select-option-container-height);
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: var(--md-select-option-leading-space) var(--md-select-option-trailing-space);
-  outline: 0;
-  color: var(--md-select-option-label-text-color);
-  font-family: var(--md-select-option-label-text-font);
-  font-size: var(--md-select-option-label-text-size);
-  font-weight: var(--md-select-option-label-text-weight);
-  letter-spacing: var(--md-select-option-label-text-tracking);
-  line-height: var(--md-select-option-label-text-line-height);
-  text-decoration: var(--md-select-option-label-text-decoration);
-  cursor: pointer;
-  isolation: isolate;
-}
-
-.item:focus {
-  --md3-state-layer-color: var(--md-select-option-focus-state-layer-color);
-}
-
-.item[data-pressed] {
-  --md3-state-layer-color: var(--md-select-option-pressed-state-layer-color);
-}
-
-.item:focus > :global([data-slot='state-layer']) {
-  opacity: var(--md-select-option-focus-state-layer-opacity);
-}
-
-.item:focus > :global([data-slot='focus-ring']) {
-  opacity: 1;
-}
-
-.item[data-disabled] {
-  color: color-mix(
-    in srgb,
-    var(--md-select-option-disabled-label-text-color) var(--md-select-option-disabled-label-text-opacity),
-    transparent
-  );
-  cursor: default;
-}
-
-.itemContent {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  min-inline-size: 0;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .supporting,
 .error {

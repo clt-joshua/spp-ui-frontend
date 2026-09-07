@@ -1,0 +1,610 @@
+{
+  "capturedAt": "2026-09-07T04:33:38.482Z",
+  "sourceCommit": "c05b4b23485c803f68ff31cde52506cea5cc555a",
+  "themes": [
+    {
+      "mode": "light",
+      "contrast": "standard",
+      "url": "http://127.0.0.1:5174/components#navigation",
+      "frames": [
+        {
+          "t": 0,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "",
+          "stroke": 0,
+          "animation": "none"
+        },
+        {
+          "t": 105.89999999850988,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 115.5,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 121.39999999850988,
+          "width": 5.15625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 140,
+          "width": 14.328125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 156.80000000074506,
+          "width": 19,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 174.80000000074506,
+          "width": 21.8125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 23.8717,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 189.89999999850988,
+          "width": 23.625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 13.3537,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 206.5,
+          "width": 24.78125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 7.97897,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 223.59999999776483,
+          "width": 25.5,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 4.78514,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 240,
+          "width": 25.875,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 2.71877,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 258.69999999925494,
+          "width": 25.984375,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 1.38996,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 274.5999999977648,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.566905,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 289.8999999985099,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.131226,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 305.69999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 320.5999999977648,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 337.19999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 353.8999999985099,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        }
+      ],
+      "selected": "true",
+      "keyboardToggle": "Space deselect/select passed",
+      "reducedMotion": "0s",
+      "pageErrors": []
+    },
+    {
+      "mode": "light",
+      "contrast": "high",
+      "url": "http://127.0.0.1:5174/components#navigation",
+      "frames": [
+        {
+          "t": 0,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "",
+          "stroke": 0,
+          "animation": "none"
+        },
+        {
+          "t": 114.30000000074506,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 126.89999999850988,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 139.5,
+          "width": 5.1875,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 158.80000000074506,
+          "width": 14.3125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 175.30000000074506,
+          "width": 19.015625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 191.89999999850988,
+          "width": 21.828125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 23.8304,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 208.09999999776483,
+          "width": 23.625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 13.3314,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 225.09999999776483,
+          "width": 24.78125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 7.99056,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 243,
+          "width": 25.5,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 4.77723,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 258.3999999985099,
+          "width": 25.875,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 2.72353,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 274.8999999985099,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 1.38668,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 291.69999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.564999,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 305.69999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.13038,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 322.30000000074506,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 1.946e-7,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 340.5,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 356.19999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        }
+      ],
+      "selected": "true",
+      "keyboardToggle": "Space deselect/select passed",
+      "reducedMotion": "0s",
+      "pageErrors": []
+    },
+    {
+      "mode": "dark",
+      "contrast": "standard",
+      "url": "http://127.0.0.1:5174/components#navigation",
+      "frames": [
+        {
+          "t": 0,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "",
+          "stroke": 0,
+          "animation": "none"
+        },
+        {
+          "t": 104.19999999925494,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 116.90000000223517,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 122.90000000223517,
+          "width": 5.234375,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 141.60000000149012,
+          "width": 14.34375,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 157.5,
+          "width": 19,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 174.80000000074506,
+          "width": 21.8125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 23.8661,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 191.40000000223517,
+          "width": 23.625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 13.3507,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 208,
+          "width": 24.78125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 8.00144,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 226.30000000074506,
+          "width": 25.5,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 4.78408,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 241.60000000149012,
+          "width": 25.875,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 2.72799,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 259.30000000074506,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 1.38322,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 275.19999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.562988,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 289,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.131112,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 305.30000000074506,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 322.80000000074506,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 338.9000000022352,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 355.19999999925494,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        }
+      ],
+      "selected": "true",
+      "keyboardToggle": "Space deselect/select passed",
+      "reducedMotion": "0s",
+      "pageErrors": []
+    },
+    {
+      "mode": "dark",
+      "contrast": "high",
+      "url": "http://127.0.0.1:5174/components#navigation",
+      "frames": [
+        {
+          "t": 0,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "",
+          "stroke": 0,
+          "animation": "none"
+        },
+        {
+          "t": 117.10000000149012,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 127,
+          "width": 0,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 140.5,
+          "width": 5.234375,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 159.10000000149012,
+          "width": 14.34375,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 174.90000000223517,
+          "width": 19,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 29.7833,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 192.70000000298023,
+          "width": 21.828125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 23.7842,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 208.90000000223517,
+          "width": 23.625,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 13.3494,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 225.70000000298023,
+          "width": 24.78125,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 8.00072,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 242.60000000149012,
+          "width": 25.5,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 4.76841,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 258.6000000014901,
+          "width": 25.875,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 2.71778,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 275,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 1.38303,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 292.1000000014901,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.562878,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 306.1000000014901,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0.131063,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 322.5,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 339.1000000014901,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        },
+        {
+          "t": 355.80000000074506,
+          "width": 26,
+          "groupWidth": 516,
+          "phase": "selecting",
+          "stroke": 0,
+          "animation": "_checkDraw_15m13_1"
+        }
+      ],
+      "selected": "true",
+      "keyboardToggle": "Space deselect/select passed",
+      "reducedMotion": "0s",
+      "pageErrors": []
+    }
+  ]
+}

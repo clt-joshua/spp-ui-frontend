@@ -48,3 +48,7 @@
     opacity: 0;
   }
 }
+
+@media (forced-colors: active) {
+  .root { display: none; }
+}

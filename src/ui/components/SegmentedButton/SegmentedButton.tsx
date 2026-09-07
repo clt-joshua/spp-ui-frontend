@@ -8,7 +8,6 @@ import {
   type MouseEvent,
   type ReactNode,
 } from 'react';
-import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import styles from './SegmentedButton.module.css';
 
@@ -120,7 +119,7 @@ export function SegmentedButtonSet<Value extends string = string>(
         return;
       }
 
-      // Stable Material Web single-select sets cannot clear their active segment.
+      // The accepted MD3 single-select contract cannot clear its active segment.
       if (selectedSingle === nextValue) return;
       if (!controlled) setUncontrolledSingle(nextValue);
       (props as SingleSelectSegmentedButtonSetProps<Value>).onValueChange?.(
@@ -159,7 +158,7 @@ export function SegmentedButton<Value extends string = string>({
   onPointerCancel,
   onPointerDown,
   onPointerUp,
-  selectedIcon = <MaterialIcon name="check" />,
+  selectedIcon,
   type = 'button',
   value,
   ...buttonProps
@@ -170,9 +169,26 @@ export function SegmentedButton<Value extends string = string>({
   }
 
   const selected = group.isSelected(value);
-  const hasLabel = children !== undefined && children !== null;
+  const hasLabel = children !== undefined && children !== null && children !== false && children !== '';
   const showSelectedIcon = selected && !hideSelectedIcon;
   const showConfiguredIcon = Boolean(icon) && (!selected || !hasLabel || hideSelectedIcon);
+  const hasLeading = !hideSelectedIcon || (hasLabel && Boolean(icon));
+  const leadingVisible = showSelectedIcon || (hasLabel && Boolean(icon));
+  // Adapted from Material Web Labs nextAnimationState (Apache-2.0).
+  // Derive during render so the delayed check never flashes fully drawn before an effect.
+  const [animation, setAnimation] = useState({
+    selected, hideSelectedIcon, disabled, phase: '' as '' | 'selecting' | 'deselecting',
+  });
+  if (animation.selected !== selected || animation.hideSelectedIcon !== hideSelectedIcon || animation.disabled !== disabled) {
+    setAnimation({
+      selected,
+      hideSelectedIcon,
+      disabled,
+      phase: animation.selected !== selected && !hideSelectedIcon
+        ? selected ? 'selecting' : 'deselecting'
+        : '',
+    });
+  }
   const { interactionProps, pressed, ripple } = usePressableInteraction({ disabled });
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -189,6 +205,8 @@ export function SegmentedButton<Value extends string = string>({
       className={[styles.segment, className].filter(Boolean).join(' ')}
       data-has-icon={Boolean(icon) || undefined}
       data-has-label={hasLabel || undefined}
+      data-leading-visible={leadingVisible || undefined}
+      data-selection-motion={animation.phase || undefined}
       data-interactive-root=""
       data-pressed={pressed || undefined}
       data-selected={selected || undefined}
@@ -225,12 +243,43 @@ export function SegmentedButton<Value extends string = string>({
       <FocusRing inward />
       <span aria-hidden="true" className={styles.touchTarget} data-slot="touch-target" />
       <span className={styles.content} data-slot="content">
-        {showSelectedIcon ? (
-          <span aria-hidden="true" className={styles.icon} data-slot="selected-icon">
-            {selectedIcon}
+        {hasLeading ? (
+          <span aria-hidden="true" className={styles.leading} data-slot="leading">
+            <span className={styles.graphic} data-slot="graphic">
+              {!hideSelectedIcon ? (
+                <span
+                  className={[styles.icon, styles.selectedIcon].join(' ')}
+                  data-slot="selected-icon"
+                  data-visible={showSelectedIcon || undefined}
+                  data-custom={selectedIcon !== undefined || undefined}
+                >
+                  {selectedIcon === undefined ? (
+                    // Material Web Labs check geometry; Copyright 2021 Google LLC, Apache-2.0.
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path
+                        className={styles.checkPath}
+                        data-slot="checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                      />
+                    </svg>
+                  ) : selectedIcon}
+                </span>
+              ) : null}
+              {hasLabel && icon ? (
+                <span
+                  className={[styles.icon, styles.configuredIcon].join(' ')}
+                  data-slot="icon"
+                  data-visible={showConfiguredIcon || undefined}
+                >{icon}</span>
+              ) : null}
+            </span>
+            {!hasLabel && icon ? (
+              <span className={styles.icon} data-slot="icon">{icon}</span>
+            ) : null}
           </span>
         ) : null}
-        {showConfiguredIcon ? (
+        {!hasLeading && !hasLabel && icon ? (
           <span aria-hidden="true" className={styles.icon} data-slot="icon">{icon}</span>
         ) : null}
         {hasLabel ? <span className={styles.label} data-slot="label">{children}</span> : null}

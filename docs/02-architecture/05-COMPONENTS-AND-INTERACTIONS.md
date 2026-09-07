@@ -81,10 +81,11 @@ interface RippleController {
 - keyboard activation은 중앙에서 시작한다.
 - IconButton처럼 공식 문서가 unbounded 사용을 허용하는 경우만 root 밖으로 확장한다.
 - `pointerup`, `pointercancel`, blur와 disabled 전환에서 종료한다.
-- 동시에 여러 pointer가 들어오면 ripple id별로 관리한다.
+- primary pointer만 수락하며 새 press는 이전 grow를 교체한다. 여러 동심 wave를 누적하지 않는다. mouse/pen pointerleave도 release한다.
 - 애니메이션 종료 후 DOM node를 제거한다.
 - reduced motion에서도 Material Web의 입력 피드백과 동일하게 ripple을 제거하지 않는다.
 - ripple element는 accessibility tree와 hit testing에서 제외한다.
+- keyboard ripple은 실제 click에 반응한다. 일반 native button은 Space keyup, Tabs는 공식 tab처럼 keydown에 활성화된다. forced-colors에서는 ripple을 생성/표시하지 않는다.
 
 ## FocusRing
 
@@ -93,6 +94,7 @@ interface RippleController {
 - outline thickness와 offset은 token으로 관리한다.
 - Windows forced colors에서 `CanvasText` 또는 system highlight가 보이도록 fallback한다.
 - focus indicator는 ripple, border, active indicator와 독립적이어야 한다.
+- outward outline / inward border를 0→8px 150ms, 8→3px 450ms emphasized로 전환한다. reduced-motion에서는 3px 정적 ring을 유지한다.
 
 ## Motion
 
@@ -102,6 +104,7 @@ interface RippleController {
 - motion token 밖의 duration/easing을 사용하지 않는다.
 - reduced motion은 component authority별로 적용한다. Stable Material Web이 별도 reduced-motion 분기를 두지 않는 ripple grow/fade, field·selection 상태 전환, `quick=false` Menu/Select 전환은 동일하게 유지하며, 임의의 전역 `0ms` override를 추가하지 않는다.
 - Expressive spring/shape morph는 `deferred`; 이를 흉내 낸 임의 easing을 만들지 않는다.
+- 최신 component별 기준과 source revision은 [마이크로 모션 감사](../audits/2026-09-07-micro-motion/README.md)를 따른다. Switch의 overshoot는 Stable 소스 자체의 easing이며 Expressive spring 도입이 아니다. Dialog는 공식처럼 실제 surface height를 전환해 shadow를 보존한다.
 
 ## Typography role 사용 계약
 
@@ -114,9 +117,9 @@ interface RippleController {
 | `label-medium` | Button medium/small label, Chip small label와 Location value |
 | `label-medium-prominent` | Location prefix |
 | `label-small` | Chip x-small label |
-| `body-large` | Checkbox/Radio label, TextField input/resting label/affix, Select trigger/value/resting label/option, Menu item |
+| `body-large` | Checkbox/Radio label, TextField large input/resting label, Select trigger/value/resting label/option, Menu item |
 | `body-medium` | Checkbox/Radio supporting text, Dialog supporting text, Snackbar message |
-| `body-small` | TextField/Select active label과 supporting/error text |
+| `body-small` | TextField outlined-small input, large active label, TextField/Select supporting/error text와 Select active label |
 | `headline-small` | Dialog headline |
 
 새 컴포넌트는 먼저 semantic anatomy에 맞는 system role을 선택하고 component token surface를 추가한다. 강조는 같은 크기에 weight만 덮어쓰지 않고 `*-prominent` role을, 밑줄은 `*-underline` role을 사용한다. 전체 34개 원본 값과 정규화 규칙은 [Typography token](04-TOKENS-AND-DYNAMIC-THEME.md#typography-token)에 있다.
@@ -144,7 +147,7 @@ Figma 원본 값과 전체 scale은 [Figma spatial foundation](04-TOKENS-AND-DYN
 | Switch | `--md-switch-track/handle/state-layer-size`, `--md-switch-track-shape` | Figma small 32×18px track, 12px handle, 24px state layer, `radius/full` |
 | Chip | `--md-chip-*-container-height`, `--md-assistive-chip-container-shape` | `space/250…400`, `radius/xs` |
 | Location Chip | `--md-location-chip-content-gap`, `--md-location-chip-container-shape` | `gap/75`, `radius/xxs` |
-| TextField | `--md-text-field-content-gap` | `--md-sys-gap-150` (12px) |
+| TextField / AutoComplete | size별 control/input space | 0px gap + component slot padding |
 | Select | `--md-select-text-field-vertical-space` | `--md-sys-space-100` (8px) |
 | Menu | `--md-menu-item-content-gap` | `--md-sys-gap-200` (16px) |
 | Dialog | `--md-dialog-container-padding`, `--md-dialog-content-gap` | `space/300`, `gap/200` |
@@ -221,32 +224,71 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 공식 근거: [M3 Text fields](https://m3.material.io/components/text-fields/overview), [Material Web Text field](https://github.com/material-components/material-web/blob/main/docs/components/text-field.md), [Outlined text field 구현](https://github.com/material-components/material-web/blob/main/textfield/outlined-text-field.ts)
 
 ```ts
-type TextFieldVariant = 'filled' | 'outlined';
+type TextFieldSize = 'large' | 'small';
 
-interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'size'> {
-  variant?: TextFieldVariant;
+interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>, 'prefix' | 'size'> {
+  size?: TextFieldSize; // large 48px / small 32px
   label: string;
+  hideLabel?: boolean;
   supportingText?: string;
   error?: boolean;
   errorText?: string;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
+  trailingAction?: { icon: React.ReactNode; label: string; onClick: () => void };
+  clearable?: boolean;
+  clearLabel?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  rows?: number; // type="textarea"일 때 기본 2
 }
 ```
 
-- label과 input association을 유지한다.
-- placeholder를 label 대체로 사용하지 않는다.
-- resting/floating label을 각각 최종 위치에 렌더링하고 상태 전환 시 floating label 하나만 두 위치의 실제 rect로 측정해 150ms WAAPI로 이동한다. 단일 label의 `top`/`font-size` CSS 보간으로 대체하지 않는다.
-- floating label은 시각 복제본으로 `aria-hidden` 처리하고 resting `label`만 input의 접근 가능한 이름을 제공한다.
-- error는 `aria-invalid`, error/supporting text는 `aria-describedby`에 연결한다.
-- supporting/error text는 `body-small` 12px/16px/400, 상단 4px, 좌우 16px component token을 사용하며 상위 Grid stretch의 영향을 받지 않는다.
-- native input type, required, min/max/pattern과 form reset을 보존한다.
-- textarea는 별도 `TextArea` wrapper로 확장할 수 있지만 MVP TextField와 혼합하지 않는다.
-- character counter는 maxLength와 연결된 후속 slot이며 MVP 필수는 아니다.
-- outlined 값 영역은 56px container의 수직 중앙을 유지한다. floating label은 outline 시작점에서 16px, notch 글자 양쪽은 4px이며, leading icon이 있으면 icon은 outline에서 12px·24px 크기·label/input과 16px 간격을 각각 component token으로 사용한다.
-- outline은 브라우저 기본 `fieldset/legend` layout에 의존하지 않는다. Material Web처럼 start/notch/end panel을 분리하고 notch의 투명 측정 label 양쪽에 같은 4px padding을 적용해 focus outline 두께와 무관하게 실제 간격을 동일하게 유지한다.
+- Figma `10724:14659`의 large set `10443:76121`, small set `10443:77309`가 outlined의 시각 권위다. `2 size × 2 input type × 7 state × 2 inputted = 56` 조합을 공개 `size`, native `type`, `value/defaultValue`, `error`, `disabled`, `readOnly`와 실제 hover/focus로 표현한다. 공개 `state`/`inputted` prop을 만들지 않는다.
+- **현재 사용자 결정: Filled TextField와 variant API를 삭제한다.** 빈 값·비포커스에서는 내부 라벨, 포커스 또는 값이 있으면 상단 라벨을 150ms 측정 기반 모션으로 표시한다. 지우기는 포커스를 유지하므로 상단에 남고, 빈 상태로 blur하면 내부로 복귀한다. 이 결정이 원본 Figma pinned label보다 우선한다. 내부 라벨과 placeholder/affix를 동시에 표시해 겹치게 하지 않는다.
+- Material Web `field.ts`/`_content.scss`를 기준으로 라벨은 실제 폭·중심 차이를 측정해 150ms standard로 이동한다. 진행 중 방향이 바뀌면 취소 전 transform/width를 다음 시작점으로 보존한다. 전환 중에는 floating label 하나만 그리며 완료 시 inline 표시 상태를 해제한다. 입력·placeholder·Prefix/Suffix는 한 content 그룹으로 67ms 뒤 83ms emphasized fade-in, blur 시 지연 없는 83ms fade-out을 사용한다. 고정 배경으로 notch를 순간 지우지 않고 기존 start/notch/end 패널을 전환한다. Material Web/Lit 런타임을 추가하지 않는다.
+- label과 native input/textarea association을 유지한다. `hideLabel`은 시각만 숨기며 접근 가능한 이름을 제거하지 않는다. floating label/별표/장식 아이콘은 `aria-hidden`이고 placeholder는 이름의 대체가 아니다.
+- 오류는 `aria-invalid`, 오류·설명은 외부 `aria-describedby`와 병합한다. native constraint validation의 `invalid` 이벤트는 실제 validationMessage 또는 errorText를 표시하며 입력/폼 reset으로 내부 오류를 해제한다. 앱이 제공한 `error`는 앱이 해제해야 한다.
+- native `type`, `required`, `readOnly`, `disabled`, `min/max/step/pattern/maxLength`, name/value와 form reset을 보존한다. readOnly는 포커스·선택·복사·제출이 가능하고 disabled는 Tab과 제출에서 제외된다.
+- Figma small의 text area 옵션과 Material Web의 공개 textarea 동작을 `type="textarea"`로 통합한다. 실제 `<textarea rows={2}>`와 세로 resize를 사용한다. source의 32px 한 줄 크기가 필요하면 `size="small" rows={1}`을 명시한다. 여러 줄을 32px 박스에 강제로 자르지 않는다.
+- `leadingIcon`/`trailingIcon`은 장식이다. 동작이 필요하면 접근명과 실제 callback을 가진 `trailingAction`을 사용한다. trailingAction이 trailingIcon보다 우선하며 native `type=button`이다. readOnly의 비밀번호 표시 같은 비편집 action은 허용하되 값 변경을 금지할 책임은 callback 소비자에게 있다.
+- `clearable`은 값이 있을 때 hover/focus-within(터치에서는 상시)에 지우기를 노출한다. Tab/Enter로 실행할 수 있고 native input event를 통해 controlled onChange를 정확히 한 번 호출하며 입력 포커스를 복원한다. disabled/readOnly에는 지우기가 없다.
+- small 도움말은 Figma root bounds 밖의 절대 위치를 복제하지 않고 **32px control 아래 1px 간격의 문서 흐름**에 배치해 다음 필드와 겹치지 않게 한다.
+- 모든 공간·문자·색상은 `--md-text-field-{large,small}-*`, `--md-text-field-figma-*` component token을 사용한다. raw Figma reference/system spatial token을 컴포넌트 CSS에서 직접 소비하지 않는다.
+- 숫자는 small에서 오른쪽 정렬이다. large는 Figma 내부 text-right 속성이 hug wrapper에서 실질적인 우측 배치를 만들지 않으므로 실제 그래프의 시작 정렬을 보존한다. 기본 스피너 glyph만 숨기며 native ArrowUp/Down, min/max/step은 유지한다.
+- 위치 glyph는 Figma의 outlined path를 사용하는 `MaterialIcon name="place_outline"`, 지우기는 Filled font의 `highlight_off`다. 비슷한 Filled `place`/`cancel`로 교체하지 않는다. 소비자가 아이콘 슬롯을 생략하거나 교체할 수 있다.
+- 작은 크기는 조밀한 데스크톱 입력용이다. coarse pointer에서는 실제 control/outline와 action을 최소 48px로 늘린다. clear/trailing action의 hit region이 서로 겹치지 않도록 각 action 안에 둔다.
+- character counter는 후속 slot이며 이번 Figma에는 없다. `maxLength`의 네이티브 제한은 유지한다.
+
+| outlined 속성 | large | small |
+|---|---|---|
+| control / corner | 48px / 4px | 32px / 4px |
+| 입력 / 라벨 / affix | body-large / body-small / label-large | body-small / label-small / label-medium |
+| icon / action | 24px / 40px | 16px / 24px |
+| label x / notch 좌우 padding | 16px / 4px | 8px / 2px |
+| outline enabled / hover / focus | 1 / 2 / 3px | 1 / 2 / 2px |
+| supporting top / inline | 4 / 12px | 1 / 8px |
+| 오류 label | 빈 값·비포커스는 on-surface-variant, 값 있음 또는 포커스는 error | 항상 on-surface-variant |
+| 오류 supporting | error | on-surface-variant |
+| disabled | outline-high + root opacity 38%, error보다 우선 | 동일 |
+| readonly | surface-container 배경, outline-middle | 동일 |
+
+사용·검증 진입점: `/components#form-fields`의 32개 정적 상태와 실제 hover/focus로 56개 Figma 조합을 확인한다. 별도 실제 폼에서 필수값 오류, 숫자 입력, 비밀번호 표시, textarea, 지우기, readonly/disabled 제출과 reset을 확인한다. [상세 근거 및 미결 대비 충돌](../audits/2026-09-07-text-field/README.md)을 준수 기록과 함께 읽는다.
+
+## AutoComplete
+
+공식 행동 근거: [APG editable combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/), [Base UI Autocomplete](https://base-ui.com/react/components/autocomplete). 시각은 [M3 Text fields](https://m3.material.io/components/text-fields/overview)와 [M3 Menus](https://m3.material.io/components/menus/overview)를 조합한다. 별도 Stable Material Web AutoComplete나 전용 Figma variant set을 검증했다고 주장하지 않는다.
+
+- 공개 진입점은 `import { AutoComplete } from '@/ui'`다. TextField의 type/variant가 아니며 독립된 컴포넌트다. `Select`는 정해진 값 선택, `AutoComplete`는 자유 텍스트 + 선택적 제안, `TextField`는 제안 없는 native 입력이다.
+- `options: readonly { label: string; disabled?: boolean }[]`, `value/defaultValue: string`, `onValueChange(value)`를 제공한다. label은 목록 내 고유해야 하며 입력·제출 문자열이다. ID 선택이 필요한 도메인은 Select를 사용한다.
+- `size='large'|'small'`, prefix/suffix, error/errorText, disabled/readOnly/required, clearable, placeholder/supportingText, emptyText, name/id/form, className/style을 제공한다.
+- 필터링은 Base UI locale-aware 기본 동작을 사용한다. 방향키는 input 포커스를 유지한 채 aria-activedescendant를 변경하고 Enter/클릭은 제안을 적용한다. Escape는 입력을 삭제하지 않고 닫는다. IME와 일반 편집 키 처리는 Base UI/native 입력에 맡긴다. Enter로 제안을 고르는 동작은 폼을 제출하지 않는다.
+- 목록에 없는 문자열도 제출할 수 있다. required는 비어 있지 않은 텍스트를 요구하며 제안 일치를 강제하지 않는다. readonly는 제출에 포함, disabled는 제외한다. controlled reset은 소비자가 onReset에서 value를 복원하며 uncontrolled는 defaultValue로 복원한다.
+- 지우기는 input 포커스를 복원한다. disabled/readonly는 편집·지우기·메뉴 열기를 차단한다. 빈 결과 문구와 비활성 제안을 실제 dropdown에 표시한다.
+- AutoComplete popup은 하향 zero offset이며, 상향일 때만 측정한 floating label 높이의 절반을 띄워 라벨을 덮지 않는다. 필터링·상향 전환에도 실제 dropdown과 label bounds로 검증한다.
+- TextField와는 내부 `FieldOutline/OutlinedField.module.css` 시각만, Select와는 `FieldOutline/FieldDropdown.module.css` 및 메뉴 모션만 공유한다. 한 공개 컴포넌트로 다른 입력을 흉내 내지 않는다. 공유 appearance는 기존 `--md-text-field-*`/`--md-menu-*`/`--md-select-option-*` 토큰, 빈 결과는 `--md-autocomplete-empty-*` 토큰을 사용한다.
+- `/components#form-fields`에 TextField, Select, AutoComplete를 각각 구분하고 속성 토글·실제 폼·제출 readback을 제공한다. TextField/AutoComplete의 Large/Small·Prefix/Suffix·Error/Disabled/Required/ReadOnly/Clearable을 직접 바꿀 수 있다. Select는 기존 56px MD3 geometry와 독립 옵션 메뉴를 유지한다.
+- TextField/AutoComplete 속성 테스트는 샘플 값으로 시작해 Prefix/Suffix를 켜자마자 표시한다. `샘플 값 넣기`/`빈 값으로 테스트`로 값 있는 상태와 빈 상태를 명시적으로 비교한다. 토글은 입력값을 덮어쓰거나 포커스를 빼앗지 않는다. 빈 값·비포커스에서 affix가 숨겨지는 실제 컴포넌트 계약은 유지하고 안내문으로 설명한다. 회귀 검사는 typing 이전 실제 content opacity와 affix geometry까지 확인한다.
 
 ## Checkbox
 
@@ -332,7 +374,7 @@ interface RadioGroupProps<Value extends string = string> {
 - large/medium/small의 icon canvas는 24/20/16px, state layer는 36/32/24px, padding은 6/6/4px다. 시각 밀도와 별도로 모든 크기의 실제 touch target은 48px, focus ring은 Stable Material Web의 44px를 유지한다.
 - selected icon은 `primary`, unselected icon은 `on-surface-variant`다. Figma export처럼 interaction 중 icon color는 변하지 않는다. disabled selected/unselected는 `on-surface-variant` 38%다.
 - hover는 black 6%, focus와 pressed는 black 12% state layer를 사용한다. 이는 Stable Material Web의 semantic foreground state-layer 색상, 40px state layer, disabled `on-surface` 38%와 다른 Figma 승인 override이며 manifest `deviations`에 기록한다.
-- 선택 inner circle은 Stable Material Web의 300ms emphasized-decelerate 진입과 50ms 해제를 사용한다. reduced motion에서는 이 선택 전환만 즉시 반영하되, 상태·focus·native selection 결과는 보존한다.
+- 선택 inner circle은 Stable Material Web의 300ms emphasized-decelerate scale 진입과 양방향 50ms opacity를 사용한다. 해제 시 scale 축소는 없다. 공식 소스처럼 reduced-motion에서도 유지하며 disabled에서만 animation/transition을 중지한다.
 - Figma export의 24px SVG geometry를 `currentColor` 기반 내부 아이콘으로 변환해 세 크기에서 동일 비율로 축소한다. 원격 7일 asset URL은 runtime 의존성으로 남기지 않는다.
 - component instance의 `className`/`style`은 공개 row root에 적용되므로 `--md-radio-*` component token만 재정의해 theme-safe하게 커스터마이즈한다.
 
@@ -383,7 +425,7 @@ interface TabPanelProps<Value extends string = string>
 
 - `TabList.label`은 필수 접근명으로 `role=tablist`에 적용한다. 각 `Tab`은 `role=tab`, `aria-selected`, roving `tabIndex`, `aria-controls`를 가지며 같은 value의 `TabPanel`은 `role=tabpanel`과 `aria-labelledby`로 자동 연결된다.
 - Stable Material Web과 같이 manual activation이 기본이다. ArrowLeft/Right는 RTL을 고려해 focus를 순환하고 Home/End는 양 끝 Tab으로 이동한다. 이때 선택은 바꾸지 않으며 Enter/Space 또는 click으로 선택한다. `autoActivate`를 명시하면 방향키 focus와 선택이 함께 이동한다. `onValueChange`의 project-owned details는 `reason`, `activationDirection`, `cancel()`을 제공해 user interaction selection을 취소할 수 있다.
-- Figma disabled Tab은 `aria-disabled=true`로 노출하고 composite 방향키 탐색에서는 발견 가능하지만 Enter/Space/click 선택과 ripple은 만들지 않는다. focus가 tab list 밖으로 나가면 roving 진입점은 선택 Tab으로 복원된다. 선택된 Tab이 바뀌면 300ms standard easing으로 full-width 3px indicator가 이동하며, 가로 overflow에서는 tab list 자체가 scrollable이다.
+- Figma disabled Tab은 `aria-disabled=true`로 노출하고 composite 방향키 탐색에서는 발견 가능하지만 Enter/Space/click 선택과 ripple은 만들지 않는다. focus가 tab list 밖으로 나가면 roving 진입점은 선택 Tab으로 복원된다. 선택 변경은 250ms emphasized FLIP으로 full-width 3px indicator를 이전 rect에서 새 rect로 옮긴다. reduced-motion은 교차 fade, resize는 즉시 재측정하며 가로 overflow에서는 tab list 자체가 scrollable이다.
 - Figma trailing `close` glyph는 기본 표시되는 장식 content이며 accessible name에 포함하지 않는다. Stable Material Web에 trailing close action 계약이 없고 `role=tab` 내부의 nested button도 허용하지 않으므로 이 API에서 삭제 동작으로 가장하지 않는다. 실제 closable workspace tab은 별도 keyboard/delete/focus 계약 승인 후 확장한다.
 - 공통 StateLayer/Ripple/inward FocusRing을 사용한다. hover/focus/pressed는 Figma system layer 6%/12%/16%, disabled label은 `on-surface-variant-bright`, indicator는 `primary`다. Windows forced-colors에서는 divider/label/selected indicator/focus/disabled 구분을 system color로 유지한다.
 - Figma의 40px 밀도, prominent 600 label, full-width indicator와 trailing glyph는 Stable Material Web 기본 Primary Tab anatomy와의 차이로 manifest `deviations`에 기록한다.
@@ -426,7 +468,7 @@ interface SwitchProps {
 - 고정 small geometry는 track 32×18px, handle 12px, icon 12px, state layer 24px, outline 1px다. pressed에서도 handle 크기는 증가하지 않는다. 작은 visual과 별도로 실제 control은 최소 48px touch target을 유지한다.
 - selected track은 `primary`, enabled handle은 `on-primary`, interaction handle은 `primary-container`다. unselected track은 `surface-container-highest`와 `outline-high`, enabled handle은 `outline-high`, interaction handle은 `on-surface-variant`다. hover는 black 6%, focus/pressed는 black 12% state layer를 사용한다.
 - 채택한 small variant는 `Icon=true`이므로 check/close glyph를 모든 상태에 표시한다. Material Web의 no-icon/selected-only icon 축은 공개 API로 추정하지 않는다. glyph는 self-hosted `MaterialIcon` adapter를 사용하며 accessible name에는 포함하지 않는다.
-- 공통 StateLayer, pointer·keyboard Ripple, FocusRing을 사용한다. reduced motion에서는 handle/track 전환만 즉시 반영하고 selection·form 결과를 보존한다. Windows forced-colors에서는 visual opacity를 해제하고 system color로 track, handle, selected, disabled와 focus를 구분한다.
+- 공통 StateLayer, pointer·keyboard Ripple, FocusRing을 사용한다. handle은 숫자 위치 사이를 300ms Stable overshoot로 이동하며 size 250ms/pressed 100ms, color 67ms, 두 icon의 fade 33ms를 사용한다. reduced-motion에서도 공식 Switch 전환은 유지한다. Windows forced-colors에서는 visual opacity를 해제하고 system color로 track, handle, selected, disabled와 focus를 구분한다.
 - large/medium은 공개 API, component token, CSS selector, Story와 검증 matrix에서 모두 제거한다. Figma small의 32×18px 고밀도 anatomy는 Stable Material Web의 52×32px 기본 anatomy와 다른 프로젝트 승인 deviation이며 manifest에 기록한다.
 - Switch는 자동화로 name/role/state, Space/Enter, form projection과 focus를 검증할 수 있는 단순 binary control이므로 별도 blanket screen-reader blocker를 추가하지 않는다. 실제 announcement가 필요한 설명·복합 focus·live-region 흐름만 대표 AT 검증 대상으로 유지한다.
 
@@ -434,7 +476,7 @@ interface SwitchProps {
 
 공식 근거: [M3 Segmented buttons](https://m3.material.io/components/segmented-buttons/overview), [Material Web Labs segment source](https://github.com/material-components/material-web/blob/main/labs/segmentedbutton/internal/segmented-button.ts), [Material Web Labs set source](https://github.com/material-components/material-web/blob/main/labs/segmentedbuttonset/internal/segmented-button-set.ts)
 
-프로젝트 시각 권위는 Figma `segmentedButton` section `10724:13951`이다. start/middle/end building block은 각각 27개, 합계 81개 variant이며 `Segments=5, Density=-2` composition을 별도로 제공한다. Stable Material Web 공개 문서와 runtime component는 없으므로 Labs 코드를 import하지 않고 행동 계약만 교차 검증한다.
+프로젝트 시각 권위는 Figma `segmentedButton` section `10724:13951`이다. start/middle/end building block은 각각 27개, 합계 81개 variant이며 `Segments=5, Density=-2` composition을 별도로 제공한다. Stable Material Web 공개 문서와 runtime component는 없으므로 Labs 코드를 import하지 않는다. 행동 계약을 교차 검증하며, 2026-09-07 사용자의 후속 요청으로 선택 모션을 프로젝트 확장으로 적용했다. 이는 Labs를 Stable 권위로 승격하는 결정이 아니다.
 
 ```ts
 type SegmentedButtonSelectionMode = 'single' | 'multiple';
@@ -468,6 +510,7 @@ interface SegmentedButtonProps<Value extends string>
 - `SegmentedButtonSet.label`은 `role=group`의 필수 접근명이다. 각 `SegmentedButton`은 native `button`과 `aria-pressed`를 사용한다. 일반 button group처럼 모든 enabled segment가 Tab 순서에 남고 Space/Enter/click으로 활성화한다.
 - `single`은 선택된 segment를 다시 눌러 해제하지 않는다. `multiple`에서만 항목별 toggle을 허용한다. disabled는 callback, state layer, ripple을 만들지 않는다.
 - selected labeled segment는 configured icon을 check로 교체한다. selected icon-only segment는 Figma executable node처럼 check와 configured icon을 모두 유지한다. `hideSelectedIcon`은 Material Web `no-checkmark`에 대응한다.
+- 선택 모션은 사용자가 명시적으로 요청한 Labs `nextAnimationState` 및 keyframe 이식을 따른다. graphic은 18px icon + 8px gap을 포함해 0↔26px/150ms standard로 전환한다. 기본 SVG check는 50ms 지연 후 150ms 동안 dashoffset 29.7833385→0으로 그린다. 해제 check 50ms fade-out, 기존 labeled icon은 선택 75ms fade-out / 해제 50ms delay+150ms fade-in이다. 초기 mount는 정적이며 재선택은 원본처럼 draw keyframe을 재시작한다. font clip reveal과 음수 margin 보정은 폐기했다. custom selectedIcon fade, hideSelectedIcon의 기존 icon 유지, disabled/reduced-motion 정지는 명시적 프로젝트 예외다. [Labs 교정 감사](../audits/2026-09-07-segmented-button-labs/README.md)와 `/components#navigation`을 따른다.
 - geometry는 32px container, 12px inline padding, 8px gap, 18px icon, 48px outer radius, 1px outline, 48px minimum touch target이다. `label-large` 6개 typography 속성을 component token으로 함께 소비한다.
 - selected는 `custom-container/on-secondary-container`, unselected는 transparent/`on-surface`/`outline-high`, disabled outline은 `outline-middle`, disabled content는 `on-surface` 38%다. hover/focus/pressed는 Figma black 6%/12%/16% layer다.
 - Figma에 disabled-selected variant가 없지만 controlled application state가 disabled value를 가리킬 수 있으므로 selected 상태와 check를 숨기지 않는다. 이 차이는 manifest deviation으로 기록한다.
@@ -556,6 +599,8 @@ interface SelectProps<T extends string> {
 - Base UI가 선택 option focus/`scrollIntoView`를 positioning보다 먼저 요청하더라도 adapter가 이를 열림 완료까지 보류한다. 최종 배치가 확정된 뒤 focus와 내부 scroll을 적용해 문서 스크롤이 collision 판단을 바꾸지 않게 한다.
 - 운영체제 reduced-motion 설정만으로 `quick=true` 의미를 만들지 않는다. 명시적인 quick API를 제공하기 전까지 Stable Material Web 기본 메뉴 모션을 유지한다.
 - 열림 완료 뒤 모든 option의 computed opacity가 `1`, 높이가 56px이고 popup 시작 좌표가 field bottom 또는 popup bottom 좌표가 field top과 일치하는지를 실제 흐름에서 검증한다. 하단 공간 부족에서는 문서 scrollY 불변, opening frame별 bottom gap 1px 이하, 단조 증가하는 surface height를 함께 확인한다. open → close → open을 반복해 닫힘 animation의 fill state가 다음 열림에 남지 않는지도 확인하며, animation 객체 존재만으로 완료를 판정하지 않는다.
+- 비활성 옵션은 화면과 접근성 트리에 남지만 Material Web list navigation처럼 방향키/첫 포커스 대상에서 제외하며 선택·ripple을 만들지 않는다. Base UI 1.7의 disabled Item 탐색 기본값과 달라 비활성 항목은 interactive registry 밖의 option으로 렌더링한다.
+- 빈 Select의 내부 라벨과 placeholder가 겹치지 않도록 비포커스 placeholder를 숨긴다.
 - option은 공통 StateLayer/Ripple과 3px inward FocusRing을 사용한다. 현재 option의 programmatic focus에서도 focus state/ring이 보이고 disabled option은 ripple을 만들지 않는다.
 
 ## Dialog

@@ -34,6 +34,13 @@ export interface M3ComponentManifestEntry {
 }
 
 const M3_WEB_URL = 'https://m3.material.io/develop/web';
+// Motion-only evidence does not supersede each component's complete compliance verdict.
+export const M3_MICRO_MOTION_AUDIT = {
+  verifiedAt: '2026-09-07',
+  materialWebCommit: 'c05b4b23485c803f68ff31cde52506cea5cc555a',
+  report: 'docs/audits/2026-09-07-micro-motion/README.md',
+  noStableWholeComponentCounterpart: ['AutoComplete', 'SegmentedButton', 'Snackbar'],
+} as const;
 const VERIFIED_AT = '2026-08-26';
 const BUTTON_VERIFIED_AT = '2026-09-02';
 const CHECKBOX_VERIFIED_AT = '2026-09-02';
@@ -75,7 +82,10 @@ export const M3_COMPONENT_MANIFEST = [
     ],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
-    blockers: [FORCED_COLORS_BLOCKER],
+    blockers: [
+      FORCED_COLORS_BLOCKER,
+      'M3_WEB_SPEC_CONFLICT: 2026-09-07 gallery audit found Normal Light/Standard error-label contrast below 4.5:1 in Figma-bound Button colors; see docs/audits/2026-09-07-component-gallery/README.md.',
+    ],
   },
   {
     component: 'IconButton',
@@ -104,12 +114,34 @@ export const M3_COMPONENT_MANIFEST = [
     ],
     ...materialWebDocs('components/text-field.md'),
     materialWebReferenceStatus: 'available',
-    verifiedAt: VERIFIED_AT,
+    verifiedAt: '2026-09-07',
     checkedAreas: M3_CHECKED_AREAS,
-    deviations: [],
+    deviations: [
+      'Figma 10724:14659 defines 56 outlined variants: large 48px/small 32px, text/number, seven states and populated/empty. Per-size typography, 3px/2px focus, error colors and disabled opacity are project visual overrides. The latest user decision removes Filled entirely and replaces pinned labels with focus/value-driven 150ms floating labels. Material Web motion preserves the interrupted pose and uses 67ms delay + 83ms emphasized content fade; empty unfocused affixes remain hidden. The playground provides populated samples and explicit empty/sample controls.',
+      'Small supporting text is kept in document flow at its source 1px offset instead of overflowing Figma root bounds. Coarse-pointer controls and actions expand to real disjoint 48px targets. Keyboard focus also exposes the hover-only clear action.',
+      'TextField type=textarea renders a native textarea. Native form constraints, readonly submission, disabled exclusion, clear onChange/focus return and named trailing actions preserve Web behavior.',
+      'Firefox native small input uses a 17px font-normal minimum line-height while retaining the Figma 16px author token and 32px outer geometry; HTML native text-entry rendering takes precedence over forcing clipped glyph metrics.',
+    ],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
-    blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
+    blockers: [
+      ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
+      'M3_WEB_SPEC_CONFLICT: Figma-bound placeholder and affix colors fall below 4.5:1 in supported themes. The 2026-09-07 TextField audit records actual values; source color correction requires a token decision. Axe also leaves complex-background contrast checks incomplete.',
+    ],
+  },
+  {
+    component: 'AutoComplete',
+    m3WebUrl: M3_WEB_URL,
+    m3ComponentUrls: ['https://m3.material.io/components/text-fields/overview', 'https://m3.material.io/components/menus/overview'],
+    materialWebMainDocs: [],
+    materialWebSnapshotDocs: [],
+    materialWebReferenceStatus: 'unavailable',
+    verifiedAt: '2026-09-07',
+    checkedAreas: M3_CHECKED_AREAS,
+    deviations: ['Project composite, not a dedicated Stable Material Web component or a separately verified Figma variant set. Reuses outlined field geometry and dropdown tokens, with Base UI free-text autocomplete and APG virtual focus semantics. Upward menus reserve half the measured label height to avoid occlusion; downward menus keep zero offset.'],
+    implementationStatus: 'implemented',
+    status: 'BLOCKED',
+    blockers: [...COMPOSITE_ACCESSIBILITY_BLOCKERS, 'M3_WEB_SPEC_CONFLICT: inherited Figma placeholder and affix contrast requires the TextField token decision.'],
   },
   {
     component: 'Checkbox',
@@ -190,7 +222,7 @@ export const M3_COMPONENT_MANIFEST = [
     deviations: [
       'Figma node 10724:13951 defines the project density at 32px high with 12px horizontal space, 8px content gap, 18px icons, a 48px outer radius, outline-high borders, custom-container selection, and black 6%/12%/16% transient state layers.',
       'Figma provides custom-container as a static Light-only extended role. Generated Dark, High, and custom schemes pair that container with the generated secondary-container/on-secondary-container roles so selected content keeps semantic contrast without changing the Figma Standard/Light value.',
-      'Stable Material Web has no published component documentation for segmented buttons; the current official implementation remains under Labs. The project does not import Labs or Lit runtime code, but keeps its native button, role=group, aria-pressed, single-select, multiselect, focus, ripple, and 48px touch-target behavior aligned with that source.',
+      'Stable Material Web has no published component documentation for segmented buttons. On 2026-09-07 the user explicitly required Labs behavior: React ports c05b4b2 nextAnimationState, leading/graphic anatomy, SVG stroke draw-in and selecting/deselecting keyframes, preserving native group/pressed/single/multiple semantics and Figma geometry/color. The earlier font clipping approximation is superseded. Custom selectedIcon uses fade; hideSelectedIcon and disabled/reduced-motion remain documented project exceptions. No Labs/Lit runtime is imported; no Stable whole-component equivalence is claimed.',
       'Figma publishes a five-segment composition and omits disabled-selected variants. The public adapter supports any application-defined segment count and preserves an already-selected disabled value so controlled application state is not misrepresented.',
     ],
     implementationStatus: 'implemented',
@@ -210,7 +242,10 @@ export const M3_COMPONENT_MANIFEST = [
     ],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
-    blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
+    blockers: [
+      ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
+      'M3_WEB_SPEC_CONFLICT: 2026-09-07 gallery audit found Assistive status-label contrast below 4.5:1, including High contrast, and x-small selected Filter contrast failure in High; see docs/audits/2026-09-07-component-gallery/README.md.',
+    ],
   },
   {
     component: 'Select',
@@ -257,7 +292,10 @@ export const M3_COMPONENT_MANIFEST = [
   {
     component: 'Snackbar',
     m3WebUrl: M3_WEB_URL,
-    m3ComponentUrls: ['https://m3.material.io/components/snackbar/overview'],
+    m3ComponentUrls: [
+      'https://m3.material.io/components/snackbar/overview',
+      'https://m3.material.io/components/snackbar/guidelines',
+    ],
     materialWebMainDocs: [],
     materialWebSnapshotDocs: [],
     materialWebReferenceStatus: 'unavailable',
@@ -266,7 +304,10 @@ export const M3_COMPONENT_MANIFEST = [
     deviations: [],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
-    blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
+    blockers: [
+      ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
+      'M3_WEB_SPEC_CONFLICT: 2026-09-07 actual gallery flow displays three snackbars simultaneously and auto-dismisses an actionable snackbar after five seconds; MD3 requires one-at-a-time display and persistence until action/dismiss. See docs/audits/2026-09-07-component-gallery/README.md.',
+    ],
   },
 ] as const satisfies readonly M3ComponentManifestEntry[];
 

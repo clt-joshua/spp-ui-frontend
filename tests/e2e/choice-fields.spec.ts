@@ -1,0 +1,113 @@
+import { expect, test } from '@playwright/test';
+
+test('TextField playground toggles live size, affixes, validation and editability', async ({ page }) => {
+  await page.goto('/components#form-fields');
+  const region = page.getByRole('region', { name: 'TextField 속성 테스트' });
+  const input = region.getByRole('textbox', { name: '테스트 입력', exact: true });
+  const root = input.locator('xpath=ancestor::*[@data-text-field-variant]');
+  await region.getByRole('checkbox', { name: 'Small 크기 (해제: Large)', exact: true }).check();
+  await expect(root.locator('[data-slot="text-field-control"]')).toHaveCSS('height', '32px');
+  await region.getByRole('checkbox', { name: 'Prefix', exact: true }).check();
+  await region.getByRole('checkbox', { name: 'Suffix', exact: true }).check();
+  // Check the actual content visibility before any input/focus workaround.
+  await expect(input).toHaveValue('Input text');
+  await expect(root.locator('[data-slot="prefix"]').locator('..')).toHaveCSS('opacity', '1');
+  await expect(root.locator('[data-slot="prefix"]')).toHaveCSS('visibility', 'visible');
+  await region.getByRole('checkbox', { name: '필수 입력 (Required)', exact: true }).check();
+  await expect(input).toHaveAttribute('required', '');
+  await input.fill('hello');
+  await expect(root.locator('[data-slot="prefix"]')).toHaveCSS('opacity', '1');
+  await expect(root.locator('[data-slot="suffix"]')).toHaveText('Suffix');
+  await region.getByRole('checkbox', { name: 'Error', exact: true }).check();
+  await expect(input).toHaveAttribute('aria-invalid', 'true');
+  await region.getByRole('checkbox', { name: 'Disabled', exact: true }).check();
+  await expect(input).toBeDisabled();
+  await region.getByRole('checkbox', { name: 'Disabled', exact: true }).uncheck();
+  await region.getByRole('checkbox', { name: 'ReadOnly', exact: true }).check();
+  await expect(input).toHaveAttribute('readonly', '');
+  await expect(region.getByRole('button', { name: '테스트 입력 지우기' })).toHaveCount(0);
+  await page.setViewportSize({ width: 375, height: 812 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+});
+
+test('AutoComplete filters, selects with virtual focus, clears, submits free text and resets', async ({ page }) => {
+  await page.goto('/components#form-fields');
+  const region = page.getByRole('region', { name: 'AutoComplete 속성 테스트' });
+  const input = region.getByRole('combobox', { name: '도시 자동완성', exact: true });
+  await input.fill('Se');
+  await expect(input).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.getByRole('option')).toHaveCount(2);
+  await input.press('ArrowDown');
+  await expect(input).toBeFocused();
+  await expect(input).toHaveAttribute('aria-activedescendant', /.+/);
+  await input.press('Enter');
+  await expect(input).toHaveValue('Seoul 서울');
+  await expect(input).toHaveAttribute('aria-expanded', 'false');
+  await region.getByRole('button', { name: '자동완성 제출', exact: true }).click();
+  await expect(region.getByLabel('AutoComplete 제출 결과')).toContainText('"city":"Seoul 서울"');
+  await region.getByRole('button', { name: '도시 자동완성 지우기', exact: true }).click();
+  await expect(input).toHaveValue('');
+  await expect(input).toBeFocused();
+  await region.getByRole('button', { name: '도시 자동완성 제안 목록', exact: true }).click();
+  await expect(page.getByRole('option', { name: 'Daegu 대구' })).toHaveAttribute('aria-disabled', 'true');
+  await page.getByRole('option', { name: 'Busan 부산' }).click();
+  await expect(input).toHaveValue('Busan 부산');
+  await input.fill('직접 입력');
+  await expect(page.getByText('일치하는 항목이 없습니다.', { exact: true })).toBeVisible();
+  await input.press('Escape');
+  await expect(input).toHaveValue('직접 입력');
+  await region.getByRole('button', { name: '자동완성 제출', exact: true }).click();
+  await expect(region.getByLabel('AutoComplete 제출 결과')).toContainText('직접 입력');
+  await region.getByRole('button', { name: '자동완성 초기화', exact: true }).click();
+  await expect(input).toHaveValue('');
+  await region.getByRole('checkbox', { name: 'AutoComplete Required', exact: true }).check();
+  await region.getByRole('button', { name: '자동완성 제출', exact: true }).click();
+  await expect(input).toBeFocused();
+  await expect(input).toHaveAttribute('aria-invalid', 'true');
+  await region.getByRole('checkbox', { name: 'AutoComplete Small 크기 (해제: Large)', exact: true }).check();
+  await expect(region.locator('[data-slot="autocomplete-control"]').first()).toHaveCSS('height', '32px');
+  await region.getByRole('checkbox', { name: 'AutoComplete Disabled', exact: true }).check();
+  await expect(input).toBeDisabled();
+  await region.getByRole('button', { name: '자동완성 제출', exact: true }).click();
+  await expect(region.getByLabel('AutoComplete 제출 결과')).toHaveText('{}');
+  await page.setViewportSize({ width: 375, height: 812 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+});
+
+test('Select stays selection-only with a real dropdown and disabled-option skipping', async ({ page }) => {
+  await page.goto('/components#form-fields');
+  const region = page.getByRole('region', { name: 'Select 속성 테스트' });
+  const trigger = region.getByRole('combobox', { name: '선택 테스트', exact: true });
+  await expect(region.getByRole('textbox')).toHaveCount(0);
+  await trigger.focus();
+  await trigger.press('Space');
+  await expect(page.getByRole('option', { name: '서울', exact: true })).toBeFocused();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.getByRole('option', { name: '부산', exact: true })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(trigger).toContainText('부산');
+  await region.getByRole('button', { name: '선택값 제출', exact: true }).click();
+  await expect(region.getByLabel('Select 제출 결과')).toContainText('"destination":"busan"');
+  await region.getByRole('button', { name: '선택값 초기화', exact: true }).click();
+  await expect(trigger).not.toContainText('부산');
+  await region.getByRole('checkbox', { name: 'Select Disabled', exact: true }).check();
+  await expect(trigger).toBeDisabled();
+});
+
+test('upward AutoComplete dropdown keeps the floating label visible', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 600 });
+  await page.goto('/components#form-fields');
+  const input = page.getByRole('combobox', { name: '도시 자동완성', exact: true });
+  await input.fill('Se');
+  await input.evaluate((element) => element.scrollIntoView({ block: 'end' }));
+  const positioner = page.locator('[data-slot="autocomplete-positioner"]');
+  await expect(positioner).toHaveAttribute('data-side', 'top');
+  const label = input.locator('xpath=ancestor::*[@data-autocomplete]').locator('[data-slot="floating-label"]');
+  await expect.poll(async () => {
+    const menuBox = await positioner.boundingBox();
+    const labelBox = await label.boundingBox();
+    return menuBox!.y + menuBox!.height <= labelBox!.y;
+  }).toBe(true);
+  await input.press('Escape');
+  await expect(input).toBeFocused();
+});

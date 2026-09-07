@@ -116,20 +116,18 @@
 .indicator {
   position: absolute;
   z-index: 3;
-  inline-size: var(--active-tab-width);
+  width: 0;
   block-size: var(--md-primary-tab-active-indicator-height);
   inset-block-end: calc(-1 * var(--md-tabs-divider-height));
-  inset-inline-start: 0;
+  left: 0;
   border-radius: var(--md-primary-tab-active-indicator-shape);
   background: var(--md-primary-tab-active-indicator-color);
   pointer-events: none;
-  transform: translateX(var(--active-tab-left));
-  transform-origin: center;
-  transition:
-    inline-size var(--md-primary-tab-active-indicator-motion-duration)
-      var(--md-primary-tab-active-indicator-motion-easing),
-    transform var(--md-primary-tab-active-indicator-motion-duration)
-      var(--md-primary-tab-active-indicator-motion-easing);
+  transform-origin: bottom left;
+}
+
+.indicator[data-slot='previous-indicator'] {
+  opacity: 0;
 }
 
 .panel {

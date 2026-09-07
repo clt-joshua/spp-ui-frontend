@@ -1,12 +1,36 @@
 # 현재 상태
 
-관찰일: 2026-09-03
+관찰일: 2026-09-07
+
+## 외부 브라우저 검증용 게시
+
+현재 사용자 요청에 따라 누적 변경을 `main`(이 저장소의 기본·배포 브랜치)에 반영하고 기존 CI 성공 revision의 Cloudflare Pages 자동 배포를 사용한다. 이는 임시 외부 검증용 게시이며 M3 준수 BLOCKED를 PASS로 승격하지 않는다. 배포 완료는 해당 커밋의 Actions 실행과 공개 `/components` 산출물 및 실제 흐름으로 판정한다.
+
+모션 비가시성의 실제 환경 원인도 확인했다. Windows `SPI_GETCLIENTAREAANIMATION` 읽기가 성공했고 값은 0(클라이언트 영역 애니메이션 비활성화)이었다. 일반 Chrome과 앱 내 사용자 탭 모두 `prefers-reduced-motion: reduce=true`를 반환하며, 사용자 탭에서 선택 phase는 변경되지만 graphic/check의 transition/animation은 `none`이다. 아래 5174 프레임 감사는 별도 검증 브라우저에서 수행한 결과로, 사용자 탭의 기본 환경과 구분한다. 이 진단 과정에서 OS/브라우저 설정이나 CSS를 변경하지 않았다.
+
+최신 후속: [SegmentedButton Labs 교정](../audits/2026-09-07-segmented-button-labs/README.md). 사용자 거부에 따라 기존 font clip/역방향 transition을 SVG stroke와 selecting/deselecting keyframe으로 대체했다. graphic은 원본처럼 icon+gap 포함 0↔26px. 초기 mount/재활성화의 불필요한 재생은 없고 선택 반전은 원본 keyframe을 재시작한다. Theme Lab → 컴포넌트 검증 → Navigation에서 실제 사용한다. Labs/Lit runtime import와 Stable 승격 없음. 기존 수동 blocker 유지.
 
 ## 결론
 
-프로젝트는 Vite reference host에서 실행 가능한 Material Design 3 Theme Lab과 Component Verification 단계다. Node 24 toolchain, self-hosted 자산, Theme Runtime, token graph, interaction primitive, 10개 MVP 컴포넌트와 Tabs·Switch·Segmented Button 확장, Storybook, 단위 테스트와 3-browser E2E가 연결됐다.
+최신 검증: SegmentedButton Labs 이식 후 `pnpm verify` PASS(9 suites/46 tests), 전체 Chromium/Firefox/WebKit 126/126 PASS(각 42개, 단일 실행, 8.2분). 실제 5174 Normal Light/Dark × Standard/High SVG draw/graphic/Space/reduced-motion 및 page error 0. 산출물 `index-DfOwUzAP.js` / `index-C_p2ztRC.css`, 커밋·푸시·배포 없음. 이전 clip 구현의 126 PASS와 다른 원본 기반 회귀이며 전체 M3 준수 판정은 아니다.
 
-실제 앱 흐름과 MD3/Material Web 시각 재감사 및 코드 개선까지 완료했지만 개별 컴포넌트의 M3 준수 상태는 `BLOCKED`다. 구현은 완료됐지만 적용 가능한 screen-reader announcement와 현재 지원 범위인 Windows forced-colors 검증 전에는 해당 항목을 `PASS`로 표현하지 않는다.
+프로젝트는 Vite reference host에서 실행 가능한 Material Design 3 Theme Lab과 Component Verification 단계다. Node 24 toolchain, self-hosted 자산, Theme Runtime, token graph, interaction primitive, 10개 MVP 컴포넌트와 Tabs·Switch·Segmented Button·AutoComplete 확장, Storybook, 단위 테스트와 3-browser E2E가 연결됐다.
+
+개별 컴포넌트의 M3 준수 상태는 `BLOCKED`다. 2026-09-07 전체 검증 페이지 감사에서 일부 Button/Chip/hero 문자 대비와 Snackbar 동시 표시·action timeout 정책의 실제 실패를 추가 확인했다. 따라서 수동 검증만 남은 상태가 아니다. 해당 구현 문제와 적용 가능한 screen-reader announcement, Windows forced-colors 검증을 해결하기 전에는 `PASS`로 표현하지 않는다.
+
+## 2026-09-07 검증 페이지 감사
+
+- 최신 마이크로 모션 후속: [공식 소스 교차 검증](../audits/2026-09-07-micro-motion/README.md). 공통 hover 15ms, FocusRing 150/450ms, Ripple 실제 click/단일 surface/leave 처리, Switch 300ms overshoot, Tabs 250ms FLIP와 reduced crossfade, Radio enter-only scale, Select arrow crossfade와 Dialog surface height를 적용했다. 개별 공식 source의 reduced-motion 정책을 따른다. 실제 5174에서 Normal Light/Dark × Standard/High의 Tabs held/released 상태, Switch click/Space, Select 제출값 `destination=busan`, Dialog Escape/focus return과 page error 0을 확인했다. 독립 AutoComplete/SegmentedButton/Snackbar 전체에는 Stable counterpart가 없으므로 동등성을 과장하지 않는다.
+
+- 후속 사용자 재현으로 fresh Prefix/Suffix 토글의 비가시성과 라벨 중간 반전 점프를 확인했다. playground에 샘플/빈 값 컨트롤을 추가하고, Material Web 기반 공유 라벨 pose 보존 및 input/affix content fade를 적용했다. 실제 5174 Light/Dark에서 typing 이전 affix 표시와 폼 제출 readback을 재확인했다. 기존 색상 대비 및 수동 준수 blocker는 그대로다.
+
+최신 TextField 구현/검증은 [TextField 감사](../audits/2026-09-07-text-field/README.md)를 참조한다. Figma `10724:14659`의 56개 outlined variants를 48/32px 크기, size별 typography/error/focus, 실제 입력 상태로 반영했다. `/components#form-fields`에 textarea/clear/trailing action/validation/FormData/reset 흐름이 있으며 개발 포트는 **5174**다. 최신 사용자 결정으로 Filled TextField를 삭제하고 모든 TextField 라벨을 focus/value 기반으로 이동한다. 독립 AutoComplete와 속성 토글 UI를 추가했다. 최신 검증은 [후속 감사](../audits/2026-09-07-choice-fields/README.md)를 우선하며 Prefix/Suffix·라벨 중간 반전 회귀 포함 전체 E2E 93개가 3-browser PASS했다. Light placeholder·일부 affix 대비가 낮아 compliance BLOCKED이며 해당 색상 결정과 실제 screen-reader/Windows Contrast Themes 검증이 남아 있다.
+
+- State 표 오른쪽 빈 공간을 `inline-size: 100%`로 해결했다. minimum 폭/내부 스크롤/컴포넌트 크기는 보존했으며 375/768/1280/1920px에서 3-browser 새 회귀 3개 PASS.
+- 기존 `pnpm verify` 및 실제 앱 E2E 51개 PASS. 새 회귀와 합산 54개이며, MD3 전면 준수를 의미하지 않는다.
+- `pnpm audit:components`는 실제 Theme Lab → `/components` 경로의 Normal Light/Dark × Standard/High를 별도 감사한다. 현재 color-contrast 요소 실패 43/12/9/11개와 Snackbar 3개 동시 표시, action 포함 알림의 6초 후 소멸로 FAIL(exit 1)이다.
+- Button/Chip/Snackbar manifest에 `M3_WEB_SPEC_CONFLICT` blocker를 추가했다. Figma 색상 보정 우선순위와 Snackbar 정책 후속 구현이 필요하며 이번에는 State 표만 런타임 수정했다.
+- [감사 보고서](../audits/2026-09-07-component-gallery/README.md)에 evidence JSON과 화면, 범위/한계를 기록했다. 로컬 검증이며 production에는 배포하지 않았다.
 
 ## 저장소와 환경
 
@@ -30,10 +54,10 @@
 | token graph | 구현됨 | Figma 250 colors, 34 text styles, 18 number → 18 space/17 gap/8 radius, 5 elevation styles → component CSS variables |
 | Theme Runtime | 구현됨 | Figma preset 8종 + TonalSpot custom/dark/high, mode/contrast, bootstrap/storage |
 | interaction primitive | 구현됨 | Button/IconButton/Checkbox/Radio/Tabs/Switch/Segmented Button/Select option/Menu/Snackbar action의 StateLayer, FocusRing, pointer·keyboard Ripple |
-| 공개 13개 컴포넌트 | 구현됨, 실환경 증거 대기 | 10개 MVP + Tabs·Switch·Segmented Button 확장, manifest `implementationStatus=implemented`, `status=BLOCKED` |
+| 공개 14개 컴포넌트 | 구현됨, 실환경 증거 대기 | 10개 MVP + Tabs·Switch·Segmented Button·AutoComplete 확장, manifest `implementationStatus=implemented`, `status=BLOCKED` |
 | 대표 제품 흐름 | 준비됨 | `/` Theme Lab + 프로젝트 생성 Playground, `/components` 전체 상태 inventory |
-| unit/Storybook | 준비됨 | Vitest 7 suites/36 tests, 전체 state Story, Storybook production build |
-| E2E | 준비됨 | Chromium/Firefox/WebKit 51 tests PASS |
+| unit/Storybook | 준비됨 | Vitest 9 suites/46 tests, controlled SegmentedButton 선택/재활성화 회귀 포함. Storybook production build PASS |
+| E2E | 준비됨 | 최신 Labs 이식 artifact: Chromium/Firefox/WebKit 전체 126/126 PASS(각 42개). SVG draw/선택 phase/원본 keyframe 회귀 9개 포함. 상세는 Labs 교정 감사 |
 | 접근성 자동 검사 | 준비됨 | keyboard/focus flow, axe critical/serious 0건 |
 | Linux visual baseline | 기준에서 제거됨 | 기존 6개 PNG는 역사적 증거로만 보존; CI/구조/완료 gate 아님 |
 | 실제 AT/forced-colors | 미완료 | 적용 가능한 announcement와 Windows Contrast Themes 상태의 수동 검증 필요 |
@@ -41,7 +65,7 @@
 ## 확인된 실제 흐름
 
 - preset preview → root token 변경 → 적용 → localStorage `ui.theme.v1` → reload 복원
-- Theme Lab 상단에서 `/components`로 진입 → Actions/Navigation/Form fields/Selection controls/Chips/Dialogs/Menus/Feedback 8개 세부 그룹과 각 그룹의 포함 컴포넌트 이름·수량, 13개 공개 컴포넌트 inventory 확인 → Segmented Button single/multiple·Switch click/Space/Enter·Tabs manual 선택·Radio 단일 선택·Filter 선택·Input 삭제/복원·Dialog focus return·Snackbar 실행 → 375px overflow 0
+- Theme Lab 상단에서 `/components`로 진입 → Actions/Navigation/Form fields/Selection controls/Chips/Dialogs/Menus/Feedback 8개 세부 그룹과 각 그룹의 포함 컴포넌트 이름·수량, 14개 공개 컴포넌트 inventory 확인 → Segmented Button single/multiple·Switch click/Space/Enter·Tabs manual 선택·Radio 단일 선택·Filter 선택·Input 삭제/복원·Dialog focus return·Snackbar 실행 → 375px overflow 0
 - Button은 Figma `10429:72459`의 360개 variant 축을 공개 API와 `/components` 3개 size matrix로 제공한다. 실제 Vite에서 40/32/24px container, 20/16/12px padding, size별 typography/icon/gap과 disabled Outlined color composition, style별 error/disabled color, 48px hit target, hover/focus/pressed state layer와 keyboard ripple을 확인했다.
 - IconButton은 Figma `10724:16368`의 75개 variant 축을 공개 API와 `/components` 3개 size matrix로 제공한다. 40/32/24px visual container, 24/20/16px icon, 8/6/4px padding과 standard/filled/tonal/outlined/error 색상 및 disabled 우선순위를 component token으로 적용하면서 48px touch target, action/toggle semantics, 선택 전후 접근명과 실제 hover/focus/pressed/ripple을 유지한다.
 - Checkbox는 Figma `10466:23091`의 90개 variant 축을 `large/medium/small × checked/indeterminate/unselected × error × interaction/disabled` 공개 API와 `/components` matrix로 제공한다. 16/16/12px visual container, 24/22/16.5px icon canvas, 36/32/24px state layer와 error/disabled 색상을 component token으로 적용하면서 native form·keyboard·mixed semantics와 48px touch target을 유지한다.
@@ -54,8 +78,8 @@
 - body Portal이 document root Theme role을 상속
 - 375px viewport에서 horizontal overflow 없음
 - Noto Sans Variable/Material Icons self-host, 외부 asset request 없음
-- custom seed swatch, 56px TextField/Select와 MD3 supporting/error 위치·typography, 18px checkbox container/mark 및 label 중심선 일치
-- outlined field label은 Material Web식 start/notch/end panel을 사용해 실제 notch gap 4px/4px를 유지하고, leading icon field는 바깥 12px·icon 24px·label 간격 16px를 component token으로 고정함
+- custom seed swatch/Select는 56px이며 TextField/AutoComplete는 48/32px와 focus/value floating label·size별 supporting geometry를 사용한다. Filled TextField는 삭제됐다. 이전 TextField 56px 시각 증거는 역사적 기준이다.
+- outlined TextField label은 Material Web식 start/notch/end panel을 유지하되 Figma large/small의 notch padding 4/2px, leading glyph x=16/8px와 icon 24/16px를 사용한다. Select의 기존 notch/geometry는 바꾸지 않았다.
 - IconButton 75-variant geometry/action/toggle, Dialog 14/20·alert semantics, Menu 16/24·48px, Snackbar 48px 및 F6 이동 검증
 - Chip Assistive/Filter/Input/Location이 Figma component token을 소비한다. Filter는 size별 outer padding과 비선택 label inset, 선택/check를 보존하고 Input은 large/compact start padding, 기본 multi-action과 `removeOnly`, 취소 가능한 실제 제거를 지원한다. ChipSet ArrowLeft/ArrowRight/Home/End roving focus는 대화형 action에만 적용하며 Location은 button/ripple/focus가 없는 24px compact 정보 표시로 실제 Theme Lab과 `/components`에서 분리했다.
 - Select/Menu는 Stable Material Web의 `quick=false` 기본을 따라 500ms 높이 전개·50ms surface fade·250ms item stagger 열림과 150ms 닫힘을 유지하며, 일반 Menu의 선택/서브메뉴 icon은 24px token을 사용함
@@ -80,6 +104,8 @@
 - manifest를 governance schema로 확장하고 Select의 M3 Text field + Menu composite 및 Chip 근거를 고정했다. 단순 native Button/IconButton에는 screen-reader 수동 검증을 일괄 요구하지 않고 forced-colors만 남겼다. 나머지는 실제 announcement가 필요한 흐름과 forced-colors가 남아 있어 `BLOCKED`이며 자동 검증만으로 `PASS`로 승격하지 않는다.
 
 ## 최신 검증
+
+- 2026-09-07 Prefix/Suffix·라벨 후속 수정: pnpm verify PASS, 단위 9 suites/45개 PASS, Chromium/Firefox/WebKit 전체 E2E 93개 PASS (7.2분). 5174 Light/Dark 실제 typing 이전 affix 표시·입력·제안·선택·폼 readback과 page error 0을 확인했다. [최종 증거](../audits/2026-09-07-choice-fields/README.md).
 
 - 2026-09-03 Cloudflare Pages production 최초 게시: `/`와 `/components`가 모두 HTTP 200으로 응답했고 Cloudflare edge 응답 및 SPA deep-link fallback을 확인했다.
 - `.github/workflows/cloudflare-pages.yml`은 `main` CI 성공 revision만 checkout·build하여 production에 배포하도록 연결했다. Cloudflare API token은 Pages Write 최소 권한으로 GitHub repository secret에 저장했다.

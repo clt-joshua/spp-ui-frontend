@@ -1,0 +1,122 @@
+{
+  "stage": "after",
+  "capturedAt": "2026-09-07T02:56:34.895Z",
+  "sourceCommit": "c05b4b23485c803f68ff31cde52506cea5cc555a",
+  "url": "http://127.0.0.1:5174/components",
+  "switchFrames": [
+    {
+      "t": 0,
+      "x": 3,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 87.60000000149012,
+      "x": 3,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 99.5,
+      "x": 3,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 108.90000000223517,
+      "x": 6.703125,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 123.80000000074506,
+      "x": 9.84375,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 139.90000000223517,
+      "x": 12.28125,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 158,
+      "x": 14.125,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 173.40000000223517,
+      "x": 15.46875,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 189.90000000223517,
+      "x": 16.4375,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 206.60000000149012,
+      "x": 17.140625,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 224.60000000149012,
+      "x": 17.625,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 239.80000000074506,
+      "x": 17.9375,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 256.30000000074506,
+      "x": 18.125,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 274.30000000074506,
+      "x": 18.203125,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 289.6000000014901,
+      "x": 18.1875,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 307.80000000074506,
+      "x": 18.109375,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 323.5,
+      "x": 17.984375,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 339.9000000022352,
+      "x": 17.796875,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 356.4000000022352,
+      "x": 17.5625,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 374.6000000014901,
+      "x": 17.296875,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 389.80000000074506,
+      "x": 17,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    },
+    {
+      "t": 406.69999999925494,
+      "x": 17,
+      "transition": "inline-size 0.25s cubic-bezier(0.2, 0, 0, 1), block-size 0.25s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+    }
+  ],
+  "focus": {
+    "animation": "0.15s cubic-bezier(0.3, 0, 0, 1) _inward-grow_1cz2l_1, 0.45s cubic-bezier(0.3, 0, 0, 1) 0.15s _inward-shrink_1cz2l_1",
+    "transition": "all"
+  }
+}

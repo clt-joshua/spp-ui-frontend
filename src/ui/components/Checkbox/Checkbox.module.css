@@ -309,6 +309,7 @@
 }
 
 .root[data-disabled] :is(.box, .indicator, .mark) {
+  animation-duration: 0s;
   transition-duration: 0s;
 }
 

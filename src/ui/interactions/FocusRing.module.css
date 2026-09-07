@@ -2,7 +2,8 @@
   position: absolute;
   inset: calc(-1 * var(--md-focus-ring-outward-offset));
   z-index: 2;
-  border: var(--md-focus-ring-width) solid var(--md-focus-ring-color);
+  box-sizing: border-box;
+  outline: var(--md-focus-ring-width) solid var(--md-focus-ring-color);
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
@@ -10,14 +11,39 @@
 
 .root[data-inward] {
   inset: 0;
+  outline: none;
+  border: var(--md-focus-ring-width) solid var(--md-focus-ring-color);
 }
 
-:global([data-interactive-root]):focus-visible > .root {
+:global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root,
+:global([data-interactive-root][role='option']):focus > .root {
   opacity: 1;
+  animation-name: outward-grow, outward-shrink;
+  animation-duration: calc(var(--md-focus-ring-duration) * 0.25), calc(var(--md-focus-ring-duration) * 0.75);
+  animation-delay: 0s, calc(var(--md-focus-ring-duration) * 0.25);
+  animation-timing-function: var(--md-focus-ring-easing);
+}
+
+:global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root[data-inward],
+:global([data-interactive-root][role='option']):focus > .root[data-inward] {
+  animation-name: inward-grow, inward-shrink;
+}
+
+@keyframes outward-grow { from { outline-width: 0; } to { outline-width: var(--md-focus-ring-active-width); } }
+@keyframes outward-shrink { from { outline-width: var(--md-focus-ring-active-width); } }
+@keyframes inward-grow { from { border-width: 0; } to { border-width: var(--md-focus-ring-active-width); } }
+@keyframes inward-shrink { from { border-width: var(--md-focus-ring-active-width); } }
+
+@media (prefers-reduced-motion: reduce) {
+  :global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root,
+  :global([data-interactive-root][role='option']):focus > .root,
+  :global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root[data-inward],
+  :global([data-interactive-root][role='option']):focus > .root[data-inward] { animation: none; }
 }
 
 @media (forced-colors: active) {
   .root {
     border-color: Highlight;
+    outline-color: Highlight;
   }
 }

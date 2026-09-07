@@ -1,0 +1,26 @@
+{
+  "stage": "after",
+  "url": "http://127.0.0.1:5174/components#form-fields",
+  "initial": {
+    "value": "Input text",
+    "affixes": [
+      {
+        "slot": "prefix",
+        "opacity": "1",
+        "visibility": "visible",
+        "contentOpacity": "1"
+      },
+      {
+        "slot": "suffix",
+        "opacity": "1",
+        "visibility": "visible",
+        "contentOpacity": "1"
+      }
+    ]
+  },
+  "reversal": {
+    "before": "matrix(1.08531, 0, 0, 1.08531, 0, 5.22833)",
+    "restart": "matrix(1.08531, 0, 0, 1.08531, 0, 5.22833)",
+    "contentTransition": "opacity 0.083s cubic-bezier(0.3, 0, 0, 1)"
+  }
+}

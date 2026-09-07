@@ -1,0 +1,1572 @@
+{
+  "baseURL": "http://127.0.0.1:5174",
+  "capturedAt": "2026-09-07T01:13:18.267Z",
+  "browser": "151.0.7922.34",
+  "themes": [
+    {
+      "name": "light-standard",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "light",
+        "contrast": "standard"
+      },
+      "fields": [
+        {
+          "label": "large text empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text empty readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "large text populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text populated readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "large number empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number empty readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "large number populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number populated readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "small text empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text empty readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "small text populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text populated readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "small number empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number empty readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "small number populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number populated readonly",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.397081706640721
+        },
+        {
+          "label": "검증 프로젝트 이름",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 수량",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "검증 비밀번호",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 메모",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 읽기 전용 코드",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 숨김 라벨",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Outlined",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.003533268302588,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Error",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Leading icon",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Trailing icon",
+          "background": "rgb(239, 243, 246)",
+          "color": "rgb(31, 40, 45)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 13.446842033232127,
+          "placeholderContrast": 1.7744660224671427,
+          "affixColor": null,
+          "affixContrast": null
+        }
+      ],
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 194
+        }
+      ]
+    },
+    {
+      "name": "light-high",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "light",
+        "contrast": "high"
+      },
+      "fields": [
+        {
+          "label": "large text empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text empty readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "large text populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large text populated readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "large number empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number empty readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "large number populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "large number populated readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "small text empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text empty readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "small text populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small text populated readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "small number empty enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number empty error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number empty readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "small number populated enabled",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number populated error",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "small number populated readonly",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.090285463308371
+        },
+        {
+          "label": "검증 프로젝트 이름",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 수량",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.790349308392619
+        },
+        {
+          "label": "검증 비밀번호",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 메모",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 읽기 전용 코드",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 숨김 라벨",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Outlined",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 18.892393389187998,
+          "placeholderContrast": 1.9798893997387945,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Error",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Leading icon",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Trailing icon",
+          "background": "rgb(227, 233, 235)",
+          "color": "rgb(12, 18, 19)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 15.403036476991453,
+          "placeholderContrast": 1.6142109692696858,
+          "affixColor": null,
+          "affixContrast": null
+        }
+      ],
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 194
+        }
+      ]
+    },
+    {
+      "name": "dark-standard",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "dark",
+        "contrast": "standard"
+      },
+      "fields": [
+        {
+          "label": "large text empty enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large text empty error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large text empty readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "large text populated enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large text populated error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large text populated readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "large number empty enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large number empty error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large number empty readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "large number populated enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large number populated error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "large number populated readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "small text empty enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small text empty error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small text empty readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "small text populated enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small text populated error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small text populated readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "small number empty enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small number empty error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small number empty readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "small number populated enabled",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small number populated error",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "small number populated readonly",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 4.304070065507702
+        },
+        {
+          "label": "검증 프로젝트 이름",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 수량",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.094950138890461
+        },
+        {
+          "label": "검증 비밀번호",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 메모",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 읽기 전용 코드",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 숨김 라벨",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Outlined",
+          "background": "rgb(9, 15, 16)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.920524596338069,
+          "placeholderContrast": 9.753898746963396,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Error",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Leading icon",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Trailing icon",
+          "background": "rgb(27, 33, 34)",
+          "color": "rgb(222, 227, 229)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 12.60443802709229,
+          "placeholderContrast": 8.239818344510951,
+          "affixColor": null,
+          "affixContrast": null
+        }
+      ],
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 194
+        }
+      ]
+    },
+    {
+      "name": "dark-high",
+      "theme": {
+        "themeId": "normal",
+        "colorScheme": "dark",
+        "contrast": "high"
+      },
+      "fields": [
+        {
+          "label": "large text empty enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large text empty error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large text empty readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "large text populated enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large text populated error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large text populated readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "large number empty enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large number empty error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large number empty readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "large number populated enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large number populated error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "large number populated readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "small text empty enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small text empty error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small text empty readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "small text populated enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small text populated error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small text populated readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "small number empty enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small number empty error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small number empty readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "small number populated enabled",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small number populated error",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "small number populated readonly",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 3.895991169942459
+        },
+        {
+          "label": "검증 프로젝트 이름",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 수량",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": "rgb(118, 133, 146)",
+          "affixContrast": 5.3076958899273885
+        },
+        {
+          "label": "검증 비밀번호",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 메모",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 읽기 전용 코드",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "검증 숨김 라벨",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": true,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Outlined",
+          "background": "rgb(4, 8, 9)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 20.118021445544624,
+          "placeholderContrast": 10.161184482425524,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Error",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Leading icon",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": null,
+          "affixContrast": null
+        },
+        {
+          "label": "Trailing icon",
+          "background": "rgb(35, 41, 42)",
+          "color": "rgb(255, 255, 255)",
+          "placeholder": "rgb(173, 186, 197)",
+          "placeholderVisible": false,
+          "valueContrast": 14.767167436495152,
+          "placeholderContrast": 7.458581998794163,
+          "affixColor": null,
+          "affixContrast": null
+        }
+      ],
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 194
+        }
+      ]
+    }
+  ],
+  "verdict": "FAIL"
+}

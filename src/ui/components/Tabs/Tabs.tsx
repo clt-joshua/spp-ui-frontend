@@ -8,6 +8,7 @@ import type {
 import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import styles from './Tabs.module.css';
+import { TabIndicator } from './TabIndicator';
 
 export interface TabsProps<Value extends string = string> {
   children: ReactNode;
@@ -88,7 +89,7 @@ export function TabList({
       loopFocus={loopFocus}
     >
       {children}
-      <BaseTabs.Indicator className={styles.indicator} data-slot="active-indicator" />
+      <TabIndicator />
     </BaseTabs.List>
   );
 }

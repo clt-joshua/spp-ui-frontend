@@ -94,7 +94,7 @@
   min-inline-size: 0;
   align-items: center;
   justify-content: center;
-  gap: var(--md-segmented-button-content-gap);
+  gap: 0;
   pointer-events: none;
 }
 
@@ -116,6 +116,94 @@
 
 .icon > :global(.material-icons) {
   font-size: var(--md-segmented-button-icon-size);
+}
+
+/* Selection anatomy/keyframes adapted from Material Web Labs _shared.scss.
+ * Copyright 2022 Google LLC. SPDX-License-Identifier: Apache-2.0.
+ * Graphic width includes spacing; there is no compensating negative margin.
+ */
+.leading {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.graphic {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-start;
+  inline-size: 0;
+  block-size: var(--md-segmented-button-icon-size);
+  overflow: hidden;
+  transition: inline-size var(--md-segmented-button-selection-duration) var(--md-segmented-button-selection-easing);
+}
+
+.segment[data-leading-visible] .graphic {
+  inline-size: calc(var(--md-segmented-button-icon-size) + var(--md-segmented-button-content-gap));
+}
+
+.segment[data-has-label] .selectedIcon {
+  position: absolute;
+}
+.selectedIcon:not([data-visible]),
+.configuredIcon:not([data-visible]) {
+  opacity: 0;
+}
+.checkPath {
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-dasharray: 29.7833385;
+}
+
+@keyframes checkDraw {
+  from { stroke-dashoffset: 29.7833385; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes iconFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes iconFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.segment[data-selection-motion='selecting'] .checkPath {
+  stroke-dashoffset: 29.7833385;
+  animation: checkDraw var(--md-segmented-button-selection-duration) var(--md-segmented-button-selection-easing) var(--md-segmented-button-check-enter-delay) forwards;
+}
+.segment[data-selection-motion='selecting'] .configuredIcon {
+  animation: iconFadeOut var(--md-segmented-button-icon-exit-duration) linear forwards;
+}
+.segment[data-selection-motion='deselecting'] .selectedIcon {
+  animation: iconFadeOut var(--md-segmented-button-check-exit-duration) linear forwards;
+}
+.segment[data-selection-motion='deselecting'] .configuredIcon,
+.segment[data-selection-motion='selecting'] .selectedIcon[data-custom] {
+  opacity: 0;
+  animation: iconFadeIn var(--md-segmented-button-selection-duration) linear var(--md-segmented-button-check-enter-delay) forwards;
+}
+
+/* Retain the project's explicit accessibility exceptions; Labs has no branch. */
+.segment:disabled :is(.graphic, .selectedIcon, .configuredIcon, .checkPath),
+.segment:disabled .selectedIcon[data-custom] {
+  animation: none;
+  transition: none;
+  stroke-dashoffset: 0;
+}
+.segment:disabled :is(.selectedIcon, .configuredIcon)[data-visible] { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .segment[data-interactive-root] :is(.graphic, .selectedIcon, .configuredIcon, .checkPath),
+  .segment[data-interactive-root] .selectedIcon[data-custom] {
+    animation: none;
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+  .segment[data-interactive-root] :is(.selectedIcon, .configuredIcon)[data-visible] { opacity: 1; }
 }
 
 .label {
@@ -161,11 +249,5 @@
     border-color: GrayText;
     background: Canvas;
     color: GrayText;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .segment {
-    --md-interaction-motion-duration: 0ms;
   }
 }

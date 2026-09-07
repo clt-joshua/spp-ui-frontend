@@ -10,6 +10,10 @@ compliance_required: true
 
 # 공식 출처와 Baseline
 
+## SegmentedButton Labs 코드 이식 고지 (2026-09-07)
+
+사용자의 명시적 후속 요청에 따라 `SegmentedButton.tsx`의 선택 상태 결정·SVG path와 `SegmentedButton.module.css`의 graphic 구조·keyframe을 Material Web `c05b4b23485c803f68ff31cde52506cea5cc555a`의 `labs/segmentedbutton/internal/segmented-button.ts`, `_shared.scss`에서 React/CSS Modules/component token 형태로 수정 이식했다. Copyright 2021/2022 Google LLC, Apache-2.0. [라이선스 사본](../../public/licenses/material-web-LICENSE.txt)을 제품 정적 자산에도 포함한다. Labs/Lit 런타임 의존성은 추가하지 않았고, Figma geometry/color 및 공개 API·reduced-motion/disabled 예외는 프로젝트 계약으로 유지한다.
+
 > [!IMPORTANT]
 > **Mandatory M3 Web Implementation Rule**
 > 이 UI 시스템의 구현은 [Material Design 3 for Web](https://m3.material.io/develop/web)과 해당 페이지에서 공식 개발 문서로 연결하는 [Material Web 문서 전체](https://github.com/material-components/material-web/tree/main/docs)를 반드시 준수한다. 컴포넌트 anatomy, variant, size, color role, typography, shape, elevation, state layer, ripple, focus, motion, 접근성 및 반응형 동작은 공식 문서와 대조되어야 한다. Base UI 동작, 기존 코드, 테스트 또는 AI 생성 결과가 공식 문서와 충돌하면 공식 문서를 우선한다. 충돌을 임의로 해석하거나 테스트로 정당화하지 않고 `M3_WEB_SPEC_CONFLICT`로 기록한다.

@@ -1,0 +1,498 @@
+/* Shared outlined appearance, not a shared public input behavior. */
+.root {
+  display: grid;
+  align-content: start;
+  gap: 0;
+  min-inline-size: 12rem;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  block-size: var(--md-text-field-container-height);
+  align-items: center;
+  gap: var(--md-text-field-content-gap);
+  padding-inline: var(--md-text-field-leading-space) var(--md-text-field-trailing-space);
+  border-radius: var(--text-field-shape);
+  background: var(--text-field-container-color);
+  color: var(--md-text-field-label-text-color);
+  box-shadow: inset 0 var(--text-field-indicator-size) 0 0 var(--text-field-indicator-color);
+}
+
+.outline {
+  --field-outline-color: var(--text-field-indicator-color);
+  --field-outline-active-color: var(--text-field-focus-indicator-color);
+  --field-outline-active-opacity: var(--text-field-outline-active-opacity, 0);
+  --field-outline-active-width: var(--text-field-focus-outline-width);
+  --field-outline-label-font: var(--md-text-field-active-label-text-font);
+  --field-outline-label-padding: var(--md-outlined-text-field-outline-label-padding);
+  --field-outline-label-size: var(--md-text-field-active-label-text-size);
+  --field-outline-label-tracking: var(--md-text-field-active-label-text-tracking);
+  --field-outline-label-weight: var(--md-text-field-active-label-text-weight);
+  --field-outline-height: var(--md-text-field-container-height);
+  --field-outline-leading-space: var(--md-outlined-text-field-label-leading-space);
+  --field-outline-motion-duration: var(--md-text-field-motion-duration);
+  --field-outline-motion-easing: var(--md-text-field-outline-motion-easing);
+  --field-outline-shape: var(--text-field-shape);
+  --field-outline-start-width: calc(var(--md-outlined-text-field-label-leading-space) - var(--md-outlined-text-field-outline-label-padding));
+  --field-outline-trailing-space: var(--md-outlined-text-field-label-trailing-space);
+  --field-outline-width: var(--text-field-outline-width);
+}
+
+.label {
+  z-index: 1;
+  overflow: hidden;
+  color: var(--md-text-field-label-text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.restingLabel {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--text-field-label-start, var(--md-outlined-text-field-label-leading-space));
+  max-inline-size: calc(100% - var(--text-field-label-start, var(--md-outlined-text-field-label-leading-space)) - var(--md-outlined-text-field-label-trailing-space));
+  font-family: var(--md-text-field-label-text-font);
+  font-size: var(--md-text-field-label-text-size);
+  font-weight: var(--md-text-field-label-text-weight);
+  letter-spacing: var(--md-text-field-label-text-tracking);
+  line-height: var(--md-text-field-label-text-line-height);
+  text-decoration: var(--md-text-field-label-text-decoration);
+  transform: translateY(-50%);
+}
+
+.floatingLabelPosition {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 0;
+  inset-inline-start: var(--md-outlined-text-field-label-leading-space);
+  max-inline-size: calc(100% - var(--md-outlined-text-field-label-leading-space) - var(--md-outlined-text-field-label-trailing-space));
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.floatingLabel {
+  display: block;
+  max-inline-size: 100%;
+  font-family: var(--md-text-field-active-label-text-font);
+  font-size: var(--md-text-field-active-label-text-size);
+  font-weight: var(--md-text-field-active-label-text-weight);
+  letter-spacing: var(--md-text-field-active-label-text-tracking);
+  line-height: var(--md-text-field-active-label-text-line-height);
+  text-decoration: var(--md-text-field-active-label-text-decoration);
+  opacity: 0;
+  transform-origin: left top;
+}
+
+.root[data-floating] .restingLabel {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.root[data-floating] .floatingLabel {
+  opacity: 1;
+}
+
+.control[data-has-leading] {
+  --text-field-label-start: calc(var(--md-text-field-with-leading-icon-leading-space) + var(--md-text-field-icon-size) + var(--md-text-field-leading-icon-label-space));
+  gap: var(--md-text-field-leading-icon-label-space);
+  padding-inline-start: var(--md-text-field-with-leading-icon-leading-space);
+}
+
+.inputRow {
+  display: flex;
+  min-inline-size: 0;
+  flex: 1;
+  align-items: center;
+  gap: var(--md-text-field-input-row-gap);
+  /* Material Web fades input + affixes together after the label starts moving. */
+  opacity: 0;
+  transition: opacity var(--md-text-field-content-fade-duration) var(--md-text-field-content-fade-easing);
+}
+
+.root[data-floating] .inputRow,
+.root[data-hide-label] .inputRow {
+  opacity: 1;
+  transition-delay: var(--md-text-field-content-fade-delay);
+}
+
+.root[data-disabled] .inputRow { transition: none; }
+
+.input {
+  min-inline-size: 0;
+  flex: 1;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--md-text-field-input-text-color);
+  font-family: var(--md-text-field-input-text-font);
+  font-size: var(--md-text-field-input-text-size);
+  font-weight: var(--md-text-field-input-text-weight);
+  letter-spacing: var(--md-text-field-input-text-tracking);
+  line-height: var(--md-text-field-input-text-line-height);
+  text-decoration: var(--md-text-field-input-text-decoration);
+}
+
+.input::placeholder {
+  color: var(--md-text-field-placeholder-text-color);
+}
+
+.icon,
+.affix {
+  display: inline-flex;
+  flex: none;
+}
+
+.icon {
+  inline-size: var(--md-text-field-icon-size);
+  block-size: var(--md-text-field-icon-size);
+}
+
+.icon > :global(.material-icons) {
+  font-size: var(--md-text-field-icon-size);
+}
+
+.affix {
+  color: var(--md-text-field-prefix-suffix-text-color);
+  font-family: var(--md-text-field-input-text-font);
+  font-size: var(--md-text-field-input-text-size);
+  font-weight: var(--md-text-field-input-text-weight);
+  letter-spacing: var(--md-text-field-input-text-tracking);
+  line-height: var(--md-text-field-input-text-line-height);
+  text-decoration: var(--md-text-field-input-text-decoration);
+}
+
+.root:not([data-disabled]):hover .label {
+  color: var(--md-text-field-hover-label-text-color);
+}
+
+.outlined:not([data-disabled]):hover {
+  --text-field-indicator-color: var(--md-outlined-text-field-hover-outline-color);
+}
+
+.root:focus-within {
+  --text-field-indicator-size: var(--text-field-focus-indicator-size);
+  --text-field-outline-active-opacity: 1;
+}
+
+.root:focus-within .label {
+  color: var(--md-text-field-focus-label-text-color);
+}
+
+.root[data-invalid] {
+  --text-field-indicator-color: var(--md-text-field-error-label-text-color);
+  --text-field-focus-indicator-color: var(--md-text-field-error-label-text-color);
+}
+
+.root[data-invalid] .label {
+  color: var(--md-text-field-error-label-text-color);
+}
+
+.root[data-disabled] .control {
+  color: color-mix(in srgb, var(--md-text-field-disabled-content-color) var(--md-text-field-disabled-content-opacity), transparent);
+}
+
+.root[data-disabled] .label,
+.root[data-disabled] .input,
+.root[data-disabled] .icon,
+.root[data-disabled] .affix,
+.root[data-disabled] .supporting,
+.root[data-disabled] .error {
+  color: color-mix(in srgb, var(--md-text-field-disabled-content-color) var(--md-text-field-disabled-content-opacity), transparent);
+}
+
+.root[data-disabled] .input {
+  cursor: default;
+}
+
+.supporting,
+.error {
+  display: flex;
+  margin: 0;
+  padding-block-start: var(--text-field-supporting-text-top-space);
+  padding-inline: var(--text-field-supporting-text-leading-space) var(--text-field-supporting-text-trailing-space);
+  font-family: var(--text-field-supporting-text-font);
+  font-size: var(--text-field-supporting-text-size);
+  font-weight: var(--text-field-supporting-text-weight);
+  letter-spacing: var(--text-field-supporting-text-tracking);
+  line-height: var(--text-field-supporting-text-line-height);
+  text-decoration: var(--text-field-supporting-text-decoration);
+}
+
+.supporting { color: var(--text-field-supporting-text-color); }
+.error { color: var(--text-field-error-supporting-text-color); }
+
+.outlined {
+  --text-field-container-color: transparent;
+  --text-field-indicator-color: var(--md-outlined-text-field-outline-color);
+  --text-field-indicator-size: 0;
+  --text-field-focus-indicator-color: var(--md-outlined-text-field-focus-outline-color);
+  --text-field-focus-indicator-size: 0;
+  --text-field-outline-width: var(--md-outlined-text-field-outline-width);
+  --text-field-focus-outline-width: var(--md-outlined-text-field-focus-outline-width);
+  --text-field-shape: var(--md-outlined-text-field-container-shape);
+  --text-field-error-supporting-text-color: var(--md-outlined-text-field-error-supporting-text-color);
+  --text-field-supporting-text-color: var(--md-outlined-text-field-supporting-text-color);
+  --text-field-supporting-text-decoration: var(--md-outlined-text-field-supporting-text-decoration);
+  --text-field-supporting-text-font: var(--md-outlined-text-field-supporting-text-font);
+  --text-field-supporting-text-leading-space: var(--md-outlined-text-field-supporting-text-leading-space);
+  --text-field-supporting-text-line-height: var(--md-outlined-text-field-supporting-text-line-height);
+  --text-field-supporting-text-size: var(--md-outlined-text-field-supporting-text-size);
+  --text-field-supporting-text-top-space: var(--md-outlined-text-field-supporting-text-top-space);
+  --text-field-supporting-text-trailing-space: var(--md-outlined-text-field-supporting-text-trailing-space);
+  --text-field-supporting-text-tracking: var(--md-outlined-text-field-supporting-text-tracking);
+  --text-field-supporting-text-weight: var(--md-outlined-text-field-supporting-text-weight);
+}
+
+.outlined[data-disabled] {
+  --text-field-indicator-color: color-mix(in srgb, var(--md-text-field-disabled-content-color) 12%, transparent);
+}
+
+/* Figma geometry; current product policy uses focus/value-driven floating labels. */
+.outlined {
+  --text-field-container-color: var(--md-text-field-figma-container-color);
+  --text-field-indicator-color: var(--md-text-field-figma-outline-color);
+  --text-field-outline-width: var(--md-text-field-figma-outline-width);
+  --text-field-shape: var(--md-text-field-figma-shape);
+  --md-text-field-placeholder-text-color: var(--md-text-field-figma-placeholder-color);
+  --md-text-field-prefix-suffix-text-color: var(--md-text-field-figma-affix-color);
+  --md-text-field-content-gap: 0px;
+  --md-text-field-input-row-gap: 0px;
+  --md-text-field-leading-icon-label-space: 0px;
+}
+
+.outlined[data-size='large'] {
+  --md-text-field-container-height: var(--md-text-field-large-height);
+  --text-field-focus-outline-width: var(--md-text-field-large-focus-width);
+  --md-text-field-leading-space: var(--md-text-field-large-control-space);
+  --md-text-field-trailing-space: var(--md-text-field-large-control-space);
+  --md-text-field-with-leading-icon-leading-space: var(--md-text-field-large-control-space);
+  --md-text-field-icon-size: var(--md-text-field-large-icon-size);
+  --md-outlined-text-field-label-leading-space: var(--md-text-field-large-label-space);
+  --md-outlined-text-field-outline-label-padding: var(--md-text-field-large-label-padding);
+  --text-field-supporting-text-leading-space: var(--md-text-field-large-support-space);
+  --text-field-supporting-text-trailing-space: var(--md-text-field-large-support-space);
+  --text-field-supporting-text-top-space: var(--md-text-field-large-support-top-space);
+  --text-field-action-size: var(--md-text-field-large-action-size);
+  --text-field-required-space: var(--md-text-field-large-required-space);
+  --text-field-required-top-space: var(--md-text-field-large-required-top-space);
+  --text-field-label-offset: var(--md-text-field-large-label-offset);
+  --text-field-label-patch-height: var(--md-text-field-large-label-patch-height);
+  --md-text-field-input-text-font: var(--md-text-field-large-input-font);
+  --md-text-field-active-label-text-font: var(--md-text-field-large-label-font);
+  --text-field-affix-font: var(--md-text-field-large-affix-font);
+  --md-text-field-input-text-size: var(--md-text-field-large-input-size);
+  --md-text-field-active-label-text-size: var(--md-text-field-large-label-size);
+  --text-field-affix-size: var(--md-text-field-large-affix-size);
+  --md-text-field-input-text-weight: var(--md-text-field-large-input-weight);
+  --md-text-field-active-label-text-weight: var(--md-text-field-large-label-weight);
+  --text-field-affix-weight: var(--md-text-field-large-affix-weight);
+  --md-text-field-input-text-tracking: var(--md-text-field-large-input-tracking);
+  --md-text-field-active-label-text-tracking: var(--md-text-field-large-label-tracking);
+  --text-field-affix-tracking: var(--md-text-field-large-affix-tracking);
+  --md-text-field-input-text-line-height: var(--md-text-field-large-input-line-height);
+  --md-text-field-active-label-text-line-height: var(--md-text-field-large-label-line-height);
+  --text-field-affix-line-height: var(--md-text-field-large-affix-line-height);
+  --md-text-field-input-text-decoration: var(--md-text-field-large-input-decoration);
+  --md-text-field-active-label-text-decoration: var(--md-text-field-large-label-decoration);
+  --text-field-affix-decoration: var(--md-text-field-large-affix-decoration);
+}
+
+.outlined[data-size='small'] {
+  --md-text-field-container-height: var(--md-text-field-small-height);
+  --text-field-focus-outline-width: var(--md-text-field-small-focus-width);
+  --md-text-field-leading-space: var(--md-text-field-small-control-space);
+  --md-text-field-trailing-space: var(--md-text-field-small-control-space);
+  --md-text-field-with-leading-icon-leading-space: var(--md-text-field-small-control-space);
+  --md-text-field-icon-size: var(--md-text-field-small-icon-size);
+  --md-outlined-text-field-label-leading-space: var(--md-text-field-small-label-space);
+  --md-outlined-text-field-outline-label-padding: var(--md-text-field-small-label-padding);
+  --text-field-supporting-text-leading-space: var(--md-text-field-small-support-space);
+  --text-field-supporting-text-trailing-space: var(--md-text-field-small-support-space);
+  --text-field-supporting-text-top-space: var(--md-text-field-small-support-top-space);
+  --text-field-action-size: var(--md-text-field-small-action-size);
+  --text-field-required-space: var(--md-text-field-small-required-space);
+  --text-field-required-top-space: var(--md-text-field-small-required-top-space);
+  --text-field-label-offset: var(--md-text-field-small-label-offset);
+  --text-field-label-patch-height: var(--md-text-field-small-label-patch-height);
+  --md-text-field-input-text-font: var(--md-text-field-small-input-font);
+  --md-text-field-active-label-text-font: var(--md-text-field-small-label-font);
+  --text-field-affix-font: var(--md-text-field-small-affix-font);
+  --md-text-field-input-text-size: var(--md-text-field-small-input-size);
+  --md-text-field-active-label-text-size: var(--md-text-field-small-label-size);
+  --text-field-affix-size: var(--md-text-field-small-affix-size);
+  --md-text-field-input-text-weight: var(--md-text-field-small-input-weight);
+  --md-text-field-active-label-text-weight: var(--md-text-field-small-label-weight);
+  --text-field-affix-weight: var(--md-text-field-small-affix-weight);
+  --md-text-field-input-text-tracking: var(--md-text-field-small-input-tracking);
+  --md-text-field-active-label-text-tracking: var(--md-text-field-small-label-tracking);
+  --text-field-affix-tracking: var(--md-text-field-small-affix-tracking);
+  --md-text-field-input-text-line-height: var(--md-text-field-small-input-line-height);
+  --md-text-field-active-label-text-line-height: var(--md-text-field-small-label-line-height);
+  --text-field-affix-line-height: var(--md-text-field-small-affix-line-height);
+  --md-text-field-input-text-decoration: var(--md-text-field-small-input-decoration);
+  --md-text-field-active-label-text-decoration: var(--md-text-field-small-label-decoration);
+  --text-field-affix-decoration: var(--md-text-field-small-affix-decoration);
+}
+
+.outlined .control { box-sizing: border-box; }
+.outlined .floatingLabelPosition {
+  inset-block-start: var(--text-field-label-offset);
+  pointer-events: auto;
+  cursor: text;
+}
+.outlined .input {
+  inline-size: 100%;
+  padding-inline: var(--md-text-field-figma-input-space);
+}
+.outlined[data-size='small'] .input { padding-inline-end: 0; }
+.outlined[data-size='small'][data-type='number'] .input {
+  padding-inline: 0 var(--md-text-field-figma-input-space);
+  text-align: end;
+}
+/* Native number keyboard/step/min/max semantics remain intact without extra UA glyphs. */
+.outlined .input[type='number'] { appearance: textfield; }
+.outlined .input::-webkit-inner-spin-button,
+.outlined .input::-webkit-outer-spin-button { margin: 0; appearance: none; }
+.outlined .input::placeholder { opacity: 1; }
+.outlined[data-hide-label] .input::placeholder { color: var(--md-text-field-placeholder-text-color); }
+.outlined .restingLabel {
+  pointer-events: auto;
+  --text-field-label-start: calc(var(--md-text-field-leading-space) + var(--md-text-field-figma-input-space));
+  --md-text-field-label-text-font: var(--md-text-field-input-text-font);
+  --md-text-field-label-text-size: var(--md-text-field-input-text-size);
+  --md-text-field-label-text-line-height: var(--md-text-field-input-text-line-height);
+  --md-text-field-label-text-weight: var(--md-text-field-input-text-weight);
+  --md-text-field-label-text-tracking: var(--md-text-field-input-text-tracking);
+  --md-text-field-label-text-decoration: var(--md-text-field-input-text-decoration);
+}
+.outlined .control[data-has-leading] .restingLabel {
+  --text-field-label-start: calc(var(--md-text-field-leading-space) * 2 + var(--md-text-field-icon-size) + var(--md-text-field-figma-input-space));
+}
+.outlined:not([data-floating]) .floatingLabelPosition { pointer-events: none; }
+.outlined[data-floating] .restingLabel { pointer-events: none; }
+.outlined .leadingIcon { margin-inline-start: var(--md-text-field-leading-space); }
+.outlined .trailingIcon {
+  inline-size: var(--text-field-action-size);
+  block-size: var(--text-field-action-size);
+  align-items: center;
+  justify-content: center;
+}
+.outlined .prefix { padding-inline-start: var(--md-text-field-leading-space); }
+.outlined .suffix { padding-inline-end: var(--md-text-field-trailing-space); }
+.outlined .affix {
+  font-family: var(--text-field-affix-font);
+  font-size: var(--text-field-affix-size);
+  font-weight: var(--text-field-affix-weight);
+  letter-spacing: var(--text-field-affix-tracking);
+  line-height: var(--text-field-affix-line-height);
+  text-decoration: var(--text-field-affix-decoration);
+}
+.outlined .icon { color: var(--md-text-field-label-text-color); }
+.outlined:not([data-disabled]):has(.control:hover) {
+  --text-field-indicator-color: var(--md-text-field-figma-hover-outline-color);
+  --text-field-outline-width: var(--md-text-field-figma-hover-outline-width);
+}
+.outlined .label,
+.outlined:not([data-disabled]):hover .label,
+.outlined:focus-within .label,
+.outlined[data-invalid] .label { color: var(--md-text-field-figma-label-color); }
+.outlined[data-invalid]:not([data-disabled]) {
+  --text-field-indicator-color: var(--md-text-field-error-label-text-color);
+  --text-field-focus-indicator-color: var(--md-text-field-error-label-text-color);
+  --text-field-outline-width: var(--md-text-field-figma-outline-width);
+}
+.outlined[data-size='large'][data-invalid][data-populated]:not([data-disabled]) .label,
+.outlined[data-size='large'][data-invalid]:not([data-disabled]):focus-within .label { color: var(--md-text-field-error-label-text-color); }
+.outlined[data-size='small'] .error { color: var(--text-field-supporting-text-color); }
+.outlined[data-readonly] {
+  --text-field-container-color: var(--md-text-field-figma-readonly-container-color);
+}
+.outlined[data-readonly]:not([data-disabled]):not([data-invalid]) {
+  --text-field-indicator-color: var(--md-text-field-figma-outline-color);
+  --text-field-outline-width: var(--md-text-field-figma-outline-width);
+}
+.outlined[data-disabled] {
+  --text-field-indicator-color: var(--md-text-field-figma-hover-outline-color);
+  --text-field-outline-width: var(--md-text-field-figma-outline-width);
+  opacity: var(--md-text-field-figma-disabled-opacity);
+}
+.outlined[data-disabled] .input { color: var(--md-text-field-input-text-color); }
+.outlined[data-disabled] .icon,
+.outlined[data-disabled] .label,
+.outlined[data-disabled] .supporting,
+.outlined[data-disabled] .error { color: var(--md-text-field-figma-label-color); }
+.outlined[data-disabled] .affix { color: var(--md-text-field-prefix-suffix-text-color); }
+.required {
+  position: absolute;
+  inset-inline-start: var(--text-field-required-space, var(--md-text-field-large-required-space));
+  inset-block-start: var(--text-field-required-top-space, var(--md-text-field-large-required-top-space));
+  color: var(--md-text-field-error-label-text-color);
+  font-size: var(--text-field-affix-size, var(--md-text-field-large-affix-size));
+  font-family: var(--md-text-field-input-text-font);
+  font-weight: var(--md-text-field-large-affix-weight);
+  line-height: var(--md-text-field-large-affix-line-height);
+  letter-spacing: var(--md-text-field-large-affix-tracking);
+  text-decoration: var(--md-text-field-large-affix-decoration);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.outlined[data-size='small'] .required {
+  font-size: var(--md-text-field-small-label-size);
+  line-height: var(--md-text-field-small-label-line-height);
+  letter-spacing: var(--md-text-field-small-label-tracking);
+}
+.outlined .action:disabled {
+  --md-icon-button-disabled-icon-opacity: 1;
+  --md-icon-button-disabled-icon-color: var(--md-text-field-figma-label-color);
+  --md-icon-button-disabled-container-color: transparent;
+}
+.action {
+  flex: none;
+  /* Keep adjacent clear/trailing targets disjoint in the compact desktop layout. */
+  --md-icon-button-touch-target-size: var(--text-field-action-size, var(--md-text-field-large-action-size));
+}
+.clearAction { display: none; }
+.control:hover .clearAction,
+.control:focus-within .clearAction { display: inline-grid; }
+@media (hover: none) {
+  .clearAction { display: inline-grid; }
+}
+.root[data-type='textarea'] .control {
+  block-size: auto;
+  min-block-size: var(--md-text-field-container-height);
+}
+.root[data-type='textarea'] .outline { --field-outline-height: 100%; }
+.root[data-type='textarea'] .input {
+  padding-block: var(--md-text-field-leading-space);
+  resize: vertical;
+}
+.root[data-hide-label] .floatingLabelPosition { display: none; }
+.root[data-hide-label] .restingLabel {
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@media (pointer: coarse) {
+  .outlined .control { min-block-size: var(--md-text-field-touch-target-size); }
+  .outlined .outline { --field-outline-height: 100%; }
+  .outlined .action {
+    --icon-button-container-height: var(--md-text-field-touch-target-size);
+    --icon-button-container-width: var(--md-text-field-touch-target-size);
+    --md-icon-button-touch-target-size: var(--md-text-field-touch-target-size);
+  }
+}
+@media (forced-colors: active) {
+  .outlined { --text-field-indicator-color: CanvasText; --text-field-focus-indicator-color: Highlight; }
+  .outlined[data-invalid]:not([data-disabled]) { --text-field-indicator-color: CanvasText; --text-field-focus-indicator-color: Highlight; }
+  .outlined[data-disabled] { --text-field-indicator-color: GrayText; opacity: 1; }
+  .outlined[data-disabled] .input,
+  .outlined[data-disabled] .label,
+  .outlined[data-disabled] .icon,
+  .outlined[data-disabled] .affix,
+  .outlined[data-disabled] .supporting,
+  .outlined[data-disabled] .error { color: GrayText; }
+}

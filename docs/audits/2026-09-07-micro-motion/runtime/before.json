@@ -1,0 +1,127 @@
+{
+  "stage": "before",
+  "capturedAt": "2026-09-07T02:29:52.254Z",
+  "sourceCommit": "c05b4b23485c803f68ff31cde52506cea5cc555a",
+  "url": "http://127.0.0.1:5174/components",
+  "switchFrames": [
+    {
+      "t": 0,
+      "x": 3,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 72.70000000298023,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 84.90000000223517,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 93.70000000298023,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 104.80000000074506,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 122.40000000223517,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 138.60000000149012,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 154.90000000223517,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 171.5,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 188.30000000074506,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 204.60000000149012,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 221.40000000223517,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 239.40000000223517,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 254.70000000298023,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 272.9000000022352,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 288.5,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 304.80000000074506,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 321.4000000022352,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 339.6000000014901,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 354.9000000022352,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 371.6000000014901,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 387.70000000298023,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    },
+    {
+      "t": 404.9000000022352,
+      "x": 17,
+      "transition": "inline-size 0.3s cubic-bezier(0.2, 0, 0, 1), block-size 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-start 0.3s cubic-bezier(0.2, 0, 0, 1), inset-inline-end 0.3s cubic-bezier(0.2, 0, 0, 1)"
+    }
+  ],
+  "focus": {
+    "animation": "none",
+    "transition": "all"
+  }
+}

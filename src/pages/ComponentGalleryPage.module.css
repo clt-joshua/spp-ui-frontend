@@ -383,6 +383,7 @@
 }
 
 .buttonMatrix {
+  inline-size: 100%;
   min-inline-size: 78rem;
   border-collapse: separate;
   border-spacing: 0;
@@ -519,6 +520,25 @@
   color: var(--md-sys-color-on-surface-variant);
   font-size: var(--md-sys-typescale-body-medium-size);
   line-height: var(--md-sys-typescale-body-medium-line-height);
+}
+
+.textFieldExamples {
+  display: grid;
+  gap: var(--md-sys-gap-300);
+  min-inline-size: 0;
+}
+
+.textFieldExamples h4 {
+  margin-block: 0 var(--md-sys-space-200);
+}
+
+.textFieldExamples .fieldGrid {
+  row-gap: var(--md-sys-gap-300);
+}
+
+.textFieldResult {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 @media (max-width: 64rem) {

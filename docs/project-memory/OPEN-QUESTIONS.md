@@ -1,10 +1,14 @@
 # 미결 질문과 구현 게이트
 
-관찰일: 2026-09-03
+관찰일: 2026-09-07
 
 ## 열린 제품·운영 결정
 
-현재 구현을 막는 열린 제품 결정은 없다. Switch는 small 단일 규격으로 확정되어 large/medium과 해당 opacity 충돌을 제품 범위에서 제거했다. 새 범위나 제품 정책은 임의 기본값으로 추가하지 않는다.
+Filled TextField 제거, focus/value floating label 복원, 독립 AutoComplete와 속성 playground는 확정되어 구현했다. AutoComplete는 자유 텍스트 + 제안의 프로젝트 composite이며 입력 문자열이 form value다. 전용 Figma set/Stable Material Web 구현이 없는 범위를 임의로 검증 완료 처리하지 않고 APG와 MD3 Text fields/Menu 조합으로 기록한다. 오류·제안·가상 포커스의 실제 AT announcement는 수동 게이트에 포함한다.
+
+TextField Figma `10724:14659`의 `on-surface-variant-bright` placeholder와 `outline-high` affix도 supported theme에서 4.5:1 미달을 확인했다. [TextField 실제 색상 근거](../audits/2026-09-07-text-field/README.md)에 따라 source token 변경 또는 접근성 override 허용 결정을 해야 한다. 입력값의 대비는 4개 테마에서 충분하지만 전체 준수 PASS를 뜻하지 않는다. Firefox의 small native line-height 17px는 HTML의 normal 최소값 규칙이며 author Figma token은 16px로 보존한다.
+
+2026-09-07 감사에서 Figma-bound Button/Chip 색상의 실제 문자 대비 부족을 발견했다. 원본 보존 범위와 접근성 보정 우선순위를 확정해야 한다(`M3_WEB_SPEC_CONFLICT`). Snackbar는 MD3 단일 표시 및 actionable persistence 규칙에 맞춘 후속 구현이 필요하다. 자세한 재현과 조치는 [감사 보고서](../audits/2026-09-07-component-gallery/README.md)를 참조한다. Switch는 small 단일 규격으로 확정되어 large/medium은 계속 범위 밖이다.
 
 ## 2026-08-25 확정 결정
 
@@ -22,8 +26,8 @@
 |---|---|---|---|
 | V-001 | Select의 M3 직접 근거 | 해결: M3에 Select 단독 문서가 없어 M3 Text fields + Menus를 composite component 근거로, Material Web Select main/snapshot을 Web 구현 근거로 manifest에 고정 | 없음. 공식 Select 단독 문서가 생기면 freshness 검토 |
 | V-002 | Tooltip Provider | `UIProvider` 예시에 MVP 밖인 `Tooltip.Provider`가 포함됨 | Tooltip을 foundation 의존성으로 승인하거나 예시에서 제거하는 ADR 판단 |
-| V-003 | Snackbar 대체 근거 | M3 Snackbar와 Base UI Toast 근거를 고정했고 자동 UI/axe 및 실제 F6 viewport 이동은 PASS | 실제 screen reader announcement를 검증 |
-| V-004 | 브라우저·AT 지원표 | Chromium/Firefox/WebKit E2E와 axe critical/serious 0건은 확인했다. 실제 검증은 동적 announcement·복합 focus의 대표 screen reader 조합과 Windows Contrast Themes로 한정한다. | 대표 조합과 결과 기록 |
+| V-003 | Snackbar 대체 근거 | 기존 geometry/F6 검증은 PASS지만 2026-09-07 MD3 guidelines 교차 검증에서 동시 3개 표시와 action 알림 자동 dismiss 재현 | 단일 표시·action 유지 및 inline feedback 구현 후 실제 screen reader announcement 검증 |
+| V-004 | 브라우저·AT 지원표 | 기존 `/` axe는 critical/serious 0건이나 `/components` Normal 4모드 감사는 color-contrast FAIL이다. | 색상 충돌 해결 후 대표 screen reader 조합과 Windows Contrast Themes 결과 기록 |
 | V-005 | Segmented Button Stable Web 문서 | M3 component 문서는 있지만 Stable Material Web 공개 문서는 없고 공식 구현은 Labs에 있다. runtime 의존 없이 source behavior만 교차 검증하고 manifest에 `unavailable`로 기록했다. | Stable 문서/구현이 공개되면 freshness 및 API 차이 재검토 |
 
 ## 접근성 실환경 검증 필요성 판정

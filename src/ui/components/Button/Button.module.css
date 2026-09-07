@@ -17,6 +17,7 @@
   border-radius: var(--md-button-container-shape);
   background: var(--button-container-color);
   box-shadow: var(--button-elevation, none);
+  transition: box-shadow var(--md-button-elevation-motion-duration) var(--md-button-elevation-motion-easing);
   color: var(--button-label-color);
   font-family: var(--button-label-text-font);
   font-size: var(--button-label-text-size);
@@ -47,6 +48,7 @@
 }
 
 .root:disabled {
+  transition: none;
   border-color: var(--button-disabled-outline-color, transparent);
   background: var(--button-disabled-container-color);
   box-shadow: none;

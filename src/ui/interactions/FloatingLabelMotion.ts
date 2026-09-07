@@ -35,13 +35,24 @@ export function useFloatingLabelMotion({
     const floatingLabel = floatingLabelRef.current;
     if (!root || !restingLabel || !floatingLabel) return;
 
-    activeAnimation.current?.cancel();
+    // Snapshot the rendered pose BEFORE canceling. React has already updated
+    // the destination state; restarting at its endpoint makes reversals jump.
+    const previous = activeAnimation.current;
+    const interrupted = previous && previous.playState !== 'finished'
+      ? { transform: getComputedStyle(floatingLabel).transform, width: getComputedStyle(floatingLabel).width }
+      : null;
+    activeAnimation.current = null;
+    previous?.cancel();
 
     const restingRect = restingLabel.getBoundingClientRect();
     const floatingRect = floatingLabel.getBoundingClientRect();
     const restingScrollWidth = restingLabel.scrollWidth;
     const floatingScrollWidth = floatingLabel.scrollWidth;
-    if (restingScrollWidth === 0 || floatingScrollWidth === 0) return;
+    if (restingScrollWidth === 0 || floatingScrollWidth === 0) {
+      floatingLabel.style.removeProperty('opacity');
+      restingLabel.style.removeProperty('opacity');
+      return;
+    }
 
     const scale = restingScrollWidth / floatingScrollWidth;
     const xDelta = restingRect.left - floatingRect.left;
@@ -64,11 +75,11 @@ export function useFloatingLabelMotion({
     const animation = floatingLabel.animate(
       floating
         ? [
-            { transform: restingTransform, width },
+            interrupted ?? { transform: restingTransform, width },
             { transform: floatingTransform, width },
           ]
         : [
-            { transform: floatingTransform, width },
+            interrupted ?? { transform: floatingTransform, width },
             { transform: restingTransform, width },
           ],
       { duration, easing },

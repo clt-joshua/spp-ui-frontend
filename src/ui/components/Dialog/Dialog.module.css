@@ -49,10 +49,11 @@
   border-radius: inherit;
   background: var(--md-dialog-container-color);
   box-shadow: var(--md-dialog-container-elevation);
-  clip-path: inset(0 0 0 0 round var(--md-dialog-container-shape));
+  inset-block-end: auto;
+  block-size: 100%;
   content: '';
   opacity: 1;
-  transition: clip-path var(--md-dialog-open-duration) var(--md-dialog-open-easing), opacity var(--md-dialog-open-surface-opacity-duration) linear;
+  transition: block-size var(--md-dialog-open-duration) var(--md-dialog-open-easing), opacity var(--md-dialog-open-surface-opacity-duration) linear;
 }
 
 .popup[data-starting-style] {
@@ -61,7 +62,7 @@
 
 .popup[data-starting-style]::before {
   opacity: 0;
-  clip-path: inset(0 0 65% 0 round var(--md-dialog-container-shape));
+  block-size: 35%;
 }
 
 .popup[data-ending-style] {
@@ -72,8 +73,8 @@
 
 .popup[data-ending-style]::before {
   opacity: 0;
-  clip-path: inset(0 0 65% 0 round var(--md-dialog-container-shape));
-  transition: clip-path var(--md-dialog-close-duration) var(--md-dialog-close-easing), opacity var(--md-dialog-close-surface-opacity-duration) linear var(--md-dialog-close-surface-opacity-delay);
+  block-size: 35%;
+  transition: block-size var(--md-dialog-close-duration) var(--md-dialog-close-easing), opacity var(--md-dialog-close-surface-opacity-duration) linear var(--md-dialog-close-surface-opacity-delay);
 }
 
 .popup[data-variant='alert'] {
@@ -137,14 +138,4 @@
   opacity: 0;
   transition-delay: var(--md-dialog-close-content-delay);
   transition-duration: var(--md-dialog-close-content-duration);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .popup {
-    transform: none;
-  }
-
-  .popup::before {
-    clip-path: none;
-  }
 }

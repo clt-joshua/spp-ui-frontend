@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-09-07T02:56:50.476Z",
+  "themes": [
+    {
+      "mode": "light",
+      "contrast": "standard",
+      "url": "http://127.0.0.1:5174/components",
+      "submission": "{\"destination\":\"busan\"}",
+      "pageErrors": [],
+      "tabs": "Tokens selected; held/released state preserved",
+      "switch": "click selected; Space unselected",
+      "dialog": "Escape closed; focus returned"
+    },
+    {
+      "mode": "light",
+      "contrast": "high",
+      "url": "http://127.0.0.1:5174/components",
+      "submission": "{\"destination\":\"busan\"}",
+      "pageErrors": [],
+      "tabs": "Tokens selected; held/released state preserved",
+      "switch": "click selected; Space unselected",
+      "dialog": "Escape closed; focus returned"
+    },
+    {
+      "mode": "dark",
+      "contrast": "standard",
+      "url": "http://127.0.0.1:5174/components",
+      "submission": "{\"destination\":\"busan\"}",
+      "pageErrors": [],
+      "tabs": "Tokens selected; held/released state preserved",
+      "switch": "click selected; Space unselected",
+      "dialog": "Escape closed; focus returned"
+    },
+    {
+      "mode": "dark",
+      "contrast": "high",
+      "url": "http://127.0.0.1:5174/components",
+      "submission": "{\"destination\":\"busan\"}",
+      "pageErrors": [],
+      "tabs": "Tokens selected; held/released state preserved",
+      "switch": "click selected; Space unselected",
+      "dialog": "Escape closed; focus returned"
+    }
+  ]
+}
