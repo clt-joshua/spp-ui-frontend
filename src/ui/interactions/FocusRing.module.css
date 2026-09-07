@@ -15,17 +15,21 @@
   border: var(--md-focus-ring-width) solid var(--md-focus-ring-color);
 }
 
-:global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root,
-:global([data-interactive-root][role='option']):focus > .root {
+:global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root,
+.root[data-visible] {
   opacity: 1;
+}
+
+:global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root:not([data-static]),
+.root[data-visible]:not([data-static]) {
   animation-name: outward-grow, outward-shrink;
   animation-duration: calc(var(--md-focus-ring-duration) * 0.25), calc(var(--md-focus-ring-duration) * 0.75);
   animation-delay: 0s, calc(var(--md-focus-ring-duration) * 0.25);
   animation-timing-function: var(--md-focus-ring-easing);
 }
 
-:global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root[data-inward],
-:global([data-interactive-root][role='option']):focus > .root[data-inward] {
+:global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root[data-inward]:not([data-static]),
+.root[data-visible][data-inward]:not([data-static]) {
   animation-name: inward-grow, inward-shrink;
 }
 
@@ -35,10 +39,10 @@
 @keyframes inward-shrink { from { border-width: var(--md-focus-ring-active-width); } }
 
 @media (prefers-reduced-motion: reduce) {
-  :global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root,
-  :global([data-interactive-root][role='option']):focus > .root,
-  :global([data-interactive-root]):is(:focus-visible, [data-highlighted]) > .root[data-inward],
-  :global([data-interactive-root][role='option']):focus > .root[data-inward] { animation: none; }
+  :global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root:not([data-static]),
+  :global([data-interactive-root]):focus-visible:not(:disabled, [data-disabled]) > .root[data-inward]:not([data-static]),
+  .root[data-visible]:not([data-static]),
+  .root[data-visible][data-inward]:not([data-static]) { animation: none; }
 }
 
 @media (forced-colors: active) {

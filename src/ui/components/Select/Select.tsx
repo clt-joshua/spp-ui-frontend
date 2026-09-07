@@ -4,6 +4,7 @@ import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { useFloatingLabelMotion } from '../../interactions/FloatingLabelMotion';
 import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
+import { useDropdownKeyboardNavigation } from '../../interactions/DropdownKeyboardNavigation';
 import { FieldOutline } from '../FieldOutline/FieldOutline';
 import styles from './Select.module.css';
 import menu from '../FieldOutline/FieldDropdown.module.css';
@@ -56,6 +57,7 @@ export function Select<T extends string>({
   const [uncontrolledValue, setUncontrolledValue] = useState<T | undefined>(defaultValue);
   const [focused, setFocused] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigation = useDropdownKeyboardNavigation();
   const rootRef = useRef<HTMLDivElement>(null);
   const restingLabelRef = useRef<HTMLSpanElement>(null);
   const floatingLabelRef = useRef<HTMLSpanElement>(null);
@@ -118,6 +120,7 @@ export function Select<T extends string>({
         value={value}
       >
         <BaseSelect.Trigger
+          {...navigation.modalityProps}
           aria-describedby={message ? messageId : undefined}
           aria-invalid={error || undefined}
           aria-labelledby={labelId}
@@ -139,7 +142,8 @@ export function Select<T extends string>({
             ref={setPositionerElement}
             sideOffset={0}
           >
-            <BaseSelect.Popup className={menu.popup} ref={setPopupElement}>
+            <BaseSelect.Popup className={menu.popup} ref={setPopupElement}
+              data-keyboard-navigation={navigation.keyboardNavigation} {...navigation.modalityProps}>
               <div className={menu.surface} data-slot="menu-surface">
                 <BaseSelect.List className={menu.list} data-slot="menu-content">
                   {options.map((option) => (
@@ -204,7 +208,7 @@ function SelectOptionItem<T extends string>({
     >
       <StateLayer />
       {ripple}
-      <FocusRing inward />
+      <FocusRing inward animated={false} />
       <span className={menu.itemContent}>
         <BaseSelect.ItemText>{option.label}</BaseSelect.ItemText>
       </span>

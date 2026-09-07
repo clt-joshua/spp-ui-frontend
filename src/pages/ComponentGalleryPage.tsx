@@ -731,7 +731,7 @@ export function ComponentGalleryPage() {
           </GallerySection>
 
           <GallerySection
-            description="Portal 기반 menu item type, submenu와 keyboard selection lifecycle"
+            description="호버는 옅은 중성 배경, 키보드 방향키 탐색은 정적인 포커스 테두리로 구분합니다. 선택·서브메뉴·Escape 복귀를 확인하세요."
             id="menus"
             index="07"
             title="Menus"

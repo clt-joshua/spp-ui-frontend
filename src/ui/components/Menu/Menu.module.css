@@ -52,11 +52,15 @@
 }
 
 .item {
+  --md-focus-ring-color: var(--md-menu-item-focus-ring-color);
+  --md-focus-ring-width: var(--md-menu-item-focus-ring-width);
   --md-interaction-focus-state-layer-opacity: var(--md-list-item-focus-state-layer-opacity);
   --md-interaction-hover-state-layer-opacity: var(--md-menu-item-hover-state-layer-opacity);
   --md-interaction-pressed-state-layer-opacity: var(--md-menu-item-pressed-state-layer-opacity);
   --md-interaction-state-layer-shape: var(--md-list-item-state-layer-shape);
   --md-ripple-shape: var(--md-list-item-state-layer-shape);
+  --md3-ripple-color: var(--md-menu-item-pressed-state-layer-color);
+  --md-ripple-pressed-opacity: var(--md-menu-item-pressed-state-layer-opacity);
   --md3-state-layer-color: var(--md-menu-item-hover-state-layer-color);
   position: relative;
   display: flex;
@@ -77,8 +81,26 @@
   isolation: isolate;
 }
 
-.item:focus-visible {
+.item:focus-visible,
+.popup[data-keyboard-navigation='true'] .item:focus:not([data-disabled], [data-pressed]) {
   --md3-state-layer-color: var(--md-list-item-focus-state-layer-color);
+}
+
+.popup[data-keyboard-navigation='true'] .item:focus:not([data-disabled]) > :global([data-slot='focus-ring']),
+.popup[data-keyboard-navigation='true'] .item:focus:not([data-disabled]) > :global([data-slot='state-layer']) {
+  opacity: 1;
+}
+
+.popup[data-keyboard-navigation='false'] .item > :global([data-slot='focus-ring']) {
+  opacity: 0;
+}
+
+.popup[data-keyboard-navigation='false'] .item:not([data-pressed]) {
+  --md3-state-layer-color: var(--md-menu-item-hover-state-layer-color);
+}
+
+.popup[data-keyboard-navigation='false'] .item:not(:hover, [data-pressed]) > :global([data-slot='state-layer']) {
+  opacity: 0;
 }
 
 .item[data-pressed] {
@@ -93,6 +115,11 @@
 .item[data-checked] {
   background: var(--md-menu-item-selected-container-color);
   color: var(--md-menu-item-selected-label-text-color);
+}
+
+/* Figma selected and hover share one wash, not two stacked state layers. */
+.popup[data-keyboard-navigation] .item[data-checked]:not([data-pressed]) > :global([data-slot='state-layer']) {
+  opacity: 0;
 }
 
 .itemContent {

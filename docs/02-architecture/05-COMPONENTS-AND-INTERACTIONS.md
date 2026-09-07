@@ -184,7 +184,7 @@ type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'> 
 - style은 Filled, Outlined, Text, Elevated, Tonal 5종을 그대로 제공한다. Figma content matrix에서 모든 style은 text/left icon을 지원하고 right icon은 Outlined/Text에 정의되어 있다. 공개 API는 Stable Material Web의 trailing icon 호환성을 유지하되 한 instance에는 icon을 하나만 사용한다.
 - `error`는 Figma의 시각 축이다. Filled는 error/on-error, Tonal은 error-container/on-error-container, Outlined는 error outline/label, Text/Elevated는 error label을 사용한다. 이는 input invalid semantics가 아니므로 `aria-invalid`를 자동 추가하지 않는다.
 - disabled Filled/Tonal/Elevated는 surface-container-high + on-surface 38%, Text는 transparent + on-surface 38%를 사용한다. Outlined는 Figma 원본대로 Large에서 surface-container-lowest + surface-container-highest outline + outline-high label 100%, Medium/Small에서 surface-container-lowest + outline-middle + on-surface 38%를 사용한다. error 여부와 무관하게 disabled 표현을 우선한다.
-- hover/focus/pressed state layer는 Figma system token의 black 6%/12%/16%를 사용한다. FocusRing과 pointer-origin/keyboard ripple은 Stable Material Web interaction primitive로 별도 유지한다.
+- hover/focus wash는 Figma black 6%/12%를 유지한다. pressed는 전체 배경을 16%로 즉시 바꾸지 않고 Ripple만 사용한다. Light/Standard의 `--md-button-ripple-color`는 Figma pressed black 16%, `--md-button-ripple-opacity`는 1로 이미 포함된 alpha를 중복 곱하지 않는다. Dark/High에서는 전경색(`currentColor`)과 Material Web pressed opacity 10%를 사용한다. 이는 Light 원본 외 테마의 프로젝트 대응이다. 포인터 위치→중앙 확장, 실제 keyboard click의 중앙 시작, FocusRing과 pressed elevation은 유지한다.
 - Filled/Tonal hover는 elevation 1, Elevated hover는 elevation 2로 올라가며 focus/pressed는 각 기본 elevation으로 복귀한다.
 - icon-only action은 Button이 아니라 IconButton을 사용한다.
 - disabled focus 정책은 Material Web Accessibility 문서와 Base UI 동작을 대조한다.
@@ -215,7 +215,7 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
 - Figma node `10724:16368`의 실행 component property를 따라 `large/medium/small`을 공개한다. 가이드 캡션의 `large/small/x-small`과 property 이름이 충돌하므로 실행 property 이름을 권위로 사용한다.
 - visual container/icon/padding은 각각 large 40/24/8px, medium 32/20/6px, small 24/16/4px다. 모든 size에서 별도 48px touch target을 유지한다.
 - style은 Stable Material Web의 standard/filled/filled tonal/outlined 4종과 Figma의 project-specific `error`를 제공한다. `error`는 action의 시각 강조이며 input invalid semantics가 아니므로 `aria-invalid`를 자동 추가하지 않는다.
-- hover/focus/pressed는 Figma state-layer 6%/12%/16%를 사용하고, 실제 pointer·keyboard ripple과 FocusRing을 별도로 유지한다. transient state prop은 공개하지 않는다.
+- hover/focus는 Figma 6%/12% wash를 유지한다. pressed의 별도 전체 배경은 제거하고 Material Web처럼 현재 icon 전경색 10%의 Ripple만 사용한다. 포인터 입력은 실제 누른 위치에서 중앙으로 확장하고 keyboard click만 중앙에서 시작한다. 450ms grow/105ms fade-in/225ms 최소 표시/375ms fade-out 및 reduced-motion 입력 피드백을 유지한다. 이는 기존 Figma 정적 pressed 16%를 대체하는 사용자 승인 변경이며, hover/focus wash와 크기 등 Figma 시각 override까지 Material Web 기본값과 같다는 뜻은 아니다. transient state prop은 공개하지 않는다.
 - disabled는 error/selected보다 우선한다. Standard는 transparent + on-surface icon 38%, Filled/Tonal/Error는 surface-container + on-surface icon 38%, Outlined는 surface-container-lowest + outline-middle + on-surface icon 38%다.
 - `type`은 accidental form submission을 막기 위해 `button`이 기본이며, 소비자가 `submit`/`reset`을 명시할 수 있다.
 
@@ -283,6 +283,7 @@ interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
 - `options: readonly { label: string; disabled?: boolean }[]`, `value/defaultValue: string`, `onValueChange(value)`를 제공한다. label은 목록 내 고유해야 하며 입력·제출 문자열이다. ID 선택이 필요한 도메인은 Select를 사용한다.
 - `size='large'|'small'`, prefix/suffix, error/errorText, disabled/readOnly/required, clearable, placeholder/supportingText, emptyText, name/id/form, className/style을 제공한다.
 - 필터링은 Base UI locale-aware 기본 동작을 사용한다. 방향키는 input 포커스를 유지한 채 aria-activedescendant를 변경하고 Enter/클릭은 제안을 적용한다. Escape는 입력을 삭제하지 않고 닫는다. IME와 일반 편집 키 처리는 Base UI/native 입력에 맡긴다. Enter로 제안을 고르는 동작은 폼을 제출하지 않는다.
+- 제안의 pointer highlight와 가상 키보드 포커스를 구분한다. Base UI `onItemHighlighted`의 `reason='keyboard'`일 때만 정적인 중성 inward ring을 표시하며, pointer 이동·목록 닫힘은 가상 포커스 표시를 제거한다. 입력 DOM focus와 aria-activedescendant 계약은 바꾸지 않는다.
 - 목록에 없는 문자열도 제출할 수 있다. required는 비어 있지 않은 텍스트를 요구하며 제안 일치를 강제하지 않는다. readonly는 제출에 포함, disabled는 제외한다. controlled reset은 소비자가 onReset에서 value를 복원하며 uncontrolled는 defaultValue로 복원한다.
 - 지우기는 input 포커스를 복원한다. disabled/readonly는 편집·지우기·메뉴 열기를 차단한다. 빈 결과 문구와 비활성 제안을 실제 dropdown에 표시한다.
 - AutoComplete popup은 하향 zero offset이며, 상향일 때만 측정한 floating label 높이의 절반을 띄워 라벨을 덮지 않는다. 필터링·상향 전환에도 실제 dropdown과 label bounds로 검증한다.
@@ -584,7 +585,7 @@ interface SelectProps<T extends string> {
 ```
 
 - trigger는 TextField와 같은 visual family를 사용하되 select semantics를 유지한다.
-- popup의 highlighted/focus 상태와 form selection을 분리한다. Material Web Select option은 현재 form value를 별도 selected container나 check icon으로 장식하지 않고, 열릴 때 현재 option으로 focus를 이동해 state layer와 inward focus ring을 표시한다.
+- popup의 highlighted/focus 상태와 form selection을 분리한다. 현재 form value를 별도 selected container나 check icon으로 장식하지 않고, 열릴 때 현재 option으로 focus를 이동한다. 포커스 이동 자체는 ring 표시 조건이 아니다. Material Web처럼 `:focus-visible`을 구분하여 pointer로 열거나 hover할 때는 ring을 강제하지 않는다.
 - arrow key, Home/End, typeahead, Enter/Space, Escape 동작을 실제 흐름에서 검증한다.
 - required와 form value를 Base UI form contract와 함께 검증한다.
 - popup은 viewport collision을 처리하고 Theme token을 상속한다.
@@ -601,7 +602,7 @@ interface SelectProps<T extends string> {
 - 열림 완료 뒤 모든 option의 computed opacity가 `1`, 높이가 56px이고 popup 시작 좌표가 field bottom 또는 popup bottom 좌표가 field top과 일치하는지를 실제 흐름에서 검증한다. 하단 공간 부족에서는 문서 scrollY 불변, opening frame별 bottom gap 1px 이하, 단조 증가하는 surface height를 함께 확인한다. open → close → open을 반복해 닫힘 animation의 fill state가 다음 열림에 남지 않는지도 확인하며, animation 객체 존재만으로 완료를 판정하지 않는다.
 - 비활성 옵션은 화면과 접근성 트리에 남지만 Material Web list navigation처럼 방향키/첫 포커스 대상에서 제외하며 선택·ripple을 만들지 않는다. Base UI 1.7의 disabled Item 탐색 기본값과 달라 비활성 항목은 interactive registry 밖의 option으로 렌더링한다.
 - 빈 Select의 내부 라벨과 placeholder가 겹치지 않도록 비포커스 placeholder를 숨긴다.
-- option은 공통 StateLayer/Ripple과 3px inward FocusRing을 사용한다. 현재 option의 programmatic focus에서도 focus state/ring이 보이고 disabled option은 ripple을 만들지 않는다.
+- option은 공통 StateLayer/Ripple과 3px inward FocusRing을 사용한다. 키보드 탐색에서만 정적인 중성 ring을 표시하며 disabled option은 ring/ripple을 만들지 않는다. 색상·motion의 사용자 요청 예외는 아래 드롭다운 피드백 규칙을 따른다.
 
 ## Dialog
 
@@ -658,7 +659,19 @@ interface MenuProps {
 - list item의 leading/trailing icon은 Stable Material Web list token과 같은 24px를 사용한다. 선택 check와 submenu chevron 모두 같은 component token을 소비한다.
 - Select와 같은 Stable Material Web 메뉴 모션을 공유한다. 열림 500ms·surface 50ms·item 250ms stagger, 닫힘 150ms이며, reduced-motion 설정만으로 이를 제거하지 않는다.
 - 공용 motion adapter는 Popup shell과 Positioner를 함께 관찰한다. 최종 side/rect가 안정되기 전에 애니메이션을 시작하지 않고, full-size shell 안의 visual surface만 전환해 전체 animation 동안 side를 고정한다.
+- Menu/Submenu의 item focus·scroll도 Select처럼 열림 완료까지 보류한다. 내부 surface의 WAAPI animation은 Base UI의 Popup 자체 animation 감지와 별개이므로, 닫힘 요청에 `preventUnmountOnClose()`를 적용하고 150ms surface 종료 callback에서 `actionsRef.unmount()`로 실제 portal을 제거한다. 위치 확정 전 취소는 즉시 완료하고, 재열림은 이전 종료 callback을 취소한다. 같은 controlled open이 primitive와 motion을 구동한다.
 - item은 공식 `--md-menu-item-*`와 `--md-list-item-*` component token을 소비하고 공통 StateLayer/Ripple/inward FocusRing을 사용한다.
+
+### 드롭다운 피드백 규칙 (Menu / Select / AutoComplete)
+
+- Figma `listItem 10742:16969`의 실제 hovered/selected 4개 variant는 동일한 `state-layer/hovered` black 6%를 사용한다. `drawMenu 10742:17727`의 바탕은 `surface-container-lowest`다. Light/Standard는 이를 component token으로 연결하고, Dark/High는 `on-surface` 8% hover/selected·10% focus/pressed로 중성색 식별을 유지한다. Dark/High는 이 노드에서 검증된 별도 Figma variant가 아니라 프로젝트 대응이다.
+- 체크된 Menu의 선택 배경과 hover 레이어를 이중 합성하지 않는다. label은 on-surface, check/leading icon은 on-surface-variant로 두어 secondary 강조색을 만들지 않는다. Select의 form selection과 AutoComplete의 제안 highlight에는 Menu checked 배경을 재사용하지 않는다.
+- Material Web의 `:focus-visible` 판별은 유지한다. 사용자 요청에 따라 드롭다운 내부 ring만 secondary 색상·0→8→3px 펄스를 제거하고 **정적인 on-surface 3px inward ring**으로 제한한다. Figma에는 focused variant나 이 ring의 motion 정의가 없으므로 Material Web 기본값과 완전히 동일하다고 주장하지 않는 명시적 시각 예외다. 다른 컴포넌트의 표준 ring 모션은 유지한다.
+- Firefox의 composite programmatic focus는 방향키 입력 뒤에도 `:focus-visible`이 false일 수 있다. Menu/Select는 trigger와 portal popup의 실제 keydown/pointer capture로 입력 방식을 보완하며, keyboard 상태에서 현재 DOM focus 항목만 ring을 표시한다. pointer 이동/누름은 이를 해제한다. 이벤트 기본 동작·Base UI navigation을 가로채지 않고, hover나 programmatic focus만으로 키보드 상태를 만들지 않는다. AutoComplete는 Base UI의 virtual focus reason을 사용한다.
+- 키보드로 연 서브메뉴는 정지한 pointer 아래 메뉴가 움직이며 발생한 `trigger-hover/mouseleave`만으로 닫히지 않는다. keyboard mode에서는 이 hover dismiss 요청만 취소한다. 실제 trigger/popup pointer 조작 후에는 원래 hover grace를 사용하며 Escape·왼쪽 방향키·외부 클릭 닫힘은 그대로다.
+- Light/Standard focus/pressed는 기존 Figma system state-layer 12%/16%를 사용한다. 이 색상은 이미 alpha가 포함되어 있어 StateLayer/Ripple opacity를 다시 곱하지 않는다. Ripple은 pressed 색상을 고정 참조하여 release 뒤 hover 색상으로 바뀌지 않게 한다.
+- hover 상태 레이어의 기존 15ms 전환, 메뉴 열림/닫힘, 키보드 탐색·선택·복귀는 유지한다. Figma listItem의 36px/body-small 및 callout 모양은 별도 anatomy 범위로, 이번 피드백 교정에서 기존 Menu 48px·Select 56px를 바꾸지 않는다.
+- 실제 진입점과 원본 노드·회귀·제약은 [드롭다운 피드백 감사](../audits/2026-09-07-dropdown-feedback/README.md)에 기록한다. 기존 접근성 수동 검증 BLOCKED를 해제하지 않는다.
 
 ## Snackbar
 

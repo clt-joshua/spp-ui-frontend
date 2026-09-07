@@ -37,7 +37,6 @@ export function IconButton({
   ...props
 }: IconButtonProps) {
   const { interactionProps, pressed, ripple } = usePressableInteraction({
-    centered: true,
     disabled,
   });
   const classes = [styles.root, styles[variant], styles[size], className]

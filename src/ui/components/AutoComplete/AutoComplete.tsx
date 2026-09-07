@@ -2,6 +2,7 @@ import { Autocomplete as BaseAutocomplete } from '@base-ui/react/autocomplete';
 import { useEffect, useId, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { useFloatingLabelMotion } from '../../interactions/FloatingLabelMotion';
 import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
+import { useDropdownKeyboardNavigation } from '../../interactions/DropdownKeyboardNavigation';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FieldOutline } from '../FieldOutline/FieldOutline';
@@ -53,6 +54,8 @@ export function AutoComplete({
   const currentValue = value ?? internalValue;
   const [focused, setFocused] = useState(false);
   const [open, setOpen] = useState(false);
+  const [keyboardOption, setKeyboardOption] = useState<AutoCompleteOption>();
+  const navigation = useDropdownKeyboardNavigation(() => setKeyboardOption(undefined));
   const [nativeError, setNativeError] = useState('');
   const invalid = Boolean(error || nativeError);
   const message = invalid ? errorText || nativeError || supportingText : supportingText;
@@ -74,7 +77,8 @@ export function AutoComplete({
   return (
     <BaseAutocomplete.Root items={options} value={currentValue} name={name} form={form}
       disabled={disabled} readOnly={readOnly} required={required}
-      open={open && !disabled && !readOnly} onOpenChange={setOpen}
+      open={open && !disabled && !readOnly} onOpenChange={(next) => { setOpen(next); if (!next) setKeyboardOption(undefined); }}
+      onItemHighlighted={(option, details) => setKeyboardOption(details.reason === 'keyboard' ? option : undefined)}
       onValueChange={(next) => { setInternalValue(next); setNativeError(''); onValueChange?.(next); }}
       itemToStringValue={(option) => option.label}>
       <div ref={rootRef} className={[field.root, field.outlined, className].filter(Boolean).join(' ')} style={style}
@@ -110,12 +114,12 @@ export function AutoComplete({
           // above the field. Measure layout height, not its animated transform.
           sideOffset={({ side }) => side === 'top' ? (floatingLabelRef.current?.offsetHeight ?? 0) / 2 : 0}
           className={`${menu.positioner} ${styles.positioner}`} ref={setPositionerElement}>
-          <BaseAutocomplete.Popup className={menu.popup} ref={setPopupElement}>
+          <BaseAutocomplete.Popup className={menu.popup} ref={setPopupElement} {...navigation.modalityProps}>
             <div className={menu.surface} data-slot="menu-surface">
               <div data-slot="menu-content">
                 <BaseAutocomplete.Empty className={styles.empty}>{emptyText}</BaseAutocomplete.Empty>
                 <BaseAutocomplete.List className={menu.list}>
-                  {(option: AutoCompleteOption) => <Suggestion key={option.label} option={option} setItemElement={setItemElement} />}
+                  {(option: AutoCompleteOption) => <Suggestion key={option.label} option={option} keyboardFocused={keyboardOption === option} setItemElement={setItemElement} />}
                 </BaseAutocomplete.List>
               </div>
             </div>
@@ -126,12 +130,12 @@ export function AutoComplete({
   );
 }
 
-function Suggestion({ option, setItemElement }: { option: AutoCompleteOption; setItemElement: (element: HTMLDivElement | null) => void }) {
+function Suggestion({ option, keyboardFocused, setItemElement }: { option: AutoCompleteOption; keyboardFocused: boolean; setItemElement: (element: HTMLDivElement | null) => void }) {
   const { interactionProps, pressed, ripple } = usePressableInteraction({ disabled: option.disabled });
   return (
     <BaseAutocomplete.Item value={option} disabled={option.disabled} className={`${menu.item} ${styles.item}`}
-      ref={setItemElement} data-interactive-root="" data-pressed={pressed || undefined} {...interactionProps}>
-      <StateLayer />{ripple}<FocusRing inward />
+      ref={setItemElement} data-interactive-root="" data-keyboard-focused={keyboardFocused || undefined} data-pressed={pressed || undefined} {...interactionProps}>
+      <StateLayer />{ripple}<FocusRing inward animated={false} visible={keyboardFocused && !option.disabled} />
       <span className={menu.itemContent}>{option.label}</span>
     </BaseAutocomplete.Item>
   );

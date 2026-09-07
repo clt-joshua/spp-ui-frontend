@@ -43,6 +43,8 @@ describe('M3 compliance manifest', () => {
         expect(record.blockers.join(' ')).toContain('placeholder and affix');
       } else if (record.component === 'AutoComplete') {
         expect(record.materialWebReferenceStatus).toBe('unavailable');
+        expect(record.deviations).toHaveLength(2);
+      } else if (record.component === 'Menu' || record.component === 'Select') {
         expect(record.deviations).toHaveLength(1);
       } else {
         expect(record.deviations).toEqual([]);
@@ -51,6 +53,11 @@ describe('M3 compliance manifest', () => {
       expect(record.status).toBe('BLOCKED');
       expect(record.blockers.length).toBeGreaterThan(0);
       expect(record.blockers.join(' ')).not.toMatch(/Linux|visual baseline/iu);
+      if (['Menu', 'Select', 'AutoComplete'].includes(record.component)) {
+        expect(record.deviations.join(' ')).toContain('static neutral 3px inward ring');
+        expect(record.deviations.join(' ')).toContain('10742:16969');
+        expect(record.deviations.join(' ')).toContain('Pointer highlighting does not imply focus-visible');
+      }
 
       if (record.materialWebReferenceStatus === 'available') {
         expect(record.materialWebMainDocs.length).toBeGreaterThan(0);

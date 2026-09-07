@@ -1,8 +1,9 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu';
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { useCallback, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { MaterialIcon } from '../../icons/MaterialIcon';
 import { FocusRing, StateLayer, usePressableInteraction } from '../../interactions';
 import { useMaterialMenuMotion } from '../../interactions/MenuMotion';
+import { useDropdownKeyboardNavigation } from '../../interactions/DropdownKeyboardNavigation';
 import { Button } from '../Button/Button';
 import styles from './Menu.module.css';
 
@@ -39,10 +40,17 @@ export function Menu({
   trigger,
 }: MenuProps) {
   const [open, setOpen] = useState(false);
+  const navigation = useDropdownKeyboardNavigation();
+  const actionsRef = useRef<BaseMenu.Root.Actions>(null);
+  const unmount = useCallback(() => actionsRef.current?.unmount(), []);
 
   return (
-    <BaseMenu.Root onOpenChange={setOpen}>
+    <BaseMenu.Root open={open} actionsRef={actionsRef} onOpenChange={(next, details) => {
+      if (!next) details.preventUnmountOnClose();
+      setOpen(next);
+    }}>
       <BaseMenu.Trigger
+        {...navigation.modalityProps}
         aria-label={label}
         render={(
           <Button
@@ -57,6 +65,8 @@ export function Menu({
         <AnimatedMenuPopup
           align="start"
           className={className}
+          navigation={navigation}
+          onCloseComplete={unmount}
           open={open}
           sideOffset={4}
           style={style}
@@ -73,6 +83,8 @@ export function Menu({
 }
 
 interface AnimatedMenuPopupProps {
+  onCloseComplete: () => void;
+  navigation: ReturnType<typeof useDropdownKeyboardNavigation>;
   align: 'start';
   children: ReactNode;
   className?: string;
@@ -83,6 +95,8 @@ interface AnimatedMenuPopupProps {
 }
 
 function AnimatedMenuPopup({
+  onCloseComplete,
+  navigation,
   align,
   children,
   className,
@@ -92,9 +106,18 @@ function AnimatedMenuPopup({
   style,
 }: AnimatedMenuPopupProps) {
   const {
+    setItemElement,
     setPopupElement,
     setPositionerElement,
-  } = useMaterialMenuMotion<HTMLDivElement>(open);
+  } = useMaterialMenuMotion<HTMLDivElement>(open, onCloseComplete);
+  const setMenuPopup = useCallback((popup: HTMLDivElement | null) => {
+    setPopupElement(popup);
+    // Like Select, defer Base UI item focus/scroll until the menu is ready.
+    // Submenus are separate portals, so each popup owns only its own items.
+    popup?.querySelectorAll<HTMLElement>(
+      '[role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]',
+    ).forEach(setItemElement);
+  }, [setItemElement, setPopupElement]);
 
   return (
     <BaseMenu.Positioner
@@ -105,8 +128,10 @@ function AnimatedMenuPopup({
       sideOffset={sideOffset}
     >
       <BaseMenu.Popup
+        data-keyboard-navigation={navigation.keyboardNavigation}
+        {...navigation.modalityProps}
         className={[styles.popup, className].filter(Boolean).join(' ')}
-        ref={setPopupElement}
+        ref={setMenuPopup}
         style={style}
       >
         <div className={styles.surface} data-slot="menu-surface">
@@ -169,7 +194,7 @@ function InteractionLayers({ ripple }: { ripple: ReactNode }) {
     <>
       <StateLayer />
       {ripple}
-      <FocusRing inward />
+      <FocusRing inward animated={false} />
     </>
   );
 }
@@ -277,13 +302,27 @@ interface MenuSubmenuProps {
 
 function MenuSubmenu({ item, onRadioValueChange, radioValue }: MenuSubmenuProps) {
   const [open, setOpen] = useState(false);
+  const navigation = useDropdownKeyboardNavigation();
+  const actionsRef = useRef<BaseMenu.Root.Actions>(null);
+  const unmount = useCallback(() => actionsRef.current?.unmount(), []);
   const { interactionProps, pressed, ripple } = usePressableInteraction({
     disabled: item.disabled,
   });
 
   return (
-    <BaseMenu.SubmenuRoot onOpenChange={setOpen}>
+    <BaseMenu.SubmenuRoot open={open} actionsRef={actionsRef} onOpenChange={(next, details) => {
+      // A moving menu surface can emit mouseleave under a stationary pointer.
+      // Do not let hover reopen/dismiss a submenu actively navigated by keyboard.
+      // Real pointer interaction clears keyboardNavigation on trigger/popup.
+      if (details.reason === 'trigger-hover' && navigation.keyboardNavigation) {
+        details.cancel();
+        return;
+      }
+      if (!next) details.preventUnmountOnClose();
+      setOpen(next);
+    }}>
       <BaseMenu.SubmenuTrigger
+        {...navigation.modalityProps}
         className={styles.item}
         data-interactive-root=""
         data-pressed={pressed || undefined}
@@ -304,6 +343,8 @@ function MenuSubmenu({ item, onRadioValueChange, radioValue }: MenuSubmenuProps)
       <BaseMenu.Portal>
         <AnimatedMenuPopup
           align="start"
+          navigation={navigation}
+          onCloseComplete={unmount}
           open={open}
           side="right"
           sideOffset={-4}

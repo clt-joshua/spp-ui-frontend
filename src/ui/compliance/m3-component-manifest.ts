@@ -59,6 +59,9 @@ const COMPOSITE_ACCESSIBILITY_BLOCKERS = [
   FORCED_COLORS_BLOCKER,
 ] as const;
 
+const DROPDOWN_FEEDBACK_DEVIATION =
+  '2026-09-07 user-requested dropdown feedback: Figma listItem 10742:16969 and drawMenu 10742:17727 supply surface-container-lowest and a single black 6% hover/selected wash in Light Standard. Dark/High use neutral on-surface state layers. Keyboard focus retains a static neutral 3px inward ring instead of Material Web default secondary-color grow/shrink. Pointer highlighting does not imply focus-visible. Geometry, menu motion and selection semantics are unchanged; see docs/audits/2026-09-07-dropdown-feedback/README.md.';
+
 function materialWebDocs(docPath: string) {
   return {
     materialWebMainDocs: [materialWebMainUrl(docPath)],
@@ -77,7 +80,7 @@ export const M3_COMPONENT_MANIFEST = [
     checkedAreas: M3_CHECKED_AREAS,
     deviations: [
       'Figma node 10429:72459 adds project-specific medium/small density and error color axes; native button semantics, focus, ripple, and form behavior remain Stable Material Web aligned.',
-      'Figma uses black 6%/12%/16% state layers plus project-specific Outlined and disabled color composition instead of Stable Material Web semantic foreground state layers and default disabled opacity composition.',
+      'Figma hover/focus remain black 6%/12%. Per the 2026-09-07 user decision, Light Standard pressed black 16% is applied once in Ripple, not an extra whole-button wash; Dark/High use foreground 10%. Project-specific Outlined and disabled color composition remain. See docs/audits/2026-09-07-button-ripple/README.md.',
       'The project adapter defaults type to button to prevent accidental form submission; consumers opt into submit or reset explicitly, while Material Web documents submit as its default.',
     ],
     implementationStatus: 'implemented',
@@ -99,7 +102,7 @@ export const M3_COMPONENT_MANIFEST = [
     checkedAreas: M3_CHECKED_AREAS,
     deviations: [
       'Figma node 10724:16368 adds project-specific medium/small density and error style axes; native button semantics, accessible name, toggle aria-pressed, focus, ripple, and the 48px touch target remain Stable Material Web aligned.',
-      'Figma uses black 6%/12%/16% state layers plus project-specific surface-container disabled composition instead of Stable Material Web semantic foreground state layers and default disabled opacity composition.',
+      'Figma hover/focus black 6%/12% and surface-container disabled composition remain. Per the 2026-09-07 user decision, pressed uses Material Web foreground 10% pointer-origin Ripple without an additional pressed wash. Geometry and keyboard-centered activation are unchanged; see docs/audits/2026-09-07-button-ripple/README.md.',
       'The Figma guide labels the 40/32/24px examples large/small/x-small while the executable component properties are large/medium/small; the public API follows the executable component property names.',
     ],
     implementationStatus: 'implemented',
@@ -138,7 +141,7 @@ export const M3_COMPONENT_MANIFEST = [
     materialWebReferenceStatus: 'unavailable',
     verifiedAt: '2026-09-07',
     checkedAreas: M3_CHECKED_AREAS,
-    deviations: ['Project composite, not a dedicated Stable Material Web component or a separately verified Figma variant set. Reuses outlined field geometry and dropdown tokens, with Base UI free-text autocomplete and APG virtual focus semantics. Upward menus reserve half the measured label height to avoid occlusion; downward menus keep zero offset.'],
+    deviations: ['Project composite, not a dedicated Stable Material Web component or a separately verified Figma variant set. Reuses outlined field geometry and dropdown tokens, with Base UI free-text autocomplete and APG virtual focus semantics. Upward menus reserve half the measured label height to avoid occlusion; downward menus keep zero offset.', DROPDOWN_FEEDBACK_DEVIATION],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
     blockers: [...COMPOSITE_ACCESSIBILITY_BLOCKERS, 'M3_WEB_SPEC_CONFLICT: inherited Figma placeholder and affix contrast requires the TextField token decision.'],
@@ -258,7 +261,7 @@ export const M3_COMPONENT_MANIFEST = [
     materialWebReferenceStatus: 'available',
     verifiedAt: VERIFIED_AT,
     checkedAreas: M3_CHECKED_AREAS,
-    deviations: [],
+    deviations: [DROPDOWN_FEEDBACK_DEVIATION],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
     blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
@@ -284,7 +287,7 @@ export const M3_COMPONENT_MANIFEST = [
     materialWebReferenceStatus: 'available',
     verifiedAt: VERIFIED_AT,
     checkedAreas: M3_CHECKED_AREAS,
-    deviations: [],
+    deviations: [DROPDOWN_FEEDBACK_DEVIATION],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
     blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,

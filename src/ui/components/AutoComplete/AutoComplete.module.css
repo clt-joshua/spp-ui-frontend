@@ -1,8 +1,7 @@
 .positioner { inline-size: var(--anchor-width); max-inline-size: var(--available-width); }
 .item { overflow-wrap: anywhere; }
-.item[data-highlighted] { --md3-state-layer-color: var(--md-select-option-focus-state-layer-color); }
-.item[data-highlighted] > :global([data-slot='state-layer']) { opacity: var(--md-select-option-focus-state-layer-opacity); }
-.item[data-highlighted] > :global([data-slot='focus-ring']) { opacity: 1; }
+.item[data-keyboard-focused] { --md3-state-layer-color: var(--md-select-option-focus-state-layer-color); }
+.item[data-keyboard-focused] > :global([data-slot='state-layer']) { opacity: var(--md-select-option-focus-state-layer-opacity); }
 .empty {
   padding: var(--md-autocomplete-empty-space);
   color: var(--md-autocomplete-empty-color);
@@ -15,6 +14,6 @@
 }
 .empty:empty { display: none; }
 @media (forced-colors: active) {
-  .item[data-highlighted] { outline: var(--md-select-option-focus-ring-width) solid Highlight; outline-offset: calc(-1 * var(--md-select-option-focus-ring-width)); }
+  .item[data-keyboard-focused] { outline: var(--md-select-option-focus-ring-width) solid Highlight; outline-offset: calc(-1 * var(--md-select-option-focus-ring-width)); }
   .item[data-disabled] { color: GrayText; }
 }

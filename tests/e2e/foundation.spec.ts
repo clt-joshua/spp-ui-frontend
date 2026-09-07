@@ -478,7 +478,8 @@ test('Button은 Figma 360-variant 축과 MD3 실제 interaction을 함께 유지
 
   await page.keyboard.down('Space');
   await expect(interactive).toHaveAttribute('data-pressed', 'true');
-  await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
+  // Press feedback belongs to the wave; keyboard focus keeps its existing wash.
+  await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.12)');
   await page.keyboard.up('Space');
   await expect(interactive.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 });
@@ -568,7 +569,7 @@ test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 �
 
   await page.keyboard.down('Space');
   await expect(filled).toHaveAttribute('data-pressed', 'true');
-  await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
+  await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.12)');
   await page.keyboard.up('Space');
   await expect(filled.locator('[data-slot="ripple"] > span')).toHaveCount(1);
 
@@ -1003,7 +1004,8 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await expect(selectPopup.locator('.material-icons')).toHaveCount(0);
   const currentOption = selectPopup.getByRole('option', { name: 'Web application' });
   await expect(currentOption).toBeFocused();
-  await expect(currentOption.locator('[data-slot="focus-ring"]')).toHaveCSS('opacity', '1');
+  // A pointer-opened list still focuses its current option, but is not keyboard focus.
+  await expect(currentOption.locator('[data-slot="focus-ring"]')).toHaveCSS('opacity', '0');
   const currentOptionBox = await currentOption.boundingBox();
   await page.mouse.move(
     currentOptionBox!.x + currentOptionBox!.width / 2,

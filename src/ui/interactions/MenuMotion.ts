@@ -96,7 +96,7 @@ function placementIsStable(
 export function useMaterialMenuMotion<
   TPopup extends HTMLElement,
   TPositioner extends HTMLElement = HTMLDivElement,
->(open: boolean) {
+>(open: boolean, onCloseComplete?: () => void) {
   const popupRef = useRef<TPopup | null>(null);
   const positionerRef = useRef<TPositioner | null>(null);
   const [surfaceVersion, setSurfaceVersion] = useState(0);
@@ -345,6 +345,7 @@ export function useMaterialMenuMotion<
           surface.style.overflow = motionSurfaceOverflowRef.current;
           motionSurfaceRef.current = null;
           animationsRef.current = [];
+          onCloseComplete?.();
         }, { once: true });
         return;
       }
@@ -403,6 +404,7 @@ export function useMaterialMenuMotion<
     };
 
     if (!open) {
+      let closing = false;
       if (!wasPending) {
         // Material Web measures the rendered, potentially viewport-clamped
         // surface, not its full scroll content.
@@ -410,8 +412,12 @@ export function useMaterialMenuMotion<
         const sideValue = positioner.getAttribute('data-side')
           ?? popup.getAttribute('data-side');
         const side = isMenuSide(sideValue) ? sideValue : settledSideRef.current;
-        if (height > 0) startMotion(false, height, side);
+        if (height > 0) {
+          startMotion(false, height, side);
+          closing = true;
+        }
       }
+      if (!closing) onCloseComplete?.();
       return () => cancelAnimations();
     }
 
@@ -454,7 +460,7 @@ export function useMaterialMenuMotion<
     preparationFrameRef.current = requestAnimationFrame(prepareOpen);
 
     return () => cancelAnimations(true);
-  }, [cancelAnimations, flushDeferredItemInteractions, open, surfaceVersion]);
+  }, [cancelAnimations, flushDeferredItemInteractions, onCloseComplete, open, surfaceVersion]);
 
   useLayoutEffect(() => () => restoreDeferredItems(), [restoreDeferredItems]);
 

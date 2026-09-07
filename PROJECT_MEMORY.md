@@ -1,5 +1,17 @@
 # Project Memory
 
+2026-09-07 커밋 요청: 검증된 드롭다운 피드백 및 Button/IconButton Ripple 누적 변경을 `main`의 로컬 커밋으로 보관한다. 푸시·배포는 요청 범위가 아니며 공개 사이트는 기존 `4c9ca38` revision이다. 아래 미커밋 표기는 각 검증 당시 이력이다.
+
+최신 검증 완료(Ripple 교정): `pnpm verify` PASS(9 suites/46 unit), Chromium/Firefox/WebKit 각 58개·전체 **174/174 PASS**(`--retries=0`, 단일 실행 14.9분). 실제 5174 Theme Lab의 Light/Dark grow 중간 프레임·IconButton edge origin 및 `/components` 진입을 확인했다. 산출물 `index-C5SHrcCV.js` / `index-C1-ci9f6.css`. [검증 기록](docs/audits/2026-09-07-button-ripple/README.md). 기존 준수 BLOCKED는 유지하며 커밋·푸시·배포 없음.
+
+2026-09-07 최신 작업: 사용자 승인에 따라 Button pressed 전체 wash를 제거하고 Light/Standard Figma black 16%를 Ripple에 한 번만 적용한다. Dark/High는 전경색 10%, IconButton은 모든 테마에서 전경색 10%와 실제 pointer origin을 사용한다. 40/32/24px container·8/6/4px padding 및 48px touch target은 보존한다. 최종 검증은 [Ripple 감사](docs/audits/2026-09-07-button-ripple/README.md)에 기록한다. 기존 드롭다운 변경과 준수 BLOCKED를 유지하며 미커밋·미배포다. 아래 최신 수치는 이전 artifact의 이력이다.
+
+최신 검증(드롭다운 피드백 교정, 2026-09-07): `pnpm verify` PASS(9 suites/46 tests), Chromium/Firefox/WebKit 각 54개·전체 162/162 단일 실행 PASS(`--retries=0`, 10.4분). 실제 5174 pointer/keyboard 구분·Space 선택·Escape 메뉴 제거와 trigger 복귀도 확인했다. Menu/Submenu는 같은 controlled open 및 열림 완료 후 item focus/닫힘 완료 후 명시적 unmount를 사용한다. 산출물 `index-CBUund-u.js` / `index-CTGbOFWj.css`. 전환 중 raw held press의 경계 관찰 및 기존 수동 접근성·정책 blocker는 [드롭다운 감사](docs/audits/2026-09-07-dropdown-feedback/README.md)에 남겼고 전체 M3 PASS로 승격하지 않는다. 커밋·배포 없음. 아래 이전 검증 수치는 당시 이력이다.
+
+2026-09-07 드롭다운 피드백 후속: 실제 5174에서 pointer-highlight/모든 option focus가 secondary grow/shrink ring을 켜는 문제를 재현했다. Figma listItem `10742:16969`/drawMenu `10742:17727`을 MCP로 확인하여 Menu·Select·AutoComplete의 Light/Standard hover·Menu checked를 단일 black 6% wash, 바탕을 surface-container-lowest로 연결했다. 키보드 표시만 정적 중성 3px ring으로 남긴다. Dark/High는 on-surface 상태색을 사용한다. 이는 사용자 요청에 따른 scoped 시각 예외이며 기존 geometry·메뉴 모션·선택 의미와 준수 BLOCKED를 보존한다. [드롭다운 감사](docs/audits/2026-09-07-dropdown-feedback/README.md)를 최신 근거로 사용한다. 이 수정은 아직 커밋·배포하지 않았다.
+
+이전 게시 요청 완료 기록: `4c9ca38f334fc0c6b3ddc750c900b28933ab551f`의 CI `34088220968`과 Pages `34088690691` 성공, 공개 `/components`와 배포 산출물 동일성을 확인했다. 아래의 게시 대기/배포하지 않았다는 기록은 그 완료 전 이력이다. 이번 드롭다운 수정의 게시 완료를 의미하지 않는다.
+
 2026-09-07 WebKit 게시 게이트 후속: `bad8a02` main CI에서 WebKit 35 PASS/6 FAIL/1 flaky로 배포가 차단됐다. 같은 Linux 컨테이너/앱의 비교에서 150ms label animation은 두 모드 모두 생성됐지만 headless frame이 34→1325ms로 지연되고 Xvfb 화면 모드에서는 6→67→126ms 중간 상태를 관찰했다. [WebKit 교정 감사](docs/audits/2026-09-07-webkit-release/README.md)에 근거를 기록하고 CI 및 container runner의 WebKit만 Xvfb headed로 실행한다. 남은 Select/Ripple 회귀는 종료 후 DOM을 늦게 읽는 관찰 경쟁을 생성 시점 기록/원자적 읽기로 교정한다. 제품 코드·Figma token·모션 시간·기대 수치·준수 BLOCKED는 변경하지 않는다. 게시 완료는 최종 main CI/Pages 및 공개 산출물 확인이 필요하다.
 
 2026-09-07 외부 브라우저 검증용 게시 요청: 현재 변경을 기본·배포 브랜치 `main`에 커밋·푸시하고 기존 CI 성공 → Cloudflare Pages 자동 배포 경로를 사용한다. 전체 M3 준수 완료를 의미하지 않으며 기존 BLOCKED 항목은 유지한다. 실제 사용자 브라우저의 SegmentedButton 모션 비가시성은 Windows `SPI_GETCLIENTAREAANIMATION` 조회 성공/값 0(애니메이션 꺼짐), 일반 Chrome 및 앱 내 브라우저의 `prefers-reduced-motion: reduce=true`, 컴포넌트 animation/transition `none`으로 확인했다. 앞선 5174 프레임 감사는 별도 검증 브라우저의 결과이며 사용자가 보는 탭의 기본 모션 환경을 입증하지 않는다. OS/브라우저 설정과 reduced-motion CSS는 변경하지 않았다. 이번 게시 성공 여부는 해당 커밋의 CI/배포 실행과 공개 사이트 readback으로 확인한다.

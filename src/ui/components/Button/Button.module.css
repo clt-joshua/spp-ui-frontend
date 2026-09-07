@@ -1,5 +1,6 @@
 .root {
-  --md3-ripple-color: var(--button-label-color);
+  --md3-ripple-color: var(--md-button-ripple-color);
+  --md-ripple-pressed-opacity: var(--md-button-ripple-opacity);
   --md3-state-layer-color: var(--button-state-layer-color, transparent);
   --md-interaction-focus-state-layer-opacity: 1;
   --md-interaction-hover-state-layer-opacity: 1;
@@ -43,7 +44,6 @@
 }
 
 .root:not(:disabled)[data-pressed] {
-  --button-state-layer-color: var(--md-button-pressed-state-layer-color);
   box-shadow: var(--button-pressed-elevation, var(--button-elevation, none));
 }
 

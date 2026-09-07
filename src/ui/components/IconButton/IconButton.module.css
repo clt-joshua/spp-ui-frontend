@@ -1,5 +1,6 @@
 .root {
   --md3-ripple-color: var(--icon-button-content-color);
+  --md-ripple-pressed-opacity: var(--md-icon-button-ripple-opacity);
   --md3-state-layer-color: transparent;
   --md-interaction-focus-state-layer-opacity: 1;
   --md-interaction-hover-state-layer-opacity: 1;
@@ -28,10 +29,6 @@
 
 .root:not(:disabled):focus-visible {
   --md3-state-layer-color: var(--md-icon-button-focus-state-layer-color);
-}
-
-.root:not(:disabled)[data-pressed] {
-  --md3-state-layer-color: var(--md-icon-button-pressed-state-layer-color);
 }
 
 .root:focus {

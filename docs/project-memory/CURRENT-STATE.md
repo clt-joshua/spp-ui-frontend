@@ -2,6 +2,18 @@
 
 관찰일: 2026-09-07
 
+사용자 요청에 따라 검증된 드롭다운/Ripple 누적 변경을 `main`에 로컬 커밋으로 보관한다. 푸시·배포는 수행하지 않는다. 아래 미커밋 표기는 각 검증 당시 상태이며, 공개 배포 revision은 기존 `4c9ca38`과 구분한다.
+
+최신 검증 완료: Ripple 교정 후 `pnpm verify` PASS(단위 46), 전체 **174/174 E2E PASS**(Chromium/Firefox/WebKit 각 58, 재시도 없는 단일 실행 14.9분). 실제 5174 Light/Dark 중간 프레임·edge origin·기존 padding 및 gallery 진입을 확인했다. `index-C5SHrcCV.js` / `index-C1-ci9f6.css`가 검증 artifact다. 기존 준수 BLOCKED는 유지하고 커밋·배포하지 않았다.
+
+최신 작업은 [Button/IconButton Ripple 교정](../audits/2026-09-07-button-ripple/README.md)이다. 중복 pressed wash 제거, Button Light/Standard Figma black 16% 단일 Ripple 및 Dark/High 전경색 10%, IconButton 전경색 10% pointer-origin을 적용한다. 기존 hover/focus·geometry·선택 의미는 보존한다. 최종 검증은 해당 감사에 기록하며 아래 162 PASS는 직전 드롭다운 artifact의 증거다. 기존 수동/정책 BLOCKED와 미커밋·미배포 상태는 유지한다.
+
+최신 검증 완료: 드롭다운 교정 후 `pnpm verify` PASS(단위 46개), Chromium/Firefox/WebKit 각 54개·전체 **162/162 PASS**(재시도 없는 단일 실행, 10.4분). 실제 5174 포인터/키보드 표시 구분·선택·메뉴 제거·trigger 복귀를 확인했다. Menu/Submenu는 열림 완료 후 item focus를 전달하고 surface 닫힘 완료에서 Base UI unmount를 완료한다. 산출물은 `index-CBUund-u.js` / `index-CTGbOFWj.css`이며 미커밋·미배포다. 전환 도중 held press 경계 관찰 및 기존 수동 접근성/정책 blocker를 유지한다. 아래 이전 '최신 검증' 표현은 그 시점의 이력으로 읽는다.
+
+최신 작업: [드롭다운 피드백 감사](../audits/2026-09-07-dropdown-feedback/README.md). Menu·Select·AutoComplete의 pointer highlight를 keyboard focus와 분리하여 과도한 secondary ring 애니메이션을 제거한다. Figma의 단일 6% 중성 hover/checked wash와 surface-container-lowest를 연결하고, 키보드에는 정적 on-surface 3px ring을 남긴다. Dark/High 대응과 Material Web 기본값 대비 시각 예외를 명시했다. 현재 작업은 로컬이며 커밋·푸시·배포하지 않았다. 전체 준수 BLOCKED는 유지한다.
+
+직전 게시 완료: main `4c9ca38f334fc0c6b3ddc750c900b28933ab551f`, CI `34088220968` 성공(단위 46, E2E 126), Pages `34088690691` 성공 및 공개 `/components` 산출물 확인. 아래 게시 대기 문구는 당시 이력이다. 현재 드롭다운 변경과 이미 게시된 revision을 구분한다.
+
 최신 게시 게이트 교정: [WebKit CI 감사](../audits/2026-09-07-webkit-release/README.md). `bad8a02`의 최초 CI에서 WebKit 6 FAIL/1 flaky/35 PASS를 확인했다. 같은 Linux image의 두 모드에서 150ms 애니메이션 생성은 정상이나 headless 프레임 공백이 최대 약 1.3초였고 Xvfb 화면 모드에서는 중간 frame이 유지됐다. CI 및 container runner의 WebKit 실행을 headed/Xvfb로 정렬하고, 종료 후 Select/Ripple DOM을 뒤늦게 읽던 테스트를 생성 시점 기록/원자적 읽기로 교정한다. 제품 코드와 검증 기대 수치는 변경하지 않는다. 기존 M3 준수 blocker와 실제 Windows reduced-motion 동작은 유지한다. 최종 main CI와 Pages의 커밋 일치 및 공개 앱 검증 뒤 게시 완료로 판단한다.
 
 ## 외부 브라우저 검증용 게시

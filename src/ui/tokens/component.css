@@ -123,6 +123,9 @@
   --md-button-hover-state-layer-color: var(--md-sys-color-state-layer-hovered);
   --md-button-focus-state-layer-color: var(--md-sys-color-state-layer-focused);
   --md-button-pressed-state-layer-color: var(--md-sys-color-state-layer-pressed);
+  /* Figma's pressed color already contains alpha; apply it only in the wave. */
+  --md-button-ripple-color: var(--md-button-pressed-state-layer-color);
+  --md-button-ripple-opacity: 1;
 
   --md-filled-button-container-color: var(--md-sys-color-primary);
   --md-filled-button-container-elevation: var(--md-sys-elevation-level0);
@@ -270,6 +273,7 @@
   --md-icon-button-hover-state-layer-color: var(--md-sys-color-state-layer-hovered);
   --md-icon-button-focus-state-layer-color: var(--md-sys-color-state-layer-focused);
   --md-icon-button-pressed-state-layer-color: var(--md-sys-color-state-layer-pressed);
+  --md-icon-button-ripple-opacity: var(--md-sys-state-pressed-state-layer-opacity);
   --md-icon-button-disabled-container-color: var(--md-sys-color-surface-container);
   --md-icon-button-disabled-outlined-container-color: var(--md-sys-color-surface-container-lowest);
   --md-icon-button-disabled-icon-color: var(--md-sys-color-on-surface);
@@ -739,20 +743,24 @@
   --md-select-option-label-text-weight: var(--md-sys-typescale-body-large-weight);
   --md-select-option-leading-space: var(--md-sys-space-200);
   --md-select-option-trailing-space: var(--md-sys-space-200);
-  --md-select-option-hover-state-layer-color: var(--md-sys-color-on-surface);
-  --md-select-option-hover-state-layer-opacity: 8%;
-  --md-select-option-focus-state-layer-color: var(--md-sys-color-on-surface);
-  --md-select-option-focus-state-layer-opacity: 10%;
-  --md-select-option-pressed-state-layer-color: var(--md-sys-color-on-surface);
-  --md-select-option-pressed-state-layer-opacity: 10%;
-  --md-select-option-focus-ring-color: var(--md-sys-color-secondary);
+  /* Figma drawMenu/listItem uses a single pre-composited neutral state wash. */
+  --md-dropdown-hover-state-layer-color: var(--md-sys-color-state-layer-hovered);
+  --md-dropdown-focus-state-layer-color: var(--md-sys-color-state-layer-focused);
+  --md-dropdown-pressed-state-layer-color: var(--md-sys-color-state-layer-pressed);
+  --md-select-option-hover-state-layer-color: var(--md-dropdown-hover-state-layer-color);
+  --md-select-option-hover-state-layer-opacity: 100%;
+  --md-select-option-focus-state-layer-color: var(--md-dropdown-focus-state-layer-color);
+  --md-select-option-focus-state-layer-opacity: 100%;
+  --md-select-option-pressed-state-layer-color: var(--md-dropdown-pressed-state-layer-color);
+  --md-select-option-pressed-state-layer-opacity: 100%;
+  --md-select-option-focus-ring-color: var(--md-sys-color-on-surface);
   --md-select-option-focus-ring-width: 0.1875rem;
   --md-select-option-state-layer-shape: var(--md-sys-shape-corner-none);
   --md-select-option-disabled-label-text-color: var(--md-sys-color-on-surface);
   --md-select-option-disabled-label-text-opacity: 38%;
 
   /* Menu and select option roles. */
-  --md-menu-container-color: var(--md-sys-color-surface-container);
+  --md-menu-container-color: var(--md-sys-color-surface-container-lowest);
   --md-menu-container-elevation: var(--md-sys-elevation-level2);
   --md-menu-container-shape: var(--md-sys-shape-corner-extra-small);
   --md-menu-top-space: var(--md-sys-space-100);
@@ -769,21 +777,23 @@
   --md-menu-item-trailing-space: var(--md-sys-space-200);
   --md-menu-item-content-gap: var(--md-sys-gap-200);
   --md-menu-item-leading-icon-color: var(--md-sys-color-on-surface-variant);
-  --md-menu-item-hover-state-layer-color: var(--md-sys-color-on-surface);
-  --md-menu-item-hover-state-layer-opacity: var(--md-sys-state-hover-state-layer-opacity);
-  --md-menu-item-pressed-state-layer-color: var(--md-sys-color-on-surface);
-  --md-menu-item-pressed-state-layer-opacity: var(--md-sys-state-pressed-state-layer-opacity);
-  --md-menu-item-selected-container-color: var(--md-sys-color-secondary-container);
-  --md-menu-item-selected-label-text-color: var(--md-sys-color-on-secondary-container);
+  --md-menu-item-hover-state-layer-color: var(--md-dropdown-hover-state-layer-color);
+  --md-menu-item-hover-state-layer-opacity: 100%;
+  --md-menu-item-pressed-state-layer-color: var(--md-dropdown-pressed-state-layer-color);
+  --md-menu-item-pressed-state-layer-opacity: 100%;
+  --md-menu-item-selected-container-color: var(--md-dropdown-hover-state-layer-color);
+  --md-menu-item-selected-label-text-color: var(--md-sys-color-on-surface);
+  --md-menu-item-focus-ring-color: var(--md-sys-color-on-surface);
+  --md-menu-item-focus-ring-width: 0.1875rem;
   --md-menu-item-disabled-opacity: 38%;
   --md-list-item-leading-icon-size: 1.5rem;
   --md-list-item-trailing-icon-size: 1.5rem;
   --md-list-item-leading-icon-label-space: var(--md-sys-gap-150);
   --md-list-item-state-layer-shape: var(--md-sys-shape-corner-none);
-  --md-list-item-selected-leading-icon-color: var(--md-sys-color-primary);
-  --md-list-item-selected-trailing-icon-color: var(--md-sys-color-primary);
-  --md-list-item-focus-state-layer-color: var(--md-sys-color-on-surface);
-  --md-list-item-focus-state-layer-opacity: var(--md-sys-state-focus-state-layer-opacity);
+  --md-list-item-selected-leading-icon-color: var(--md-sys-color-on-surface-variant);
+  --md-list-item-selected-trailing-icon-color: var(--md-sys-color-on-surface-variant);
+  --md-list-item-focus-state-layer-color: var(--md-dropdown-focus-state-layer-color);
+  --md-list-item-focus-state-layer-opacity: 100%;
   --md-menu-open-duration: var(--md-sys-motion-duration-long2);
   --md-menu-open-surface-opacity-duration: var(--md-sys-motion-duration-short1);
   --md-menu-open-item-opacity-duration: var(--md-sys-motion-duration-medium1);
@@ -869,4 +879,15 @@
   --md-snackbar-icon-size: 1.5rem;
   --md-snackbar-motion-duration: var(--md-sys-motion-duration-short4);
   --md-snackbar-motion-easing: var(--md-sys-motion-easing-standard);
+}
+
+/* The inspected Figma listItem variants supply Light endpoints only. */
+:root[data-color-scheme='dark'],
+:root[data-contrast='high'] {
+  /* Figma supplies Light endpoints; generated schemes use Material foreground feedback. */
+  --md-button-ripple-color: currentColor;
+  --md-button-ripple-opacity: var(--md-sys-state-pressed-state-layer-opacity);
+  --md-dropdown-hover-state-layer-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+  --md-dropdown-focus-state-layer-color: color-mix(in srgb, var(--md-sys-color-on-surface) 10%, transparent);
+  --md-dropdown-pressed-state-layer-color: color-mix(in srgb, var(--md-sys-color-on-surface) 10%, transparent);
 }
