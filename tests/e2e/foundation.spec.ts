@@ -163,11 +163,29 @@ test('Tabs는 Figma anatomy와 MD3 manual activation 및 panel 연결을 유지�
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.12)');
   await expect(tokens.locator('[data-slot="focus-ring"]')).toHaveCSS('opacity', '1');
 
+  const tabWaves = tokens.locator('[data-slot="ripple"] > span');
+  await expect(tabWaves).toHaveCount(0);
+  // Composite tabs activate on keydown. Observe the real wave across the press:
+  // the intervening pressed-state checks can outlive it before keyup on CI.
+  const tabRipple = await tokens.evaluateHandle((element) => {
+    const root = element.querySelector('[data-slot="ripple"]')!;
+    const observed = { created: 0, peak: 0 };
+    const observer = new MutationObserver((records) => {
+      observed.created += records.reduce((count, record) => count + record.addedNodes.length, 0);
+      observed.peak = Math.max(observed.peak, root.childElementCount);
+    });
+    observer.observe(root, { childList: true });
+    return { observed, disconnect: () => observer.disconnect() };
+  });
   await page.keyboard.down('Space');
   await expect(tokens).toHaveAttribute('data-pressed', 'true');
   await expect(stateLayer).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.16)');
   await page.keyboard.up('Space');
-  await expect(tokens.locator('[data-slot="ripple"] > span')).toHaveCount(1);
+  await expect.poll(() => tabRipple.evaluate(({ observed }) => observed)).toEqual({ created: 1, peak: 1 });
+  await expect(tokens).toHaveAttribute('aria-selected', 'true');
+  await expect(tabWaves).toHaveCount(0);
+  await tabRipple.evaluate(({ disconnect }) => disconnect());
+  await tabRipple.dispose();
 });
 
 test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유지한다', async ({ page }) => {

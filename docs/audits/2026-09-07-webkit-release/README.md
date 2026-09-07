@@ -23,6 +23,7 @@
 - 수동 CI 실행에는 `scripts/diagnose-webkit-motion.mjs` 비교 관찰을 남긴다. 일반 push/PR에는 진단을 중복 실행하지 않는다.
 - 화면 모드의 첫 전체 비교는 기존 필드 실패를 해결했지만 40 PASS/1 FAIL/1 flaky였다. 남은 Select 실패는 여러 layout/visibility 왕복 이후 완료된 500ms animation을 `getAnimations()`로 뒤늦게 찾은 테스트 관찰 경쟁이었다. 실제 클릭 전에 portal의 DOM 변경을 관찰하고 생성된 원래 animation의 duration/keyframe을 기록하도록 교정했다. 500ms 단언은 유지하며 실제 height keyframe 0→양수도 추가 검증한다. 실제 메뉴 진입·노출·선택·재열림/focus 검증은 그대로다.
 - Ripple의 450/105/375ms CSS 확인도 짧게 존재하는 동일 wave에서 한 번에 읽는다. 세 번의 프로토콜 왕복 사이에 정상 제거된 DOM을 찾던 flaky 관찰을 줄이며 수치·실제 keyboard/pointer 동작 단언은 유지한다.
+- `050d148`의 [main CI](https://github.com/clt-joshua/spp-ui-frontend/actions/runs/34087651299)에서는 Tabs의 keyup 후 ripple count 단언도 실패했다. composite Tab은 keydown에서 활성화되므로 중간 pressed-state CSS 검사가 끝날 때 이미 ripple이 제거될 수 있다. keydown 전에 실제 DOM 생성 관찰을 시작하여 wave 1개 생성/동시 1개/최종 제거 및 선택 상태를 검증하도록 교정했다. 실제 keyboard 입력이나 앱 시간을 대체하지 않는다. 로컬 Chromium/Firefox/WebKit 해당 흐름 3개는 retry 0으로 모두 통과했다.
 - 제품 코드, Figma 토큰, MD3 모션 시간, OS 설정, 기대 수치/timeout/retry는 변경하지 않는다. 테스트를 skip하거나 배포의 CI 성공 조건을 우회하지 않는다.
 - 기존 대비·Snackbar 정책·실제 AT/Windows Contrast Themes 준수 BLOCKED는 그대로 유지한다.
 
