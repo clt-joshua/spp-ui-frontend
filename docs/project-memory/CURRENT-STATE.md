@@ -2,6 +2,8 @@
 
 관찰일: 2026-09-07
 
+최신 게시 게이트 교정: [WebKit CI 감사](../audits/2026-09-07-webkit-release/README.md). `bad8a02`의 최초 CI에서 WebKit 6 FAIL/1 flaky/35 PASS를 확인했다. 같은 Linux image의 두 모드에서 150ms 애니메이션 생성은 정상이나 headless 프레임 공백이 최대 약 1.3초였고 Xvfb 화면 모드에서는 중간 frame이 유지됐다. CI 및 container runner의 WebKit 실행을 headed/Xvfb로 정렬하고, 종료 후 Select/Ripple DOM을 뒤늦게 읽던 테스트를 생성 시점 기록/원자적 읽기로 교정한다. 제품 코드와 검증 기대 수치는 변경하지 않는다. 기존 M3 준수 blocker와 실제 Windows reduced-motion 동작은 유지한다. 최종 main CI와 Pages의 커밋 일치 및 공개 앱 검증 뒤 게시 완료로 판단한다.
+
 ## 외부 브라우저 검증용 게시
 
 현재 사용자 요청에 따라 누적 변경을 `main`(이 저장소의 기본·배포 브랜치)에 반영하고 기존 CI 성공 revision의 Cloudflare Pages 자동 배포를 사용한다. 이는 임시 외부 검증용 게시이며 M3 준수 BLOCKED를 PASS로 승격하지 않는다. 배포 완료는 해당 커밋의 Actions 실행과 공개 `/components` 산출물 및 실제 흐름으로 판정한다.

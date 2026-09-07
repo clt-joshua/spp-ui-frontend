@@ -88,12 +88,14 @@ jobs:
         run: pnpm build
 
       - name: Compare WebKit render scheduling
-        if: matrix.browser == 'webkit'
+        if: matrix.browser == 'webkit' && github.event_name == 'workflow_dispatch'
         run: xvfb-run pnpm exec node scripts/diagnose-webkit-motion.mjs
         env:
           HOME: /root
 
       - name: Run browser flow
+        # The Linux WebKit headless renderer stalled past the 150ms motion window.
+        # Keep real rendering under Xvfb; do not disable motion or relax assertions.
         run: |
           if [ "${{ matrix.browser }}" = "webkit" ]; then
             xvfb-run pnpm exec playwright test tests/e2e --project=webkit --headed

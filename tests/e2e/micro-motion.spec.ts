@@ -90,9 +90,12 @@ test('Ripple starts on keyboard activation, replaces previous waves, and release
   await expect(waves).toHaveCount(0);
   await page.keyboard.up('Space');
   await expect(waves).toHaveCount(1);
-  await expect(waves).toHaveCSS('animation-duration', '0.45s');
-  await expect(waves.locator('span')).toHaveCSS('animation-duration', '0.105s');
-  await expect(waves.locator('span')).toHaveCSS('transition-duration', '0.375s');
+  // Read one short-lived wave atomically. Three separate protocol round trips
+  // can outlive its natural removal on a software-rendered CI browser.
+  await expect.poll(() => waves.evaluateAll((elements) => elements.map((wave) => {
+    const surface = getComputedStyle(wave.querySelector('span')!);
+    return { grow: getComputedStyle(wave).animationDuration, fadeIn: surface.animationDuration, fadeOut: surface.transitionDuration };
+  }))).toEqual([{ grow: '0.45s', fadeIn: '0.105s', fadeOut: '0.375s' }]);
   await button.press('Enter');
   await expect(waves).toHaveCount(1);
   await expect(waves).toHaveCount(0);

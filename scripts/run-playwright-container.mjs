@@ -4,7 +4,10 @@ import { fileURLToPath } from 'node:url';
 
 const mode = process.argv[2];
 const testCommands = {
-  e2e: 'test tests/e2e --project=chromium --project=firefox --project=webkit',
+  e2e: [
+    { command: 'test tests/e2e --project=chromium --project=firefox', virtualDisplay: false },
+    { command: 'test tests/e2e --project=webkit --headed', virtualDisplay: true },
+  ],
 };
 
 if (!mode || !(mode in testCommands)) {
@@ -22,7 +25,8 @@ const containerCommand = [
   'PNPM_CLI="$(npm root --global)/pnpm/bin/pnpm.cjs"',
   'npx --yes node@24.19.0 "$PNPM_CLI" install --frozen-lockfile',
   'npx --yes node@24.19.0 "$PNPM_CLI" build',
-  `npx --yes node@24.19.0 ./node_modules/@playwright/test/cli.js ${testCommands[mode]}`,
+  ...testCommands[mode].map(({ command, virtualDisplay }) =>
+    `${virtualDisplay ? 'xvfb-run ' : ''}npx --yes node@24.19.0 ./node_modules/@playwright/test/cli.js ${command}`),
 ].join(' && ');
 
 const dockerArguments = [

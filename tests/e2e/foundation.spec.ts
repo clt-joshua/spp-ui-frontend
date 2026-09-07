@@ -928,6 +928,24 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
       - (selectValueBox!.y + selectValueBox!.height / 2),
   )).toBeLessThanOrEqual(1);
 
+  // Observe the real opening animation when the portal starts it. A later
+  // getAnimations() call can legitimately return [] after its 500ms lifetime,
+  // especially when CI rendering and the preceding visibility checks are slow.
+  const menuMotion = await page.evaluateHandle(() => {
+    const animations = new Set<Animation>();
+    const observed: Array<{ duration: number; heights: string[] }> = [];
+    const observer = new MutationObserver(() => {
+      const surface = document.querySelector('[data-menu-motion-phase="opening"] [data-slot="menu-surface"]');
+      for (const animation of surface?.getAnimations() ?? []) {
+        if (animations.has(animation)) continue;
+        animations.add(animation);
+        const effect = animation.effect as KeyframeEffect;
+        observed.push({ duration: Number(effect.getTiming().duration), heights: effect.getKeyframes().map((frame) => String(frame.height ?? '')) });
+      }
+    });
+    observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-menu-motion-phase', 'data-menu-motion-pending', 'style'] });
+    return { observed, disconnect: () => observer.disconnect() };
+  });
   await select.click();
   const selectPopup = page.getByRole('listbox');
   const selectPopupSurface = selectPopup.locator('..');
@@ -942,10 +960,12 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await expect(selectPopupPositionedShell).not.toHaveAttribute('data-menu-motion-pending', '');
   await expect(selectPopup).toBeVisible();
   await expect(selectPopupPositionedShell).toHaveAttribute('data-side', 'bottom');
-  const selectPopupAnimationDurations = await selectPopupSurface.evaluate((element) => (
-    element.getAnimations().map((animation) => animation.effect?.getTiming().duration)
-  ));
-  expect(selectPopupAnimationDurations).toContain(500);
+  await expect.poll(() => menuMotion.evaluate(({ observed }) => observed.map(({ duration }) => duration))).toContain(500);
+  const openingHeightFrames = await menuMotion.evaluate(({ observed }) => observed.find(({ duration }) => duration === 500)!.heights);
+  expect(openingHeightFrames[0]).toBe('0px');
+  expect(Number.parseFloat(String(openingHeightFrames.at(-1)))).toBeGreaterThan(0);
+  await menuMotion.evaluate(({ disconnect }) => disconnect());
+  await menuMotion.dispose();
   expect(await selectPopupSurface.evaluate((element) => (
     getComputedStyle(element).getPropertyValue('--md-menu-open-surface-opacity-duration').trim()
   ))).toBe('50ms');

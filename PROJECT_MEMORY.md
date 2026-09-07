@@ -1,5 +1,7 @@
 # Project Memory
 
+2026-09-07 WebKit 게시 게이트 후속: `bad8a02` main CI에서 WebKit 35 PASS/6 FAIL/1 flaky로 배포가 차단됐다. 같은 Linux 컨테이너/앱의 비교에서 150ms label animation은 두 모드 모두 생성됐지만 headless frame이 34→1325ms로 지연되고 Xvfb 화면 모드에서는 6→67→126ms 중간 상태를 관찰했다. [WebKit 교정 감사](docs/audits/2026-09-07-webkit-release/README.md)에 근거를 기록하고 CI 및 container runner의 WebKit만 Xvfb headed로 실행한다. 남은 Select/Ripple 회귀는 종료 후 DOM을 늦게 읽는 관찰 경쟁을 생성 시점 기록/원자적 읽기로 교정한다. 제품 코드·Figma token·모션 시간·기대 수치·준수 BLOCKED는 변경하지 않는다. 게시 완료는 최종 main CI/Pages 및 공개 산출물 확인이 필요하다.
+
 2026-09-07 외부 브라우저 검증용 게시 요청: 현재 변경을 기본·배포 브랜치 `main`에 커밋·푸시하고 기존 CI 성공 → Cloudflare Pages 자동 배포 경로를 사용한다. 전체 M3 준수 완료를 의미하지 않으며 기존 BLOCKED 항목은 유지한다. 실제 사용자 브라우저의 SegmentedButton 모션 비가시성은 Windows `SPI_GETCLIENTAREAANIMATION` 조회 성공/값 0(애니메이션 꺼짐), 일반 Chrome 및 앱 내 브라우저의 `prefers-reduced-motion: reduce=true`, 컴포넌트 animation/transition `none`으로 확인했다. 앞선 5174 프레임 감사는 별도 검증 브라우저의 결과이며 사용자가 보는 탭의 기본 모션 환경을 입증하지 않는다. OS/브라우저 설정과 reduced-motion CSS는 변경하지 않았다. 이번 게시 성공 여부는 해당 커밋의 CI/배포 실행과 공개 사이트 readback으로 확인한다.
 
 2026-09-07 최신: 사용자가 SegmentedButton 이전 동작을 거부하여 clip reveal/역방향 transition을 폐기했다. Labs c05b4b2의 nextAnimationState, 0↔26px graphic, SVG dashoffset draw 및 selecting/deselecting keyframe을 React로 이식했다. Figma 18px icon/8px gap/32px 높이/theme와 API는 유지한다. custom icon fade·hide icon 유지·disabled/reduced-motion 정지는 프로젝트 예외이며 런타임 import는 없다. [Labs 교정 감사](docs/audits/2026-09-07-segmented-button-labs/README.md)를 최신 근거로 사용한다. 이전 126 PASS는 이전 구현의 기능 증거일 뿐 Labs 일치 판정이 아니다.
