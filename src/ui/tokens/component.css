@@ -1,3 +1,70 @@
+/* Grid: dev guides 10803:11260 / 10803:12225. Minimum height grows with wrapped content. */
+:root {
+  --md-grid-header-height: 32px;
+  --md-grid-body-height: 40px;
+  --md-grid-control-size: 24px;
+  --md-grid-icon-size: 16px;
+  --md-grid-check-size: 12px;
+  --md-grid-choice-border-width: 1.5px;
+  --md-grid-check-radius: 1.5px;
+  --md-grid-radio-dot: 8px;
+  --md-grid-border-width: 1px;
+  --md-grid-focus-width: 2px;
+  --md-grid-focus-offset: -2px;
+  --md-grid-disabled-opacity: 1;
+  --md-grid-header-elevation: 0 2px 6px 2px rgb(0 0 0 / 15%), 0 1px 2px 0 rgb(0 0 0 / 30%);
+  --md-grid-font: var(--md-sys-typescale-body-small-font);
+  --md-grid-text-size: var(--md-sys-typescale-body-small-size);
+  --md-grid-text-weight: var(--md-sys-typescale-body-small-weight);
+  --md-grid-header-weight: var(--md-sys-typescale-body-small-prominent-weight);
+  --md-grid-line-height: var(--md-sys-typescale-body-small-line-height);
+  --md-grid-tracking: var(--md-sys-typescale-body-small-tracking);
+  --md-grid-inline-space: var(--md-sys-space-100);
+  --md-grid-header-block-space: var(--md-sys-space-25);
+  --md-grid-header-text-space: var(--md-sys-space-75);
+  --md-grid-body-block-space: var(--md-sys-space-50);
+  --md-grid-text-block-space: var(--md-sys-space-100);
+  --md-grid-chip-block-space: var(--md-sys-space-75);
+  --md-grid-choice-space: var(--md-sys-space-100);
+  --md-grid-summary-space: var(--md-sys-space-100);
+  --md-grid-required-inset: var(--md-sys-space-25);
+  --md-grid-empty-space: var(--md-sys-space-400);
+  --md-grid-gap: var(--md-sys-gap-100);
+  --md-grid-cell-gap: var(--md-sys-gap-25);
+  --md-grid-control-radius: var(--md-sys-radius-full);
+  --md-grid-chip-radius: var(--md-sys-radius-xs);
+  --md-grid-chip-height: 20px;
+  --md-grid-chip-size: var(--md-sys-typescale-label-small-size);
+  --md-grid-chip-weight: var(--md-sys-typescale-label-small-weight);
+  --md-grid-chip-tracking: var(--md-sys-typescale-label-small-tracking);
+  --md-grid-text-color: var(--md-sys-color-on-surface-variant);
+  --md-grid-header-color: var(--md-sys-color-surface-container);
+  --md-grid-body-color: var(--md-sys-color-surface-container-lowest);
+  --md-grid-header-border: var(--md-sys-color-outline-middle);
+  --md-grid-border: var(--md-sys-color-outline-lowest);
+  --md-grid-focus-color: var(--md-sys-color-primary);
+  --md-grid-on-primary: var(--md-sys-color-on-primary);
+  --md-grid-required-color: var(--md-sys-color-error);
+  --md-grid-required-size: var(--md-sys-typescale-label-large-size);
+  --md-grid-required-weight: var(--md-sys-typescale-label-large-weight);
+  --md-grid-required-line-height: var(--md-sys-typescale-label-large-line-height);
+  --md-grid-required-tracking: var(--md-sys-typescale-label-large-tracking);
+  --md-grid-selected-color: var(--md-sys-color-state-layer-table-selected);
+  --md-grid-disabled-color: var(--md-sys-color-surface-container-lowest);
+  --md-grid-total-color: var(--md-sys-color-tertiary-container);
+  --md-grid-total-text-color: var(--md-sys-color-on-surface-variant);
+  --md-grid-total-border: var(--md-sys-color-tertiary-fixed-dim);
+  --md-grid-icon-color: var(--md-sys-color-outline-middle);
+  --md-grid-chip-color: var(--md-sys-color-primary-container);
+  --md-grid-chip-text: var(--md-sys-color-on-primary-container);
+  --md-grid-state-color: var(--md-sys-color-shadow);
+  --md-grid-hover-layer: var(--md-sys-color-state-layer-hovered);
+  --md-grid-focus-layer: var(--md-sys-color-state-layer-focused);
+  --md-grid-pressed-layer: var(--md-sys-color-state-layer-pressed);
+  --md-grid-disabled-layer: var(--md-sys-color-state-layer-disabled);
+  --md-grid-editor-placeholder: var(--md-sys-color-on-surface-variant-bright);
+}
+
 /* TextField / Figma 10724:14659. Outlined visual overrides; filled remains Stable M3. */
 :root {
   --md-autocomplete-empty-space: var(--md-sys-space-200);

@@ -71,6 +71,23 @@ function materialWebDocs(docPath: string) {
 
 export const M3_COMPONENT_MANIFEST = [
   {
+    component: 'DataGrid',
+    m3WebUrl: M3_WEB_URL,
+    m3ComponentUrls: ['https://www.w3.org/WAI/ARIA/apg/patterns/table/', 'https://m3.material.io/components/checkbox/overview'],
+    materialWebMainDocs: [],
+    materialWebSnapshotDocs: [],
+    materialWebReferenceStatus: 'unavailable',
+    verifiedAt: '2026-09-08',
+    checkedAreas: M3_CHECKED_AREAS,
+    deviations: [
+      'User-approved Figma dev guides 10803:11260 / 10803:12225: minimum 32px header and 40px body, wrapping to content height; no size axis. Selection columns are 40px with 24px controls. Stable Material Web has no complete data-grid counterpart.',
+      'Native table with native controls and supplemental cell focus; no spreadsheet/range-selection claim. Static chip and optional search callbacks replace obsolete check-button/chip-select. Figma colors and disabled opacity are preserved across themes; raw contrast observations are separate from design matching. See docs/audits/2026-09-08-grid-dev-guide/README.md.',
+    ],
+    implementationStatus: 'implemented',
+    status: 'BLOCKED',
+    blockers: [...COMPOSITE_ACCESSIBILITY_BLOCKERS],
+  },
+  {
     component: 'Button',
     m3WebUrl: M3_WEB_URL,
     m3ComponentUrls: ['https://m3.material.io/components/buttons/overview'],

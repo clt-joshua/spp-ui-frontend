@@ -1,0 +1,522 @@
+{
+  "disabled": [
+    {
+      "id": "10463:7026",
+      "type": "text",
+      "size": "medium",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10580:55224",
+      "type": "text",
+      "size": "small",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10463:7029",
+      "type": "number",
+      "size": "medium",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10580:55232",
+      "type": "number",
+      "size": "small",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10463:7032",
+      "type": "no",
+      "size": "medium",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10580:55240",
+      "type": "no",
+      "size": "small",
+      "opacity": 1,
+      "controls": []
+    },
+    {
+      "id": "10463:7035",
+      "type": "text-edit",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10463:7037",
+          "name": "textField/small",
+          "props": {
+            "State": "enable",
+            "Inputted": "false"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10463:7038",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55312",
+      "type": "text-edit",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55314",
+          "name": "textField/small",
+          "props": {
+            "State": "enable",
+            "Inputted": "false"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10580:55315",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7039",
+      "type": "number-edit",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10463:7041",
+          "name": "textField/small",
+          "props": {
+            "State": "enable",
+            "Inputted": "false"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10463:7042",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55320",
+      "type": "number-edit",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55322",
+          "name": "textField/small",
+          "props": {
+            "State": "enable",
+            "Inputted": "false"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10580:55323",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7043",
+      "type": "text-select",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10463:7046",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55380",
+      "type": "text-select",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55384",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7047",
+      "type": "check-button",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10463:7054",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10463:7055",
+          "name": "button",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55434",
+      "type": "check-button",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55442",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        },
+        {
+          "id": "10580:55443",
+          "name": "button",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7056",
+      "type": "chip-select",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10463:7059",
+          "name": "chip/assistive",
+          "props": {},
+          "opacity": 1
+        },
+        {
+          "id": "10463:7060",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55468",
+      "type": "chip-select",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55471",
+          "name": "chip/assistive",
+          "props": {},
+          "opacity": 1
+        },
+        {
+          "id": "10580:55472",
+          "name": "IconButton",
+          "props": {
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7061",
+      "type": "check-only",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10466:24622",
+          "name": "checkbox",
+          "props": {
+            "Type": "unselected",
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55481",
+      "type": "check-only",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55483",
+          "name": "checkbox",
+          "props": {
+            "Type": "unselected",
+            "State": "enabled"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10463:7066",
+      "type": "radio-only",
+      "size": "medium",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10466:25296",
+          "name": "radio",
+          "props": {
+            "State": "enabled",
+            "Selected": "false"
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "10580:55490",
+      "type": "radio-only",
+      "size": "small",
+      "opacity": 1,
+      "controls": [
+        {
+          "id": "10580:55492",
+          "name": "radio",
+          "props": {
+            "State": "enabled",
+            "Selected": "false"
+          },
+          "opacity": 1
+        }
+      ]
+    }
+  ],
+  "headers": [
+    {
+      "id": "10574:36296",
+      "n": "Type=normal, Size=medium, State=enabled",
+      "w": 320,
+      "h": 32,
+      "pad": [
+        2,
+        8,
+        2,
+        8
+      ],
+      "children": [
+        {
+          "id": "10574:36297",
+          "n": "State layer",
+          "w": 320,
+          "h": 32,
+          "visible": true
+        },
+        {
+          "id": "10574:36298",
+          "n": "Text on grid cell",
+          "w": 256,
+          "h": 28,
+          "visible": true
+        },
+        {
+          "id": "10574:36299",
+          "n": "IconButton",
+          "w": 24,
+          "h": 24,
+          "visible": true
+        },
+        {
+          "id": "10574:36300",
+          "n": "IconButton",
+          "w": 24,
+          "h": 24,
+          "visible": true
+        },
+        {
+          "id": "10574:36301",
+          "n": "vertical/middle-inset",
+          "w": 7.999995708465576,
+          "h": 32,
+          "visible": true
+        },
+        {
+          "id": "10574:36302",
+          "n": "*",
+          "w": 8,
+          "h": 20,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "10574:36308",
+      "n": "Type=normal, Size=medium, State=hovered",
+      "w": 320,
+      "h": 36,
+      "pad": [
+        4,
+        8,
+        4,
+        8
+      ],
+      "children": [
+        {
+          "id": "10574:36309",
+          "n": "State layer",
+          "w": 320,
+          "h": 36,
+          "visible": true
+        },
+        {
+          "id": "10574:36310",
+          "n": "Text on grid cell",
+          "w": 256,
+          "h": 28,
+          "visible": true
+        },
+        {
+          "id": "10574:36311",
+          "n": "vertical/middle-inset",
+          "w": 7.999995708465576,
+          "h": 36,
+          "visible": true
+        },
+        {
+          "id": "10574:36312",
+          "n": "*",
+          "w": 8,
+          "h": 20,
+          "visible": true
+        },
+        {
+          "id": "10574:36313",
+          "n": "IconButton",
+          "w": 24,
+          "h": 24,
+          "visible": true
+        },
+        {
+          "id": "10574:36314",
+          "n": "IconButton",
+          "w": 24,
+          "h": 24,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "10450:84162",
+      "n": "Type=2colurm, Size=large, State=enabled",
+      "w": 792,
+      "h": 80,
+      "pad": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "children": [
+        {
+          "id": "10450:84643",
+          "n": "grid/header",
+          "w": 792,
+          "h": 40,
+          "visible": true
+        },
+        {
+          "id": "10450:84703",
+          "n": "Frame 1000005645",
+          "w": 792,
+          "h": 40,
+          "visible": true
+        },
+        {
+          "id": "10450:84169",
+          "n": "vertical/middle-inset",
+          "w": 7.999991416931152,
+          "h": 80,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "10574:36352",
+      "n": "Type=2colurm, Size=medium, State=enabled",
+      "w": 792,
+      "h": 64,
+      "pad": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "children": [
+        {
+          "id": "10574:36353",
+          "n": "grid/header",
+          "w": 792,
+          "h": 32,
+          "visible": true
+        },
+        {
+          "id": "10574:36354",
+          "n": "Frame 1000005645",
+          "w": 792,
+          "h": 32,
+          "visible": true
+        },
+        {
+          "id": "10574:36364",
+          "n": "vertical/middle-inset",
+          "w": 7.999991416931152,
+          "h": 64,
+          "visible": true
+        }
+      ]
+    }
+  ]
+}

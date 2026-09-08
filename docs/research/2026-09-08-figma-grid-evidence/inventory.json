@@ -1,0 +1,699 @@
+[
+  {
+    "id": "10450:83943",
+    "name": "grid/header",
+    "count": 22,
+    "nodeCount": 373,
+    "description": "",
+    "definitions": {
+      "Required#1188:0": {
+        "type": "BOOLEAN",
+        "defaultValue": true
+      },
+      "Is sort#4402:3": {
+        "type": "BOOLEAN",
+        "defaultValue": true
+      },
+      "Is filter#4402:8": {
+        "type": "BOOLEAN",
+        "defaultValue": true
+      },
+      "Type": {
+        "type": "VARIANT",
+        "defaultValue": "checkbox only",
+        "variantOptions": [
+          "checkbox only",
+          "radio only",
+          "normal",
+          "2colurm",
+          "no"
+        ]
+      },
+      "Size": {
+        "type": "VARIANT",
+        "defaultValue": "large",
+        "variantOptions": [
+          "large",
+          "medium"
+        ]
+      },
+      "State": {
+        "type": "VARIANT",
+        "defaultValue": "enabled",
+        "variantOptions": [
+          "enabled",
+          "hovered",
+          "focused",
+          "pressed"
+        ]
+      }
+    },
+    "groups": {
+      "normal / large": {
+        "states": [
+          "enabled",
+          "hovered",
+          "focused",
+          "pressed"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10450:83965",
+        "disabled": null
+      },
+      "normal / medium": {
+        "states": [
+          "enabled",
+          "hovered",
+          "focused",
+          "pressed"
+        ],
+        "heights": [
+          32,
+          36
+        ],
+        "first": "10574:36296",
+        "disabled": null
+      },
+      "no / medium": {
+        "states": [
+          "enabled",
+          "hovered",
+          "focused",
+          "pressed"
+        ],
+        "heights": [
+          36
+        ],
+        "first": "10574:36303",
+        "disabled": null
+      },
+      "no / large": {
+        "states": [
+          "enabled",
+          "hovered",
+          "focused",
+          "pressed"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10466:25486",
+        "disabled": null
+      },
+      "checkbox only / large": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10450:84154",
+        "disabled": null
+      },
+      "checkbox only / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          36
+        ],
+        "first": "10574:36344",
+        "disabled": null
+      },
+      "radio only / large": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10450:84158",
+        "disabled": null
+      },
+      "radio only / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          36
+        ],
+        "first": "10574:36348",
+        "disabled": null
+      },
+      "2colurm / large": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          80
+        ],
+        "first": "10450:84162",
+        "disabled": null
+      },
+      "2colurm / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          64
+        ],
+        "first": "10574:36352",
+        "disabled": null
+      }
+    },
+    "descriptions": [],
+    "texts": [
+      "Thead label",
+      "*",
+      "1",
+      "label"
+    ],
+    "reactionCount": 34
+  },
+  {
+    "id": "10450:84987",
+    "name": "grid/body",
+    "count": 128,
+    "nodeCount": 1029,
+    "description": "data를 편집 가능한 cell에 사용",
+    "definitions": {
+      "trailing-1st#10459:0": {
+        "type": "BOOLEAN",
+        "defaultValue": true
+      },
+      "trailing-2nd#10459:36": {
+        "type": "BOOLEAN",
+        "defaultValue": true
+      },
+      "Type": {
+        "type": "VARIANT",
+        "defaultValue": "check-only",
+        "variantOptions": [
+          "radio-only",
+          "text",
+          "text-select",
+          "text-edit",
+          "chip-select",
+          "check-button",
+          "check-only",
+          "no",
+          "number",
+          "number-edit",
+          "sub-total",
+          "grand-total",
+          "sub-total-number",
+          "grand-total-number"
+        ]
+      },
+      "State": {
+        "type": "VARIANT",
+        "defaultValue": "enabled",
+        "variantOptions": [
+          "cell-hover",
+          "enabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "disabled"
+        ]
+      },
+      "Size": {
+        "type": "VARIANT",
+        "defaultValue": "medium",
+        "variantOptions": [
+          "medium",
+          "small"
+        ]
+      }
+    },
+    "groups": {
+      "text / medium": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10450:85036",
+        "disabled": "10463:7026"
+      },
+      "text / small": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55204",
+        "disabled": "10580:55224"
+      },
+      "sub-total / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10463:21399",
+        "disabled": null
+      },
+      "sub-total / small": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55208",
+        "disabled": null
+      },
+      "sub-total-number / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10463:21443",
+        "disabled": null
+      },
+      "sub-total-number / small": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55212",
+        "disabled": null
+      },
+      "grand-total / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10463:21427",
+        "disabled": null
+      },
+      "grand-total / small": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55216",
+        "disabled": null
+      },
+      "grand-total-number / medium": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10463:21446",
+        "disabled": null
+      },
+      "grand-total-number / small": {
+        "states": [
+          "enabled"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55220",
+        "disabled": null
+      },
+      "number / medium": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10459:2597",
+        "disabled": "10463:7029"
+      },
+      "number / small": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55228",
+        "disabled": "10580:55232"
+      },
+      "no / medium": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10459:2557",
+        "disabled": "10463:7032"
+      },
+      "no / small": {
+        "states": [
+          "enabled",
+          "disabled",
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55236",
+        "disabled": "10580:55240"
+      },
+      "text-edit / medium": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "enabled",
+          "disabled",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          44
+        ],
+        "first": "10450:87572",
+        "disabled": "10463:7035"
+      },
+      "text-edit / small": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "enabled",
+          "disabled",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55292",
+        "disabled": "10580:55312"
+      },
+      "number-edit / medium": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "enabled",
+          "disabled",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          44
+        ],
+        "first": "10459:2722",
+        "disabled": "10463:7039"
+      },
+      "number-edit / small": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "enabled",
+          "disabled",
+          "cell-selected",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55296",
+        "disabled": "10580:55320"
+      },
+      "text-select / medium": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10450:87576",
+        "disabled": "10463:7043"
+      },
+      "text-select / small": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55332",
+        "disabled": "10580:55380"
+      },
+      "check-button / medium": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10450:87580",
+        "disabled": "10463:7047"
+      },
+      "check-button / small": {
+        "states": [
+          "row-hover",
+          "row-selected",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55350",
+        "disabled": "10580:55434"
+      },
+      "chip-select / medium": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          48
+        ],
+        "first": "10458:1933",
+        "disabled": "10463:7056"
+      },
+      "chip-select / small": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55385",
+        "disabled": "10580:55468"
+      },
+      "check-only / medium": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          44
+        ],
+        "first": "10458:1939",
+        "disabled": "10463:7061"
+      },
+      "check-only / small": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55395",
+        "disabled": "10580:55481"
+      },
+      "radio-only / medium": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          44
+        ],
+        "first": "10458:1944",
+        "disabled": "10463:7066"
+      },
+      "radio-only / small": {
+        "states": [
+          "row-selected",
+          "row-hover",
+          "cell-selected",
+          "enabled",
+          "disabled",
+          "cell-hover"
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10580:55403",
+        "disabled": "10580:55490"
+      }
+    },
+    "descriptions": [
+      {
+        "id": "10450:84987",
+        "name": "grid/body",
+        "description": "data를 편집 가능한 cell에 사용"
+      }
+    ],
+    "texts": [
+      "Grid text",
+      "sub-total",
+      "grand-total",
+      "1",
+      "Label",
+      "Db Click",
+      "Submitted"
+    ],
+    "reactionCount": 162
+  },
+  {
+    "id": "10482:60739",
+    "name": "grid-view",
+    "count": 4,
+    "nodeCount": 19,
+    "description": "",
+    "definitions": {
+      "Type": {
+        "type": "VARIANT",
+        "defaultValue": "label",
+        "variantOptions": [
+          "label",
+          "text",
+          "input-text",
+          "input-number"
+        ]
+      }
+    },
+    "groups": {
+      "label / ": {
+        "states": [
+          ""
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10482:60740",
+        "disabled": null
+      },
+      "text / ": {
+        "states": [
+          ""
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10482:61010",
+        "disabled": null
+      },
+      "input-text / ": {
+        "states": [
+          ""
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10609:43137",
+        "disabled": null
+      },
+      "input-number / ": {
+        "states": [
+          ""
+        ],
+        "heights": [
+          40
+        ],
+        "first": "10609:43155",
+        "disabled": null
+      }
+    },
+    "descriptions": [],
+    "texts": [
+      "Thead label",
+      "Contents Text",
+      "Label"
+    ],
+    "reactionCount": 2
+  }
+]

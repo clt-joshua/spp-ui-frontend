@@ -1,4 +1,18 @@
+2026-09-08 배포 요청: 사용자 승인으로 전용 grid worktree의 검증된 누적 구현을 커밋하고 origin/main에 fast-forward 반영한다. 기존 CI 성공 → Cloudflare Pages 자동 배포 경로를 사용한다. 원본 main 폴더의 별도 미커밋 작업은 포함하지 않는다. 배포 성공은 GitHub 실행 및 공개 /grid artifact readback으로 확인한다. 아래 미커밋·미배포 표기는 당시 이력이다.
+
+# 최신 그리드 개발 가이드 반영
+
+2026-09-08 최신 개발 가이드 구현: 사용자 지정 10803:11260 / 10803:12225에 따라 이전 정합성 차이를 교정했다. 헤더 최소 32px·바디 최소 40px, 긴 내용의 자동 줄바꿈(가이드 64px/72px), 선택 열 40px, 중첩 패딩과 overlay 테두리를 적용했다. 13종 셀에 정적 chip 및 검색형 편집 2종을 반영하고 삭제된 check-button/chip-select/info를 정리했다. 숫자 입력과 placeholder는 우측 정렬, disabled 시각은 opacity 1·기존 의미 유지, 총계는 모든 테마에서 Figma on-surface-variant다. 공통 헤더 → /grid와 /components#data-grid에서 확인할 수 있다. 검색 callback이 없으면 아이콘은 시각만 제공한다. 품질 게이트 49 unit 및 그리드 집중 E2E 24/24 PASS. 전체 Chromium/Firefox/WebKit 회귀 198/198 PASS(각 66개, 13.1분). 이후 헤더 상태 레이어 중복과 focus 우선순위만 보정하고 최종 빌드에서 품질 게이트 49 unit 및 영향 범위 E2E 27/27 PASS(각 9개, 59.0초)를 재확인했다. 최종 artifact는 index-CzfhuTme.js / index-B9dMksni.css다. High 테마 총계 3개 대비 2.31:1 관찰은 보존하며 WCAG PASS를 주장하지 않는다. 수동 Windows Contrast Themes/스크린리더 준수 BLOCKED 유지. 아래 기존 고정 높이/부분 일치 기록은 이전 artifact의 이력이다. [최신 감사 기록](docs/audits/2026-09-08-grid-dev-guide/README.md).
+
 # Project Memory
+
+2026-09-08 공통 헤더 통합/정합성 재점검: 이 grid worktree의 `/`, `/components`, `/grid`는 동일 AppHeader를 사용한다. 원본 main의 공통 헤더 구조를 가져와 그리드 탐색을 추가했으며 원본 작업 폴더는 수정하지 않았다. 최신 Figma medium body는 13타입/68상태이며 chip 표시형 변경, 검색형 편집 2종 추가, check-button 삭제가 확인됐다. 기존 그리드와의 차이는 [정합성 감사](docs/audits/2026-09-08-grid-alignment/README.md)에 기록했다. 셀 디자인 전체 일치를 주장하지 않으며 이번 변경은 상단 헤더 통합과 검토다. 품질 게이트 단위 48개 PASS, 전체 Chromium/Firefox/WebKit **195/195 PASS**(각 65개, 재시도 없음, 16.3분).
+
+2026-09-08 그리드 1차 구현: 사용자 요청으로 조사 단계에서 구현으로 전환했다. `codex/grid-development` / `C:\Develop\spp-ui-frontend-grid`에 TanStack Table 9.2.4와 공개 DataGrid를 추가했다. 수정된 Figma header medium은 모든 상태 32px, body의 이전 small은 medium으로 이름 변경되었으며 사용자가 **바디 40px**를 확인했다. 크기 variant 없음. 소계 삭제/총계 유지, 전용 24px 컨트롤, TextField 재사용, 명확한 정렬·필터·행 선택·입력과 미정 기능의 시각 구현을 적용했다. 실제 Theme Lab → `/grid`, `/components#data-grid`에서 확인 가능하다. 예시 데이터는 현재 화면 메모리에서만 유지된다. `pnpm verify` PASS(10 suites/48 tests); 3개 브라우저 전체 E2E **192/192 PASS**(각 64개, 재시도 없음, 19.2분). [구현 감사 기록](docs/audits/2026-09-08-figma-grid/README.md). 수동 접근성 증거 미수행으로 준수 BLOCKED 유지. 아래 검토·조사 문장은 당시 이력이며 최신 구현 상태를 의미하지 않는다.
+
+2026-09-08 Figma Grid 검토: [구현 가능성 보고서](docs/research/2026-09-08-figma-grid-feasibility.md)에서 `10450:83943` Header 22개와 `10450:84987` Body 128개 variant를 조회했다. TanStack v9 기반 구현은 가능하며 editor·키보드·저장 UI는 프로젝트 책임이다. Header medium의 32/36px, Body medium의 44/48px, disabled 내부 enabled control, 48px 조작 영역과 compact geometry, 미정 기능 의미를 기록했다. 추천 검토 단계이며 Figma·제품 코드·의존성을 변경하거나 구현 완료/준수 PASS로 승격하지 않았다.
+
+2026-09-08 그리드 조사: `codex/grid-development`를 `0a462d82693f2936841c94c81c63e62304adaedf` 기준의 별도 worktree `C:\Develop\spp-ui-frontend-grid`에 생성했다. 기존 `C:\Develop\spp-ui-frontend`의 `main`과 미커밋 작업을 보존했으며 해당 미커밋 변경은 이 브랜치에 포함되지 않는다. 사용자 확인 범위는 업무용 목록의 조회·정렬·필터와 일부 셀 편집이다. [조사 문서](docs/research/2026-09-08-headless-grid-selection.md)는 TanStack Table v9.2.4 엔진과 프로젝트 소유 DataGrid UI를 추천한다. 채택·구현·설치·커밋·푸시·배포는 미실행이며 기존 준수 상태를 변경하지 않는다. 아래 `main` 관련 상태는 분기 전 이력이다.
 
 2026-09-07 커밋 요청: 검증된 드롭다운 피드백 및 Button/IconButton Ripple 누적 변경을 `main`의 로컬 커밋으로 보관한다. 푸시·배포는 요청 범위가 아니며 공개 사이트는 기존 `4c9ca38` revision이다. 아래 미커밋 표기는 각 검증 당시 이력이다.
 

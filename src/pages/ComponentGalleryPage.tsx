@@ -21,7 +21,6 @@ import {
   Tabs,
   TextField,
   useSnackbar,
-  useTheme,
   type ButtonSize,
   type ButtonVariant,
   type CheckboxSize,
@@ -33,6 +32,7 @@ import {
 } from '@/ui';
 import styles from './ComponentGalleryPage.module.css';
 import { TextFieldExamples } from './TextFieldExamples';
+import { GridExamples } from './GridExamples';
 import { AutoCompleteExamples, SelectExamples } from './ChoiceFieldExamples';
 
 const assistiveLevels: ChipAssistiveLevel[] = [
@@ -75,6 +75,7 @@ const buttonContentTypes: Record<
 };
 
 const sections = [
+  { id: 'data-grid', label: 'Data grid', count: 1, components: 'DataGrid' },
   { id: 'actions', label: 'Actions', count: 2, components: 'Button · IconButton' },
   { id: 'navigation', label: 'Navigation', count: 2, components: 'Tabs · Segmented Button' },
   { id: 'form-fields', label: 'Form fields', count: 3, components: 'TextField · Select · AutoComplete' },
@@ -86,7 +87,6 @@ const sections = [
 ] as const;
 
 export function ComponentGalleryPage() {
-  const theme = useTheme();
   const snackbar = useSnackbar();
   const [favoriteSelected, setFavoriteSelected] = useState(false);
   const [notifications, setNotifications] = useState(true);
@@ -120,20 +120,6 @@ export function ComponentGalleryPage() {
 
   return (
     <main className={styles.page}>
-      <header className={styles.topbar}>
-        <a className={styles.brand} href="/" aria-label="SPP UI Theme Lab으로 이동">
-          <span className={styles.brandMark}><MaterialIcon name="deployed_code" /></span>
-          <span>SPP UI</span>
-        </a>
-        <nav aria-label="주요 페이지" className={styles.pageNav}>
-          <a href="/">Theme Lab</a>
-          <a aria-current="page" href="/components">컴포넌트 검증</a>
-        </nav>
-        <span className={styles.runtimeStatus}>
-          <span className={styles.statusDot} />
-          {theme.resolvedMode === 'dark' ? 'Dark' : 'Light'} · {theme.config.contrast === 'high' ? 'High' : 'Standard'}
-        </span>
-      </header>
 
       <div className={styles.shell}>
         <aside className={styles.sidebar}>
@@ -144,7 +130,7 @@ export function ComponentGalleryPage() {
           </div>
 
           <div className={styles.summary} aria-label="검증 페이지 요약">
-            <div><strong>14</strong><span>Components</span></div>
+            <div><strong>15</strong><span>Components</span></div>
             <div><strong>{sections.length}</strong><span>Groups</span></div>
             <div><strong>Live</strong><span>Interactions</span></div>
           </div>
@@ -467,6 +453,11 @@ export function ComponentGalleryPage() {
                 <SegmentedButton selectedIcon={<MaterialIcon name="star" />} value="custom">사용자 아이콘</SegmentedButton>
               </SegmentedButtonSet>
             </SampleGroup>
+          </GallerySection>
+
+          <GallerySection id="data-grid" index="G" title="Data grid" description="Figma 헤더 기본 32px · 바디 기본 40px. 긴 내용은 줄바꿈되며 실제 hover·초점·선택·disabled 상태를 확인합니다.">
+            <a href="/grid">업무용 목록 화면 열기</a>
+            <GridExamples matrix />
           </GallerySection>
 
           <GallerySection

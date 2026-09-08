@@ -20,6 +20,8 @@ import {
   type ThemeMode,
 } from '@/ui';
 import { ComponentGalleryPage } from './pages/ComponentGalleryPage';
+import { GridPage } from './pages/GridPage';
+import { AppHeader } from './components/AppHeader';
 import styles from './App.module.css';
 
 const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
@@ -29,11 +31,11 @@ const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
 ];
 
 export default function App() {
-  if (window.location.pathname === '/components') {
-    return <ComponentGalleryPage />;
-  }
-
-  return <ThemeLabPage />;
+  const currentPage = window.location.pathname === '/grid' ? 'grid' : window.location.pathname === '/components' ? 'components' : 'theme';
+  return <>
+    <AppHeader currentPage={currentPage} />
+    {currentPage === 'grid' ? <GridPage /> : currentPage === 'components' ? <ComponentGalleryPage /> : <ThemeLabPage />}
+  </>;
 }
 
 function ThemeLabPage() {
@@ -112,39 +114,27 @@ function ThemeLabPage() {
 
   return (
     <main className={styles.page}>
-      <header className={styles.topbar}>
-        <a className={styles.brand} href="#top" aria-label="SPP UI Theme Lab 홈">
-          <span className={styles.brandMark}><MaterialIcon name="deployed_code" /></span>
-          <span>SPP UI</span>
-        </a>
-        <div className={styles.topActions}>
-          <a className={styles.galleryLink} href="/components">컴포넌트 검증</a>
-          <span className={styles.runtimeStatus}>
-            <span className={styles.statusDot} />
-            {theme.resolvedMode === 'dark' ? 'Dark' : 'Light'} · {draft.contrast === 'high' ? 'High contrast' : 'Standard'}
-          </span>
-          <Menu
-            label="Theme Lab 메뉴"
-            radioValue={density}
-            onRadioValueChange={setDensity}
-            trigger="옵션"
-            items={[
-              { type: 'checkbox', id: 'compact', label: '컴팩트 미리보기', checked: compactPreview, onCheckedChange: setCompactPreview },
-              { type: 'radio', id: 'comfortable', label: '보통 밀도', value: 'comfortable' },
-              { type: 'radio', id: 'compact-density', label: '조밀한 밀도', value: 'compact' },
-              {
-                type: 'submenu', id: 'help', label: '도움말', items: [
-                  { type: 'item', id: 'tokens', label: '토큰 가이드', onSelect: () => snackbar.show({ message: '토큰 가이드는 docs/02-architecture에서 확인할 수 있으며 reference, system, component 순서로 적용합니다.' }) },
-                  { type: 'item', id: 'keyboard', label: '키보드 안내', onSelect: () => snackbar.show({ message: 'Tab, 방향키, Escape 흐름을 지원합니다.' }) },
-                ],
-              },
-            ]}
-          />
-        </div>
-      </header>
-
       <div className={styles.layout} id="top">
         <aside className={styles.settings} aria-labelledby="theme-settings-title">
+          <div className={styles.pageTools}>
+            <Menu
+              label="Theme Lab 메뉴"
+              radioValue={density}
+              onRadioValueChange={setDensity}
+              trigger="옵션"
+              items={[
+                { type: 'checkbox', id: 'compact', label: '컴팩트 미리보기', checked: compactPreview, onCheckedChange: setCompactPreview },
+                { type: 'radio', id: 'comfortable', label: '보통 밀도', value: 'comfortable' },
+                { type: 'radio', id: 'compact-density', label: '조밀한 밀도', value: 'compact' },
+                {
+                  type: 'submenu', id: 'help', label: '도움말', items: [
+                    { type: 'item', id: 'tokens', label: '토큰 가이드', onSelect: () => snackbar.show({ message: '토큰 가이드는 docs/02-architecture에서 확인할 수 있으며 reference, system, component 순서로 적용합니다.' }) },
+                    { type: 'item', id: 'keyboard', label: '키보드 안내', onSelect: () => snackbar.show({ message: 'Tab, 방향키, Escape 흐름을 지원합니다.' }) },
+                  ],
+                },
+              ]}
+            />
+          </div>
           <div className={styles.settingsHeading}>
             <div>
               <span className={styles.eyebrow}>Theme runtime</span>

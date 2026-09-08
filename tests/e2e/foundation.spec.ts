@@ -50,9 +50,9 @@ test('별도 컴포넌트 검증 페이지에서 전체 inventory와 실제 상�
   await expect(page.getByRole('heading', { level: 2, name: 'Dialogs' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Menus' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: 'Feedback' })).toBeVisible();
-  await expect(page.getByText('Components', { exact: true }).locator('..').locator('strong')).toHaveText('14');
-  await expect(page.getByText('Groups', { exact: true }).locator('..').locator('strong')).toHaveText('8');
-  await expect(page.getByRole('navigation', { name: '컴포넌트 그룹' }).getByRole('link')).toHaveCount(8);
+  await expect(page.getByText('Components', { exact: true }).locator('..').locator('strong')).toHaveText('15');
+  await expect(page.getByText('Groups', { exact: true }).locator('..').locator('strong')).toHaveText('9');
+  await expect(page.getByRole('navigation', { name: '컴포넌트 그룹' }).getByRole('link')).toHaveCount(9);
   await expect(page.locator('#inputs')).toHaveCount(1);
   await expect(page.locator('#overlays')).toHaveCount(1);
 

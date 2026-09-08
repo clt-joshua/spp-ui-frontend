@@ -282,5 +282,5 @@ if (errors.length > 0) {
   console.log(`- Required files: ${requiredFiles.length}`);
   console.log(`- Required directories: ${requiredDirectories.length}`);
   console.log(`- Markdown files checked: ${markdownFiles.length}`);
-  console.log('- Component manifest entries: 14');
+  console.log('- Component manifest entries: 15');
 }

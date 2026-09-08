@@ -1,0 +1,1354 @@
+[
+  {
+    "id": "10450:85036",
+    "type": "text",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87348",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21483",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55204",
+    "type": "text",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55205",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55206",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10463:21399",
+    "type": "sub-total",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [
+      "schemes/secondary-container"
+    ],
+    "stroke": [
+      "schemes/secondary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10463:21400",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21515",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55208",
+    "type": "sub-total",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [
+      "schemes/secondary-container"
+    ],
+    "stroke": [
+      "schemes/secondary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10580:55209",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55210",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10463:21443",
+    "type": "sub-total-number",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [
+      "schemes/secondary-container"
+    ],
+    "stroke": [
+      "schemes/secondary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10463:21444",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21453",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55212",
+    "type": "sub-total-number",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [
+      "schemes/secondary-container"
+    ],
+    "stroke": [
+      "schemes/secondary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10580:55213",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55214",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10463:21427",
+    "type": "grand-total",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [
+      "schemes/tertiary-container"
+    ],
+    "stroke": [
+      "schemes/tertiary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10463:21428",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21495",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55216",
+    "type": "grand-total",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [
+      "schemes/tertiary-container"
+    ],
+    "stroke": [
+      "schemes/tertiary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10580:55217",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55218",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10463:21446",
+    "type": "grand-total-number",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [
+      "schemes/tertiary-container"
+    ],
+    "stroke": [
+      "schemes/tertiary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10463:21447",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21459",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55220",
+    "type": "grand-total-number",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [
+      "schemes/tertiary-container"
+    ],
+    "stroke": [
+      "schemes/tertiary-fixed-dim"
+    ],
+    "children": [
+      {
+        "id": "10580:55221",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55222",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10459:2597",
+    "type": "number",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10459:2598",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21469",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55228",
+    "type": "number",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55229",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55230",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 304,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10459:2557",
+    "type": "no",
+    "size": "medium",
+    "w": 48,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10459:2558",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21477",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 32,
+        "h": 36,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55236",
+    "type": "no",
+    "size": "small",
+    "w": 48,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55237",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55238",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 32,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85042",
+    "type": "text-edit",
+    "size": "medium",
+    "w": 320,
+    "h": 44,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87349",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 44,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10459:2953",
+        "n": "textField/small",
+        "t": "INSTANCE",
+        "w": 270,
+        "h": 32,
+        "props": {
+          "Suffix text#816:701": "Suffix",
+          "Is placeholder#816:689": true,
+          "Is hover button#816:699": true,
+          "Input text#816:694": "Input",
+          "Label text#816:688": "Label",
+          "Is prefix#816:696": false,
+          "Is label#816:691": false,
+          "Is surpporting text#816:697": false,
+          "Supporting text#816:704": "Supporting text",
+          "Is trailinng button#816:693": false,
+          "text area#8639:74": false,
+          "Required#816:692": false,
+          "Prefix text#816:698": "Prefix",
+          "Placeholder text#816:700": "Placeholder",
+          "Is suffix#816:703": false,
+          "Is leading button#816:690": false,
+          "Input-type": "text",
+          "State": "enable",
+          "Inputted": "false"
+        },
+        "fill": []
+      },
+      {
+        "id": "10450:85893",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "medium",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55308",
+    "type": "text-edit",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55309",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55310",
+        "n": "textField/small",
+        "t": "INSTANCE",
+        "w": 278,
+        "h": 32,
+        "props": {
+          "Suffix text#816:701": "Suffix",
+          "Is placeholder#816:689": true,
+          "Is hover button#816:699": true,
+          "Input text#816:694": "Input",
+          "Label text#816:688": "Label",
+          "Is prefix#816:696": false,
+          "Is label#816:691": false,
+          "Is surpporting text#816:697": false,
+          "Supporting text#816:704": "Supporting text",
+          "Is trailinng button#816:693": false,
+          "text area#8639:74": false,
+          "Required#816:692": false,
+          "Prefix text#816:698": "Prefix",
+          "Placeholder text#816:700": "Placeholder",
+          "Is suffix#816:703": false,
+          "Is leading button#816:690": false,
+          "Input-type": "text",
+          "State": "enable",
+          "Inputted": "false"
+        },
+        "fill": []
+      },
+      {
+        "id": "10580:55311",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 24,
+        "h": 24,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "small",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10459:2730",
+    "type": "number-edit",
+    "size": "medium",
+    "w": 320,
+    "h": 44,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10459:2731",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 44,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10459:2878",
+        "n": "textField/small",
+        "t": "INSTANCE",
+        "w": 270,
+        "h": 32,
+        "props": {
+          "Suffix text#816:701": "Suffix",
+          "Is placeholder#816:689": true,
+          "Is hover button#816:699": true,
+          "Input text#816:694": "Input",
+          "Label text#816:688": "Label",
+          "Is prefix#816:696": false,
+          "Is label#816:691": false,
+          "Is surpporting text#816:697": false,
+          "Supporting text#816:704": "Supporting text",
+          "Is trailinng button#816:693": false,
+          "text area#8639:74": false,
+          "Required#816:692": false,
+          "Prefix text#816:698": "Prefix",
+          "Placeholder text#816:700": "Placeholder",
+          "Is suffix#816:703": false,
+          "Is leading button#816:690": false,
+          "Input-type": "number",
+          "State": "enable",
+          "Inputted": "false"
+        },
+        "fill": []
+      },
+      {
+        "id": "10459:2733",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "medium",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55316",
+    "type": "number-edit",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55317",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55318",
+        "n": "textField/small",
+        "t": "INSTANCE",
+        "w": 278,
+        "h": 32,
+        "props": {
+          "Suffix text#816:701": "Suffix",
+          "Is placeholder#816:689": true,
+          "Is hover button#816:699": true,
+          "Input text#816:694": "Input",
+          "Label text#816:688": "Label",
+          "Is prefix#816:696": false,
+          "Is label#816:691": false,
+          "Is surpporting text#816:697": false,
+          "Supporting text#816:704": "Supporting text",
+          "Is trailinng button#816:693": false,
+          "text area#8639:74": false,
+          "Required#816:692": false,
+          "Prefix text#816:698": "Prefix",
+          "Placeholder text#816:700": "Placeholder",
+          "Is suffix#816:703": false,
+          "Is leading button#816:690": false,
+          "Input-type": "number",
+          "State": "enable",
+          "Inputted": "false"
+        },
+        "fill": []
+      },
+      {
+        "id": "10580:55319",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 24,
+        "h": 24,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "small",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85128",
+    "type": "text-select",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87350",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10463:21489",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 272,
+        "h": 36,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10450:85962",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "medium",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55375",
+    "type": "text-select",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55376",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55377",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 280,
+        "h": 32,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10580:55379",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 24,
+        "h": 24,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "small",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85337",
+    "type": "check-button",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87351",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10450:85998",
+        "n": "checkboxes",
+        "t": "FRAME",
+        "w": 32,
+        "h": 32,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10463:21517",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 171,
+        "h": 36,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10450:85344",
+        "n": "Frame 1000005429",
+        "t": "FRAME",
+        "w": 101,
+        "h": 32,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55424",
+    "type": "check-button",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55425",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55426",
+        "n": "checkboxes",
+        "t": "FRAME",
+        "w": 32,
+        "h": 32,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10580:55429",
+        "n": "Text on grid cell",
+        "t": "FRAME",
+        "w": 187,
+        "h": 32,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10580:55431",
+        "n": "Frame 1000005429",
+        "t": "FRAME",
+        "w": 85,
+        "h": 24,
+        "props": {},
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85471",
+    "type": "chip-select",
+    "size": "medium",
+    "w": 320,
+    "h": 48,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87352",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 48,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10450:85475",
+        "n": "Frame 1000003736",
+        "t": "FRAME",
+        "w": 272,
+        "h": 36,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10450:85992",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "medium",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55463",
+    "type": "chip-select",
+    "size": "small",
+    "w": 320,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55464",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 320,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55465",
+        "n": "Frame 1000003736",
+        "t": "FRAME",
+        "w": 280,
+        "h": 32,
+        "props": {},
+        "fill": []
+      },
+      {
+        "id": "10580:55467",
+        "n": "IconButton",
+        "t": "INSTANCE",
+        "w": 24,
+        "h": 24,
+        "props": {
+          "Icon#52081:6": "886:204440",
+          "Size": "small",
+          "Style": "standard",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85487",
+    "type": "check-only",
+    "size": "medium",
+    "w": 48,
+    "h": 44,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87353",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 44,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10466:24550",
+        "n": "checkbox",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Size": "medium",
+          "Type": "unselected",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55478",
+    "type": "check-only",
+    "size": "small",
+    "w": 48,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55479",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55480",
+        "n": "checkbox",
+        "t": "INSTANCE",
+        "w": 24,
+        "h": 24,
+        "props": {
+          "Size": "small",
+          "Type": "unselected",
+          "State": "enabled"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10450:85491",
+    "type": "radio-only",
+    "size": "medium",
+    "w": 48,
+    "h": 44,
+    "pad": [
+      6,
+      8,
+      6,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10450:87354",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 44,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10466:25276",
+        "n": "radio",
+        "t": "INSTANCE",
+        "w": 32,
+        "h": 32,
+        "props": {
+          "Size": "medium",
+          "State": "enabled",
+          "Selected": "false"
+        },
+        "fill": []
+      }
+    ]
+  },
+  {
+    "id": "10580:55487",
+    "type": "radio-only",
+    "size": "small",
+    "w": 48,
+    "h": 40,
+    "pad": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "fill": [],
+    "stroke": [
+      "schemes/outline-lowest"
+    ],
+    "children": [
+      {
+        "id": "10580:55488",
+        "n": "State layer",
+        "t": "FRAME",
+        "w": 48,
+        "h": 40,
+        "props": {},
+        "fill": [
+          "state-layer/enabled"
+        ]
+      },
+      {
+        "id": "10580:55489",
+        "n": "radio",
+        "t": "INSTANCE",
+        "w": 24.000001907348633,
+        "h": 24.000001907348633,
+        "props": {
+          "Size": "small",
+          "State": "enabled",
+          "Selected": "false"
+        },
+        "fill": []
+      }
+    ]
+  }
+]

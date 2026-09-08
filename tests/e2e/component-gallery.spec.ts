@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('State 표는 넓은 화면을 채우고 좁은 화면에서 내부 스크롤을 유지한다', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: '컴포넌트 검증', exact: true }).click();
-  await expect(page.getByRole('table')).toHaveCount(6);
+  await expect(page.getByRole('table')).toHaveCount(8);
 
   for (const width of [375, 768, 1280, 1920]) {
     await page.setViewportSize({ width, height: 900 });
