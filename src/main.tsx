@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { applyInitialTheme, SnackbarProvider, ThemeProvider } from './ui';
+import { applyInitialTheme, ThemeProvider } from './ui';
 import './ui/styles/layers.css';
 
 const rootElement = document.getElementById('root');
@@ -15,9 +15,7 @@ applyInitialTheme();
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <SnackbarProvider>
-        <App />
-      </SnackbarProvider>
+      <App />
     </ThemeProvider>
   </StrictMode>,
 );

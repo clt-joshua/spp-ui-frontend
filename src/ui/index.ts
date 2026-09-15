@@ -76,11 +76,3 @@ export { Dialog, DialogClose } from './components/Dialog';
 export type { DialogCloseProps, DialogCloseReason, DialogProps } from './components/Dialog';
 export { Menu } from './components/Menu';
 export type { MenuItem, MenuProps } from './components/Menu';
-export { SnackbarProvider, useSnackbar } from './components/Snackbar';
-export type {
-  SnackbarAction,
-  SnackbarManager,
-  SnackbarOptions,
-  SnackbarProviderProps,
-  SnackbarType,
-} from './components/Snackbar';

@@ -67,6 +67,8 @@
   z-index: 1;
   inset-block-start: 0;
   inset-inline-start: var(--md-outlined-text-field-label-leading-space);
+  /* The moving label may change line-height; its coordinate frame must not. */
+  block-size: var(--md-text-field-active-label-text-line-height);
   max-inline-size: calc(100% - var(--md-outlined-text-field-label-leading-space) - var(--md-outlined-text-field-label-trailing-space));
   pointer-events: none;
   transform: translateY(-50%);
@@ -118,6 +120,10 @@
 }
 
 .root[data-disabled] .inputRow { transition: none; }
+
+/* Remove only outgoing decorations, never the focusable native input. */
+.root:not([data-floating]):not([data-hide-label]) .affix { visibility: hidden; }
+.root:not([data-floating]):not([data-hide-label]) .input::placeholder { opacity: 0; }
 
 .input {
   min-inline-size: 0;

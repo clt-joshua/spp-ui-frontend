@@ -39,12 +39,19 @@ export const M3_MICRO_MOTION_AUDIT = {
   verifiedAt: '2026-09-07',
   materialWebCommit: 'c05b4b23485c803f68ff31cde52506cea5cc555a',
   report: 'docs/audits/2026-09-07-micro-motion/README.md',
-  noStableWholeComponentCounterpart: ['AutoComplete', 'SegmentedButton', 'Snackbar'],
+  noStableWholeComponentCounterpart: ['AutoComplete', 'SegmentedButton'],
+} as const;
+// Figma-defined colors are product-authorized, not contrast completion blockers.
+// This policy is not a claim of WCAG contrast conformance.
+export const FIGMA_TOKEN_POLICY = {
+  decidedAt: '2026-09-08',
+  extensionsFile: 'src/ui/tokens/extensions.css',
+  contrastBlocksFigmaColors: false,
 } as const;
 const VERIFIED_AT = '2026-08-26';
 const BUTTON_VERIFIED_AT = '2026-09-02';
 const CHECKBOX_VERIFIED_AT = '2026-09-02';
-const CHIP_VERIFIED_AT = '2026-09-02';
+const CHIP_VERIFIED_AT = '2026-09-08';
 const ICON_BUTTON_VERIFIED_AT = '2026-09-03';
 const RADIO_VERIFIED_AT = '2026-09-03';
 const TABS_VERIFIED_AT = '2026-09-03';
@@ -87,7 +94,6 @@ export const M3_COMPONENT_MANIFEST = [
     status: 'BLOCKED',
     blockers: [
       FORCED_COLORS_BLOCKER,
-      'M3_WEB_SPEC_CONFLICT: 2026-09-07 gallery audit found Normal Light/Standard error-label contrast below 4.5:1 in Figma-bound Button colors; see docs/audits/2026-09-07-component-gallery/README.md.',
     ],
   },
   {
@@ -120,7 +126,7 @@ export const M3_COMPONENT_MANIFEST = [
     verifiedAt: '2026-09-07',
     checkedAreas: M3_CHECKED_AREAS,
     deviations: [
-      'Figma 10724:14659 defines 56 outlined variants: large 48px/small 32px, text/number, seven states and populated/empty. Per-size typography, 3px/2px focus, error colors and disabled opacity are project visual overrides. The latest user decision removes Filled entirely and replaces pinned labels with focus/value-driven 150ms floating labels. Material Web motion preserves the interrupted pose and uses 67ms delay + 83ms emphasized content fade; empty unfocused affixes remain hidden. The playground provides populated samples and explicit empty/sample controls.',
+      'Figma 10724:14659 defines 56 outlined variants: large 48px/small 32px, text/number, seven states and populated/empty. Per-size typography, 3px/2px focus, error colors and disabled opacity are project visual overrides. The latest user decision removes Filled entirely and replaces pinned labels with focus/value-driven 150ms floating labels. User-requested label correction interpolates actual Figma typography instead of Material Web width-ratio scaling, preserves interrupted typography/pose, and holds the endpoint until visibility handoff. The 150ms standard timing and 67ms delay + 83ms incoming content fade remain; outgoing placeholder/affixes stop painting immediately to prevent ghosts without hiding native inputs. The playground provides populated samples and explicit empty/sample controls.',
       'Small supporting text is kept in document flow at its source 1px offset instead of overflowing Figma root bounds. Coarse-pointer controls and actions expand to real disjoint 48px targets. Keyboard focus also exposes the hover-only clear action.',
       'TextField type=textarea renders a native textarea. Native form constraints, readonly submission, disabled exclusion, clear onChange/focus return and named trailing actions preserve Web behavior.',
       'Firefox native small input uses a 17px font-normal minimum line-height while retaining the Figma 16px author token and 32px outer geometry; HTML native text-entry rendering takes precedence over forcing clipped glyph metrics.',
@@ -129,7 +135,6 @@ export const M3_COMPONENT_MANIFEST = [
     status: 'BLOCKED',
     blockers: [
       ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
-      'M3_WEB_SPEC_CONFLICT: Figma-bound placeholder and affix colors fall below 4.5:1 in supported themes. The 2026-09-07 TextField audit records actual values; source color correction requires a token decision. Axe also leaves complex-background contrast checks incomplete.',
     ],
   },
   {
@@ -141,10 +146,10 @@ export const M3_COMPONENT_MANIFEST = [
     materialWebReferenceStatus: 'unavailable',
     verifiedAt: '2026-09-07',
     checkedAreas: M3_CHECKED_AREAS,
-    deviations: ['Project composite, not a dedicated Stable Material Web component or a separately verified Figma variant set. Reuses outlined field geometry and dropdown tokens, with Base UI free-text autocomplete and APG virtual focus semantics. Upward menus reserve half the measured label height to avoid occlusion; downward menus keep zero offset.', DROPDOWN_FEEDBACK_DEVIATION],
+    deviations: ['Project composite, not a dedicated Stable Material Web component or a separately verified Figma variant set. Inherits the user-requested exact-typography label interpolation and decoration-only return masking. Reuses outlined field geometry and dropdown tokens, with Base UI free-text autocomplete and APG virtual focus semantics. Upward menus reserve half the measured label height to avoid occlusion; downward menus keep zero offset.', DROPDOWN_FEEDBACK_DEVIATION],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
-    blockers: [...COMPOSITE_ACCESSIBILITY_BLOCKERS, 'M3_WEB_SPEC_CONFLICT: inherited Figma placeholder and affix contrast requires the TextField token decision.'],
+    blockers: [...COMPOSITE_ACCESSIBILITY_BLOCKERS],
   },
   {
     component: 'Checkbox',
@@ -157,6 +162,7 @@ export const M3_COMPONENT_MANIFEST = [
     deviations: [
       'Figma node 10466:23091 adds large/medium/small visual sizing and an explicit error presentation. Native checkbox semantics, form behavior, focus, ripple, indeterminate state, and the 48px touch target remain Stable Material Web aligned.',
       'Stable Material Web does not expose error as a current public Checkbox API; this project maps the Figma error variants to aria-invalid on the accessible checkbox control and error/supporting text without redefining checked or indeterminate semantics.',
+      'User-requested checkmark drift correction anchors scaling at the SVG check tip instead of the Material Web center origin. Final Figma geometry, scale/draw/fade timing, and indeterminate center alignment remain unchanged; no token is added.',
     ],
     implementationStatus: 'implemented',
     status: 'BLOCKED',
@@ -233,6 +239,8 @@ export const M3_COMPONENT_MANIFEST = [
     blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
   },
   {
+    // Location geometry rechecked against Figma 10563:12841 on 2026-09-08;
+    // composite accessibility gates remain under the Figma-first color policy.
     component: 'Chip',
     m3WebUrl: M3_WEB_URL,
     m3ComponentUrls: ['https://m3.material.io/components/chips/overview'],
@@ -247,7 +255,6 @@ export const M3_COMPONENT_MANIFEST = [
     status: 'BLOCKED',
     blockers: [
       ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
-      'M3_WEB_SPEC_CONFLICT: 2026-09-07 gallery audit found Assistive status-label contrast below 4.5:1, including High contrast, and x-small selected Filter contrast failure in High; see docs/audits/2026-09-07-component-gallery/README.md.',
     ],
   },
   {
@@ -291,26 +298,6 @@ export const M3_COMPONENT_MANIFEST = [
     implementationStatus: 'implemented',
     status: 'BLOCKED',
     blockers: COMPOSITE_ACCESSIBILITY_BLOCKERS,
-  },
-  {
-    component: 'Snackbar',
-    m3WebUrl: M3_WEB_URL,
-    m3ComponentUrls: [
-      'https://m3.material.io/components/snackbar/overview',
-      'https://m3.material.io/components/snackbar/guidelines',
-    ],
-    materialWebMainDocs: [],
-    materialWebSnapshotDocs: [],
-    materialWebReferenceStatus: 'unavailable',
-    verifiedAt: VERIFIED_AT,
-    checkedAreas: M3_CHECKED_AREAS,
-    deviations: [],
-    implementationStatus: 'implemented',
-    status: 'BLOCKED',
-    blockers: [
-      ...COMPOSITE_ACCESSIBILITY_BLOCKERS,
-      'M3_WEB_SPEC_CONFLICT: 2026-09-07 actual gallery flow displays three snackbars simultaneously and auto-dismisses an actionable snackbar after five seconds; MD3 requires one-at-a-time display and persistence until action/dismiss. See docs/audits/2026-09-07-component-gallery/README.md.',
-    ],
   },
 ] as const satisfies readonly M3ComponentManifestEntry[];
 

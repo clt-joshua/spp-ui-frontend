@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation.mjs';
 import { chromium, expect } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 
@@ -11,13 +12,13 @@ try {
       const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
       const errors = [];
       page.on('pageerror', (error) => errors.push(error.message));
-      await page.goto('http://127.0.0.1:5174/');
+      await page.goto('http://localhost:5174/');
       await page.getByRole('button', { name: 'Normal', exact: true }).click();
       await page.getByRole('button', { name: label, exact: true }).click();
       await page.getByRole('checkbox', { name: '고대비 색상' }).setChecked(high);
       await page.getByRole('button', { name: '테마 적용', exact: true }).click();
       await page.getByRole('link', { name: '컴포넌트 검증' }).click();
-      await page.getByRole('link', { name: 'Navigation Tabs · Segmented Button' }).click();
+      await selectComponent(page, 'segmented-button');
       const week = page.getByRole('group', { name: '일정 보기 범위', exact: true }).getByRole('button', { name: 'Week', exact: true });
       await week.scrollIntoViewIfNeeded();
       const frames = await week.evaluate(async (element) => {

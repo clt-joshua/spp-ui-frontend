@@ -41,7 +41,7 @@ compliance_required: true
 | 기본 서체 | self-hosted Noto Sans Variable, CSS 변수로 브랜드/본문 서체 교체 가능 |
 | Theme variant | MVP는 `TonalSpot` 고정 |
 | Theme 기능 | Light/Dark/System, Standard/High, 프리셋 4종, 사용자 HEX |
-| 공개 컴포넌트 | Button, IconButton, TextField, Checkbox, Radio, Tabs, Switch, SegmentedButton, Chip, Select, Dialog, Menu, Snackbar |
+| 공개 컴포넌트 | Button, IconButton, TextField, AutoComplete, Checkbox, Radio, Tabs, Switch, SegmentedButton, Chip, Select, Dialog, Menu |
 | Expressive motion | Web 공식 구현 전까지 제품 코드에서 제외 |
 | 초기 배치 | 애플리케이션 내부 `src/ui` 모듈 |
 
@@ -59,6 +59,8 @@ pnpm storybook
 pnpm test:e2e:container
 ```
 
+`pnpm dev`의 기본 주소는 [http://localhost:5174](http://localhost:5174)다. 다른 프로젝트가 사용하는 5173은 사용하지 않으며, 5174가 사용 중이면 `strictPort: true`에 따라 자동 포트 변경 없이 오류로 종료한다. 갤러리 감사 스크립트도 기본 5174를 사용한다. production preview/E2E의 4173 포트는 별도로 유지한다.
+
 ## 임시 외부 공유
 
 - Cloudflare Pages: [spp-ui-frontend.pages.dev](https://spp-ui-frontend.pages.dev/)
@@ -69,7 +71,7 @@ Cloudflare 배포 자격 증명은 GitHub Actions repository secret으로만 관
 
 Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 않는다. 기본 서체를 바꿀 때는 component CSS 대신 다음 reference input을 override한다.
 
-실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components`는 13개 공개 컴포넌트의 variant·size·상태·상호작용을 비교하는 검증 페이지를 제공한다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
+실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components#button`은 13개 공개 컴포넌트 중 선택한 하나의 variant·size·상태·상호작용을 확인하는 검증 페이지를 제공한다. 데스크톱 목록 또는 모바일 컴포넌트 선택으로 이동하며, 재방문 시 예제 상태는 초기화되고 적용된 테마는 유지된다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
 
 ```css
 :root {
@@ -103,10 +105,16 @@ Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 �
 - [x] Vite를 대표 앱 호스트로, Node 24/pnpm 10.33을 지원 기준으로 확정했다.
 - [x] `src/ui` 외부의 Base UI 직접 import를 금지했다.
 - [x] CSS layer 순서와 전역 적용 위치를 연결했다.
-- [x] Theme와 Snackbar Provider를 애플리케이션 진입점에 한 번만 배치했다.
+- [x] Theme Provider를 애플리케이션 진입점에 한 번만 배치했다.
 - [x] 13개 공개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
 - [ ] 미확인 또는 충돌 항목을 `M3_WEB_SPEC_CONFLICT`로 보고할 경로를 만들었다.
 
 ## 완료의 의미
 
 문서 작성이나 Storybook 렌더링만으로 완료되지 않는다. 대표 사용자가 애플리케이션의 실제 진입점에서 13개 공개 컴포넌트를 사용하고, Theme 변경이 Portal을 포함한 전체 UI에 적용되며, 키보드·포커스·state layer·ripple·reduced motion이 의도한 흐름에서 동작해야 한다. 모든 컴포넌트의 준수 기록은 `PASS`여야 한다.
+
+### 테마 설정과 페이지 이동
+
+- Theme Lab의 색상 프리셋·화면 모드·색상/HEX 입력은 프로젝트 공용 Button·SegmentedButton·TextField를 사용합니다.
+- 상단 공통 메뉴의 `Theme Lab` / `컴포넌트 검증` 링크로 이동하며 현재 페이지가 표시됩니다. 헤더 옵션 메뉴는 제거했습니다.
+- 설정 변경은 즉시 미리보기됩니다. `테마 적용`은 브라우저에 저장하고 `취소`는 마지막 적용 상태를 복원합니다. 다른 페이지로 이동하기 전에 적용해야 변경한 테마가 유지됩니다.

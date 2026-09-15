@@ -4,6 +4,11 @@ const isCi = Boolean(process.env.CI);
 const isWindows = process.platform === 'win32';
 const htmlReport = process.env.PLAYWRIGHT_HTML_REPORT ?? 'playwright-report';
 const outputDirectory = process.env.PLAYWRIGHT_OUTPUT_DIR ?? 'test-results';
+const previewPort = Number(process.env.PLAYWRIGHT_PORT ?? 4173);
+if (!Number.isInteger(previewPort) || previewPort < 1024 || previewPort > 65535) {
+  throw new Error('PLAYWRIGHT_PORT must be an integer between 1024 and 65535');
+}
+const previewUrl = `http://127.0.0.1:${previewPort}`;
 
 export default defineConfig({
   testDir: './tests',
@@ -20,14 +25,14 @@ export default defineConfig({
   ],
   outputDir: outputDirectory,
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: previewUrl,
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
   },
   webServer: {
-    command: 'pnpm preview --host 127.0.0.1',
-    url: 'http://127.0.0.1:4173',
+    command: `pnpm preview --host 127.0.0.1 --port ${previewPort} --strictPort`,
+    url: previewUrl,
     reuseExistingServer: !isCi,
     timeout: 120_000,
   },

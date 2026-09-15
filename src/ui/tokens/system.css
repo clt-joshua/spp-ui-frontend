@@ -652,11 +652,6 @@
 }
 
 :root {
-  /* Compatibility aliases for existing M3 component consumers. */
-  --md-sys-color-outline: var(--md-sys-color-outline-high);
-  --md-sys-color-outline-variant: var(--md-sys-color-outline-low);
-  --md-sys-color-shadow: var(--md-ref-palette-black);
-
   --md-sys-state-hover-state-layer-opacity: 0.08;
   --md-sys-state-focus-state-layer-opacity: 0.1;
   --md-sys-state-pressed-state-layer-opacity: 0.1;

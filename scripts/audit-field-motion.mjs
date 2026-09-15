@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation.mjs';
 import { chromium } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 
@@ -7,9 +8,9 @@ await mkdir(output, { recursive: true });
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-  await page.goto('http://127.0.0.1:5174/');
+  await page.goto('http://localhost:5174/');
   await page.getByRole('link', { name: '컴포넌트 검증' }).click();
-  await page.getByRole('link', { name: 'Form fields TextField · Select · AutoComplete' }).click();
+  await selectComponent(page, 'text-field');
   await page.evaluate(() => document.fonts.ready);
   const region = page.getByRole('region', { name: 'TextField 속성 테스트' });
   await region.getByRole('checkbox', { name: 'Prefix', exact: true }).check();

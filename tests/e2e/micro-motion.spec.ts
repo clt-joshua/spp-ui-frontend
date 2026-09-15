@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
@@ -6,6 +7,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Switch travels between Figma endpoints with Material overshoot, including reduced motion', async ({ page }) => {
+  await selectComponent(page, 'switch');
   const control = page.getByRole('switch', { name: 'enabled switch', exact: true });
   await control.scrollIntoViewIfNeeded();
   for (const reducedMotion of ['no-preference', 'reduce'] as const) {
@@ -33,6 +35,7 @@ test('Switch travels between Figma endpoints with Material overshoot, including 
 });
 
 test('Tabs use selection FLIP and reduced-motion crossfade without animating resize', async ({ page }) => {
+  await selectComponent(page, 'tabs');
   const tab = page.getByRole('tab', { name: 'Tokens', exact: true });
   await tab.scrollIntoViewIfNeeded();
   await page.evaluate(() => document.fonts.ready);
@@ -69,6 +72,7 @@ test('Tabs use selection FLIP and reduced-motion crossfade without animating res
 });
 
 test('Focus ring grows and shrinks; reduced motion keeps a static visible ring', async ({ page }) => {
+  await selectComponent(page, 'tabs');
   const tab = page.getByRole('tab', { name: 'Tokens', exact: true });
   await page.keyboard.press('Tab');
   await tab.focus();
@@ -156,6 +160,7 @@ test.describe('touch ripple', () => {
 });
 
 test('Radio grows only on selection and fades without shrinking on deselection', async ({ page }) => {
+  await selectComponent(page, 'radio');
   const radio = page.getByRole('radio', { name: 'large Unselected', exact: true });
   await radio.scrollIntoViewIfNeeded();
   await radio.click();
@@ -170,6 +175,7 @@ test('Radio grows only on selection and fades without shrinking on deselection',
 });
 
 test('Select crossfades arrow glyphs instead of rotating, with Material timing', async ({ page }) => {
+  await selectComponent(page, 'select');
   const select = page.getByRole('combobox', { name: '선택 테스트', exact: true });
   const arrows = select.locator('[data-slot="trailing-icon"] .material-icons');
   await expect(arrows).toHaveCount(2);
@@ -185,6 +191,7 @@ test('Select crossfades arrow glyphs instead of rotating, with Material timing',
 });
 
 test('Dialog grows its surface height rather than clipping its elevation', async ({ page }) => {
+  await selectComponent(page, 'dialog');
   await page.getByRole('button', { name: '기본 Dialog 열기', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: '기본 Dialog', exact: true });
   await expect(dialog).toBeVisible();

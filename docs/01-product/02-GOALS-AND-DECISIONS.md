@@ -54,7 +54,7 @@ compliance_required: true
 
 ### 포함
 
-- Button, IconButton, TextField, Checkbox, Chip, Select, Dialog, Menu, Snackbar
+- Button, IconButton, TextField, Checkbox, Chip, Select, Dialog, Menu
 - reference/system/component token
 - color, typography, shape, elevation, state, motion token
 - StateLayer, Ripple, FocusRing

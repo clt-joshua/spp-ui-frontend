@@ -1,10 +1,11 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test } from '@playwright/test';
 
 for (const kind of ['TextField', 'AutoComplete'] as const) {
   test(`${kind} fresh affix toggles work without typing, with explicit empty/sample controls`, async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: '컴포넌트 검증' }).click();
-    await page.getByRole('link', { name: 'Form fields TextField · Select · AutoComplete' }).click();
+    await selectComponent(page, kind === 'TextField' ? 'text-field' : 'autocomplete');
     const region = page.getByRole('region', { name: `${kind} 속성 테스트` });
     const auto = kind === 'AutoComplete';
     const input = region.getByRole(auto ? 'combobox' : 'textbox', { name: auto ? '도시 자동완성' : '테스트 입력', exact: true });
@@ -43,7 +44,7 @@ for (const kind of ['TextField', 'AutoComplete'] as const) {
 
 for (const size of ['large', 'small'] as const) {
   test(`${size} label reversals retain the rendered pose and content fades as one group`, async ({ page }) => {
-    await page.goto('/components#form-fields');
+    await page.goto('/components#text-field');
     const input = page.getByRole('textbox', { name: `${size} text empty enabled`, exact: true });
     await input.scrollIntoViewIfNeeded();
     await page.evaluate(() => document.fonts.ready);
@@ -91,7 +92,7 @@ for (const size of ['large', 'small'] as const) {
       const closing = await waitForAnimation(previous);
       const frames = [];
       // Observe unmodified real blur motion and ensure both labels never paint.
-      while (closing.playState !== 'finished') {
+      while (closing.playState === 'running' || closing.playState === 'paused') {
         frames.push({ floating: Number(getComputedStyle(label).opacity), resting: Number(getComputedStyle(resting).opacity), y: label.getBoundingClientRect().y });
         await new Promise(requestAnimationFrame);
       }

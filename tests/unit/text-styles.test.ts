@@ -105,7 +105,6 @@ describe('Figma text style tokens', () => {
       'Menu/Menu.module.css',
       'Select/Select.module.css',
       'FieldOutline/FieldDropdown.module.css',
-      'Snackbar/Snackbar.module.css',
       'FieldOutline/OutlinedField.module.css',
     ];
 

@@ -42,6 +42,7 @@ const requiredFiles = [
   'src/ui/styles/layers.css',
   'src/ui/tokens/reference.css',
   'src/ui/tokens/system.css',
+  'src/ui/tokens/extensions.css',
   'src/ui/tokens/component.css',
   '.storybook/main.ts',
   '.storybook/preview.tsx',
@@ -73,7 +74,6 @@ const requiredDirectories = [
   'src/ui/components/Select',
   'src/ui/components/Dialog',
   'src/ui/components/Menu',
-  'src/ui/components/Snackbar',
   'tests/e2e',
 ];
 
@@ -199,7 +199,6 @@ if (existsSync(manifestPath)) {
     'Select',
     'Dialog',
     'Menu',
-    'Snackbar',
   ]) {
     if (!manifest.includes(`component: '${component}'`)) {
       errors.push(`Missing MVP component in manifest: ${component}`);
@@ -282,5 +281,5 @@ if (errors.length > 0) {
   console.log(`- Required files: ${requiredFiles.length}`);
   console.log(`- Required directories: ${requiredDirectories.length}`);
   console.log(`- Markdown files checked: ${markdownFiles.length}`);
-  console.log('- Component manifest entries: 14');
+  console.log('- Component manifest entries: 13');
 }

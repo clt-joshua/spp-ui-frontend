@@ -1,5 +1,27 @@
 # Project Memory
 
+최신 검증(TextField 라벨 복귀 보정): 품질 게이트 PASS(11 suites/50 unit), Chromium·Firefox·WebKit 각 67개 / 전체 201/201 E2E PASS(단일 실행, retries 0, 12.4분). 검증 포트 4184 HTML과 dist index-CFIJ4ZXq.js / index-CyW1yUfM.css 동일성 확인. 실제 5174에서 복귀 경로·장식 중첩 제거 및 다크 중간 화면 확인. 아래 195개 등 검증은 이전 artifact 이력이다. docs/audits/2026-09-08-label-return/README.md 참조. 기존 수동 접근성 BLOCKED와 누적 변경 보존, 커밋·푸시·배포 없음.
+
+2026-09-08 TextField 라벨 복귀 보정: width-ratio scale의 종료 1px 위치/글꼴 인계 차이와 outgoing placeholder/affix 중첩을 실화면에서 확인했다. 실제 Figma typography/위치를 연속 보간하고 wrapper 기준 높이를 고정하며, 현재 typography까지 보존해 방향을 반전한다. endpoint hold → 가시 라벨 인계 → animation 해제로 상단 flash를 방지한다. 복귀 시 장식만 숨기고 native input visibility/focus는 유지한다. 기존 토큰·최종 Figma geometry·150ms/진입 fade 시간은 변경하지 않는다. 사용자 요청 scoped Material Web 모션 보정으로 manifest/계약에 기록했고 AutoComplete 공통 hook에도 적용했다. 관련 33 E2E PASS; 최종 게이트는 docs/audits/2026-09-08-label-return/README.md 참조. 이전 미커밋 변경과 수동 접근성 BLOCKED 유지, 커밋·푸시·배포 없음.
+
+최신 검증(Checkbox 체크 하강 보정): 품질 게이트 PASS(11 suites/50 unit), Chromium·Firefox·WebKit 각 65개 / 전체 195/195 E2E PASS(단일 실행, retries 0, 13.6분). 검증 포트 4184의 HTML과 dist artifact index-lt3v5Y2v.js / index-BU2GDTSr.css 동일성 확인. 실제 5174 앱 내 브라우저에서 체크/Prefix 최종 중심 오차 0px 확인. 아래 189 E2E 등 수치는 이전 artifact의 이력이다. 감사: docs/audits/2026-09-08-checkbox-affix-alignment/README.md. 기존 수동 AT/Windows Contrast Themes BLOCKED 유지, 커밋·푸시·배포 없음.
+
+2026-09-08 Checkbox 내부 체크 하강 보정 / Prefix 확인: Figma MCP large 10443:76122·small 10443:77310에서 Prefix의 중앙 정렬과 14/20px·12/16px typography를 재확인해 값을 유지했다. 사용자가 내부 ✓ 하강이라고 명확히 한 문제는 center-origin scale에 의한 tip 이동으로, 기존 icon-size와 SVG 좌표에서 계산한 tip-origin으로 교정했다. 최종 geometry·색상·token·모션 시간은 불변이고 indeterminate는 중앙 기준이다. Material Web 중심 확대와의 사용자 요청 scoped 예외를 manifest/계약에 기록했다. 실제 앱 내 브라우저에서 최종 SVG/Prefix 중심 오차 0px, 관련 3-browser 6/6 PASS. 4173이 다른 작업 산출물을 제공해 서버를 보존하고 PLAYWRIGHT_PORT=4184로 분리했다. 최종 게이트 결과는 [감사 기록](docs/audits/2026-09-08-checkbox-affix-alignment/README.md)을 따른다. 기존 수동 AT/Windows Contrast Themes BLOCKED와 누적 미커밋 변경 유지, 커밋·푸시·배포 없음.
+
+최신 검증: Figma 토큰 우선 복원 후 품질 게이트 PASS(11 suites/50 unit), Chromium/Firefox/WebKit 각 63개·전체 189/189 PASS(단일 실행, 재시도 0, 12.5분). 실제 5174 TextField의 원본 placeholder/affix 색과 focus, 신규 compact token 부재 및 page error 0을 확인했다. 52개 화면/4테마 field 감사는 제품 정책 기준 PASS이며 raw 대비 결과는 정보로 유지한다. 검증 artifact index-BuPg4bZV.js / index-IToEgzax.css. 상세 기록: docs/audits/2026-09-08-figma-token-policy/README.md. 커밋·푸시·배포 없음.
+
+2026-09-08 Figma 토큰 우선 확정: 대비 보정용 system-accessibility.css와 on-selected-compact 신규 역할을 제거하고 TextField/AutoComplete affix·placeholder, status 및 x-small Filter 연결을 원본으로 복원했다. Figma-defined 대비는 별도 사용/완료/배포 제한이 아니며 기존 색상 BLOCKED를 제거한다. 측정 원자료는 정보로 남기고 WCAG 충족을 주장하지 않는다. 불가피한 신규 비-Figma 토큰은 src/ui/tokens/extensions.css에 근거/용도/테마/이관 기준을 별도 관리한다. 기존 outline/outline-variant/shadow 호환 alias 세 개만 값 변경 없이 해당 파일로 이동했다. 실제 AT/Windows Contrast Themes 게이트, 기존 승인된 MCU/모션 계약, Snackbar 제거와 이전 미커밋 변경은 유지한다. 아래 대비 보정 승인/대비 BLOCKED 문구는 당시 이력이며 현재 결정이 우선한다.
+
+2026-09-08 Snackbar 제거: 사용자 요청으로 공개 SnackbarProvider/useSnackbar/타입·구현·component token·갤러리·Storybook·관련 감사/회귀 요구를 제거했다. 현재 공개 inventory는 13개이며 #snackbar/#feedback은 #button으로 정규화한다. Theme Lab의 실제 테마 저장은 유지하고 폼 제출·Menu 선택 결과는 페이지 내 status로 표시한다. Snackbar 과거 감사/PNG는 보존하고 준수 PASS가 아닌 범위 제외로 기록한다. 나머지 대비/수동 AT/Windows Contrast Themes BLOCKED는 유지한다. 다른 컴포넌트의 색상·정책 수정은 제안만 하며 승인 전 변경하지 않는다. 품질 게이트 PASS(48 unit); 실제 5174에서 Dark 테마 저장 후 새로고침 유지, 13개 메뉴·구형 hash 기본값, 제출/메뉴 결과 status 및 page error 0을 확인했다. 전체 E2E는 185 PASS/1 FAIL(11.5분) 후 Firefox DOMRect 직렬화 오차만 교정해 동일 artifact의 관련 검사 3-browser 3/3 PASS(24.1초)를 확인했다. 단일 전체 186 PASS로 합산하지 않는다. Snackbar 제거 흐름은 세 브라우저 모두 PASS다. 수정안과 세부 증거는 docs/audits/2026-09-08-snackbar-removal/README.md를 따른다. 기존 미커밋 작업을 보존하고 커밋·푸시·배포하지 않는다.
+
+2026-09-08 컴포넌트별 검증 화면: 기존 8개 그룹을 Button부터 Snackbar까지 14개 개별 메뉴로 재구성했다. `/components#button`을 기본값으로 사용하며 구형 hash는 canonical component ID로 replace 정규화한다. 내부 registry가 메뉴·제목·예제 렌더링의 단일 기준이며 선택한 예제 모듈만 마운트한다. 컴포넌트 전환 시 입력/선택/팝업과 소유 Snackbar를 정리하고 제목으로 포커스·스크롤을 이동한다. 적용된 전역 테마는 유지한다. 1024px 이하에서는 공개 Select를 사용하며 공통 헤더·공개 UI API/token·기존 검증 범위를 보존했다. 품질 게이트 PASS(단위 48개). 전체 3-browser E2E는 185 PASS/1 FAIL(14.5분)이었으며, Checkbox 좌표를 같은 프레임에서 읽도록 테스트만 교정한 뒤 같은 artifact의 해당 검사 3-browser × 3회 = 9/9 PASS를 확인했다. 신규 탐색 검사는 3-browser 9/9 PASS다. 단일 전체 186 PASS로 오기하지 않는다. 기존 대비·정책·수동 접근성 BLOCKED 및 이전 미커밋 변경을 보존하고 커밋·푸시·배포하지 않는다. [검증 기록](docs/audits/2026-09-08-component-navigation/README.md).
+
+2026-09-08 Location Chip 후속: Figma MCP 10563:12834 및 단일 child 10563:12841/variables를 재조회해 좌우 padding 8/8px, gap 6px, block padding 4px를 확인했다. 실제 기존 gap 2px는 공통 small selector의 specificity가 Location token을 덮은 버그였다. Location 전용 selector/token으로 수정 후 localhost:5174에서 75.25×24px, 4px/8px padding·6px gap과 비대화형 span을 확인했다. 원본은 Selected=false × small 단일 축이며 새 동작·disabled variant는 추가하지 않았다. [이번 감사](docs/audits/2026-09-08-location-chip/README.md)의 검증 결과를 우선한다. 품질 게이트 PASS(단위 46). 전체 E2E는 179 PASS/1 FAIL 후 Firefox DOMRect 소수점 비교만 교정하여 같은 제품 artifact의 Location 3-browser 3/3 재실행 PASS다. 단일 전체 180 PASS로 오기하지 않는다. 이전 10/6px 및 71.25px 기록은 수정 전 이력이다. 기존 준수 BLOCKED와 이전 미커밋 변경을 보존하며 배포하지 않았다.
+
+2026-09-08 테마 설정/탐색 통합: Theme Lab 프리셋은 공개 Button, 화면 모드는 SegmentedButtonSet, 색상/HEX 입력은 TextField를 사용한다. 기존 Checkbox·IconButton·적용/취소 Button을 유지한다. `/`와 `/components`는 앱 공통 AppHeader의 두 실제 링크와 aria-current를 공유하며 헤더 옵션 Menu 및 compact/density 상태는 제거했다. 페이지 이동 전 테마 적용으로 저장하며 취소는 적용된 설정으로 복원한다. SegmentedButtonSet의 onValueChange가 DOM으로 전달되던 경고도 제거했다. Menu/Snackbar 회귀 검증은 기존 갤러리 예제로 이동했다. 최종 변경 관련 E2E 33/33 PASS(Chromium/Firefox/WebKit 각 11, 2.6분), 단위 46/46, 구조 검사·lint·typecheck/build PASS. 최종 artifact는 index-Jss5sLA-.js / index-BHSk1VhY.css다. 실제 localhost:5174에서 페이지 이동/활성 링크를 확인하고 375px 화면에서 색상/HEX 필드 겹침을 교정했다. 최초 WebKit 실패는 native color HEX 대소문자 직렬화 차이로, 동일 색상을 대소문자 비의존으로 검증한 뒤 33개 전체를 재실행했다. 전체 컴포넌트 E2E와 수동 AT는 이번 범위에서 재실행하지 않았으며 기존 전체 준수 BLOCKED는 변경하지 않는다. 커밋·푸시·배포하지 않았다.
+
+2026-09-08 로컬 포트: `pnpm dev` 기본 포트를 Vite 설정에서 5174로 고정하고 `strictPort: true`를 유지한다. 갤러리 감사 기본 URL도 5174로 맞춘다. 5173은 다른 프로젝트용이며 preview/E2E 4173은 변경하지 않는다.
+
 2026-09-07 커밋 요청: 검증된 드롭다운 피드백 및 Button/IconButton Ripple 누적 변경을 `main`의 로컬 커밋으로 보관한다. 푸시·배포는 요청 범위가 아니며 공개 사이트는 기존 `4c9ca38` revision이다. 아래 미커밋 표기는 각 검증 당시 이력이다.
 
 최신 검증 완료(Ripple 교정): `pnpm verify` PASS(9 suites/46 unit), Chromium/Firefox/WebKit 각 58개·전체 **174/174 PASS**(`--retries=0`, 단일 실행 14.9분). 실제 5174 Theme Lab의 Light/Dark grow 중간 프레임·IconButton edge origin 및 `/components` 진입을 확인했다. 산출물 `index-C5SHrcCV.js` / `index-C1-ci9f6.css`. [검증 기록](docs/audits/2026-09-07-button-ripple/README.md). 기존 준수 BLOCKED는 유지하며 커밋·푸시·배포 없음.
@@ -26,7 +48,7 @@ This is the compact entry point for future project work. Detailed state lives in
 
 - Project: `spp-ui-frontend`
 - Product: customizable React UI foundation based on stable Material Design 3 for Web
-- Current phase: 2026-09-07 outlined-only TextField + 독립 Select/AutoComplete와 속성 playground가 14-component `/components` workspace에 연결됨. Figma-bound text contrast 및 기존 Button/Chip/Snackbar 정책, applicable screen-reader/Windows forced-colors 검증은 BLOCKED.
+- Current phase: 13-component `/components` workspace with Figma-first token bindings. Figma-defined contrast is non-blocking; applicable actual screen-reader/Windows Contrast Themes evidence remains pending.
 - Representative host: Vite 8 + React 19 + TypeScript
 - Canonical UI boundary: `src/ui`
 
@@ -39,7 +61,7 @@ This is the compact entry point for future project work. Detailed state lives in
 - Theme scope is eight Figma system-color presets plus custom `#RRGGBB`, Light/Dark/System, Standard/High. Standard/Light presets use the checked-in Figma aliases; Dark, High, and custom configurations use TonalSpot generation.
 - Theme roles are applied to `documentElement` so body Portal content inherits the same theme.
 - Noto Sans Variable and Material Icons Filled are self-hosted defaults behind replaceable tokens/adapters.
-- MVP components are Button, IconButton, TextField, Checkbox, Radio, Select, Dialog, Menu, Snackbar, and Chip (Assistive, Filter, Input, Location). Tabs, Switch, Segmented Button, and AutoComplete are post-MVP public extensions.
+- MVP components are Button, IconButton, TextField, Checkbox, Radio, Select, Dialog, Menu, and Chip (Assistive, Filter, Input, Location). Tabs, Switch, Segmented Button, and AutoComplete are post-MVP public extensions.
 - Theme Lab is the representative product flow for Theme, form, overlay, keyboard/focus, storage, and feedback checks. `/components` is the application-facing inventory for every public component's variant, size, state, and interaction matrix.
 - Storybook and unit tests are supporting evidence; actual Vite entry-point E2E is required.
 - Implemented does not mean M3 compliant. Only blocker-free records may move from `BLOCKED` to `PASS`.
@@ -59,7 +81,7 @@ This is the compact entry point for future project work. Detailed state lives in
 
 - 2026-09-07 `/components` 일괄 감사: State 표를 가용 폭까지 확장하고 375/768/1280/1920px의 3-browser 회귀 3개를 추가했다. 기존 E2E 51개와 단위 36개는 PASS지만, 별도 `pnpm audit:components`는 FAIL이다. Normal Light/Standard 43, Light/High 12, Dark/Standard 9, Dark/High 11개 요소에서 문자 대비 미달, Snackbar 3개 동시 표시와 action 포함 알림의 5초 자동 dismiss를 재현했다. Button/Chip/Snackbar manifest에 실제 정책 blocker를 추가했으며 색상/API는 임의 변경하지 않았다. 근거와 후속 조치는 `docs/audits/2026-09-07-component-gallery/README.md`를 참조한다. 이번 결과는 로컬이며 배포하지 않았다.
 - 외부 검증용 production이 `https://spp-ui-frontend.pages.dev/`에 게시됐고 `/components` deep link도 직접 접근 가능하다. `main`의 `CI` 성공 revision만 `.github/workflows/cloudflare-pages.yml`을 통해 Cloudflare Pages project `spp-ui-frontend`에 자동 배포한다. 자격 증명은 GitHub repository secret으로 격리하며 현재 임시 토큰 만료일은 2026-12-03이다.
-- Theme Runtime, token graph, interactions, all ten MVP components, and the Tabs, Switch, Segmented Button, and AutoComplete extensions are implemented.
+- Theme Runtime, token graph, interactions, all nine MVP components, and the Tabs, Switch, Segmented Button, and AutoComplete extensions are implemented.
 - Figma `md-ref-palette — WCAG` node의 250 color variables를 `--md-ref-palette-*` reference CSS tokens로 변환했다. 18 solid families, white/black, alpha colors와 원본의 `25 = darkest → 950 = lightest` 방향을 보존한다.
 - Figma `md-sys-color — Normal Mode` node의 78 color roles를 8개 mode(`normal`, `pink`, `yellowgreen`, `purple`, `blue`, `green`, `orange`, `red`) 전체에 대해 `src/ui/tokens/system.css`의 reference alias로 적용했다. built-in Standard/Light는 이 정적 system graph를 사용하고 component token은 기존 semantic role을 통해 즉시 소비한다.
 - Figma `text-styles` node `10425:2587`의 로컬 Text Style 34개를 Noto Sans Variable 기반 system typescale로 변환했다. 각 role은 font/size/line-height/weight/tracking/decoration 6개 속성을 가지며 Button, Checkbox, Radio, Tabs, Segmented Button, TextField, Select, Menu, Dialog, Snackbar, Chip component token이 전체 속성 묶음을 소비한다.

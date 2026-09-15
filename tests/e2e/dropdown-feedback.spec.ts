@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test, type Locator, type Page } from '@playwright/test';
 
 const themes = [
@@ -75,13 +76,20 @@ for (const theme of themes) {
 
   test(`Menu hover has no focus pulse or selected accent: ${label}`, async ({ page }) => {
     await setTheme(page, theme);
-    const trigger = page.getByRole('button', { name: 'Theme Lab 메뉴', exact: true });
+    await page.getByRole('button', { name: '테마 적용', exact: true }).click();
+    await page.getByRole('navigation', { name: '주요 페이지' }).getByRole('link', { name: '컴포넌트 검증' }).click();
+    await selectComponent(page, 'menu');
+    const trigger = page.getByRole('button', { name: '검증용 Menu', exact: true });
     await trigger.click();
     // This feedback/selection test operates on the opened menu, not on a
     // partial opening frame. Observe readiness rather than sleeping 500ms.
-    await expect(page.getByRole('menu', { name: 'Theme Lab 메뉴', exact: true }))
+    await expect(page.getByRole('menu', { name: '검증용 Menu', exact: true }))
       .not.toHaveAttribute('data-menu-motion-phase', /positioning|opening/);
-    const compact = page.getByRole('menuitemcheckbox', { name: '컴팩트 미리보기', exact: true });
+    const compact = page.getByRole('menuitemcheckbox', { name: '미리보기 표시', exact: true });
+    await expect(compact).toHaveAttribute('aria-checked', 'true');
+    await compact.click();
+    if (!(await compact.isVisible())) await trigger.click();
+    await expect(compact).toHaveAttribute('aria-checked', 'false');
     await hoverWash(compact, theme.mode === '라이트' && !theme.high);
     // Read the held ripple through the real pointer flow; precomposited alpha
     // must not be multiplied by the global ripple opacity a second time.
@@ -99,13 +107,15 @@ for (const theme of themes) {
     if (theme.mode === '라이트' && !theme.high) await expect(compact).toHaveCSS('background-color', 'rgba(0, 0, 0, 0.06)');
     await page.keyboard.press('Escape');
     await trigger.press('ArrowDown');
+    await expect(page.getByRole('menuitem', { name: '새 프로젝트', exact: true })).toBeFocused();
+    await page.keyboard.press('ArrowDown');
     await expect(compact).toBeFocused();
     await quietRing(compact, true);
     await page.keyboard.press('End');
-    const help = page.getByRole('menuitem', { name: '도움말', exact: true });
+    const help = page.getByRole('menuitem', { name: '더보기', exact: true });
     await expect(help).toBeFocused();
     await page.keyboard.press('ArrowRight');
-    const guide = page.getByRole('menuitem', { name: '토큰 가이드', exact: true });
+    const guide = page.getByRole('menuitem', { name: '문서', exact: true });
     await expect(guide).toBeFocused();
     await quietRing(guide, true);
     await page.keyboard.press('ArrowLeft');
@@ -119,6 +129,7 @@ for (const theme of themes) {
   test(`AutoComplete distinguishes pointer highlight from virtual keyboard focus: ${label}`, async ({ page }) => {
     await setTheme(page, theme);
     await page.getByRole('link', { name: '컴포넌트 검증', exact: true }).click();
+    await selectComponent(page, 'autocomplete');
     const input = page.getByRole('combobox', { name: '도시 자동완성', exact: true });
     await input.fill('Se');
     const seoul = page.getByRole('option', { name: 'Seoul 서울', exact: true });

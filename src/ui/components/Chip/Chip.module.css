@@ -287,7 +287,8 @@
   --chip-remove-trailing-space: var(--md-input-chip-compact-remove-trailing-space);
 }
 
-.location {
+/* Match the size selector specificity so small's 2px gap cannot mask Location's 6px. */
+.location[data-size='small'] {
   --chip-container-color: var(--md-location-chip-container-color);
   --chip-container-shape: var(--md-location-chip-container-shape);
   --chip-content-gap: var(--md-location-chip-content-gap);
@@ -303,6 +304,7 @@
   block-size: 100%;
   box-sizing: border-box;
   padding-inline: var(--chip-leading-space) var(--chip-trailing-space);
+  padding-block: var(--md-location-chip-vertical-space);
 }
 
 .locationPrefix {

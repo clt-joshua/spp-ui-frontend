@@ -1,5 +1,7 @@
 # 결정 인덱스
 
+2026-09-08: Figma 토큰/색상 binding 우선. 대비 보정은 원복하며 Figma 대비를 사용·완료·배포 제한으로 두지 않는다. 불가피한 신규 비-Figma token은 `src/ui/tokens/extensions.css`에서 분리 관리한다. [결정·검증](../audits/2026-09-08-figma-token-policy/README.md).
+
 승인된 결정의 본문 권위는 [목표와 아키텍처 결정](../01-product/02-GOALS-AND-DECISIONS.md)에 있다. 이 파일은 탐색용 요약이다.
 
 | ID | 결정 | 구현 영향 |
@@ -35,6 +37,6 @@
 | Theme variant | `TonalSpot` |
 | Theme mode | Light / Dark / System |
 | Contrast | Standard `0.0` / High `0.5` |
-| Public components | Button, IconButton, TextField, Checkbox, Radio, Tabs, Switch, SegmentedButton, Chip, Select, Dialog, Menu, Snackbar |
+| Public components | Button, IconButton, TextField, AutoComplete, Checkbox, Radio, Tabs, Switch, SegmentedButton, Chip, Select, Dialog, Menu |
 
 새 결정은 임시로 이 표에만 추가하지 말고, 먼저 ADR 또는 해당 계약 문서에 기록한 뒤 인덱스를 갱신한다.

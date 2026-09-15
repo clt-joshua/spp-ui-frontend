@@ -14,7 +14,6 @@ import { Menu } from './Menu';
 import { Radio, RadioGroup, type RadioSize } from './Radio';
 import { Select } from './Select';
 import { SegmentedButton, SegmentedButtonSet } from './SegmentedButton';
-import { useSnackbar } from './Snackbar';
 import { Switch } from './Switch';
 import { Tab, TabList, TabPanel, Tabs } from './Tabs';
 import { TextField } from './TextField';
@@ -225,8 +224,8 @@ export const ChipTypesAndStates: Story = {
   render: () => <ChipTypesAndStatesStory />,
 };
 
-export const OverlaysAndFeedback: Story = {
-  render: () => <OverlaysAndFeedbackStory />,
+export const Overlays: Story = {
+  render: () => <OverlaysStory />,
 };
 
 function TabsStory() {
@@ -368,8 +367,7 @@ function ChipTypesAndStatesStory() {
   );
 }
 
-function OverlaysAndFeedbackStory() {
-  const snackbar = useSnackbar();
+function OverlaysStory() {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
       <Dialog
@@ -386,19 +384,6 @@ function OverlaysAndFeedbackStory() {
         ]}
         label="Open menu"
       />
-      <Button onClick={() => snackbar.show({ message: 'Single-line snackbar', dismissLabel: 'Dismiss' })}>
-        Show snackbar
-      </Button>
-      <Button
-        onClick={() => snackbar.show({
-          action: { label: 'Undo', onAction: () => undefined },
-          dismissLabel: 'Dismiss two-line snackbar',
-          message: 'A longer snackbar message wraps to two lines and uses the Material 3 two-line container height.',
-        })}
-        variant="tonal"
-      >
-        Show two-line snackbar
-      </Button>
     </div>
   );
 }

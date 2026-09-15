@@ -401,7 +401,7 @@
   --md-location-chip-container-shape: var(--md-sys-shape-corner-extra-small);
   --md-location-chip-content-gap: var(--md-sys-gap-75);
   --md-location-chip-label-text-color: var(--md-sys-color-on-surface);
-  --md-location-chip-leading-space: var(--md-sys-space-125);
+  --md-location-chip-leading-space: var(--md-sys-space-100);
   --md-location-chip-outline-color: var(--md-sys-color-outline-low);
   --md-location-chip-outline-width: 0.0625rem;
   --md-location-chip-prefix-text-color: var(--md-sys-color-info);
@@ -411,7 +411,8 @@
   --md-location-chip-prefix-text-size: var(--md-sys-typescale-label-medium-prominent-size);
   --md-location-chip-prefix-text-tracking: var(--md-sys-typescale-label-medium-prominent-tracking);
   --md-location-chip-prefix-text-weight: var(--md-sys-typescale-label-medium-prominent-weight);
-  --md-location-chip-trailing-space: var(--md-sys-space-75);
+  --md-location-chip-trailing-space: var(--md-sys-space-100);
+  --md-location-chip-vertical-space: var(--md-sys-space-50);
 
   /* Checkbox. */
   --md-checkbox-unselected-outline-color: var(--md-sys-color-on-surface-variant);
@@ -847,38 +848,6 @@
   --md-dialog-close-content-delay: 0ms;
   --md-dialog-close-content-duration: var(--md-sys-motion-duration-short2);
 
-  /* Snackbar. */
-  --md-snackbar-container-color: var(--md-sys-color-inverse-surface);
-  --md-snackbar-container-elevation: var(--md-sys-elevation-level3);
-  --md-snackbar-container-shape: var(--md-sys-shape-corner-extra-small);
-  --md-snackbar-viewport-space: var(--md-sys-space-200);
-  --md-snackbar-mobile-viewport-space: var(--md-sys-space-100);
-  --md-snackbar-viewport-gap: var(--md-sys-gap-100);
-  --md-snackbar-content-gap: var(--md-sys-gap-100);
-  --md-snackbar-container-block-space: var(--md-sys-space-50);
-  --md-snackbar-container-leading-space: var(--md-sys-space-200);
-  --md-snackbar-container-trailing-space: var(--md-sys-space-100);
-  --md-snackbar-action-horizontal-space: var(--md-sys-space-150);
-  --md-snackbar-one-line-container-height: 3rem;
-  --md-snackbar-two-lines-container-height: 4.25rem;
-  --md-snackbar-supporting-text-color: var(--md-sys-color-inverse-on-surface);
-  --md-snackbar-supporting-text-decoration: var(--md-sys-typescale-body-medium-decoration);
-  --md-snackbar-supporting-text-font: var(--md-sys-typescale-body-medium-font);
-  --md-snackbar-supporting-text-size: var(--md-sys-typescale-body-medium-size);
-  --md-snackbar-supporting-text-line-height: var(--md-sys-typescale-body-medium-line-height);
-  --md-snackbar-supporting-text-tracking: var(--md-sys-typescale-body-medium-tracking);
-  --md-snackbar-supporting-text-weight: var(--md-sys-typescale-body-medium-weight);
-  --md-snackbar-action-label-text-color: var(--md-sys-color-inverse-primary);
-  --md-snackbar-action-label-text-decoration: var(--md-sys-typescale-label-large-decoration);
-  --md-snackbar-action-label-text-font: var(--md-sys-typescale-label-large-font);
-  --md-snackbar-action-label-text-size: var(--md-sys-typescale-label-large-size);
-  --md-snackbar-action-label-text-line-height: var(--md-sys-typescale-label-large-line-height);
-  --md-snackbar-action-label-text-tracking: var(--md-sys-typescale-label-large-tracking);
-  --md-snackbar-action-label-text-weight: var(--md-sys-typescale-label-large-weight);
-  --md-snackbar-icon-color: var(--md-sys-color-inverse-on-surface);
-  --md-snackbar-icon-size: 1.5rem;
-  --md-snackbar-motion-duration: var(--md-sys-motion-duration-short4);
-  --md-snackbar-motion-easing: var(--md-sys-motion-easing-standard);
 }
 
 /* The inspected Figma listItem variants supply Light endpoints only. */

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('TextField playground toggles live size, affixes, validation and editability', async ({ page }) => {
-  await page.goto('/components#form-fields');
+  await page.goto('/components#text-field');
   const region = page.getByRole('region', { name: 'TextField 속성 테스트' });
   const input = region.getByRole('textbox', { name: '테스트 입력', exact: true });
   const root = input.locator('xpath=ancestor::*[@data-text-field-variant]');
@@ -31,7 +31,7 @@ test('TextField playground toggles live size, affixes, validation and editabilit
 });
 
 test('AutoComplete filters, selects with virtual focus, clears, submits free text and resets', async ({ page }) => {
-  await page.goto('/components#form-fields');
+  await page.goto('/components#autocomplete');
   const region = page.getByRole('region', { name: 'AutoComplete 속성 테스트' });
   const input = region.getByRole('combobox', { name: '도시 자동완성', exact: true });
   await input.fill('Se');
@@ -75,7 +75,7 @@ test('AutoComplete filters, selects with virtual focus, clears, submits free tex
 });
 
 test('Select stays selection-only with a real dropdown and disabled-option skipping', async ({ page }) => {
-  await page.goto('/components#form-fields');
+  await page.goto('/components#select');
   const region = page.getByRole('region', { name: 'Select 속성 테스트' });
   const trigger = region.getByRole('combobox', { name: '선택 테스트', exact: true });
   await expect(region.getByRole('textbox')).toHaveCount(0);
@@ -96,7 +96,7 @@ test('Select stays selection-only with a real dropdown and disabled-option skipp
 
 test('upward AutoComplete dropdown keeps the floating label visible', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 600 });
-  await page.goto('/components#form-fields');
+  await page.goto('/components#autocomplete');
   const input = page.getByRole('combobox', { name: '도시 자동완성', exact: true });
   await input.fill('Se');
   await input.evaluate((element) => element.scrollIntoView({ block: 'end' }));

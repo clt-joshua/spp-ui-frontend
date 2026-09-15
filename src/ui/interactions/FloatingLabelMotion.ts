@@ -38,9 +38,19 @@ export function useFloatingLabelMotion({
     // Snapshot the rendered pose BEFORE canceling. React has already updated
     // the destination state; restarting at its endpoint makes reversals jump.
     const previous = activeAnimation.current;
+    const pose = (element: HTMLElement) => {
+      const style = getComputedStyle(element);
+      return {
+        transform: style.transform,
+        width: style.width,
+        fontSize: style.fontSize,
+        lineHeight: style.lineHeight,
+        letterSpacing: style.letterSpacing,
+        fontWeight: style.fontWeight,
+      };
+    };
     const interrupted = previous && previous.playState !== 'finished'
-      ? { transform: getComputedStyle(floatingLabel).transform, width: getComputedStyle(floatingLabel).width }
-      : null;
+      ? pose(floatingLabel) : null;
     activeAnimation.current = null;
     previous?.cancel();
 
@@ -54,14 +64,23 @@ export function useFloatingLabelMotion({
       return;
     }
 
-    const scale = restingScrollWidth / floatingScrollWidth;
     const xDelta = restingRect.left - floatingRect.left;
-    const yDelta = restingRect.top - floatingRect.top
-      + Math.round((restingRect.height - floatingRect.height * scale) / 2);
-    const restingTransform = `translateX(${xDelta}px) translateY(${yDelta}px) scale(${scale})`;
-    const floatingTransform = 'translateX(0) translateY(0) scale(1)';
-    const restingClipped = restingScrollWidth > restingLabel.clientWidth;
-    const width = restingClipped ? `${restingLabel.clientWidth / scale}px` : '';
+    const yDelta = restingRect.top - floatingRect.top;
+    // Animate the actual endpoint typography, not a width-derived scale.
+    // Scaling the smaller font only approximates the resting glyphs and makes
+    // the final handoff jump (especially with different Figma tracking/weight).
+    const restingPose = {
+      ...pose(restingLabel),
+      transform: `translateX(${xDelta}px) translateY(${yDelta}px)`,
+      width: `${restingRect.width}px`,
+      maxWidth: 'none',
+    };
+    const floatingPose = {
+      ...pose(floatingLabel),
+      transform: 'translateX(0) translateY(0)',
+      width: `${floatingRect.width}px`,
+      maxWidth: 'none',
+    };
     const computedStyle = getComputedStyle(root);
     const duration = toMilliseconds(
       computedStyle.getPropertyValue(durationProperty),
@@ -75,14 +94,14 @@ export function useFloatingLabelMotion({
     const animation = floatingLabel.animate(
       floating
         ? [
-            interrupted ?? { transform: restingTransform, width },
-            { transform: floatingTransform, width },
+            interrupted ? { ...interrupted, maxWidth: 'none' } : restingPose,
+            floatingPose,
           ]
         : [
-            interrupted ?? { transform: floatingTransform, width },
-            { transform: restingTransform, width },
+            interrupted ? { ...interrupted, maxWidth: 'none' } : floatingPose,
+            restingPose,
           ],
-      { duration, easing },
+      { duration, easing, fill: 'both' },
     );
     activeAnimation.current = animation;
 
@@ -91,6 +110,9 @@ export function useFloatingLabelMotion({
       activeAnimation.current = null;
       floatingLabel.style.removeProperty('opacity');
       restingLabel.style.removeProperty('opacity');
+      // Release the held endpoint only after visibility has been handed off.
+      // Otherwise a finishing return animation can flash at the top position.
+      animation.cancel();
     };
     animation.addEventListener('finish', finish, { once: true });
     animation.addEventListener('cancel', finish, { once: true });

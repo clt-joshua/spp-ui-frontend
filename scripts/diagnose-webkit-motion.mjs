@@ -16,7 +16,7 @@ try {
     const browser = await webkit.launch({ headless });
     try {
       const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 2 });
-      await page.goto(`${url}/components#form-fields`);
+      await page.goto(`${url}/components#text-field`);
       await page.evaluate(() => document.fonts.ready);
       const input = page.getByRole('textbox', { name: 'large text empty enabled', exact: true });
       await input.scrollIntoViewIfNeeded();

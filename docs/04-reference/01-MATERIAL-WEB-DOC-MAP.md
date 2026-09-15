@@ -71,7 +71,6 @@ Material Web 문서는 reference palette와 system motion token을 완전한 공
 | Select | [`select.md`](https://github.com/material-components/material-web/blob/main/docs/components/select.md) | Usage, Required, Accessibility, Theming, option API | `required` |
 | Dialog | [`dialog.md`](https://github.com/material-components/material-web/blob/main/docs/components/dialog.md) | Opening/closing, Return value, Alerts, Accessibility, Theming | `required` |
 | Menu | [`menu.md`](https://github.com/material-components/material-web/blob/main/docs/components/menu.md) | Usage, Submenu, positioning, Accessibility, Theming | `required` |
-| Snackbar | 대응 문서 없음 | M3 Snackbar 및 Base UI Toast 접근성 | `unavailable` |
 
 ## 향후 확장 문서
 

@@ -27,7 +27,7 @@ compliance_required: true
 
 - 모든 MVP 컴포넌트에 공식 M3 URL이 있다.
 - Material Web 대응 유무가 기록되어 있다.
-- Snackbar의 `unavailable`과 대체 공식 근거가 명시되어 있다.
+- Stable 대응 문서가 없는 공개 컴포넌트는 `unavailable`과 대체 공식 근거가 명시되어 있다.
 - Expressive와 Labs가 `deferred` 또는 금지로 분류되어 있다.
 
 ## 단계 1 — 프로젝트 경계와 CSS 기반
@@ -112,7 +112,7 @@ compliance_required: true
 6. Select
 7. Menu
 8. Dialog
-9. Snackbar
+9. Snackbar는 2026-09-08 요청으로 현재 구현 범위에서 제외한다.
 
 각 컴포넌트는 다음 세로 슬라이스를 한 번에 끝낸다.
 
@@ -147,7 +147,7 @@ official source review
 - Preview는 저장하지 않는다.
 - Apply 후 reload에서 같은 Theme이 복원된다.
 - invalid HEX가 기존 Theme을 손상시키지 않는다.
-- Theme 변경 중 Dialog/Menu/Snackbar의 role 불일치 프레임이 없다.
+- Theme 변경 중 Dialog/Menu의 role 불일치 프레임이 없다.
 
 ## 테스트 계층
 
@@ -157,7 +157,7 @@ official source review
 - storage parse/version/fallback
 - mode와 contrast resolution
 - controlled/uncontrolled component state
-- snackbar manager add/update/dismiss
+- 페이지 내 상태 문구의 결과 표시와 초기화
 - ripple geometry와 cleanup
 
 ### Component interaction
@@ -186,12 +186,12 @@ official source review
 
 1. Theme picker에서 custom seed를 preview하고 적용한 뒤 reload한다.
 2. `/components`로 실제 navigation하고 모든 공개 컴포넌트 그룹과 주요 상태가 보이는지 확인한다.
-3. 검증 페이지에서 selected/remove/Dialog focus return/Snackbar와 좁은 viewport overflow를 확인한다.
+3. 검증 페이지에서 selected/remove/Dialog focus return과 좁은 viewport overflow를 확인한다.
 4. 키보드로 Select를 열고 option을 선택한다.
 5. Menu와 submenu를 탐색하고 trigger로 focus가 복원되는지 확인한다.
 6. Dialog를 열고 focus trap, Escape/backdrop 정책, final focus를 확인한다.
 7. TextField validation error와 described-by 연결을 확인한다.
-8. Snackbar action을 실행하고 동일 id update를 확인한다.
+8. 테마 적용 및 메뉴 선택 결과가 페이지 내 상태 문구로 표시되는지 확인한다.
 
 ### 지원 환경 시각 검토
 

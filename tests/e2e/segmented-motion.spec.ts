@@ -1,9 +1,10 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: '컴포넌트 검증' }).click();
-  await page.getByRole('link', { name: 'Navigation Tabs · Segmented Button' }).click();
+  await selectComponent(page, 'segmented-button');
 });
 
 test('Labs SVG draw-in and graphic width follow the source, not a clipped font glyph', async ({ page }) => {

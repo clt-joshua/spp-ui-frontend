@@ -1,9 +1,11 @@
+import { selectComponent } from './gallery-navigation.mjs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { chromium } from '@playwright/test';
 import axe from 'axe-core';
+import { isFigmaContrastObservation } from '../src/ui/compliance/figma-contrast-policy.ts';
 
-const baseURL = process.env.TEXT_FIELD_AUDIT_URL ?? 'http://127.0.0.1:5174';
+const baseURL = process.env.TEXT_FIELD_AUDIT_URL ?? 'http://localhost:5174';
 const output = resolve(process.env.TEXT_FIELD_AUDIT_OUTPUT ?? 'test-results/text-field-audit');
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch();
@@ -19,11 +21,11 @@ try {
       await page.getByRole('checkbox', { name: '고대비 색상' }).setChecked(high);
       await page.getByRole('button', { name: '테마 적용', exact: true }).click();
       await page.getByRole('link', { name: '컴포넌트 검증', exact: true }).click();
-      await page.getByRole('link', { name: 'Form fields TextField · Select' }).click();
+      await selectComponent(page, 'text-field');
       await page.evaluate(() => document.fonts.ready);
       await page.addScriptTag({ content: axe.source });
       const result = await page.evaluate(async () => {
-        const { violations, incomplete } = await window.axe.run(document.getElementById('form-fields'));
+        const { violations, incomplete } = await window.axe.run(document.getElementById('text-field'));
         const luminance = (value) => {
           const c = value.match(/[\d.]+/gu).slice(0, 3).map(Number).map((n) => n / 255).map((n) => n <= 0.04045 ? n / 12.92 : ((n + 0.055) / 1.055) ** 2.4);
           return c[0] * .2126 + c[1] * .7152 + c[2] * .0722;
@@ -62,8 +64,12 @@ try {
       await page.close();
     }
   }
-  report.verdict = report.themes.some((t) => t.violations.length || t.fields.some((f) => f.valueContrast < 4.5 || (f.placeholderVisible && f.placeholderContrast < 4.5) || (f.affixContrast !== null && f.affixContrast < 4.5))) ? 'FAIL' : report.themes.some((t) => t.incomplete.length) ? 'BLOCKED' : 'PASS';
+  report.automatedVerdict = report.themes.some((t) => t.violations.length || t.fields.some((f) => f.valueContrast < 4.5 || (f.placeholderVisible && f.placeholderContrast < 4.5) || (f.affixContrast !== null && f.affixContrast < 4.5))) ? 'FAIL' : report.themes.some((t) => t.incomplete.length) ? 'BLOCKED' : 'PASS';
+  report.verdict = report.themes.some((t) => t.violations.some(({ id }) => !isFigmaContrastObservation('text-field', id))) ? 'FAIL'
+    : report.themes.some((t) => t.incomplete.some(({ id }) => !isFigmaContrastObservation('text-field', id))) ? 'BLOCKED' : 'PASS';
+  report.policy = 'Figma text colors/contrast observations are non-blocking; raw measurements and incomplete findings are retained. Not WCAG certification.';
   await writeFile(resolve(output, 'report.json'), `${JSON.stringify(report, null, 2)}\n`);
+  console.log(`Project audit ${report.verdict}; raw contrast audit ${report.automatedVerdict}: ${resolve(output, 'report.json')}`);
   process.exitCode = report.verdict === 'PASS' ? 0 : 1;
 } finally {
   await browser.close();

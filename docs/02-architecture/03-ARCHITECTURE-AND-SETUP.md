@@ -85,7 +85,6 @@ src/ui/
 │  ├─ Select/
 │  ├─ Dialog/
 │  ├─ Menu/
-│  └─ Snackbar/
 └─ styles/
    ├─ reset.css
    ├─ globals.css
@@ -170,9 +169,7 @@ export function UIProvider(props: UIProviderProps) {
   return (
     <ThemeProvider defaultTheme={props.defaultTheme} storage={props.storage}>
       <Tooltip.Provider>
-        <SnackbarProvider portalContainer={props.portalContainer}>
           {props.children}
-        </SnackbarProvider>
       </Tooltip.Provider>
     </ThemeProvider>
   );

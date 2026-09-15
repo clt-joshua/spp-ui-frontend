@@ -10,17 +10,18 @@ import {
   IconButton,
   isValidSeedColor,
   MaterialIcon,
-  Menu,
+  SegmentedButton,
+  SegmentedButtonSet,
   Select,
   TextField,
   THEME_PRESETS,
-  useSnackbar,
   useTheme,
   type ThemeConfig,
   type ThemeMode,
 } from '@/ui';
 import { ComponentGalleryPage } from './pages/ComponentGalleryPage';
 import styles from './App.module.css';
+import { AppHeader } from './components/AppHeader';
 
 const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
   { label: '라이트', value: 'light', icon: 'light_mode' },
@@ -29,23 +30,24 @@ const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
 ];
 
 export default function App() {
-  if (window.location.pathname === '/components') {
-    return <ComponentGalleryPage />;
-  }
-
-  return <ThemeLabPage />;
+  const gallery = window.location.pathname === '/components';
+  return (
+    <>
+      <AppHeader currentPage={gallery ? 'components' : 'theme'} />
+      {gallery ? <ComponentGalleryPage /> : <ThemeLabPage />}
+    </>
+  );
 }
 
 function ThemeLabPage() {
   const theme = useTheme();
-  const snackbar = useSnackbar();
+  const [themeStatus, setThemeStatus] = useState('');
+  const [projectStatus, setProjectStatus] = useState('');
   const [draft, setDraft] = useState<ThemeConfig>(theme.config);
   const [seedInput, setSeedInput] = useState<string>(theme.config.seedColor);
   const [projectName, setProjectName] = useState('새 디자인 시스템');
   const [platform, setPlatform] = useState<'web' | 'desktop' | 'mobile'>('web');
   const [notifications, setNotifications] = useState(true);
-  const [compactPreview, setCompactPreview] = useState(false);
-  const [density, setDensity] = useState('comfortable');
   const [filterSelected, setFilterSelected] = useState(false);
   const [inputChipVisible, setInputChipVisible] = useState(true);
 
@@ -54,6 +56,7 @@ function ThemeLabPage() {
   }, []);
 
   const preview = (next: ThemeConfig) => {
+    setThemeStatus('');
     setDraft(next);
     theme.previewTheme(next);
   };
@@ -81,20 +84,18 @@ function ThemeLabPage() {
     };
     setDraft(next);
     theme.applyTheme(next);
-    snackbar.show({
-      dismissLabel: '테마 적용 알림 닫기',
-      message: '테마가 이 브라우저에 저장되었습니다.',
-      type: 'success',
-    });
+    setThemeStatus('테마가 이 브라우저에 저장되었습니다.');
   };
 
   const cancelDraft = () => {
+    setThemeStatus('');
     setDraft(theme.appliedConfig);
     setSeedInput(theme.appliedConfig.seedColor);
     theme.cancelPreview();
   };
 
   const reset = () => {
+    setThemeStatus('');
     setDraft(DEFAULT_THEME_CONFIG);
     setSeedInput(DEFAULT_THEME_CONFIG.seedColor);
     theme.resetTheme();
@@ -102,47 +103,11 @@ function ThemeLabPage() {
 
   const submitProject = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    snackbar.show({
-      action: { label: '실행 취소', onAction: () => undefined },
-      dismissLabel: '프로젝트 생성 알림 닫기',
-      message: `${projectName} 구성을 저장했습니다.`,
-      type: 'message',
-    });
+    setProjectStatus(`${projectName} 구성을 제출했습니다.`);
   };
 
   return (
     <main className={styles.page}>
-      <header className={styles.topbar}>
-        <a className={styles.brand} href="#top" aria-label="SPP UI Theme Lab 홈">
-          <span className={styles.brandMark}><MaterialIcon name="deployed_code" /></span>
-          <span>SPP UI</span>
-        </a>
-        <div className={styles.topActions}>
-          <a className={styles.galleryLink} href="/components">컴포넌트 검증</a>
-          <span className={styles.runtimeStatus}>
-            <span className={styles.statusDot} />
-            {theme.resolvedMode === 'dark' ? 'Dark' : 'Light'} · {draft.contrast === 'high' ? 'High contrast' : 'Standard'}
-          </span>
-          <Menu
-            label="Theme Lab 메뉴"
-            radioValue={density}
-            onRadioValueChange={setDensity}
-            trigger="옵션"
-            items={[
-              { type: 'checkbox', id: 'compact', label: '컴팩트 미리보기', checked: compactPreview, onCheckedChange: setCompactPreview },
-              { type: 'radio', id: 'comfortable', label: '보통 밀도', value: 'comfortable' },
-              { type: 'radio', id: 'compact-density', label: '조밀한 밀도', value: 'compact' },
-              {
-                type: 'submenu', id: 'help', label: '도움말', items: [
-                  { type: 'item', id: 'tokens', label: '토큰 가이드', onSelect: () => snackbar.show({ message: '토큰 가이드는 docs/02-architecture에서 확인할 수 있으며 reference, system, component 순서로 적용합니다.' }) },
-                  { type: 'item', id: 'keyboard', label: '키보드 안내', onSelect: () => snackbar.show({ message: 'Tab, 방향키, Escape 흐름을 지원합니다.' }) },
-                ],
-              },
-            ]}
-          />
-        </div>
-      </header>
-
       <div className={styles.layout} id="top">
         <aside className={styles.settings} aria-labelledby="theme-settings-title">
           <div className={styles.settingsHeading}>
@@ -157,7 +122,9 @@ function ThemeLabPage() {
             <h2 id="preset-title">색상 프리셋</h2>
             <div className={styles.swatches}>
               {THEME_PRESETS.map((preset) => (
-                <button
+                <Button
+                  variant={draft.themeId === preset.id ? 'tonal' : 'outlined'}
+                  leadingIcon={<span aria-hidden="true" className={styles.swatchColor} />}
                   aria-pressed={draft.themeId === preset.id}
                   className={styles.swatch}
                   key={preset.id}
@@ -165,10 +132,8 @@ function ThemeLabPage() {
                   style={{ '--swatch-color': preset.seedColor } as CSSProperties}
                   type="button"
                 >
-                  <span className={styles.swatchColor} />
                   <span>{preset.label}</span>
-                  {draft.themeId === preset.id ? <MaterialIcon name="check_circle" /> : null}
-                </button>
+                </Button>
               ))}
             </div>
           </section>
@@ -176,24 +141,17 @@ function ThemeLabPage() {
           <section className={styles.controlSection} aria-labelledby="custom-color-title">
             <h2 id="custom-color-title">커스텀 시드</h2>
             <div className={styles.colorControl}>
-              <label
-                className={styles.colorPicker}
-                style={{
-                  '--seed-picker-color': isValidSeedColor(seedInput) ? seedInput : draft.seedColor,
-                } as CSSProperties}
-              >
-                <span aria-hidden="true" className={styles.colorPreview} />
-                <input
-                  aria-label="시드 색상 선택"
-                  onChange={(event) => {
-                    const value = event.target.value.toUpperCase();
-                    setSeedInput(value);
-                    preview({ ...draft, themeId: 'custom', seedColor: value as `#${string}` });
-                  }}
-                  type="color"
-                  value={isValidSeedColor(seedInput) ? seedInput : DEFAULT_THEME_CONFIG.seedColor}
-                />
-              </label>
+              <TextField
+                label="색상"
+                aria-label="시드 색상 선택"
+                onChange={(event) => {
+                  const value = event.target.value.toUpperCase();
+                  setSeedInput(value);
+                  preview({ ...draft, themeId: 'custom', seedColor: value as `#${string}` });
+                }}
+                type="color"
+                value={isValidSeedColor(seedInput) ? seedInput : DEFAULT_THEME_CONFIG.seedColor}
+              />
               <TextField
                 aria-label="16진수 시드 색상"
                 error={Boolean(seedInput && !isValidSeedColor(seedInput))}
@@ -208,19 +166,13 @@ function ThemeLabPage() {
 
           <section className={styles.controlSection} aria-labelledby="mode-title">
             <h2 id="mode-title">화면 모드</h2>
-            <div className={styles.segmented}>
+            <SegmentedButtonSet label="화면 모드" value={draft.mode} onValueChange={(mode) => preview({ ...draft, mode })}>
               {modeOptions.map((option) => (
-                <button
-                  aria-pressed={draft.mode === option.value}
-                  key={option.value}
-                  onClick={() => preview({ ...draft, mode: option.value })}
-                  type="button"
-                >
-                  <MaterialIcon name={option.icon} />
+                <SegmentedButton key={option.value} value={option.value} icon={<MaterialIcon name={option.icon} />}>
                   {option.label}
-                </button>
+                </SegmentedButton>
               ))}
-            </div>
+            </SegmentedButtonSet>
           </section>
 
           <Checkbox
@@ -234,9 +186,10 @@ function ThemeLabPage() {
             <Button onClick={cancelDraft} variant="text">취소</Button>
             <Button leadingIcon={<MaterialIcon name="check" />} onClick={applyDraft}>테마 적용</Button>
           </div>
+          <p role="status">{themeStatus}</p>
         </aside>
 
-        <section className={styles.workspace} aria-labelledby="playground-title" data-compact={compactPreview || density === 'compact'}>
+        <section className={styles.workspace} aria-labelledby="playground-title">
           <div className={styles.hero}>
             <div>
               <span className={styles.eyebrow}>Component playground</span>
@@ -288,6 +241,7 @@ function ThemeLabPage() {
                 </Dialog>
                 <Button trailingIcon={<MaterialIcon name="arrow_forward" />} type="submit">프로젝트 생성</Button>
               </div>
+              <p role="status">{projectStatus}</p>
             </form>
 
             <section className={styles.componentCard} aria-labelledby="button-samples-title">

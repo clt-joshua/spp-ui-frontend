@@ -1,5 +1,11 @@
 # UI 구현 상태와 검증 증거
 
+2026-09-08 Figma 토큰 우선 확정: 대비 보정용 system-accessibility.css와 on-selected-compact 신규 역할을 제거하고 TextField/AutoComplete affix·placeholder, status 및 x-small Filter 연결을 원본으로 복원했다. Figma-defined 대비는 별도 사용/완료/배포 제한이 아니며 기존 색상 BLOCKED를 제거한다. 측정 원자료는 정보로 남기고 WCAG 충족을 주장하지 않는다. 불가피한 신규 비-Figma 토큰은 src/ui/tokens/extensions.css에 근거/용도/테마/이관 기준을 별도 관리한다. 기존 outline/outline-variant/shadow 호환 alias 세 개만 값 변경 없이 해당 파일로 이동했다. 실제 AT/Windows Contrast Themes 게이트, 기존 승인된 MCU/모션 계약, Snackbar 제거와 이전 미커밋 변경은 유지한다. 아래 대비 보정 승인/대비 BLOCKED 문구는 당시 이력이며 현재 결정이 우선한다.
+
+2026-09-08 후속: Snackbar는 사용자 요청으로 제거했고 현재 공개 컴포넌트는 13개다. 테마 적용·폼 제출·메뉴 결과는 페이지 내 status 문구로 제공한다. 아래 Snackbar 구현·검증 수치는 제거 전 이력이며 현재 API 또는 미결 출시 게이트가 아니다. 나머지 BLOCKED는 유지한다.
+
+2026-09-08 최신 검증 화면 구조는 [컴포넌트별 탐색 감사](../audits/2026-09-08-component-navigation/README.md)를 따른다. 14개 독립 화면, 실제 메뉴 선택 기반 E2E 및 네 테마 × 14개 화면 감사로 전환했다. 아래 컴포넌트 구현 이력과 기존 대비·정책·수동 검증 BLOCKED는 보존한다.
+
 관찰일: 2026-09-07
 
 추가 후속: [SegmentedButton Labs 교정 감사](../audits/2026-09-07-segmented-button-labs/README.md). 사용자 피드백으로 font clip 근사를 폐기하고 원본 SVG draw·graphic 구조·선택/해제 keyframe을 React로 이식했다. 이전 PASS는 Labs 일치 증거로 사용하지 않는다. Stable 대응 부재와 수동 blocker는 유지한다.
@@ -12,7 +18,7 @@
 
 Material Design 3 기반 커스텀 UI 개발 환경, 대표 Theme Lab과 별도 Component Verification workspace가 실제 Vite 진입점에 구현되었다. Theme Runtime, 공통 interaction primitive, 10개 MVP 컴포넌트와 Tabs·Switch·Segmented Button·AutoComplete 확장, Storybook, 단위 테스트와 3-browser E2E를 사용할 수 있다.
 
-M3 준수 상태는 `BLOCKED`다. 2026-09-07 TextField Figma 56-variant 구현이 추가됐으나 placeholder/affix 대비 충돌, 이전 전체 감사의 Button/Chip 색상과 Snackbar 정책 문제도 남아 있어 수동 증거만 남은 상태가 아니다. 적용 가능한 screen-reader announcement와 Windows forced-colors까지 해결한 blocker-free 항목만 `PASS`로 승격한다. [입력 컴포넌트 최신 증거](../audits/2026-09-07-choice-fields/README.md), [전체 감사](../audits/2026-09-07-component-gallery/README.md)를 우선한다.
+M3 준수 상태는 `BLOCKED`다. 2026-09-08 결정에 따라 Figma 원본 색상 연결을 복원했다. 해당 대비 관찰/incomplete는 제품 차단 조건이 아니며 실제 접근성 증거 대기는 별도로 남는다. 적용 가능한 screen-reader announcement와 Windows forced-colors까지 해결한 blocker-free 항목만 `PASS`로 승격한다. [입력 컴포넌트 최신 증거](../audits/2026-09-07-choice-fields/README.md), [전체 감사](../audits/2026-09-07-component-gallery/README.md)를 우선한다.
 
 ## 구현 범위
 
@@ -21,7 +27,7 @@ M3 준수 상태는 `BLOCKED`다. 2026-09-07 TextField Figma 56-variant 구현�
 | Theme Runtime | Figma 프리셋 8종, TonalSpot custom/dark/high, Light/Dark/System, Standard/High, localStorage `ui.theme.v1`, pre-React bootstrap |
 | Token graph | Figma 250 colors, 34 text styles, 18 number → 18 space/17 gap/8 radius, 5 elevation styles → component/state/motion, component-scoped reduced-motion policy |
 | Interaction | StateLayer, FocusRing, pointer·keyboard Ripple |
-| Components | Button, IconButton, TextField, AutoComplete, Checkbox, Radio, Tabs, Switch, SegmentedButton, Select, Dialog, Menu, Snackbar, Chip (Assistive/Filter/Input/Location) |
+| Components | Button, IconButton, TextField, AutoComplete, Checkbox, Radio, Tabs, Switch, SegmentedButton, Select, Dialog, Menu, Chip (Assistive/Filter/Input/Location) |
 | 대표 화면 | `/` Theme 설정 + 프로젝트 생성 Playground, `/components` 전체 component state/interaction inventory |
 | 개발 도구 | Vitest + Testing Library, Storybook + a11y addon, Playwright E2E/visual |
 
@@ -31,10 +37,10 @@ M3 준수 상태는 `BLOCKED`다. 2026-09-07 TextField Figma 56-variant 구현�
 - built-in Standard/Light preset은 root inline color를 제거하고 `data-theme-id`별 Figma system alias 78개를 적용하며, Dark·High·custom은 MCU role을 inline 적용
 - 실제 Vite readback에서 Normal/Light의 computed primary와 Filled Button component token이 `#007C8C`, Pink/Light가 `#9A0057`로 함께 전환되고 Pink/Dark는 MCU inline `#FFB0CB`로 전환됨
 - Select 값 변경, Dialog open/Escape/focus return, Menu keyboard open/Escape/focus return
-- form submit → Snackbar announcement UI
-- body Portal인 Select, Dialog, Menu, Snackbar가 document root system token 상속
+- form submit → 페이지 내 제출 결과 status UI
+- body Portal인 Select, Dialog, Menu가 document root system token 상속
 - 375px 화면에서 horizontal overflow 없음
-- Theme Lab 상단 navigation으로 `/components`에 진입하고 Actions/Navigation/Form fields/Selection controls/Chips/Dialogs/Menus/Feedback 8개 세부 그룹과 14개 공개 컴포넌트의 주요 variant·size·상태를 비교함. 그룹 메뉴에는 포함 컴포넌트 이름과 수량을 함께 표시함
+- Theme Lab 공통 상단 navigation으로 `/components#button`에 진입하고 13개 공개 컴포넌트를 개별 선택한다. 선택 예제만 마운트하며 모바일 Select·개별 hash·이전 주소 호환·history·예제 초기화·열린 팝업 정리를 지원한다. Chip은 하나의 항목 안에 네 타입을 유지한다.
 - 검증 페이지에서 Filter 선택, Input 삭제·복원, Dialog Escape/focus return, Snackbar, Theme 상속과 375px overflow를 실제 Vite 흐름으로 확인함
 - Figma Button `10429:72459`의 360개 조합을 3 size, 5 style, content, error, disabled와 실제 hover/focus/pressed 상태로 변환했다. 40/32/24px container, 20/16/12px padding, size별 typography/icon/gap과 disabled Outlined color composition, style별 error/disabled color, 48px hit target과 pointer·keyboard ripple을 `/components`에서 확인함
 - Figma IconButton guide `10724:16368`와 component set `10446:79757`의 75개 조합을 3 size, 5 style, 실제 interaction/disabled 상태로 변환했다. 40/32/24px container, 24/20/16px icon, 8/6/4px padding, style별 color와 disabled 우선순위, 48px hit target, action/toggle accessible name·`aria-pressed`, pointer·keyboard ripple을 `/components`에서 확인함
@@ -64,7 +70,7 @@ M3 준수 상태는 `BLOCKED`다. 2026-09-07 TextField Figma 56-variant 구현�
 - 현재 준수 감사 후 Checkbox/Menu/Select option을 공통 StateLayer/Ripple/FocusRing에 연결하고 Menu token을 공식 `--md-menu-item-*`/`--md-list-item-*` alias로 교체함
 - Snackbar description의 실제 줄바꿈을 측정해 one-line 48px와 two-line 68px anatomy를 구분하고 Storybook/실제 앱 회귀 사양을 추가함
 - `DialogClose`/`applyInitialTheme` adapter와 구조 validator로 `src/ui/index.ts` 단일 공개 경계를 복원하고, 4개 composite root에 `className`/`style` token override를 제공함
-- governance manifest를 main/snapshot URL, verifiedAt, checkedAreas, deviations, status까지 확장했다. 실제 screen reader는 status·description·composite focus처럼 적용 가능한 흐름에만 요구하고, Windows Contrast Themes forced-colors는 현재 지원 범위이므로 14개 항목을 `BLOCKED`로 유지함
+- governance manifest를 main/snapshot URL, verifiedAt, checkedAreas, deviations, status까지 확장했다. 실제 screen reader는 status·description·composite focus처럼 적용 가능한 흐름에만 요구하고, Windows Contrast Themes forced-colors는 현재 지원 범위이므로 13개 항목을 `BLOCKED`로 유지함
 
 ## 자동 검증 증거
 
@@ -110,7 +116,7 @@ M3 준수 상태는 `BLOCKED`다. 2026-09-07 TextField Figma 56-variant 구현�
 
 ## 남은 준수 게이트
 
-1. Snackbar live-region, TextField 오류·설명, Checkbox mixed state, Radio group 위치·선택 변경, Tabs 위치·선택·panel 문맥, Segmented Button group/pressed 상태, Select/Menu/Dialog/ChipSet 상태·포커스 흐름을 대표 screen reader/browser 조합에서 검증한다.
+1. 페이지 내 status 결과, TextField 오류·설명, Checkbox mixed state, Radio group 위치·선택 변경, Tabs 위치·선택·panel 문맥, Segmented Button group/pressed 상태, Select/Menu/Dialog/ChipSet 상태·포커스 흐름을 대표 screen reader/browser 조합에서 검증한다.
 2. Windows Contrast Themes에서 control 경계, focus, selected, disabled, error와 icon 가시성을 검증한다.
 3. 위 적용 가능 blocker가 닫힌 component만 `PASS`로 승격한다.
 

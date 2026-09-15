@@ -1,12 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
+  FIGMA_TOKEN_POLICY,
   M3_CHECKED_AREAS,
   M3_COMPONENT_MANIFEST,
 } from '../../src/ui/compliance/m3-component-manifest';
 
 describe('M3 compliance manifest', () => {
   it('records the complete governance schema without claiming premature PASS', () => {
-    expect(M3_COMPONENT_MANIFEST).toHaveLength(14);
+    expect(M3_COMPONENT_MANIFEST).toHaveLength(13);
+    expect(FIGMA_TOKEN_POLICY.contrastBlocksFigmaColors).toBe(false);
 
     for (const record of M3_COMPONENT_MANIFEST) {
       expect(record.m3WebUrl).toBe('https://m3.material.io/develop/web');
@@ -19,7 +21,8 @@ describe('M3 compliance manifest', () => {
       } else if (record.component === 'IconButton') {
         expect(record.deviations).toHaveLength(3);
       } else if (record.component === 'Checkbox') {
-        expect(record.deviations).toHaveLength(2);
+        expect(record.deviations).toHaveLength(3);
+        expect(record.deviations).toContainEqual(expect.stringContaining('anchors scaling at the SVG check tip'));
       } else if (record.component === 'Radio') {
         expect(record.deviations).toHaveLength(3);
       } else if (record.component === 'Tabs') {
@@ -38,9 +41,10 @@ describe('M3 compliance manifest', () => {
         expect(record.deviations).toHaveLength(4);
         expect(record.deviations.join(' ')).toContain('Figma 10724:14659');
         expect(record.deviations.join(' ')).toContain('67ms delay + 83ms');
-        expect(record.deviations.join(' ')).toContain('empty unfocused affixes remain hidden');
-        expect(record.blockers.join(' ')).toContain('M3_WEB_SPEC_CONFLICT');
-        expect(record.blockers.join(' ')).toContain('placeholder and affix');
+        expect(record.deviations.join(' ')).toContain('outgoing placeholder/affixes stop painting immediately');
+        expect(record.deviations.join(' ')).toContain('interpolates actual Figma typography');
+        expect(record.blockers.join(' ')).not.toContain('M3_WEB_SPEC_CONFLICT');
+        expect(record.blockers.join(' ')).not.toContain('contrast checks');
       } else if (record.component === 'AutoComplete') {
         expect(record.materialWebReferenceStatus).toBe('unavailable');
         expect(record.deviations).toHaveLength(2);
@@ -68,7 +72,7 @@ describe('M3 compliance manifest', () => {
     expect(M3_COMPONENT_MANIFEST.find((record) => record.component === 'Chip'))
       .toMatchObject({
         materialWebReferenceStatus: 'available',
-        verifiedAt: '2026-09-02',
+        verifiedAt: '2026-09-08',
       });
     expect(M3_COMPONENT_MANIFEST.find((record) => record.component === 'Button'))
       .toMatchObject({

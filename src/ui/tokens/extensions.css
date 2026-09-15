@@ -1,0 +1,17 @@
+/*
+ * Non-Figma token extensions only. Never override a Figma-defined value here.
+ * Before adding a token, document source, reason existing tokens cannot serve,
+ * consumers, theme behavior and removal/migration criteria in the token contract.
+ * A new token is not permission to replace a defined Figma color for contrast.
+ */
+:root {
+  /* Existing Stable M3 naming adapters, moved unchanged from system.css.
+   * Consumers: outlined controls and elevation. Source: Figma outline-high,
+   * outline-low and reference black. Required because M3 uses different names.
+   * Mode: follows the referenced Figma roles; no independent color value.
+   * Remove when consumers no longer require the Stable M3 alias names.
+   */
+  --md-sys-color-outline: var(--md-sys-color-outline-high);
+  --md-sys-color-outline-variant: var(--md-sys-color-outline-low);
+  --md-sys-color-shadow: var(--md-ref-palette-black);
+}

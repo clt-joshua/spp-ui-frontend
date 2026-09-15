@@ -1,11 +1,13 @@
+import { selectComponent } from './gallery-navigation';
 import axeCore from 'axe-core';
 import { expect, test } from '@playwright/test';
 
-test('Theme Lab이 self-hosted M3 제품 흐름을 제공한다', async ({ page }) => {
+test('Theme Lab이 self-hosted M3 제품 흐름을 제공한다', async ({ page, baseURL }) => {
   const externalRequests = new Set<string>();
+  const appOrigin = new URL(baseURL!).origin;
   page.on('request', (request) => {
     const url = new URL(request.url());
-    if (url.origin !== 'http://127.0.0.1:4173') externalRequests.add(url.origin);
+    if (url.origin !== appOrigin) externalRequests.add(url.origin);
   });
 
   await page.goto('/');
@@ -39,23 +41,11 @@ test('별도 컴포넌트 검증 페이지에서 전체 inventory와 실제 상�
   await page.goto('/');
   await page.getByRole('link', { name: '컴포넌트 검증' }).click();
 
-  await expect(page).toHaveURL(/\/components$/u);
+  await expect(page).toHaveURL(/\/components#button$/u);
   await expect(page).toHaveTitle('SPP UI Component Verification');
   await expect(page.getByRole('heading', { level: 1, name: '컴포넌트 검증' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Actions' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Navigation' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Form fields' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Selection controls' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Chips' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Dialogs' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Menus' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: 'Feedback' })).toBeVisible();
-  await expect(page.getByText('Components', { exact: true }).locator('..').locator('strong')).toHaveText('14');
-  await expect(page.getByText('Groups', { exact: true }).locator('..').locator('strong')).toHaveText('8');
-  await expect(page.getByRole('navigation', { name: '컴포넌트 그룹' }).getByRole('link')).toHaveCount(8);
-  await expect(page.locator('#inputs')).toHaveCount(1);
-  await expect(page.locator('#overlays')).toHaveCount(1);
-
+  await expect(page.getByRole('navigation', { name: '컴포넌트 목록' }).getByRole('link')).toHaveCount(13);
+  await selectComponent(page, 'chip');
   const filterSet = page.getByRole('toolbar', { name: 'large Filter states' });
   const filter = filterSet.getByRole('button', { name: 'Label' }).first();
   await expect(filter).toHaveAttribute('aria-pressed', 'false');
@@ -73,21 +63,19 @@ test('별도 컴포넌트 검증 페이지에서 전체 inventory와 실제 상�
   await expect(location).toContainText('X6.058m');
   await expect(location.locator('button')).toHaveCount(0);
 
+  await selectComponent(page, 'dialog');
   const dialogTrigger = page.getByRole('button', { name: '기본 Dialog 열기' });
   await dialogTrigger.click();
   await expect(page.getByRole('dialog', { name: '기본 Dialog' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialogTrigger).toBeFocused();
 
-  await page.getByRole('button', { name: 'Success' }).click();
-  await expect(page.getByText('변경 사항을 저장했습니다.')).toBeVisible();
-
   await page.setViewportSize({ width: 375, height: 812 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
 });
 
 test('Tabs는 Figma anatomy와 MD3 manual activation 및 panel 연결을 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#tabs');
 
   const tablist = page.getByRole('tablist', { name: '디자인 시스템 문서' });
   const overview = tablist.getByRole('tab', { name: 'Overview' });
@@ -189,7 +177,7 @@ test('Tabs는 Figma anatomy와 MD3 manual activation 및 panel 연결을 유지�
 });
 
 test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#segmented-button');
 
   const single = page.getByRole('group', { name: '일정 보기 범위' });
   const day = single.getByRole('button', { name: 'Day' });
@@ -270,6 +258,7 @@ test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유�
   await page.getByRole('button', { name: '테마 적용' }).click();
   await page.getByRole('link', { name: '컴포넌트 검증' }).click();
 
+  await selectComponent(page, 'segmented-button');
   const darkDay = page.getByRole('group', { name: '일정 보기 범위' })
     .getByRole('button', { name: 'Day' });
   const darkDisabledSelected = page.getByRole('group', { name: '비활성 선택 상태' })
@@ -312,7 +301,7 @@ test('Segmented Button은 Figma anatomy와 MD3 single/multiple selection을 유�
 });
 
 test('Switch는 Figma small anatomy와 MD3 binary form 동작을 함께 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#switch');
 
   const selected = page.getByRole('switch', { name: 'selected switch', exact: true });
   const control = page.getByRole('switch', { name: 'enabled switch', exact: true });
@@ -373,7 +362,7 @@ test('Switch는 Figma small anatomy와 MD3 binary form 동작을 함께 유지�
 });
 
 test('Button은 Figma 360-variant 축과 MD3 실제 interaction을 함께 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#button');
 
   const sizeCases = [
     { size: 'large', height: '40px', padding: '20px', gap: '8px', icon: '18px', font: '14px', line: '20px' },
@@ -383,7 +372,7 @@ test('Button은 Figma 360-variant 축과 MD3 실제 interaction을 함께 유지
 
   for (const sample of sizeCases) {
     const sizeButtons = page.locator(
-      '#actions button[data-button-variant][data-size="' + sample.size + '"]',
+      '#button button[data-button-variant][data-size="' + sample.size + '"]',
     );
     await expect(sizeButtons).toHaveCount(34);
 
@@ -485,7 +474,7 @@ test('Button은 Figma 360-variant 축과 MD3 실제 interaction을 함께 유지
 });
 
 test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#icon-button');
 
   const geometryCases = [
     { size: 'large', container: 40, icon: 24, padding: '8px' },
@@ -493,7 +482,7 @@ test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 �
     { size: 'small', container: 24, icon: 16, padding: '4px' },
   ] as const;
 
-  await expect(page.locator('#actions button[data-icon-button-variant]')).toHaveCount(60);
+  await expect(page.locator('#icon-button button[data-icon-button-variant]')).toHaveCount(60);
 
   for (const sample of geometryCases) {
     const button = page.getByRole('button', {
@@ -587,7 +576,7 @@ test('IconButton은 Figma 75-variant 축과 MD3 action/toggle 동작을 함께 �
 });
 
 test('Checkbox는 Figma 90-variant geometry와 MD3 native interaction을 함께 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#checkbox');
 
   const geometryCases = [
     { label: 'large Checked', size: 'large', control: 16, icon: 24, stateLayer: 36 },
@@ -598,9 +587,13 @@ test('Checkbox는 Figma 90-variant geometry와 MD3 native interaction을 함께 
   for (const sample of geometryCases) {
     const checkbox = page.getByRole('checkbox', { name: sample.label, exact: true });
     await expect(checkbox).toHaveAttribute('data-size', sample.size);
-    const controlBox = await checkbox.boundingBox();
-    const iconBox = await checkbox.locator('svg').boundingBox();
-    const stateLayerBox = await checkbox.locator('[data-slot="state-layer"]').boundingBox();
+    // Read related geometry in one frame; font loading can move the whole row
+    // between separate protocol calls without changing its internal alignment.
+    const [controlBox, iconBox, stateLayerBox] = await checkbox.evaluate((control) => [
+      control.getBoundingClientRect().toJSON(),
+      control.querySelector('svg')!.getBoundingClientRect().toJSON(),
+      control.querySelector('[data-slot="state-layer"]')!.getBoundingClientRect().toJSON(),
+    ]);
     expect(controlBox).not.toBeNull();
     expect(iconBox).not.toBeNull();
     expect(stateLayerBox).not.toBeNull();
@@ -655,7 +648,7 @@ test('Checkbox는 Figma 90-variant geometry와 MD3 native interaction을 함께 
 });
 
 test('Radio는 Figma 30-variant geometry와 MD3 단일 선택 그룹 동작을 함께 유지한다', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#radio');
 
   const geometryCases = [
     { size: 'large', icon: 24, stateLayer: 36 },
@@ -663,7 +656,7 @@ test('Radio는 Figma 30-variant geometry와 MD3 단일 선택 그룹 동작을 �
     { size: 'small', icon: 16, stateLayer: 24 },
   ] as const;
 
-  await expect(page.locator('#selection-controls [role="radio"]')).toHaveCount(12);
+  await expect(page.locator('#radio [role="radio"]')).toHaveCount(12);
 
   for (const sample of geometryCases) {
     const radio = page.getByRole('radio', {
@@ -795,8 +788,8 @@ test('Assistive, Filter, Input, Location Chip이 Figma token과 M3 동작을 함
   await expect(location).toHaveCSS('line-height', '16px');
   await expect(location.locator('button')).toHaveCount(0);
 
-  await page.goto('/components');
-  const galleryLocation = page.locator('#chips [data-chip-type="location"]');
+  await page.goto('/components#chip');
+  const galleryLocation = page.locator('#chip [data-chip-type="location"]');
   const galleryLocationBox = await galleryLocation.boundingBox();
   expect(galleryLocationBox).not.toBeNull();
   expect(galleryLocationBox!.width).toBeLessThan(100);
@@ -842,7 +835,7 @@ test('테마 preview, 저장, reload 흐름이 document root까지 이어진다'
   expect(await page.locator('html').evaluate((element) => getComputedStyle(element).getPropertyValue('--md-sys-color-primary'))).toBe(previewPrimary);
 });
 
-test('폼, Select, Dialog, Snackbar의 대표 keyboard 경로가 동작한다', async ({ page }) => {
+test('폼, Select, Dialog의 대표 keyboard 경로가 동작한다', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('combobox', { name: '대상 플랫폼' }).click();
   await page.getByRole('option', { name: 'Desktop application' }).click();
@@ -857,12 +850,14 @@ test('폼, Select, Dialog, Snackbar의 대표 keyboard 경로가 동작한다', 
   await expect(page.getByRole('button', { name: '구성 검토' })).toBeFocused();
 
   await page.getByRole('button', { name: '프로젝트 생성' }).click();
-  await expect(page.getByText('새 디자인 시스템 구성을 저장했습니다.')).toBeVisible();
+  await expect(page.getByText('새 디자인 시스템 구성을 제출했습니다.')).toBeVisible();
 
-  const menuTrigger = page.getByRole('button', { name: 'Theme Lab 메뉴' });
+  await page.getByRole('navigation', { name: '주요 페이지' }).getByRole('link', { name: '컴포넌트 검증' }).click();
+  await selectComponent(page, 'menu');
+  const menuTrigger = page.getByRole('button', { name: '검증용 Menu' });
   await menuTrigger.focus();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('menuitemcheckbox', { name: '컴팩트 미리보기' })).toBeVisible();
+  await expect(page.getByRole('menuitemcheckbox', { name: '미리보기 표시' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(menuTrigger).toBeFocused();
 });
@@ -872,11 +867,10 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await page.emulateMedia({ reducedMotion: 'reduce' });
 
   const seedInput = page.locator('input[type="color"]');
-  const seedPicker = seedInput.locator('..');
-  const seedPreview = seedPicker.locator('span');
-  await expect(seedPicker).toHaveCSS('width', '56px');
-  await expect(seedPicker).toHaveCSS('height', '56px');
-  await expect(seedPreview).toHaveCSS('background-color', 'rgb(0, 124, 140)');
+  const seedPicker = seedInput.locator('xpath=ancestor::*[@data-slot="text-field-control"]');
+  await expect(seedPicker).toHaveCSS('height', '48px');
+  // Native color inputs serialize HEX casing differently across engines.
+  await expect(seedInput).toHaveValue(/^#007c8c$/i);
 
   const textField = page.locator('input[aria-label="16진수 시드 색상"]');
   const textFieldControl = textField.locator('xpath=ancestor::*[@data-slot="text-field-control"]');
@@ -940,7 +934,9 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   await expect(projectInput).toHaveCSS('padding-left', '8px');
   const selectBox = await select.boundingBox();
   const selectValueBox = await select.getByText('Web application', { exact: true }).boundingBox();
-  expect(selectBox?.height).toBe(56);
+  await expect(select).toHaveCSS('height', '56px');
+  // Firefox DOMRect can serialize 56px as 56.00001525878906px.
+  expect(selectBox?.height).toBeCloseTo(56, 3);
   expect(selectValueBox).not.toBeNull();
   expect(Math.abs(
     selectBox!.y + selectBox!.height / 2
@@ -1202,7 +1198,7 @@ test('Select는 하단 공간이 부족하면 최종 상향 배치 후 anchor를
   await expect(listbox).toBeHidden();
 });
 
-test('Dialog, Menu, Snackbar의 MD3 typography와 container 값이 유지된다', async ({ page }) => {
+test('Dialog, Menu의 MD3 typography와 container 값이 유지된다', async ({ page }) => {
   await page.goto('/');
 
   await page.getByRole('button', { name: '구성 검토' }).click();
@@ -1214,13 +1210,14 @@ test('Dialog, Menu, Snackbar의 MD3 typography와 container 값이 유지된다'
   await expect(dialogDescription).toHaveCSS('line-height', '20px');
   await page.keyboard.press('Escape');
 
-  await page.getByRole('button', { name: 'Theme Lab 메뉴' }).click();
+  await page.goto('/components#menu');
+  await page.getByRole('button', { name: '검증용 Menu' }).click();
   const menuPopup = page.getByRole('menu');
-  const menuItem = page.getByRole('menuitemcheckbox', { name: '컴팩트 미리보기' });
+  const menuItem = page.getByRole('menuitemcheckbox', { name: '미리보기 표시' });
   await expect(menuItem).toHaveCSS('height', '48px');
   await expect(menuItem).toHaveCSS('font-size', '16px');
   await expect(menuItem).toHaveCSS('line-height', '24px');
-  const submenuIcon = page.getByRole('menuitem', { name: '도움말' }).locator('.material-icons');
+  const submenuIcon = page.getByRole('menuitem', { name: '더보기' }).locator('.material-icons');
   expect(await menuItem.evaluate((element) => (
     getComputedStyle(element).getPropertyValue('--md-list-item-trailing-icon-size').trim()
   ))).toBe('1.5rem');
@@ -1234,33 +1231,7 @@ test('Dialog, Menu, Snackbar의 MD3 typography와 container 값이 유지된다'
   await page.mouse.up();
   await page.keyboard.press('Escape');
 
-  await page.getByRole('button', { name: '프로젝트 생성' }).click();
-  const snackbarText = page.getByText('새 디자인 시스템 구성을 저장했습니다.');
-  const snackbar = snackbarText.locator('..').locator('..');
-  await expect(snackbarText).toHaveCSS('margin', '0px');
-  await expect(snackbarText).toHaveCSS('font-size', '14px');
-  await expect(snackbarText).toHaveCSS('line-height', '20px');
-  await expect(snackbar).toHaveCSS('height', '48px');
-});
 
-test('Snackbar는 실제 앱 흐름에서 두 줄 container token을 사용한다', async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto('/');
-
-  await page.getByRole('button', { name: 'Theme Lab 메뉴' }).click();
-  const helpItem = page.getByRole('menuitem', { name: '도움말' });
-  await helpItem.focus();
-  await page.keyboard.press('ArrowRight');
-  const tokenGuide = page.getByRole('menuitem', { name: '토큰 가이드' });
-  await expect(tokenGuide).toBeVisible();
-  await tokenGuide.click();
-
-  const snackbarText = page.getByText(/reference, system, component/);
-  const snackbar = snackbarText.locator('..').locator('..');
-  await expect(snackbar).toHaveAttribute('data-multiline', 'true');
-  await expect(snackbar).toHaveCSS('min-height', '68px');
-  await expect.poll(async () => (await snackbar.boundingBox())!.height)
-    .toBeGreaterThanOrEqual(68);
 });
 
 test('중대 접근성 위반과 좁은 viewport overflow가 없다', async ({ page }) => {

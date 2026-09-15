@@ -80,6 +80,7 @@ export function SegmentedButtonSet<Value extends string = string>(
     className,
     defaultValue,
     label,
+    onValueChange,
     selectionMode = 'single',
     style,
     value,
@@ -112,7 +113,7 @@ export function SegmentedButtonSet<Value extends string = string>(
           ? selectedMultiple.filter((item) => item !== nextValue)
           : [...selectedMultiple, nextValue];
         if (!controlled) setUncontrolledMultiple(nextSelected);
-        (props as MultiSelectSegmentedButtonSetProps<Value>).onValueChange?.(
+        (onValueChange as MultiSelectSegmentedButtonSetProps<Value>['onValueChange'])?.(
           nextSelected,
           { index, selected: !selected, value: nextValue },
         );
@@ -122,7 +123,7 @@ export function SegmentedButtonSet<Value extends string = string>(
       // The accepted MD3 single-select contract cannot clear its active segment.
       if (selectedSingle === nextValue) return;
       if (!controlled) setUncontrolledSingle(nextValue);
-      (props as SingleSelectSegmentedButtonSetProps<Value>).onValueChange?.(
+      (onValueChange as SingleSelectSegmentedButtonSetProps<Value>['onValueChange'])?.(
         nextValue,
         { index, selected: true, value: nextValue },
       );

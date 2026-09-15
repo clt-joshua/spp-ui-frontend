@@ -10,8 +10,10 @@
 ## Non-negotiable project boundaries
 
 - Current user requirements outrank every repository artifact.
+- Figma-defined token values and bindings take priority over contrast-driven recoloring. Do not block use, completion, or release solely on contrast of Figma-defined colors; this is not a WCAG conformance claim.
+- Reuse Figma tokens first. Unavoidable new non-Figma tokens belong in `src/ui/tokens/extensions.css` with source, necessity, consumers, theme behavior and migration criteria; do not mix them into Figma definitions or override defined values there.
 - Vite is the reference app host on Node.js 24; `src/ui/**` must remain usable without Vite-specific runtime APIs.
-- Stable M3 Web is the visual and component authority.
+- Stable M3 Web governs component behavior; Figma-defined visual token values and bindings follow the explicit Figma-first product policy.
 - Base UI is an internal behavior primitive only.
 - Do not install or import `@material/web`, `lit`, Material Web Labs, or M3 Expressive runtime code for the MVP.
 - Do not import `@base-ui/react` outside `src/ui/**`.

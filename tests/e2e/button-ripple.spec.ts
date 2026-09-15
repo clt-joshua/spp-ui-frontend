@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test, type Locator, type Page } from '@playwright/test';
 
 async function holdAtEdge(page: Page, button: Locator) {
@@ -67,6 +68,7 @@ for (const theme of [
       await expect(wave).toHaveCount(0);
     }
 
+    await selectComponent(page, 'icon-button');
     for (const [size, container, icon, padding] of [
       ['large', 40, 24, 8], ['medium', 32, 20, 6], ['small', 24, 16, 4],
     ] as const) {
@@ -84,6 +86,7 @@ for (const theme of [
     }
 
     for (const name of ['large filled text', 'large filled action']) {
+      await selectComponent(page, name.endsWith('text') ? 'button' : 'icon-button');
       const button = page.getByRole('button', { name, exact: true });
       await button.focus();
       await button.press('Space');
@@ -97,9 +100,12 @@ for (const theme of [
       expect(centered).toBe(true);
       await expect(wave).toHaveCount(0);
     }
+    for (const component of ['button', 'icon-button']) {
+      await selectComponent(page, component);
     for (const disabled of await page.getByRole('button', { name: 'large filled disabled', exact: true }).all()) {
       await disabled.click({ force: true });
       await expect(disabled.locator('[data-slot="ripple"] > span')).toHaveCount(0);
+    }
     }
   });
 }

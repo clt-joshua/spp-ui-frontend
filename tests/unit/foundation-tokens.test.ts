@@ -137,7 +137,6 @@ describe('Figma spatial and elevation foundation tokens', () => {
       '--md-select-text-field-vertical-space: var(--md-sys-space-100);',
       '--md-menu-item-content-gap: var(--md-sys-gap-200);',
       '--md-dialog-content-gap: var(--md-sys-gap-200);',
-      '--md-snackbar-content-gap: var(--md-sys-gap-100);',
       '--md-chip-large-container-height: var(--md-sys-space-400);',
       '--md-chip-small-container-height: var(--md-sys-space-300);',
       '--md-chip-extra-small-container-height: var(--md-sys-space-250);',
@@ -161,13 +160,11 @@ describe('Figma spatial and elevation foundation tokens', () => {
       '--md-outlined-select-text-field-container-shape: var(--md-sys-shape-corner-extra-small);',
       '--md-menu-container-shape: var(--md-sys-shape-corner-extra-small);',
       '--md-dialog-container-shape: var(--md-sys-shape-corner-extra-large);',
-      '--md-snackbar-container-shape: var(--md-sys-shape-corner-extra-small);',
       '--md-assistive-chip-container-shape: var(--md-sys-shape-corner-small);',
       '--md-location-chip-container-shape: var(--md-sys-shape-corner-extra-small);',
       '--md-elevated-button-container-elevation: var(--md-sys-elevation-level1);',
       '--md-menu-container-elevation: var(--md-sys-elevation-level2);',
       '--md-dialog-container-elevation: var(--md-sys-elevation-level3);',
-      '--md-snackbar-container-elevation: var(--md-sys-elevation-level3);',
     ];
 
     for (const mapping of expectedMappings) expect(componentCss).toContain(mapping);
@@ -181,7 +178,6 @@ describe('Figma spatial and elevation foundation tokens', () => {
       'FieldOutline/FieldDropdown.module.css',
       'Menu/Menu.module.css',
       'Dialog/Dialog.module.css',
-      'Snackbar/Snackbar.module.css',
       'Chip/Chip.module.css',
     ];
     for (const file of componentModules) {

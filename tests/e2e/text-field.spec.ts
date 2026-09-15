@@ -1,3 +1,4 @@
+import { selectComponent } from './gallery-navigation';
 import { expect, test, type Locator } from '@playwright/test';
 
 const fieldRoot = (input: Locator) => input.locator('xpath=ancestor::*[@data-text-field-variant]');
@@ -9,7 +10,7 @@ const outline = (input: Locator, pseudo = '::before') => control(input).locator(
 
 for (const size of ['large', 'small'] as const) {
   test(`TextField ${size} Figma variants use actual hover/focus and size-specific colors`, async ({ page, browserName }, testInfo) => {
-    await page.goto('/components#form-fields');
+    await page.goto('/components#text-field');
     await page.evaluate(() => document.fonts.ready);
     const matrix = page.getByRole('region', { name: `TextField ${size} matrix` });
     await expect(matrix.locator('input')).toHaveCount(16);
@@ -34,7 +35,7 @@ for (const size of ['large', 'small'] as const) {
         if (content === 'populated') await label.locator('..').click();
         else await control(input).locator('[data-slot="resting-label"]').click();
         await expect(input).toBeFocused();
-        await page.getByRole('heading', { name: 'Form fields', exact: true }).click();
+        await page.getByRole('heading', { name: 'TextField', exact: true }).click();
         expect((await outline(input)).width).toBe('1px');
         const labelColor = await label.evaluate((element) => getComputedStyle(element).color);
         await control(input).hover();
@@ -49,7 +50,7 @@ for (const size of ['large', 'small'] as const) {
         expect(iconBox!.x - box!.x).toBe(size === 'large' ? 16 : 8);
         const error = page.getByRole(type === 'text' ? 'textbox' : 'spinbutton', { name: `${size} ${type} ${content} error`, exact: true });
         const errorLabel = control(error).locator('[data-slot="floating-label"]');
-        await page.getByRole('heading', { name: 'Form fields', exact: true }).click();
+        await page.getByRole('heading', { name: 'TextField', exact: true }).click();
         const emptyErrorColor = await errorLabel.evaluate((element) => getComputedStyle(element).color);
         expect(emptyErrorColor === labelColor).toBe(size === 'small' || content === 'empty');
         await error.focus();
@@ -75,7 +76,7 @@ for (const size of ['large', 'small'] as const) {
 test('TextField real form supports keyboard clear, validation, number, password, multiline and reset', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: '컴포넌트 검증' }).click();
-  await page.getByRole('link', { name: 'Form fields TextField · Select · AutoComplete' }).click();
+  await selectComponent(page, 'text-field');
   const name = page.getByRole('textbox', { name: '검증 프로젝트 이름', exact: true });
   await name.focus();
   await page.keyboard.press('Tab');
@@ -114,7 +115,7 @@ test('TextField real form supports keyboard clear, validation, number, password,
 });
 
 test('outlined TextField floats on focus/value and returns after clearing and blur', async ({ page }) => {
-  await page.goto('/components');
+  await page.goto('/components#text-field');
   const input = page.getByRole('textbox', { name: '테스트 입력', exact: true });
   await page.getByRole('region', { name: 'TextField 속성 테스트' }).getByRole('button', { name: '빈 값으로 테스트' }).click();
   await expect(control(input).locator('[data-slot="floating-label"]')).toHaveCSS('opacity', '0');
@@ -133,14 +134,14 @@ test('outlined TextField floats on focus/value and returns after clearing and bl
   expect(timing?.duration).toBe(150);
   expect(timing?.easing).toBe('cubic-bezier(0.2, 0, 0, 1)');
   await input.fill('Value');
-  await page.getByRole('heading', { name: 'Form fields', exact: true }).click();
+  await page.getByRole('heading', { name: 'TextField', exact: true }).click();
   await expect(control(input).locator('[data-slot="floating-label"]')).toHaveCSS('opacity', '1');
   await input.focus();
   await page.getByRole('button', { name: '테스트 입력 지우기', exact: true }).click();
   await expect(input).toHaveValue('');
   await expect(input).toBeFocused();
   await expect(control(input).locator('[data-slot="floating-label"]')).toHaveCSS('opacity', '1');
-  await page.getByRole('heading', { name: 'Form fields', exact: true }).click();
+  await page.getByRole('heading', { name: 'TextField', exact: true }).click();
   await expect(control(input).locator('[data-slot="resting-label"]')).toHaveCSS('opacity', '1');
   await expect(control(input).locator('[data-slot="floating-label"]')).toHaveCSS('opacity', '0');
 });
@@ -148,7 +149,7 @@ test('outlined TextField floats on focus/value and returns after clearing and bl
 test.describe('TextField touch density', () => {
   test.use({ hasTouch: true, viewport: { width: 375, height: 812 } });
   test('compact visuals expand into real disjoint 48px input and action targets', async ({ page }) => {
-    await page.goto('/components#form-fields');
+    await page.goto('/components#text-field');
     const small = page.getByRole('textbox', { name: 'small text populated enabled', exact: true });
     await expect(control(small)).toHaveCSS('height', '48px');
     await expect(control(small).locator('[data-slot="field-outline"]')).toHaveCSS('height', '48px');

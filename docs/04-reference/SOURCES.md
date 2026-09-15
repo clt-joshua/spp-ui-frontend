@@ -94,7 +94,7 @@ M3 for Web 페이지의 2026-08-25 표시 내용은 Material Web이 유지보수
 - [Chips](https://m3.material.io/components/chips/overview)
 - [Menus](https://m3.material.io/components/menus/overview)
 - [Dialogs](https://m3.material.io/components/dialogs/overview)
-- [Snackbar](https://m3.material.io/components/snackbar/overview)
+- [Snackbar](https://m3.material.io/components/snackbar/overview) — 2026-09-08 제거된 컴포넌트의 역사적 참조
 
 Select는 Material Web의 공식 Select 문서를 Web 구현 기준으로 사용하고, Text field/Menu 및 관련 M3 foundation 문서로 시각·interaction 의미를 보완한다.
 

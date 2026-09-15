@@ -83,7 +83,7 @@ Component token
 - 같은 collection의 `radius/*` 8개, `gap/*` 17개, `space/*` 18개는 color role과 분리된 mode-invariant system token으로 아래 spatial foundation 계약에 정의한다.
 - 기존 Stable M3 component token을 위한 `outline`, `outline-variant`, `shadow`는 각각 Figma `outline-high`, `outline-low`, opaque black을 참조하는 compatibility alias다. Figma source role 78개와 구분한다.
 - built-in preset의 Standard/Light에서는 document root의 MCU inline color를 제거해 Figma CSS alias가 권위를 갖는다. Figma source에 없는 Dark·High contrast와 custom seed에서는 MCU TonalSpot core role을 inline 적용한다.
-- component CSS는 system token을 selector에서 직접 소비하지 않고 component token으로 한 번 매핑한다. 따라서 built-in preset 전환은 기존 Button, field, Select, Dialog, Menu, Snackbar와 Portal에 동일하게 전파된다.
+- component CSS는 system token을 selector에서 직접 소비하지 않고 component token으로 한 번 매핑한다. 따라서 built-in preset 전환은 기존 Button, field, Select, Dialog, Menu와 Portal에 동일하게 전파된다.
 
 ## Figma spatial foundation
 
@@ -355,7 +355,7 @@ Figma `10724:13951`의 `segmentedButton`은 reference 값을 selector에서 직�
 - typography: `label-large` font/size/line-height/weight/tracking/decoration 6개 전체
 - Expressive spring token은 문서화만 하고 제품 runtime에 연결하지 않는다.
 
-`prefers-reduced-motion`은 system duration 전체를 `0ms`로 바꾸지 않는다. 전역 zeroing은 ripple과 TextField/Checkbox 상태 전환을 제거해 입력 피드백을 잃게 한다. Stable Material Web이 media query로 억제하지 않는 Ripple의 450ms grow·105ms fade-in·225ms 최소 표시·375ms fade-out 및 field/selection 상태 전환은 그대로 유지한다. Dialog/Menu/Snackbar처럼 큰 영역이 이동하는 overlay만 컴포넌트 수준에서 비필수 transform을 제거한다.
+`prefers-reduced-motion`은 system duration 전체를 `0ms`로 바꾸지 않는다. 전역 zeroing은 ripple과 TextField/Checkbox 상태 전환을 제거해 입력 피드백을 잃게 한다. Stable Material Web이 media query로 억제하지 않는 Ripple의 450ms grow·105ms fade-in·225ms 최소 표시·375ms fade-out 및 field/selection 상태 전환은 그대로 유지한다. Dialog/Menu처럼 큰 영역이 이동하는 overlay만 컴포넌트 수준에서 비필수 transform을 제거한다.
 
 ## Theme 적용과 저장
 
@@ -419,3 +419,14 @@ DOM 상태:
 - high contrast에서 주요 on/container 쌍 검증
 - 초기 HTML과 hydration 후 mode 일치
 - 라이브 MCU 또는 spec 업데이트 시 기존 golden 결과의 의도적 migration
+
+## Figma 토큰 우선 정책 (2026-09-08)
+
+- Figma에 정의된 값과 실제 variable/style binding을 먼저 사용한다. 같은 팔레트 안의 다른 step으로 바꾸는 것도 원본 변경이므로 대비를 이유로 임의 보정하지 않는다.
+- 기존 reference → system → component alias 구조는 유지한다. 원본 값을 그대로 전달하는 component alias와 독립적인 신규 디자인 값은 구분한다.
+- 불가피한 신규 비-Figma 토큰은 `src/ui/tokens/extensions.css`에만 정의하고, 근거·기존 토큰으로 해결할 수 없는 이유·소비자·테마별 동작·폐기/원본 편입 조건을 기록한다. 이 파일에서도 Figma 정의 값을 재정의할 수 없다. 필요 없는 토큰은 만들지 않는다.
+- 기존 M3 명칭 호환용 outline/outline-variant/shadow 세 alias를 값 변경 없이 extensions 파일로 분리했다. 이번 작업에서 새 색상이나 신규 semantic role은 추가하지 않았다. 이전에 승인된 MCU Dark/High/custom core 생성과 모션/공간 계약의 일괄 재설계는 하지 않는다.
+- Figma 색상의 대비 측정은 정보이며 사용·완료·병합·배포의 별도 제한이나 `M3_WEB_SPEC_CONFLICT` 사유로 삼지 않는다. 자동 측정 원자료는 유지하되 프로젝트 판정과 분리하며, 이를 WCAG 대비 충족이라고 표현하지 않는다.
+- Figma에 없는 새 색상/잘못된 binding은 별도 검토 대상이다. 키보드·이름/역할/상태·실제 AT·Windows Contrast Themes 정책은 이번 색상 결정으로 면제하지 않는다.
+
+[이번 복원 및 검증](../audits/2026-09-08-figma-token-policy/README.md)을 따른다.

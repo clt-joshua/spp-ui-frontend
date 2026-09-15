@@ -168,6 +168,9 @@
   overflow: visible;
   opacity: 0;
   transform: scale(0.6);
+  /* Keep the check tip (7, 14 in the 24-unit viewBox centered at 9, 9)
+     stationary while drawing/scaling. Center scaling drifts the tip down. */
+  transform-origin: calc(50% - var(--checkbox-icon-size) / 12) calc(50% + var(--checkbox-icon-size) * 5 / 24);
   transition: transform var(--md-checkbox-exit-duration) var(--md-checkbox-exit-easing), opacity var(--md-checkbox-opacity-duration) linear;
 }
 
@@ -177,6 +180,11 @@
   transform: scale(1);
   transition-duration: var(--md-checkbox-enter-duration), var(--md-checkbox-opacity-duration);
   transition-timing-function: var(--md-checkbox-enter-easing), linear;
+}
+
+.control[data-indeterminate] .indicator,
+.control[data-previous-state='indeterminate']:not([data-checked]) .indicator {
+  transform-origin: center;
 }
 
 .icon {
