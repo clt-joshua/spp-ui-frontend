@@ -5,15 +5,15 @@ const entries = [
   ['button', 'Button'], ['icon-button', 'IconButton'], ['tabs', 'Tabs'],
   ['segmented-button', 'SegmentedButton'], ['text-field', 'TextField'], ['select', 'Select'],
   ['autocomplete', 'AutoComplete'], ['checkbox', 'Checkbox'], ['radio', 'Radio'], ['switch', 'Switch'],
-  ['chip', 'Chip'], ['dialog', 'Dialog'], ['menu', 'Menu'],
+  ['chip', 'Chip'], ['dialog', 'Dialog'], ['menu', 'Menu'], ['data-grid', 'DataGrid'],
 ] as const;
 
-test('13개 컴포넌트를 하나씩 탐색하며 상태와 팝업을 정리한다', async ({ page }) => {
+test('14개 컴포넌트를 하나씩 탐색하며 상태와 팝업을 정리한다', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: '컴포넌트 검증', exact: true }).click();
   await expect(page).toHaveURL(/#button$/);
   const navigation = page.getByRole('navigation', { name: '컴포넌트 목록', exact: true });
-  await expect(navigation.getByRole('link')).toHaveCount(13);
+  await expect(navigation.getByRole('link')).toHaveCount(14);
   for (const [id, label] of entries) {
     await selectComponent(page, id);
     await expect(page.locator('[data-gallery-component]')).toHaveCount(1);

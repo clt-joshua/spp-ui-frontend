@@ -71,7 +71,9 @@ Cloudflare 배포 자격 증명은 GitHub Actions repository secret으로만 관
 
 Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 않는다. 기본 서체를 바꿀 때는 component CSS 대신 다음 reference input을 override한다.
 
-실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components#button`은 13개 공개 컴포넌트 중 선택한 하나의 variant·size·상태·상호작용을 확인하는 검증 페이지를 제공한다. 데스크톱 목록 또는 모바일 컴포넌트 선택으로 이동하며, 재방문 시 예제 상태는 초기화되고 적용된 테마는 유지된다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
+`/grid`에서는 DataGrid 업무 목록의 정렬·필터·선택·셀 편집과 총계를 확인할 수 있습니다. `/components#data-grid`는 셀 타입 검증 화면입니다.
+
+실행 후 `/`는 Theme·form·overlay의 대표 제품 흐름을, `/components#button`은 14개 공개 컴포넌트 중 선택한 하나의 variant·size·상태·상호작용을 확인하는 검증 페이지를 제공한다. 데스크톱 목록 또는 모바일 컴포넌트 선택으로 이동하며, 재방문 시 예제 상태는 초기화되고 적용된 테마는 유지된다. 새 컴포넌트 세로 슬라이스는 `/components` inventory와 실제 상호작용 E2E를 같은 변경에서 추가한다.
 
 ```css
 :root {
@@ -92,7 +94,7 @@ Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 �
 3. [목표와 아키텍처 결정](docs/01-product/02-GOALS-AND-DECISIONS.md)에서 범위와 ADR을 확정한다.
 4. [아키텍처와 프로젝트 설정](docs/02-architecture/03-ARCHITECTURE-AND-SETUP.md)에 따라 프로젝트 구조와 Provider를 배치한다.
 5. [토큰과 동적 Theme](docs/02-architecture/04-TOKENS-AND-DYNAMIC-THEME.md)에 따라 토큰과 Theme Runtime을 먼저 구현한다.
-6. [컴포넌트와 인터랙션 계약](docs/02-architecture/05-COMPONENTS-AND-INTERACTIONS.md)에 따라 공통 interaction과 13개 공개 컴포넌트를 구현한다.
+6. [컴포넌트와 인터랙션 계약](docs/02-architecture/05-COMPONENTS-AND-INTERACTIONS.md)에 따라 공통 interaction과 14개 공개 컴포넌트를 구현한다.
 7. [구현 순서와 검증 계획](docs/03-delivery/06-IMPLEMENTATION-AND-VALIDATION.md)의 순서와 검증 게이트를 따른다.
 8. AI 작업은 [바이브코딩 플레이북](docs/03-delivery/07-VIBE-CODING-PLAYBOOK.md)의 프롬프트와 증거 형식을 사용한다.
 9. [공식 출처와 Baseline](docs/04-reference/SOURCES.md)의 라이브 문서와 스냅샷 기준을 릴리스 전에 재검토한다.
@@ -106,12 +108,12 @@ Vite는 대표 실행 host이며 `src/ui`는 Vite runtime API를 사용하지 �
 - [x] `src/ui` 외부의 Base UI 직접 import를 금지했다.
 - [x] CSS layer 순서와 전역 적용 위치를 연결했다.
 - [x] Theme Provider를 애플리케이션 진입점에 한 번만 배치했다.
-- [x] 13개 공개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
+- [x] 14개 공개 컴포넌트의 구현 상태와 남은 준수 blocker를 manifest에 기록했다.
 - [ ] 미확인 또는 충돌 항목을 `M3_WEB_SPEC_CONFLICT`로 보고할 경로를 만들었다.
 
 ## 완료의 의미
 
-문서 작성이나 Storybook 렌더링만으로 완료되지 않는다. 대표 사용자가 애플리케이션의 실제 진입점에서 13개 공개 컴포넌트를 사용하고, Theme 변경이 Portal을 포함한 전체 UI에 적용되며, 키보드·포커스·state layer·ripple·reduced motion이 의도한 흐름에서 동작해야 한다. 모든 컴포넌트의 준수 기록은 `PASS`여야 한다.
+문서 작성이나 Storybook 렌더링만으로 완료되지 않는다. 대표 사용자가 애플리케이션의 실제 진입점에서 14개 공개 컴포넌트를 사용하고, Theme 변경이 Portal을 포함한 전체 UI에 적용되며, 키보드·포커스·state layer·ripple·reduced motion이 의도한 흐름에서 동작해야 한다. 모든 컴포넌트의 준수 기록은 `PASS`여야 한다.
 
 ### 테마 설정과 페이지 이동
 

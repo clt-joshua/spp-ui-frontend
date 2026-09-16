@@ -7,7 +7,7 @@ import {
 
 describe('M3 compliance manifest', () => {
   it('records the complete governance schema without claiming premature PASS', () => {
-    expect(M3_COMPONENT_MANIFEST).toHaveLength(13);
+    expect(M3_COMPONENT_MANIFEST).toHaveLength(14);
     expect(FIGMA_TOKEN_POLICY.contrastBlocksFigmaColors).toBe(false);
 
     for (const record of M3_COMPONENT_MANIFEST) {
@@ -16,7 +16,10 @@ describe('M3 compliance manifest', () => {
       expect(record.verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
       expect(new Date(record.verifiedAt).toISOString().slice(0, 10)).toBe(record.verifiedAt);
       expect(record.checkedAreas).toEqual(M3_CHECKED_AREAS);
-      if (record.component === 'Button') {
+      if (record.component === 'DataGrid') {
+        expect(record.materialWebReferenceStatus).toBe('unavailable');
+        expect(record.deviations).toHaveLength(2);
+      } else if (record.component === 'Button') {
         expect(record.deviations).toHaveLength(3);
       } else if (record.component === 'IconButton') {
         expect(record.deviations).toHaveLength(3);

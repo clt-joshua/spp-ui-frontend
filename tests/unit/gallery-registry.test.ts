@@ -2,10 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { galleryComponents, resolveGalleryId } from '../../src/pages/gallery/registry';
 
 describe('component gallery registry', () => {
-  it('owns a unique route and example for all 13 public components', () => {
+  it('owns a unique route and example for all 14 public components', () => {
     expect(galleryComponents.map(({ id }) => id)).toEqual([
       'button', 'icon-button', 'tabs', 'segmented-button', 'text-field', 'select', 'autocomplete',
-      'checkbox', 'radio', 'switch', 'chip', 'dialog', 'menu',
+      'checkbox', 'radio', 'switch', 'chip', 'dialog', 'menu', 'data-grid',
     ]);
     for (const entry of galleryComponents) {
       expect(resolveGalleryId('#' + entry.id)).toBe(entry.id);

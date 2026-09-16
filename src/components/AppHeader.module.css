@@ -10,4 +10,9 @@
 .statusDot { inline-size: 0.5rem; block-size: 0.5rem; border-radius: 50%; background: var(--md-sys-color-primary); }
 @media (max-width: 62rem) { .header { grid-template-columns: auto 1fr; } .navigation { justify-self: end; } .status { display: none; } }
 @media (max-width: 30rem) { .header { gap: 0.5rem; padding-inline: 0.75rem; } .brand > span:last-child { display: none; } }
+@media (max-width: 40rem) {
+  .header { grid-template-columns: 1fr; justify-items: center; gap: 0.5rem; padding-block: 0.5rem; }
+  .navigation { justify-self: center; max-inline-size: 100%; }
+  .navigation a { padding-inline: 0.625rem; font-size: var(--md-sys-typescale-label-medium-size); }
+}
 @media (forced-colors: active) { .brandMark { border: 1px solid CanvasText; } .navigation a[aria-current='page'] { outline: 1px solid CanvasText; outline-offset: -1px; } .statusDot { background: Highlight; } }

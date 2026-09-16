@@ -20,6 +20,7 @@ import {
   type ThemeMode,
 } from '@/ui';
 import { ComponentGalleryPage } from './pages/ComponentGalleryPage';
+import { GridPage } from './pages/GridPage';
 import styles from './App.module.css';
 import { AppHeader } from './components/AppHeader';
 
@@ -30,11 +31,11 @@ const modeOptions: Array<{ label: string; value: ThemeMode; icon: string }> = [
 ];
 
 export default function App() {
-  const gallery = window.location.pathname === '/components';
+  const currentPage = window.location.pathname === '/grid' ? 'grid' : window.location.pathname === '/components' ? 'components' : 'theme';
   return (
     <>
-      <AppHeader currentPage={gallery ? 'components' : 'theme'} />
-      {gallery ? <ComponentGalleryPage /> : <ThemeLabPage />}
+      <AppHeader currentPage={currentPage} />
+      {currentPage === 'grid' ? <GridPage /> : currentPage === 'components' ? <ComponentGalleryPage /> : <ThemeLabPage />}
     </>
   );
 }

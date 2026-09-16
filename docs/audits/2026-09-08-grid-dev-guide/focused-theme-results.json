@@ -1,0 +1,188 @@
+[
+  {
+    "browser": "chromium",
+    "theme": "axe-라이트-standard",
+    "startTime": "2026-09-08T03:58:51.823Z",
+    "violations": []
+  },
+  {
+    "browser": "chromium",
+    "theme": "axe-다크-standard",
+    "startTime": "2026-09-08T03:58:51.823Z",
+    "violations": []
+  },
+  {
+    "browser": "chromium",
+    "theme": "axe-라이트-high",
+    "startTime": "2026-09-08T03:58:51.823Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "browser": "chromium",
+    "theme": "axe-다크-high",
+    "startTime": "2026-09-08T03:58:51.823Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "browser": "firefox",
+    "theme": "axe-라이트-standard",
+    "startTime": "2026-09-08T03:59:06.767Z",
+    "violations": []
+  },
+  {
+    "browser": "firefox",
+    "theme": "axe-다크-standard",
+    "startTime": "2026-09-08T03:59:06.767Z",
+    "violations": []
+  },
+  {
+    "browser": "firefox",
+    "theme": "axe-라이트-high",
+    "startTime": "2026-09-08T03:59:06.767Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "browser": "firefox",
+    "theme": "axe-다크-high",
+    "startTime": "2026-09-08T03:59:06.767Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "browser": "webkit",
+    "theme": "axe-라이트-standard",
+    "startTime": "2026-09-08T03:59:27.140Z",
+    "violations": []
+  },
+  {
+    "browser": "webkit",
+    "theme": "axe-다크-standard",
+    "startTime": "2026-09-08T03:59:27.140Z",
+    "violations": []
+  },
+  {
+    "browser": "webkit",
+    "theme": "axe-라이트-high",
+    "startTime": "2026-09-08T03:59:27.140Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #2f383a, background color: #626c8d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "browser": "webkit",
+    "theme": "axe-다크-high",
+    "startTime": "2026-09-08T03:59:27.140Z",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "html": "<span class=\"_text_um4zp_46\">조회 결과 총계</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">15</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "html": "<span class=\"_text_um4zp_46\">805,000</span>",
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #d5dee0, background color: #8690b2, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1314 @@
+{
+  "notes": [],
+  "variantPrototypes": [],
+  "styles": [
+    {
+      "id": "10450:83965",
+      "name": "Type=normal, Size=large, State=enabled",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/enabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10574:36296",
+      "name": "Type=normal, Size=medium, State=enabled",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/enabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10450:84077",
+      "name": "Type=normal, Size=large, State=hovered",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10574:36308",
+      "name": "Type=normal, Size=medium, State=hovered",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10450:84126",
+      "name": "Type=normal, Size=large, State=focused",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/focused",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 6,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "spread": 2,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 2,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          },
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    },
+    {
+      "id": "10574:36320",
+      "name": "Type=normal, Size=medium, State=focused",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/focused",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 6,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "spread": 2,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 2,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          },
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    },
+    {
+      "id": "10450:84750",
+      "name": "Type=normal, Size=large, State=pressed",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/focused",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 6,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "spread": 2,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 2,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          },
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    },
+    {
+      "id": "10574:36332",
+      "name": "Type=normal, Size=medium, State=pressed",
+      "fill": [
+        {
+          "token": "schemes/surface-container",
+          "rgb": {
+            "r": 0.9372549057006836,
+            "g": 0.9529411792755127,
+            "b": 0.9647058844566345
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-middle",
+          "rgb": {
+            "r": 0.6784313917160034,
+            "g": 0.729411780834198,
+            "b": 0.772549033164978
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/focused",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 6,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "spread": 2,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 2,
+          "boundVariables": {},
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          },
+          "offset": {
+            "x": 0,
+            "y": 1
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": true
+        }
+      ]
+    },
+    {
+      "id": "10450:85036",
+      "name": "Type=text, State=enabled, Size=medium",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/enabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55204",
+      "name": "Type=text, State=enabled, Size=small",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/enabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10463:7026",
+      "name": "Type=text, State=disabled, Size=medium",
+      "fill": [
+        {
+          "token": "schemes/surface-container-low",
+          "rgb": {
+            "r": 0.9686274528503418,
+            "g": 0.9803921580314636,
+            "b": 0.9882352948188782
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/disabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55224",
+      "name": "Type=text, State=disabled, Size=small",
+      "fill": [
+        {
+          "token": "schemes/surface-container-low",
+          "rgb": {
+            "r": 0.9686274528503418,
+            "g": 0.9803921580314636,
+            "b": 0.9882352948188782
+          },
+          "opacity": 1
+        }
+      ],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/disabled",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10450:87569",
+      "name": "Type=text, State=row-hover, Size=medium",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55244",
+      "name": "Type=text, State=row-hover, Size=small",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10458:1913",
+      "name": "Type=text, State=row-selected, Size=medium",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/table-selected",
+          "rgb": {
+            "r": 0,
+            "g": 0.5058823823928833,
+            "b": 0.572549045085907
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55256",
+      "name": "Type=text, State=row-selected, Size=small",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/table-selected",
+          "rgb": {
+            "r": 0,
+            "g": 0.5058823823928833,
+            "b": 0.572549045085907
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10459:2404",
+      "name": "Type=text, State=cell-selected, Size=medium",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/surface-container-highest",
+          "rgb": {
+            "r": 0.7882353067398071,
+            "g": 0.8274509906768799,
+            "b": 0.8588235378265381
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/table-selected",
+          "rgb": {
+            "r": 0,
+            "g": 0.5058823823928833,
+            "b": 0.572549045085907
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55268",
+      "name": "Type=text, State=cell-selected, Size=small",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/surface-container-highest",
+          "rgb": {
+            "r": 0.7882353067398071,
+            "g": 0.8274509906768799,
+            "b": 0.8588235378265381
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/table-selected",
+          "rgb": {
+            "r": 0,
+            "g": 0.5058823823928833,
+            "b": 0.572549045085907
+          },
+          "opacity": 0.11999999731779099
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10458:2057",
+      "name": "Type=text, State=cell-hover, Size=medium",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    },
+    {
+      "id": "10580:55280",
+      "name": "Type=text, State=cell-hover, Size=small",
+      "fill": [],
+      "stroke": [
+        {
+          "token": "schemes/outline-lowest",
+          "rgb": {
+            "r": 0.8784313797950745,
+            "g": 0.9058823585510254,
+            "b": 0.9254902005195618
+          },
+          "opacity": 1
+        }
+      ],
+      "layer": [
+        {
+          "token": "state-layer/hovered",
+          "rgb": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "opacity": 0.05999999865889549
+        }
+      ],
+      "sideWidths": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "effects": []
+    }
+  ],
+  "variables": {
+    "VariableID:54795:25764": {
+      "name": "schemes/surface-container",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13497"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13489"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13517"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13515"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13489"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13517"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13517"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13515"
+        }
+      }
+    },
+    "VariableID:54795:25742": {
+      "name": "schemes/outline-middle",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10233"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10228"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10533"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10532"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10228"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10533"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10233"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10532"
+        }
+      }
+    },
+    "VariableID:10429:53163": {
+      "name": "state-layer/enabled",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        }
+      }
+    },
+    "VariableID:10443:74466": {
+      "name": "state-layer/hovered",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66705"
+        }
+      }
+    },
+    "VariableID:10443:74467": {
+      "name": "state-layer/focused",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66706"
+        }
+      }
+    },
+    "VariableID:10563:12790": {
+      "name": "schemes/outline-lowest",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10193"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10188"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10493"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10492"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10188"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10493"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10193"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10492"
+        }
+      }
+    },
+    "VariableID:54795:25763": {
+      "name": "schemes/surface-container-low",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13498"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13490"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13518"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13516"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13490"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13518"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13518"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:13516"
+        }
+      }
+    },
+    "VariableID:10443:75936": {
+      "name": "state-layer/disabled",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66704"
+        }
+      }
+    },
+    "VariableID:10458:2129": {
+      "name": "state-layer/table-selected",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66750"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66751"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66752"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66753"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66754"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66755"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66756"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10533:66749"
+        }
+      }
+    },
+    "VariableID:54795:25766": {
+      "name": "schemes/surface-container-highest",
+      "values": {
+        "10401:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10217"
+        },
+        "10407:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10212"
+        },
+        "10410:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10517"
+        },
+        "10410:1": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10516"
+        },
+        "10417:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10212"
+        },
+        "10420:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10517"
+        },
+        "10422:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10517"
+        },
+        "54795:0": {
+          "type": "VARIABLE_ALIAS",
+          "id": "VariableID:10508:10516"
+        }
+      }
+    }
+  }
+}

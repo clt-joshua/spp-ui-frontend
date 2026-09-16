@@ -1,5 +1,7 @@
 # UI 구현 상태와 검증 증거
 
+2026-09-16 통합: DataGrid를 포함한 공개 컴포넌트 14종을 공통 헤더와 개별 갤러리에서 제공한다. `/grid` 및 `/components#data-grid`를 유지하며 Snackbar는 재도입하지 않는다. 아래 9월 8일 검증은 통합 전 이력이다.
+
 2026-09-08 Figma 토큰 우선 확정: 대비 보정용 system-accessibility.css와 on-selected-compact 신규 역할을 제거하고 TextField/AutoComplete affix·placeholder, status 및 x-small Filter 연결을 원본으로 복원했다. Figma-defined 대비는 별도 사용/완료/배포 제한이 아니며 기존 색상 BLOCKED를 제거한다. 측정 원자료는 정보로 남기고 WCAG 충족을 주장하지 않는다. 불가피한 신규 비-Figma 토큰은 src/ui/tokens/extensions.css에 근거/용도/테마/이관 기준을 별도 관리한다. 기존 outline/outline-variant/shadow 호환 alias 세 개만 값 변경 없이 해당 파일로 이동했다. 실제 AT/Windows Contrast Themes 게이트, 기존 승인된 MCU/모션 계약, Snackbar 제거와 이전 미커밋 변경은 유지한다. 아래 대비 보정 승인/대비 BLOCKED 문구는 당시 이력이며 현재 결정이 우선한다.
 
 2026-09-08 후속: Snackbar는 사용자 요청으로 제거했고 현재 공개 컴포넌트는 13개다. 테마 적용·폼 제출·메뉴 결과는 페이지 내 status 문구로 제공한다. 아래 Snackbar 구현·검증 수치는 제거 전 이력이며 현재 API 또는 미결 출시 게이트가 아니다. 나머지 BLOCKED는 유지한다.
@@ -40,7 +42,7 @@ M3 준수 상태는 `BLOCKED`다. 2026-09-08 결정에 따라 Figma 원본 색�
 - form submit → 페이지 내 제출 결과 status UI
 - body Portal인 Select, Dialog, Menu가 document root system token 상속
 - 375px 화면에서 horizontal overflow 없음
-- Theme Lab 공통 상단 navigation으로 `/components#button`에 진입하고 13개 공개 컴포넌트를 개별 선택한다. 선택 예제만 마운트하며 모바일 Select·개별 hash·이전 주소 호환·history·예제 초기화·열린 팝업 정리를 지원한다. Chip은 하나의 항목 안에 네 타입을 유지한다.
+- Theme Lab 공통 상단 navigation으로 `/components#button`에 진입하고 14개 공개 컴포넌트를 개별 선택한다. 선택 예제만 마운트하며 모바일 Select·개별 hash·이전 주소 호환·history·예제 초기화·열린 팝업 정리를 지원한다. Chip은 하나의 항목 안에 네 타입을 유지한다.
 - 검증 페이지에서 Filter 선택, Input 삭제·복원, Dialog Escape/focus return, Snackbar, Theme 상속과 375px overflow를 실제 Vite 흐름으로 확인함
 - Figma Button `10429:72459`의 360개 조합을 3 size, 5 style, content, error, disabled와 실제 hover/focus/pressed 상태로 변환했다. 40/32/24px container, 20/16/12px padding, size별 typography/icon/gap과 disabled Outlined color composition, style별 error/disabled color, 48px hit target과 pointer·keyboard ripple을 `/components`에서 확인함
 - Figma IconButton guide `10724:16368`와 component set `10446:79757`의 75개 조합을 3 size, 5 style, 실제 interaction/disabled 상태로 변환했다. 40/32/24px container, 24/20/16px icon, 8/6/4px padding, style별 color와 disabled 우선순위, 48px hit target, action/toggle accessible name·`aria-pressed`, pointer·keyboard ripple을 `/components`에서 확인함

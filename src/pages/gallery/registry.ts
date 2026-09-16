@@ -1,3 +1,4 @@
+import { DataGridGallery } from './DataGridGallery';
 import { ButtonGallery } from './ButtonGallery';
 import { IconButtonGallery } from './IconButtonGallery';
 import { TabsGallery } from './TabsGallery';
@@ -26,6 +27,7 @@ export const galleryComponents = [
   { id: 'chip', label: 'Chip', description: 'Assistive · Filter · Input · Location', Example: ChipGallery },
   { id: 'dialog', label: 'Dialog', description: 'modal·alert, dismiss와 포커스 복귀', Example: DialogGallery },
   { id: 'menu', label: 'Menu', description: '항목 선택, checkbox·radio·서브메뉴', Example: MenuGallery },
+  { id: 'data-grid', label: 'DataGrid', description: '업무 목록과 셀 타입 · 정렬, 필터, 선택, 편집과 총계', Example: DataGridGallery },
 ] as const;
 
 export type GalleryComponentId = typeof galleryComponents[number]['id'];

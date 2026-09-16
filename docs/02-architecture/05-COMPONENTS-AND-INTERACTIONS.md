@@ -23,6 +23,18 @@ compliance_required: true
 - 모든 interactive root는 StateLayer와 FocusRing을 사용하고, press feedback이 필요한 variant는 Ripple을 사용한다.
 - 단순 CSS hover 색상 변경으로 state layer를 대체하지 않는다.
 
+## DataGrid · 2026-09-08 사용자 승인 확장
+
+최신 [개발 가이드 구현 감사](../audits/2026-09-08-grid-dev-guide/README.md)를 따른다. 사용자 지정 가이드 10803:11260 / 10803:12225의 패딩·줄바꿈·13종 셀을 구현했다. 세 페이지의 상단 탐색은 앱 경계의 공통 `AppHeader`가 소유한다.
+
+공개 `DataGrid<T>`는 `rows`, `columns: GridColumn<T>[]`, `getRowId`를 받는다. column은 안정적인 `id`, `header`, `value(row)`, 선택적인 `type`, `width`, `group`, `sortable`, `filterable`, `options`, `footer`로 정의한다. TanStack Table 9.2.4를 내부 엔진으로 사용한다. `onCellChange(rowId, columnId, value)`는 소비자가 데이터 갱신을 소유하도록 전달하며 저장소나 네트워크 정책을 내장하지 않는다. `getRowDisabled`는 행 선택과 모든 셀 입력에 적용된다.
+
+헤더 최소 32px, 바디 최소 40px이며 size prop은 없다. 내용은 줄바꿈되고 320px 가이드 예시는 헤더 64px, 바디 72px로 늘어난다. 헤더 바깥 2px/8px와 텍스트 세로 6px, 바디 바깥 4px/8px와 텍스트 세로 8px를 중첩한다. 선택 열은 40px, No.는 기본 48px, 일반 열 기본 폭은 320px다. 테두리는 콘텐츠 너비를 줄이지 않는 overlay다. `selection`은 multiple/single/none이다. 표시된 행 내 전체 선택은 필터 밖 기존 선택을 유지한다. `onSelectionChange`는 원본 데이터에 존재하는 선택 가능 행 ID를 반환한다. `footer: 'sum'`은 현재 필터된 데이터 전체(비활성 행 포함)를 합산하며 `{ label }`은 총계 레이블을 표시한다. 필터는 대소문자를 구분하지 않는 문자열 포함 조건, 정렬은 오름차순/내림차순/해제다.
+
+행 데이터/열 정의/getRowId는 안정적인 참조와 유일 ID를 제공한다. 동일한 `group` 이름은 첫 등장 위치에 한 그룹으로 모이고 그룹 내 열은 입력 순서를 유지한다. `__selection` 및 `group:` 접두사는 내부 열 ID로 예약한다.
+
+기존 TextField small을 재사용한다. 그리드 전용 선택·아이콘 컨트롤은 인접 영역이 겹치지 않는 24px 대상이다. chip은 정적 표시다. text-edit-search/number-edit-search는 32px 입력과 2px 간격의 24px 검색 영역을 사용하며 숫자는 우측 정렬한다. options와 변경 callback이 없는 셀 선택 UI 및 onSearch(row) 없는 검색 아이콘은 시각 표현만 제공한다. 검색 callback을 제공하면 disabled 상태를 따르는 버튼이 된다. placeholder는 선택 속성이다. 삭제된 check-button/chip-select와 info 액션은 제공하지 않는다. 활성 셀 표시는 단일 초점 문맥이며 범위 선택/클립보드/스프레드시트 API를 제공하지 않는다. 구현과 수동 접근성 검증 범위는 [개발 가이드 감사 기록](../audits/2026-09-08-grid-dev-guide/README.md)을 따른다.
+
 ## StateLayer
 
 ```ts

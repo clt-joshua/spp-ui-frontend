@@ -44,7 +44,7 @@ test('별도 컴포넌트 검증 페이지에서 전체 inventory와 실제 상�
   await expect(page).toHaveURL(/\/components#button$/u);
   await expect(page).toHaveTitle('SPP UI Component Verification');
   await expect(page.getByRole('heading', { level: 1, name: '컴포넌트 검증' })).toBeVisible();
-  await expect(page.getByRole('navigation', { name: '컴포넌트 목록' }).getByRole('link')).toHaveCount(13);
+  await expect(page.getByRole('navigation', { name: '컴포넌트 목록' }).getByRole('link')).toHaveCount(14);
   await selectComponent(page, 'chip');
   const filterSet = page.getByRole('toolbar', { name: 'large Filter states' });
   const filter = filterSet.getByRole('button', { name: 'Label' }).first();

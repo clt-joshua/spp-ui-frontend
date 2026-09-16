@@ -1,4 +1,6 @@
 /** Application-facing UI entry point. */
+export { DataGrid } from './components/DataGrid';
+export type { DataGridProps, GridColumn, GridCellType, GridOption } from './components/DataGrid';
 
 export { MaterialIcon } from './icons/MaterialIcon';
 export type { MaterialIconProps } from './icons/MaterialIcon';

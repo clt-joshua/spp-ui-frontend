@@ -30,7 +30,7 @@ compliance_required: true
 
 ### 기능
 
-- 10개 MVP 컴포넌트와 Tabs·Switch·Segmented Button 확장, 총 13개 공개 컴포넌트가 실제 앱 진입점에서 사용 가능하다.
+- 10개 MVP 컴포넌트와 Tabs·Switch·Segmented Button 및 DataGrid 확장, 총 14개 공개 컴포넌트가 실제 앱 진입점에서 사용 가능하다.
 - Theme 변경이 일반 DOM과 Portal에 같은 프레임에서 적용된다.
 - 새 seed color를 적용하면 primary뿐 아니라 on/container/surface/inverse/fixed role이 함께 변경된다.
 - 사용자의 Theme 선택이 재방문 후 복원된다.
@@ -168,7 +168,7 @@ compliance_required: true
 
 **결정:** Theme 프리셋·custom seed·mode·contrast 설정과 프로젝트 생성 폼을 결합한 Theme Lab을 `/`의 대표 제품 흐름으로 사용한다. `/components`는 모든 공개 컴포넌트의 variant·size·state·interaction inventory를 실제 앱에서 비교하는 검증 workspace로 사용한다.
 
-**이유:** Theme Lab은 자연스러운 제품 흐름과 persistence를 검증하고, Component Verification은 제품 폼에 억지로 모든 상태를 넣지 않고 새 컴포넌트의 완전한 상태 행렬과 상호작용을 한 위치에서 확인한다. 두 페이지 모두 같은 `src/ui` 공개 export와 document-root Theme을 사용하며 현재 13개 공개 컴포넌트를 포함한다.
+**이유:** Theme Lab은 자연스러운 제품 흐름과 persistence를 검증하고, Component Verification은 제품 폼에 억지로 모든 상태를 넣지 않고 새 컴포넌트의 완전한 상태 행렬과 상호작용을 한 위치에서 확인한다. 두 페이지 모두 같은 `src/ui` 공개 export와 document-root Theme을 사용하며 현재 14개 공개 컴포넌트를 포함한다.
 
 **제약:** 두 페이지 통과는 자동 동작 증거이며 개별 컴포넌트의 M3 준수 `PASS`를 자동으로 의미하지 않는다. 새 공개 컴포넌트는 `/components` state matrix와 실제 상호작용 E2E를 같은 세로 슬라이스에 포함한다. 적용 가능한 screen-reader와 forced-colors 근거는 manifest blocker로 유지한다.
 
