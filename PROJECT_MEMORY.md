@@ -1,3 +1,7 @@
+# 2026-10-06 CI 재점검과 메뉴 내부 스크롤 교정
+
+기존 ba6ede1의 WebKit 시간 초과 3건은 동일 커밋 GitHub 재실행에서 76/76 PASS(retries 0), 자동 배포 복구를 확인했다. 원래 시간 초과 원인은 재현하지 못했다. 별도 Linux 전체 실행 75 PASS/1 FAIL에서 DataGrid 옵션 클릭 중 펼쳐지는 메뉴의 native 내부 스크롤(84px → 40px)을 확인했다. 공통 MenuMotion의 전환 중 overflow를 clip으로 바꾸고 종료 후 기존 스크롤을 복원한다. 수정 전 실패하는 스크롤 회귀 검사와 pnpm verify(53 unit), 영향 범위 3-browser 39/39 및 CI 동일 Linux WebKit 6/6 PASS를 확인했다. 실제 /grid에서 분류 ‘운영’ 변경·닫힘·포커스 복귀, DataGrid 및 14개 공개 목록을 유지한다. 수정 커밋의 최종 원격 CI/배포는 해당 SHA로 별도 확인한다. 기존 수동 AT/Windows Contrast Themes 미검증은 유지한다. 상세: docs/audits/2026-10-06-ci-repair/README.md.
+
 # 2026-09-16 이관용 main 통합
 
 통합 검증: pnpm verify PASS(53 unit), 영향 범위 3-browser E2E 42/42 PASS(retries 0, 2.3분), 실제 홈 → /grid 선택·담당자 편집 → /components#data-grid의 14개 목록 확인. 상세: docs/audits/2026-09-16-migration-merge/README.md.

@@ -948,14 +948,16 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   // especially when CI rendering and the preceding visibility checks are slow.
   const menuMotion = await page.evaluateHandle(() => {
     const animations = new Set<Animation>();
-    const observed: Array<{ duration: number; heights: string[] }> = [];
+    const observed: Array<{ duration: number; heights: string[]; scrollTop: number }> = [];
     const observer = new MutationObserver(() => {
       const surface = document.querySelector('[data-menu-motion-phase="opening"] [data-slot="menu-surface"]');
       for (const animation of surface?.getAnimations() ?? []) {
         if (animations.has(animation)) continue;
         animations.add(animation);
         const effect = animation.effect as KeyframeEffect;
-        observed.push({ duration: Number(effect.getTiming().duration), heights: effect.getKeyframes().map((frame) => String(frame.height ?? '')) });
+        // Native scrolling during growth must not shift a pointer's option target.
+        if (surface) surface.scrollTop = 1;
+        observed.push({ duration: Number(effect.getTiming().duration), heights: effect.getKeyframes().map((frame) => String(frame.height ?? '')), scrollTop: surface?.scrollTop ?? -1 });
       }
     });
     observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-menu-motion-phase', 'data-menu-motion-pending', 'style'] });
@@ -979,6 +981,7 @@ test('M3 필드, checkbox 정렬과 빠른 클릭 ripple이 실제 화면에서 
   const openingHeightFrames = await menuMotion.evaluate(({ observed }) => observed.find(({ duration }) => duration === 500)!.heights);
   expect(openingHeightFrames[0]).toBe('0px');
   expect(Number.parseFloat(String(openingHeightFrames.at(-1)))).toBeGreaterThan(0);
+  expect(await menuMotion.evaluate(({ observed }) => observed.every(({ scrollTop }) => scrollTop === 0))).toBe(true);
   await menuMotion.evaluate(({ disconnect }) => disconnect());
   await menuMotion.dispose();
   expect(await selectPopupSurface.evaluate((element) => (

@@ -286,7 +286,8 @@ export function useMaterialMenuMotion<
       motionSurfaceRef.current = surface;
       motionSurfaceOverflowRef.current = surface.style.overflow;
       popup.style.height = `${height}px`;
-      surface.style.overflow = 'hidden';
+      // Native focus/scroll-into-view must not move items inside the growing surface.
+      surface.style.overflow = 'clip';
 
       if (!opening) {
         const endHeight = height * closeHeightRatio;
